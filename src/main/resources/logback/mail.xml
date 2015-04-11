@@ -1,0 +1,24 @@
+<included>
+	<appender name="MAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<smtpHost>smtp.gmail.com</smtpHost>
+		<smtpPort>465</smtpPort>
+		<SSL>true</SSL>
+		<username>yangchao04@gmail.com</username>
+		<password>chaoyang</password>
+
+		<to>yangchao04@gmail.com</to>
+		<!--
+		<from>demo.xthena@gmail.com</from>
+		-->
+		<!--
+		<subject>[xthena] %logger{20} - %m</subject>
+		-->
+		<layout class="ch.qos.logback.classic.html.HTMLLayout"/>
+
+	</appender>
+</included>

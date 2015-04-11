@@ -1,0 +1,16 @@
+target/
+
+/webapp/WEB-INF/classes
+/webapp/WEB-INF/lib
+
+/.settings
+
+/.classpath
+
+/.project
+/xthena.store
+
+*.class
+*.jar
+*.war
+*.ear

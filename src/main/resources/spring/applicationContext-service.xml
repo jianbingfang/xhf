@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="userProcessor" class="com.xthena.bridge.DatabaseUserProcessor"/>
+
+	<bean id="groupProcessor" class="com.xthena.bridge.DatabaseGroupProcessor"/>
+
+	<bean id="keyValue" class="com.xthena.form.keyvalue.DatabaseKeyValue">
+		<property name="jdbcTemplate" ref="jdbcTemplate"/>
+	</bean>
+
+	<bean id="userNotification" class="com.xthena.user.notification.PartyUserNotification"/>
+
+</beans>
