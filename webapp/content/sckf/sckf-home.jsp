@@ -16,7 +16,7 @@
 </head>
 <link rel="stylesheet" href="${ctx}/s/sckf/sckf.css" type="text/css">
 <script src="${ctx}/s/highcharts/highcharts.js" type="text/javascript"></script>
-<%--<script src="${ctx}/s/highcharts/exporting.js" type="text/javascript"></script>--%>
+<script src="${ctx}/s/highcharts/no-data-to-display.js" type="text/javascript"></script>
 
 <body>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -28,19 +28,6 @@
     <script src="${ctx}/s/sckf/htgl.js" type="text/javascript"></script>
     <script src="${ctx}/s/sckf/fbqk.js" type="text/javascript"></script>
     <script>
-        var formatNum = function (num, n) {
-            if (typeof num === 'string') {
-                num = Number(num);
-            }
-            if (typeof num === 'number') {
-                n = 2 | n;
-                num = String(num.toFixed(n));
-                var re = /(-?\d+)(\d{3})/;
-                while (re.test(num)) num = num.replace(re, "$1,$2")
-            }
-            return num;
-        };
-
         var drawAllChart = function (year) {
             drawChartTbqk(year);
             drawChartHtgl(year);

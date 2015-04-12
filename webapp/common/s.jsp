@@ -134,6 +134,19 @@ function selectMemu(){
 	$('a[href="'+url+'"]').parent('li').addClass('active');
 }
 
+var formatNum = function (num, n) {
+    if (typeof num === 'string') {
+        num = Number(num);
+    }
+    if (typeof num === 'number') {
+        n = 2 | n;
+        num = String(num.toFixed(n));
+        var re = /(-?\d+)(\d{3})/;
+        while (re.test(num)) num = num.replace(re, "$1,$2")
+    }
+    return num;
+};
+
 Array.prototype.sum = function () {
     for (var sum = i = 0; i < this.length; i++)
         sum += this[i];
