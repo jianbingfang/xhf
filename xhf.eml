@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component LANGUAGE_LEVEL="JDK_1_7" inheritJdk="true">
-	<exclude-output/>
-	<contentEntry url="file://$MODULE_DIR$"/>
+	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+		<excludeFolder url="file://$MODULE_DIR$/webapp/WEB-INF/classes"/>
+	</contentEntry>
 	<lib name="activation-1.1.jar" scope="COMPILE">
 		<relative-module-cls project-related="jar://$PROJECT_DIR$/webapp/WEB-INF/lib/activation-1.1.jar!/"/>
 	</lib>
@@ -320,5 +324,7 @@
 	<lib name="Tomcat 8.0.20" scope="PROVIDED"/>
 	<levels>
 		<level name="Tomcat 8.0.20" value="application_server_libraries"/>
+		<level name="Maven: javax.servlet:servlet-api:2.5" value="project"/>
+		<level name="Maven: javax.servlet.jsp:jsp-api:2.1" value="project"/>
 	</levels>
 </component>
