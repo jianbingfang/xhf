@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component LANGUAGE_LEVEL="JDK_1_7" inheritJdk="true">
 	<exclude-output/>
-	<contentEntry url="file://$MODULE_DIR$">
-		<excludeFolder url="file://$MODULE_DIR$/webapp/WEB-INF/lib"/>
-	</contentEntry>
+	<contentEntry url="file://$MODULE_DIR$"/>
 	<lib name="activation-1.1.jar" scope="COMPILE">
 		<relative-module-cls project-related="jar://$PROJECT_DIR$/webapp/WEB-INF/lib/activation-1.1.jar!/"/>
 	</lib>

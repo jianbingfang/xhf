@@ -1,15 +1,24 @@
 /**
  * Created by jianbingfang on 2015/4/12.
  */
-function drawChartProjectOnbuilding(year) {
+function drawChartLybzj(year, month) {
 
-    $('#loading-project-onbuilding').show();
+    $('#loading-lybzj').show();
 
-    $.post('gcgl-project-onbuilding-data.do', {year: year}, function (data) {
+    month = month | (new Date().getMonth + 1);
 
-        $('#loading-project-onbuilding').hide();
+    $.post('cw-lybzj-data.do', {year: year, month: month}, function (data) {
 
-        $('#chart-project-onbuilding').highcharts({
+        $('#loading-lybzj').hide();
+
+        data = [
+            ['交纳', 10],
+            ['应收', 20],
+            ['已收', 30],
+            ['余额', 40]
+        ];
+
+        $('#chart-lybzj').highcharts({
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -30,7 +39,7 @@ function drawChartProjectOnbuilding(year) {
             },
             plotOptions: {
                 pie: {
-                    allowPointSelect: true,
+                    allowPointSelect: false,
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
@@ -43,7 +52,12 @@ function drawChartProjectOnbuilding(year) {
                                 : null
                         }
                     },
-                    startAngle: 0
+                    startAngle: 0,
+                    events: {
+                        click: function () {
+                            window.location.href = "http://" + window.location.host + "/xhf/default/cw/cwBzj-info-list.do?type=2";
+                        }
+                    }
                 }
             },
             series: [{
@@ -55,6 +69,6 @@ function drawChartProjectOnbuilding(year) {
 
     }).error(function () {
         alert('投标数据获取失败');
-        $('#loading-project-onbuilding').hide();
+        $('#loading-lybzj').hide();
     });
 }

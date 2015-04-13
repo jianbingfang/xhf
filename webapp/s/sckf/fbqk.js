@@ -1,13 +1,15 @@
 function drawChartFbqk() {
 
     $('#loading-fbqk').show();
-    $('#chart-fbqk').hide();
 
     $.post('sckf-fbqk-data.do', null, function (data) {
 
         $('#loading-fbqk').hide();
-        $('#chart-fbqk').show();
         //var data = [97, 3];
+
+        if (data.sum() === 0) {
+            data = [];
+        }
 
         $('#chart-fbqk').highcharts({
             chart: {

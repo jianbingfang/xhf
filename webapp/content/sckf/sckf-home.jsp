@@ -37,24 +37,51 @@
     <!-- start of main -->
     <section id="m-main" class="span10" style="float: right">
         <span style="font-size: medium"><b>选择年份：</b></span>
-        <select id="select-year" onchange="drawAllChart(this.value)">
-            <c:forEach items="${yearList}" var="year">
-                <option value="${year}">${year}年</option>
-            </c:forEach>
-        </select>
-
-        <img id="loading-tbqk" src="${ctx}/common/loading-circle.gif" alt="加载中..." class="loading-img"/>
-
-        <div id="chart-tbqk" style="min-width: 700px; height: 400px">
+        <input id="year-container" type="text" type="text" class="form-control">
+        <script type="text/javascript">
+            $('#year-container').val(moment().format('YYYY'));
+            $('#year-container').datepicker({
+                format: "yyyy",
+                startView: 2,
+                minViewMode: 2,
+                autoclose: true
+            }).on('changeDate', function (ev) {
+                var year = ev.date.getFullYear();
+                drawAllChart(year);
+            });
+        </script>
+        <div class="row-fluid">
+            <div class="span12">
+                <article class="m-widget">
+                    <header class="header">
+                        <h4 class="title">投标情况</h4>
+                        <img id="loading-tbqk" src="${ctx}/common/loading-circle.gif" alt="加载中..." class="loading-img"/>
+                    </header>
+                    <div id="chart-tbqk" style="min-width: 700px; height: 400px">
+                    </div>
+                </article>
+            </div>
         </div>
         <div class="row-fluid">
-
-            <div id="chart-htgl" class="span6" style="height: 400px">
-                <img id="loading-htgl" src="${ctx}/common/loading-circle.gif" alt="加载中..." class="loading-img"/>
+            <div class="span6">
+                <article class="m-widget">
+                    <header class="header">
+                        <h4 class="title">合同签订情况</h4>
+                        <img id="loading-htgl" src="${ctx}/common/loading-circle.gif" alt="加载中..." class="loading-img"/>
+                    </header>
+                    <div id="chart-htgl" style="height: 400px">
+                    </div>
+                </article>
             </div>
-
-            <div id="chart-fbqk" class="span6" style="height: 400px">
-                <img id="loading-fbqk" src="${ctx}/common/loading-circle.gif" alt="加载中..." class="loading-img"/>
+            <div class="span6">
+                <article class="m-widget">
+                    <header class="header">
+                        <h4 class="title">废标比例</h4>
+                        <img id="loading-fbqk" src="${ctx}/common/loading-circle.gif" alt="加载中..." class="loading-img"/>
+                    </header>
+                    <div id="chart-fbqk" style="height: 400px">
+                    </div>
+                </article>
             </div>
         </div>
         <script>

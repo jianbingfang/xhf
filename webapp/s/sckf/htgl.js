@@ -1,18 +1,20 @@
 function drawChartHtgl(year) {
 
     $('#loading-htgl').show();
-    $('#chart-htgl').hide();
 
     $.post('sckf-htgl-data.do', {year: year}, function (mdata) {
 
         console.log(mdata);
         $('#loading-htgl').hide();
-        $('#chart-htgl').show();
 
         //mdata = [
         //    [4, 1, 3, 2],
         //    [36, 6, 14, 8]
         //];
+
+        if (mdata[0].sum() === 0 && mdata[1] === 0) {
+            mdata = [null, null];
+        }
 
         var colors = Highcharts.getOptions().colors,
             categories = ['已签订', '未签订'],
@@ -72,7 +74,7 @@ function drawChartHtgl(year) {
                 enabled: false
             },
             title: {
-                text: '合同签订情况(总数:' + mdata[0].sum() + ')'
+                text: '总数:' + mdata[0].sum()
             },
             yAxis: {
                 title: {
@@ -82,7 +84,8 @@ function drawChartHtgl(year) {
             plotOptions: {
                 pie: {
                     shadow: false,
-                    center: ['50%', '50%']
+                    center: ['50%', '50%'],
+                    startAngle: (mdata[0][0] === 0 || mdata[0].slice(1).sum() === 0) ? 45 : 0
                 }
             },
             tooltip: {

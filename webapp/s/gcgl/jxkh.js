@@ -36,7 +36,7 @@ function drawChartJxkh(year) {
                 labels: {
                     overflow: 'justify'
                 },
-                tickInterval: 1
+                allowDecimals: false
             },
             tooltip: {
                 valueSuffix: ' 人'
@@ -59,5 +59,6 @@ function drawChartJxkh(year) {
 
     }).error(function () {
         alert('投标数据获取失败');
+        $('#loading-jxkh').hide();
     });
 }

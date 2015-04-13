@@ -1,8 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-ear" name="xhf:ear exploded">
+  <artifact type="ear" name="xhf:ear exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/xhf_ear_exploded</output-path>
-    <root id="root">
+    <root id="archive" name="xhf_ear exploded.ear">
       <element id="javaee-facet-resources" facet="xhf/javaeeApplication/javaEEApplication" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
     </root>
   </artifact>
 </component>

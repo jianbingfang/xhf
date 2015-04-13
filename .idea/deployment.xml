@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="115.29.77.6" />
+  <component name="PublishConfigData" serverName="115.29.77.6">
+    <serverData>
+      <paths name="123.56.132.111">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/opt/apache-tomcat-8.0.21/webapps/xhf" local="$PROJECT_DIR$" web="/xhf" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
 </project>

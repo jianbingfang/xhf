@@ -55,5 +55,6 @@ function drawChartProjectType(year) {
 
     }).error(function () {
         alert('投标数据获取失败');
+        $('#loading-project-type').hide();
     });
 }

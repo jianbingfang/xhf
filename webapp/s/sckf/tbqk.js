@@ -1,19 +1,15 @@
 function drawChartTbqk(year) {
 
     $('#loading-tbqk').show();
-    $('#chart-tbqk').hide();
 
     $.post('sckf-tbqk-data.do', {year: year}, function (data) {
 
         console.log(data);
         $('#loading-tbqk').hide();
-        $('#chart-tbqk').show();
 
-        //var data = [
-        //    [83, 78, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92],
-        //    [48, 38, 39, 41, 47, 48, 59, 59, 52, 65, 59, 51],
-        //    [32, 41, 64, 22, 14, 51, 85, 48, 34, 72, 65, 58]
-        //];
+        if (data[0].sum() === 0) {
+            data = [[],[],[]];
+        }
 
         $('#chart-tbqk').highcharts({
             chart: {
