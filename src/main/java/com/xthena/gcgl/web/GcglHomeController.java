@@ -49,8 +49,17 @@ public class GcglHomeController {
 
     @RequestMapping("gcgl-home")
     public String home(Model model) {
-        int[] yl = {2015, 2014, 2013, 2012, 2011};
-        model.addAttribute("yearList", yl);
+        int onlineProject = 10;
+        int newProject = 10;
+        int endProject = 10;
+
+        String hql = "";
+
+        List res = pjXmManager.find(hql);
+
+        model.addAttribute("onlineProject", onlineProject);
+        model.addAttribute("newProject", newProject);
+        model.addAttribute("endProject", endProject);
         return "gcgl/gcgl-home";
     }
 

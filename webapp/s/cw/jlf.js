@@ -9,25 +9,34 @@ function drawChartJlf(year) {
     $('#txt-yishou').html(' - ');
     $('#txt-weishou').html(' - ');
 
-    $.post('cw-jlf-data.do', {year: year}, function (data) {
+    $.post('cw-jlf-data.do', {year: year}, function (res) {
+
+        console.log(res);
 
         $('#loading-jlf').hide();
 
+        var dateStr = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+
         var data = [
-            ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-            [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-            [42.9, 41.5, 106.4, 49.2, 104.0, 176.0, 55.6, 128.5, 176.4, 154.1, 35.6, 44.4]
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ];
 
-        $('#txt-yingshou').html(data[1].sum());
-        $('#txt-yishou').html(data[2].sum());
-        $('#txt-weishou').html(data[1].sum()  - data[2].sum());
+        var rate = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-        var rate = [];
+        if (res && res.length) {
+            for (var i = 0; i < res.length; i++) {
+                data[0][res[i][0] - 1] = res[i][1];
+                data[1][res[i][0] - 1] = res[i][2];
+                rate[res[i][0] - 1] = (100 * res[i][2] / res[i][1]);
+            }
+            $('#txt-yingshou').html(formatNum(data[0].sum()));
+            $('#txt-yishou').html(formatNum(data[1].sum()));
+            $('#txt-weishou').html(formatNum(data[0].sum() - data[1].sum()));
 
-        for (var i = 0; i < data[1].length; i++) {
-            rate.push(100 * data[2][i] / data[1][i]);
         }
+
+        console.log(data);
 
         $('#chart-jlf').highcharts({
             lang: {
@@ -40,7 +49,7 @@ function drawChartJlf(year) {
                 enabled: false
             },
             xAxis: [{
-                categories: data[0]
+                categories: dateStr
             }],
             yAxis: [{ // Primary yAxis
                 title: {
@@ -56,10 +65,10 @@ function drawChartJlf(year) {
                     }
                 },
                 opposite: true,
-                max: 100
+                min: 0
             }, { // Secondary yAxis
                 labels: {
-                    format: '{value} 万',
+                    format: '{value}',
                     style: {
                         color: '#4572A7'
                     }
@@ -79,9 +88,9 @@ function drawChartJlf(year) {
                 name: '应收',
                 type: 'column',
                 yAxis: 1,
-                data: data[1],
+                data: data[0],
                 tooltip: {
-                    valueSuffix: ' 万'
+                    valuePrefix: '￥'
                 },
                 cursor: 'pointer',
                 point: {
@@ -95,9 +104,9 @@ function drawChartJlf(year) {
                 name: '已收',
                 type: 'column',
                 yAxis: 1,
-                data: data[2],
+                data: data[1],
                 tooltip: {
-                    valueSuffix: ' 万'
+                    valuePrefix: '￥'
                 },
                 cursor: 'pointer',
                 point: {

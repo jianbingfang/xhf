@@ -3,9 +3,11 @@ package com.xthena.cw.web;
 import com.xthena.api.user.UserConnector;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.spring.MessageHelper;
+import com.xthena.cw.manager.CwYingShouManager;
 import com.xthena.ext.export.Exportor;
 import com.xthena.hr.manager.HrGwbmManager;
 import com.xthena.util.ConstValue;
+import com.xthena.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,9 @@ public class CwHomeController {
 
     @Autowired
     private HrGwbmManager hrGwbmManager;
+
+    @Autowired
+    private CwYingShouManager cwYingShouManager;
 
     @RequestMapping("cw-home")
     public String home(Model model) {
@@ -53,12 +58,16 @@ public class CwHomeController {
     @ResponseBody
     @RequestMapping("cw-jlf-data")
     public Object getDataJlf(@RequestParam int year) {
-        List<Long> ids = new ArrayList<>();
-        for (long i = 4; i < 11; i++) {
-            ids.add(i);
-        }
-        int[] data = {97};
-        return data;
+
+        String hql = "select MONTH(ys.fdzdate), sum(ys.fdebit), sum(ys.fcreditor)" +
+                " from CwYingShou ys" +
+                " where ys.fdzdate >= ? and ys.fdzdate < ?" +
+                " group by MONTH(ys.fdzdate)" +
+                " order by MONTH(ys.fdzdate)";
+
+        List list = cwYingShouManager.find(hql, DateUtil.getYearFirst(year), DateUtil.getYearFirst(year + 1));
+
+        return list;
     }
 
     @ResponseBody

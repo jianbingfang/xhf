@@ -5,7 +5,46 @@ function drawChartProjectOnbuilding(year) {
 
     $('#loading-project-onbuilding').show();
 
-    $.post('gcgl-project-onbuilding-data.do', {year: year}, function (data) {
+    $.post('gcgl-project-onbuilding-data.do', {year: year}, function (res) {
+
+        var data;
+        if (res && res.length > 0) {
+            data = [
+                ['房屋建筑工程'],
+                ['公路工程'],
+                ['电力工程'],
+                ['冶炼工程'],
+                ['市政公用工程'],
+                ['其它工程']
+            ];
+
+            res.forEach(function (item) {
+                switch (item[0]) {
+                    case '房屋建筑工程':
+                        data[0].push(item[1]);
+                        break;
+                    case '公路工程':
+                        data[1].push(item[1]);
+                        break;
+                    case '电力工程':
+                        data[2].push(item[1]);
+                        break;
+                    case '冶炼工程':
+                        data[3].push(item[1]);
+                        break;
+                    case '市政公用工程':
+                        data[4].push(item[1]);
+                        break;
+                    default :
+                        data[5].push(item[1]);
+                        break;
+                }
+            });
+
+            data.sort(function (a, b) {
+                return b[1] - a[1];
+            });
+        }
 
         $('#loading-project-onbuilding').hide();
 

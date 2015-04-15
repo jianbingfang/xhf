@@ -37,6 +37,22 @@
     </script>
     <!-- start of main -->
     <section id="m-main" class="span10" style="float:right">
+
+        <div class="row-fluid">
+            <div class="content content-inner">
+                <form name="hr-plain-infoForm" method="post"
+                      action="hr-plain-info-list.do" class="form-inline">
+                    <label class="hrHomeTitle" style="font-size: 28px;">在建项目总数：</label>
+                    <label class="hrHomeValue" style="font-size: 35px;color: blue;">${onlineProject}</label>&nbsp&nbsp&nbsp
+                    <label class="hrHomeTitle" style="font-size: 28px;">本月新开工项目：</label>
+                    <label class="hrHomeValue" style="font-size: 35px;color: blue;">${newProject}</label>
+                    &nbsp&nbsp&nbsp <label class="hrHomeTitle"
+                                           style="font-size: 28px;">本月新竣工项目：</label> <label
+                        class="hrHomeValue" style="font-size: 35px;color: blue;">${endProject}</label>&nbsp&nbsp&nbsp
+                </form>
+            </div>
+        </div>
+
         <span style="font-size: medium"><b>选择年份：</b></span>
         <input id="year-container" type="text" type="text" class="form-control">
         <script type="text/javascript">
@@ -47,26 +63,14 @@
                 minViewMode: 2,
                 autoclose: true
             }).on('changeDate', function (ev) {
-                var year = ev.date.getFullYear();
-                drawAllChart(year);
+                if (ev.date) {
+                    var year = ev.date.getFullYear();
+                    drawAllChart(year);
+                }
             });
         </script>
 
         <div class="container-fluid">
-            <%--<div class="row-fluid">--%>
-                <%--<div class="content content-inner">--%>
-                    <%--<form name="hr-plain-infoForm" method="post"--%>
-                          <%--action="hr-plain-info-list.do" class="form-inline">--%>
-                        <%--<label class="hrHomeTitle" style="font-size: 28px;">目前进行中的项目总数：</label>--%>
-                        <%--<label class="hrHomeValue" style="font-size: 35px;color: blue;">260</label>&nbsp&nbsp&nbsp--%>
-                        <%--<label class="hrHomeTitle" style="font-size: 28px;">本月新开工项目数：</label>--%>
-                        <%--<label class="hrHomeValue" style="font-size: 35px;color: blue;">2</label>--%>
-                        <%--&nbsp&nbsp&nbsp <label class="hrHomeTitle"--%>
-                                               <%--style="font-size: 28px;">本月竣工项目数：</label> <label--%>
-                            <%--class="hrHomeValue" style="font-size: 35px;color: blue;">4</label>&nbsp&nbsp&nbsp--%>
-                    <%--</form>--%>
-                <%--</div>--%>
-            <%--</div>--%>
             <div class="row-fluid">
                 <div class="span6">
                     <article class="m-widget">
@@ -104,7 +108,7 @@
             </div>
         </div>
         <script>
-            drawAllChart(${yearList[0]});
+            drawAllChart(new Date().getFullYear());
         </script>
     </section>
     <!-- end of main -->

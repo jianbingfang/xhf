@@ -46,8 +46,10 @@
                 minViewMode: 2,
                 autoclose: true
             }).on('changeDate', function (ev) {
-                var year = ev.date.getFullYear();
-                drawAllChart(year);
+                if (ev.date) {
+                    var year = ev.date.getFullYear();
+                    drawAllChart(year);
+                }
             });
         </script>
         <div class="row-fluid">
@@ -85,7 +87,7 @@
             </div>
         </div>
         <script>
-            drawAllChart(${yearList[0]});
+            drawAllChart(new Date().getFullYear());
         </script>
         <!-- <div class="container-fluid">
             <div class="row-fluid">

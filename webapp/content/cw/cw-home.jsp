@@ -47,8 +47,10 @@
                     minViewMode: 2,
                     autoclose: true
                 }).on('changeDate', function (ev) {
-                    var year = ev.date.getFullYear();
-                    drawChartJlf(year);
+                    if (ev.date) {
+                        var year = ev.date.getFullYear();
+                        drawChartJlf(year);
+                    }
                 });
             </script>
 
@@ -56,16 +58,16 @@
                 <div class="content content-inner">
                     <form name="hr-plain-infoForm" method="post"
                           action="hr-plain-info-list.do" class="form-inline">
-                        <label class="hrHomeTitle" style="font-size: 28px;">应收账款：</label>
-                        <label class="hrHomeValue" style="font-size: 35px;color: blue;"><span
+                        <label class="hrHomeTitle" style="font-size: 18px;">应收账款：</label>
+                        <label class="hrHomeValue" style="font-size: 18px;color: blue;"><span
                                 id="txt-yingshou"> - </span>
-                            万元</label>&nbsp&nbsp&nbsp <label class="hrHomeTitle"
-                                                             style="font-size: 28px;">已收账款：</label> <label
-                            class="hrHomeValue" style="font-size: 35px;color: blue;"><span id="txt-yishou"> - </span>
-                        万元</label> &nbsp&nbsp&nbsp <label class="hrHomeTitle"
-                                                          style="font-size: 28px;">未收账款：</label> <label
-                            class="hrHomeValue" style="font-size: 35px;color: blue;"><span id="txt-weishou"> - </span>
-                        万元</label>&nbsp&nbsp&nbsp
+                            元</label>&nbsp&nbsp&nbsp <label class="hrHomeTitle"
+                                                             style="font-size: 18px;">已收账款：</label> <label
+                            class="hrHomeValue" style="font-size: 18px;color: blue;"><span id="txt-yishou"> - </span>
+                        元</label> &nbsp&nbsp&nbsp <label class="hrHomeTitle"
+                                                          style="font-size: 18px;">未收账款：</label> <label
+                            class="hrHomeValue" style="font-size: 18px;color: blue;"><span id="txt-weishou"> - </span>
+                        元</label>&nbsp&nbsp&nbsp
                     </form>
                 </div>
             </div>
@@ -93,10 +95,12 @@
                     minViewMode: 1,
                     autoclose: true
                 }).on('changeDate', function (ev) {
-                    var year = ev.date.getFullYear();
-                    var month = ev.date.getMonth() + 1;
-                    drawChartLybzj(year, month);
-                    drawChartTbbzj(year, month);
+                    if (ev.date) {
+                        var year = ev.date.getFullYear();
+                        var month = ev.date.getMonth() + 1;
+                        drawChartLybzj(year, month);
+                        drawChartTbbzj(year, month);
+                    }
                 });
             </script>
 
@@ -104,7 +108,7 @@
                 <div class="span6">
                     <article class="m-widget">
                         <header class="header">
-                            <h4 class="title">投标保证金回收情况图</h4>
+                            <h4 class="title">投标保证金回收情况图(效果图)</h4>
                             <img id="loading-tbbzj" src="${ctx}/common/loading-circle.gif" alt="加载中..."
                                  style="margin: -3px 0px 0px 10px;"/>
                         </header>
@@ -114,7 +118,7 @@
                 <div class="span6">
                     <article class="m-widget">
                         <header class="header">
-                            <h4 class="title">履约保证金回收情况图</h4>
+                            <h4 class="title">履约保证金回收情况图(效果图)</h4>
                             <img id="loading-lybzj" src="${ctx}/common/loading-circle.gif" alt="加载中..."
                                  style="margin: -3px 0px 0px 10px;"/>
                         </header>
@@ -125,9 +129,10 @@
         </div>
     </section>
     <script>
-        drawChartJlf(${yearList[0]});
-        drawChartLybzj(${yearList[0]});
-        drawChartTbbzj(${yearList[0]});
+        var nowYear = new Date().getFullYear();
+        drawChartJlf(nowYear);
+        drawChartLybzj(nowYear);
+        drawChartTbbzj(nowYear);
     </script>
     <!-- end of main -->
 </div>

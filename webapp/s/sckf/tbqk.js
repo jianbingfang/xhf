@@ -70,7 +70,10 @@ function drawChartTbqk(year) {
                     pointPadding: 0.2,
                     borderWidth: 0,
                     dataLabels: {
-                        enabled: true
+                        enabled: true,
+                        formatter: function () {
+                            return this.y ? this.y : null
+                        }
                     }
                 }
             },
