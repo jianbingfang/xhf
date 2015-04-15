@@ -49,17 +49,6 @@ public class GcglHomeController {
 
     @RequestMapping("gcgl-home")
     public String home(Model model) {
-        int onlineProject = 10;
-        int newProject = 10;
-        int endProject = 10;
-
-        String hql = "";
-
-        List res = pjXmManager.find(hql);
-
-        model.addAttribute("onlineProject", onlineProject);
-        model.addAttribute("newProject", newProject);
-        model.addAttribute("endProject", endProject);
         return "gcgl/gcgl-home";
     }
 
@@ -116,7 +105,8 @@ public class GcglHomeController {
 
         String hql = "select xm.fxmstatus, count(*) as cnt" +
                 " from PjXm xm" +
-                " group by xm.fxmstatus";
+                " group by xm.fxmstatus" +
+                " order by cnt desc";
         List list = pjXmManager.find(hql);
 
         return list;
@@ -164,6 +154,22 @@ public class GcglHomeController {
             }
             return data;
         }
+
+    }
+
+    @ResponseBody
+    @RequestMapping("gcgl-xmfb-data")
+    public Object getDataXmfb() {
+
+        logger.info("gcgl-xmfb-data: ");
+
+        String hql = "select xm.fprovince, count(xm.fprovince)" +
+                " from PjXm xm" +
+                " where xm.fprovince!=''" +
+                " group by (xm.fprovince)";
+
+        List list = pjkhManager.find(hql);
+        return list;
 
     }
 }

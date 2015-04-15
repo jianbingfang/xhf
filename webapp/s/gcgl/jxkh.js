@@ -53,7 +53,15 @@ function drawChartJxkh(year) {
             },
             series: [{
                 name: '人数',
-                data: data
+                data: data,
+                cursor: 'pointer',
+                point: {
+                    events: {
+                        click: function () {
+                            window.location.href = "http://" + window.location.host + "/xhf/default/gcgl/pjkh-info-list.do";
+                        }
+                    }
+                }
             }]
         });
 

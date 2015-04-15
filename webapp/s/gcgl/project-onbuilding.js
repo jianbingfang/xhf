@@ -69,7 +69,7 @@ function drawChartProjectOnbuilding(year) {
             },
             plotOptions: {
                 pie: {
-                    allowPointSelect: true,
+                    allowPointSelect: false,
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
@@ -82,7 +82,12 @@ function drawChartProjectOnbuilding(year) {
                                 : null
                         }
                     },
-                    startAngle: 0
+                    startAngle: 0,
+                    events: {
+                        click: function () {
+                            window.location.href = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=1";
+                        }
+                    }
                 }
             },
             series: [{

@@ -1,6 +1,20 @@
 /**
  * Created by jianbingfang on 2015/4/12.
  */
+
+var getTypeIndex = function (name) {
+    switch (name) {
+        case '在建':
+            return 1;
+        case '完工':
+            return 2;
+        case '竣工':
+            return 3;
+        default :
+            return 1;
+    }
+};
+
 function drawChartProjectType(year) {
 
     $('#loading-project-type').show();
@@ -30,7 +44,7 @@ function drawChartProjectType(year) {
             },
             plotOptions: {
                 pie: {
-                    allowPointSelect: true,
+                    allowPointSelect: false,
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
@@ -49,7 +63,15 @@ function drawChartProjectType(year) {
             series: [{
                 type: 'pie',
                 name: '数量',
-                data: data
+                data: data,
+                cursor: 'pointer',
+                point: {
+                    events: {
+                        click: function () {
+                            window.location.href = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=" + getTypeIndex(this.name);
+                        }
+                    }
+                }
             }]
         });
 
