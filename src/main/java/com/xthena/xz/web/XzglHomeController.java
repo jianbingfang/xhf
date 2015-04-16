@@ -1,7 +1,9 @@
 package com.xthena.xz.web;
 
+import java.util.List;
 import java.util.Map;
 
+import com.xthena.xz.manager.CommpanyManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.hr.manager.HrGwbmManager;
 import com.xthena.util.ConstValue;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("xz")
@@ -26,6 +29,9 @@ public class XzglHomeController {
     private UserConnector userConnector;
     private MessageHelper messageHelper;
 
+    @Autowired
+    private CommpanyManager commpanyManager;
+
     @RequestMapping("xz-home")
     public String home(Model model) {
         return "xz/xz-home";
@@ -37,5 +43,44 @@ public class XzglHomeController {
     	hrGwbmManager.find(deptId,model);
     	model.addAttribute("model",model);
     	return "xz/xz-bmze-info";
+    }
+
+    @ResponseBody
+    @RequestMapping("xz-gsfb-data")
+    public Object getDataGsfb() {
+
+        String hql = "select com.faddress, com.fname" +
+                " from Commpany com";
+        List list = commpanyManager.find(hql);
+        return list;
+
+    }
+
+    @ResponseBody
+    @RequestMapping("xz-gdzc-data")
+    public Object getDataGdzc() {
+
+        String hql = "select wz.fname, count(wz.fname) as cnt" +
+                " from WzList wz" +
+                " where wz.ftype=1" +
+                " group by wz.fname" +
+                " order by cnt desc";
+        List list = commpanyManager.find(hql);
+        return list;
+
+    }
+
+    @ResponseBody
+    @RequestMapping("xz-zzxh-data")
+    public Object getDataZzxh(@RequestParam int year) {
+
+        String hql = "select wz.fname, count(wz.fname) as cnt" +
+                " from WzList wz" +
+                " where wz.ftype=1" +
+                " group by wz.fname" +
+                " order by cnt desc";
+        List list = commpanyManager.find(hql);
+        return list;
+
     }
 }

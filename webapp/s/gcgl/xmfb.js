@@ -12,26 +12,13 @@ function drawChartXmfb() {
 
     $.post('gcgl-xmfb-data.do', null, function (list) {
 
-        /*var count = {};
-
-         if (addrList && addrList.length > 0) {
-         var name;
-         addrList.forEach(function (addr) {
-         name = getProvinceName(addr);
-         if (name) {
-         if (!count[name]) {
-         count[name] = 0;
-         }
-         count[name]++;
-         }
-         });
-         }*/
-
         var data = [];
 
+        var max = 100;  // max值至少为100
         if (list && list.length > 0) {
             list.forEach(function (item) {
-                data.push({name: item[0], value: item[1], selected: true});
+                data.push({name: item[0], value: Math.round(item[1])});
+                max = Math.max(max, Math.round(item[1]));
             });
         }
 
@@ -45,11 +32,22 @@ function drawChartXmfb() {
                     return a[1] + '：' + a[2];
                 }
             },
+            dataRange: {
+                min: 0,
+                max: max,
+                x: 'left',
+                y: 'bottom',
+                text: ['高', '低'],           // 文本，默认为数值文本
+                calculable: true,
+                splitNumber: 1,
+                precision: 0
+            },
             series: [
                 {
-                    name: '中国',
+                    name: '项目数',
                     type: 'map',
                     mapType: 'china',
+                    roam: false,
                     itemStyle: {
                         normal: {label: {show: true}},
                         emphasis: {label: {show: true}}
@@ -60,9 +58,10 @@ function drawChartXmfb() {
         };
 
         myChart.setOption(option);
-        myChart.on(myChart.EVENT.MAP_SELECTED, function (param) {
-            alert(param.selected);
-        });
+
+        //myChart.on(myChart.EVENT.MAP_SELECTED, function (param) {
+        //    alert(param.selected);
+        //});
     }).error(function () {
         alert('投标数据获取失败');
         $('#loading-xmfb').hide();

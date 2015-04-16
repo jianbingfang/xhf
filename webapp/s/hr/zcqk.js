@@ -1,16 +1,18 @@
-function drawChartFbqk() {
+/**
+ * Created by jianbingfang on 2015/4/12.
+ */
 
-    $('#loading-fbqk').show();
+function drawChartZcqk() {
 
-    $.post('sckf-fbqk-data.do', function (data) {
+    $('#loading-zcqk').show();
 
-        $('#loading-fbqk').hide();
+    $.post('hr-zcqk-data.do', function (data) {
 
-        if (data.sum() === 0) {
-            data = [];
-        }
+        data = data || [];
 
-        $('#chart-fbqk').highcharts({
+        $('#loading-zcqk').hide();
+
+        $('#chart-zcqk').highcharts({
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -20,14 +22,14 @@ function drawChartFbqk() {
                 noData: '无数据'
             },
             title: {
-                text: '废标比例 (' + Math.round(10 * 100 * data[1] / data.sum()) / 10 + '%)'
+                text: null
             },
             credits: {
                 enabled: false
             },
             tooltip: {
                 headerFormat: '<span style="font-size:15px"><b>{point.key}</b></span><br/>',
-                pointFormat: '<b>共{point.y}个，占比{point.percentage:.1f}%</b>'
+                pointFormat: '共{point.y}个，占比{point.percentage:.1f}%'
             },
             plotOptions: {
                 pie: {
@@ -38,12 +40,16 @@ function drawChartFbqk() {
                         color: '#000000',
                         connectorColor: '#000000',
                         style: {"color": "#606060", "fontSize": "14px"},
-                        format: '<span style="font-size:14px"><b>{point.name}</span></b>: {point.y}'
+                        formatter: function () {
+                            return this.y ?
+                                ('<span style="font-size:14px"><b>' + this.point.name + '</span></b>: ' + this.y)
+                                : null
+                        }
                     },
                     startAngle: 0,
                     events: {
                         click: function () {
-                            alert('redirect to page');
+                            window.location.href = "http://" + window.location.host + "/xhf/default/hr/hrRyZj-treelist.do";
                         }
                     }
                 }
@@ -51,20 +57,12 @@ function drawChartFbqk() {
             series: [{
                 type: 'pie',
                 name: '数量',
-                data: [{
-                    name: '好标',
-                    y: data[0],
-                    color: Highcharts.getOptions().colors[0]
-                }, {
-                    name: '废标',
-                    y: data[1],
-                    color: Highcharts.getOptions().colors[5]
-                }]
+                data: data
             }]
         });
 
     }).error(function () {
-        alert('废标数据获取失败');
-        $('#loading-fbqk').hide();
+        alert('职称情况数据获取失败');
+        $('#loading-zcqk').hide();
     });
 }

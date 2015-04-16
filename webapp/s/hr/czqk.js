@@ -1,44 +1,54 @@
-function drawChartHtgl(year) {
+/**
+ * Created by jianbingfang on 2015/4/12.
+ */
 
-    $('#loading-htgl').show();
+function drawChartCzqk(data) {
 
-    $.post('sckf-htgl-data.do', {year: year}, function (mdata) {
+    $('#loading-czqk').show();
+
+    $.post('hr-czqk-data.do', function (mdata) {
 
         console.log(mdata);
-        $('#loading-htgl').hide();
 
-        //mdata = [
-        //    [4, 1, 3, 2],
-        //    [36, 6, 14, 8]
-        //];
+        mdata = mdata || [];
 
-        if (mdata[0].sum() === 0 && mdata[1] === 0) {
-            mdata = [null, null];
+        mdata = [
+            [2, 3, 4, 3, 2]
+            , [5]
+            , [8]
+            , [6]
+            , [10]
+            , [3]
+            , [2]
+        ];
+
+        var colors = Highcharts.getOptions().colors;
+        var categories = ['注册人员', '专业监理工程师', '监理员', '见证员', '安全员', '资料员', '其他'];
+        var data = [{
+            y: mdata[0].sum(),
+            color: colors[0],
+            drilldown: {
+                name: categories[0],
+                categories: ['注册监理工程师', '注册造价工程师', '注册设计师', '一级建造师', '其他'],
+                data: mdata[0],
+                color: colors[0]
+            }
+        }];
+
+        var totalSum = mdata[0].sum();
+        for (var i = 1; i < mdata.length; i++) {
+            data.push({
+                y: mdata[i].sum(),
+                color: colors[i],
+                drilldown: {
+                    name: categories[i],
+                    categories: [categories[i]],
+                    data: mdata[i],
+                    color: colors[i]
+                }
+            });
+            totalSum += mdata[i].sum();
         }
-
-        var colors = Highcharts.getOptions().colors,
-            categories = ['已签订', '未签订'],
-            name = '合同签订情况',
-            data = [{
-                y: mdata[0][0],
-                color: colors[0],
-                drilldown: {
-                    name: categories[0],
-                    categories: ['已签订'],
-                    data: mdata[0].slice(0, 1),
-                    color: colors[0]
-                }
-            }, {
-                y: mdata[0].slice(1).sum(),
-                color: colors[4],
-                drilldown: {
-                    name: categories[1],
-                    categories: ['谈判中', '已起草', '未起草'],
-                    data: mdata[0].slice(1),
-                    color: colors[4]
-                }
-            }];
-
 
         // Build the data arrays
         var typeData = [];
@@ -62,8 +72,9 @@ function drawChartHtgl(year) {
             }
         }
 
+        $('#loading-czqk').hide();
         // Create the chart
-        $('#chart-htgl').highcharts({
+        $('#chart-czqk').highcharts({
             chart: {
                 type: 'pie'
             },
@@ -74,7 +85,7 @@ function drawChartHtgl(year) {
                 enabled: false
             },
             title: {
-                text: '总数:' + mdata[0].sum()
+                text: '总数:' + totalSum
             },
             yAxis: {
                 title: {
@@ -94,20 +105,6 @@ function drawChartHtgl(year) {
                     str += '<tr>';
                     str += '<td style="color:' + this.series.color + ';padding:0">' + this.series.name + ': </td>';
                     str += '<td style="padding:0"><b>' + this.y + '</b></td>';
-                    str += '</tr>';
-                    str += '<tr>';
-                    str += '<td style="color:#804000;padding:0">金额: </td>';
-                    var t_amount;
-                    if (this.series.index === 0) {
-                        if (this.point.x === 0) {
-                            t_amount = mdata[1].slice(0, 1).sum();
-                        } else {
-                            t_amount = mdata[1].slice(1).sum();
-                        }
-                    } else {
-                        t_amount = mdata[1][this.point.x];
-                    }
-                    str += '<td style="padding:0"><b>￥' + formatNum(t_amount, 3) + '万</b></td>';
                     str += '</tr>';
                     str += '</table>';
                     return str;
@@ -132,8 +129,7 @@ function drawChartHtgl(year) {
                 innerSize: '60%',
                 dataLabels: {
                     formatter: function () {
-                        return this.y ? ('<b>' + this.point.name + '：</b>' + this.y + '<br/>'
-                        + '<b>总金额：</b>￥' + formatNum(mdata[1][this.point.x], 3) + '万<br/>') : null
+                        return this.y ? ('<b>' + this.point.name + '：</b>' + this.y) : null
                         //+ '<b>占比：</b>' + this.point.percentage + '%';
                     },
                     useHTML: true
@@ -148,8 +144,9 @@ function drawChartHtgl(year) {
                 }
             }]
         });
+
     }).error(function () {
-        alert('合同数据获取失败');
-        $('#loading-htgl').hide();
+        alert('持证情况数据获取失败');
+        $('#loading-czqk').hide();
     });
 }

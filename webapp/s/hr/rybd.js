@@ -1,24 +1,24 @@
 /**
  * Created by jianbingfang on 2015/4/12.
  */
-function drawChartTbbzj(year, month) {
+function drawChartRybd(year, month) {
 
-    $('#loading-tbbzj').show();
+    $('#loading-rybd').show();
 
     month = month | (new Date().getMonth + 1);
 
-    $.post('cw-tbbzj-data.do', {year: year, month: month}, function (data) {
+    $.post('hr-rybd-data.do', {year: year, month: month}, function (data) {
 
-        $('#loading-tbbzj').hide();
+        $('#loading-rybd').hide();
 
         data = [
-            ['交纳', 10],
-            ['应收', 20],
-            ['已收', 30],
-            ['余额', 40]
+            ['交纳', 10000],
+            ['应收', 200000],
+            ['已收', 30000],
+            ['余额', 40000]
         ];
 
-        $('#chart-tbbzj').highcharts({
+        $('#chart-lybzj').highcharts({
             chart: {
                 type: 'column'
             },
@@ -105,7 +105,7 @@ function drawChartTbbzj(year, month) {
         });
 
     }).error(function () {
-        alert('投标保证金数据获取失败');
-        $('#loading-tbbzj').hide();
+        alert('人员变动数据获取失败');
+        $('#loading-rybd').hide();
     });
 }
