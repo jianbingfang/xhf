@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="xhf:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="xhf-1.0.war">
-      <element id="artifact" artifact-name="xhf:war exploded" />
-    </root>
-  </artifact>
-</component>

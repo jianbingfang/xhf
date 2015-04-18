@@ -121,7 +121,7 @@ public class JyXm  implements java.io.Serializable {
      private String ftbtjf;
      private String fzbstatus;
      private String fshuxing;
-
+     private String ffbstatus;
 
     // Constructors
 
@@ -135,7 +135,7 @@ public class JyXm  implements java.io.Serializable {
     }
     
     /** full constructor */
-    public JyXm(String ftype, String fstate, String fname, String fxmgk, String fprovince, String fcity, String fscale, Double ftze, String fjsdw, String fzbdldw, Long fweituoren, String ffuzeren, Date fbmksdate, Date fbmjzdate, Long fbaomingren, Date fbeiandate, Long fzgyszbr, Date fzgysdate, String fzgysstatus, Long fbeianry, String fbeianstatus, String fbeianname, String fbeianurl, String fisdaban, String ftbwjbh, Long fbszzren, Integer fzbfs, Integer ffbfs, Integer fdzbfs, String ftbts, String fispass, Long fzbgoumairen, Date fzbgmdate, String fzbwjbh, Date fkbdate, String fzzyq, Long fbzjje, Date fbzjjnjzdate, Integer fzbds, String fstbd, Integer fzjdc, Integer ffrdc, Double fzbkzj, String fothers, String fzbdanwei, Double fzbmoney, String fwzbsy, Date fzblqdate, Date fgmzbwjdate, Long fpsren, String fzjtel, Long fzj, String fmemo, String fmemo1, String fmemo2, String fmemo3, String fmemo4, String fbmmemo, Long fbmzhubanren, Long fbmzlzbr, String fbmry, Date fbmdate, String fbmzlname, String fbmzlurl, String fzbggurl, String fmemo5, String fzhaobtype, Long fshenpiren, Date fshenpidate, String fshenpimemo, String fshenpiresult, String ftoubiaostatus, Long fzbtzslqr, Date fzbtzsdate, Long fjieshouren, String fkbaddress, String ftbzjsfdc, String ffuzerentel, String fbzjstatus, String fdzbtype, String ftbwxh, String ftbgzs, String ftbjwzm, String ftbwxhzb, String ftbgzszb, String ftbjwzmzb, String ftbbab, String ffbtj, String ftbtjf, String fzbstatus, String fshuxing) {
+    public JyXm(String ftype, String fstate, String fname, String fxmgk, String fprovince, String fcity, String fscale, Double ftze, String fjsdw, String fzbdldw, Long fweituoren, String ffuzeren, Date fbmksdate, Date fbmjzdate, Long fbaomingren, Date fbeiandate, Long fzgyszbr, Date fzgysdate, String fzgysstatus, Long fbeianry, String fbeianstatus, String fbeianname, String fbeianurl, String fisdaban, String ftbwjbh, Long fbszzren, Integer fzbfs, Integer ffbfs, Integer fdzbfs, String ftbts, String fispass, Long fzbgoumairen, Date fzbgmdate, String fzbwjbh, Date fkbdate, String fzzyq, Long fbzjje, Date fbzjjnjzdate, Integer fzbds, String fstbd, Integer fzjdc, Integer ffrdc, Double fzbkzj, String fothers, String fzbdanwei, Double fzbmoney, String fwzbsy, Date fzblqdate, Date fgmzbwjdate, Long fpsren, String fzjtel, Long fzj, String fmemo, String fmemo1, String fmemo2, String fmemo3, String fmemo4, String fbmmemo, Long fbmzhubanren, Long fbmzlzbr, String fbmry, Date fbmdate, String fbmzlname, String fbmzlurl, String fzbggurl, String fmemo5, String fzhaobtype, Long fshenpiren, Date fshenpidate, String fshenpimemo, String fshenpiresult, String ftoubiaostatus, Long fzbtzslqr, Date fzbtzsdate, Long fjieshouren, String fkbaddress, String ftbzjsfdc, String ffuzerentel, String fbzjstatus, String fdzbtype, String ftbwxh, String ftbgzs, String ftbjwzm, String ftbwxhzb, String ftbgzszb, String ftbjwzmzb, String ftbbab, String ffbtj, String ftbtjf, String fzbstatus, String fshuxing, String ffbstatus) {
         this.ftype = ftype;
         this.fstate = fstate;
         this.fname = fname;
@@ -227,6 +227,7 @@ public class JyXm  implements java.io.Serializable {
         this.ftbtjf = ftbtjf;
         this.fzbstatus = fzbstatus;
         this.fshuxing = fshuxing;
+        this.ffbstatus = ffbstatus;
     }
 
    
@@ -1144,20 +1145,15 @@ public class JyXm  implements java.io.Serializable {
     
     @Column(name="fshuxing", length=64)
 
-    public String getFshuxing() {
-        return this.fshuxing;
-    }
+    public String getFshuxing()  { return this.fshuxing; }
     
-    public void setFshuxing(String fshuxing) {
-        this.fshuxing = fshuxing;
-    }
-   
+    public void setFshuxing(String fshuxing) { this.fshuxing = fshuxing;}
 
+   // 添加是否废标情况
+    @Column(name="ffbstatus", length =64)
 
+    public String getFfbstatus(){return this.ffbstatus; }
 
-
-
-
-
+    public void setFfbstatus(String ffbstatus){this.ffbstatus= ffbstatus;}
 
 }

@@ -1241,7 +1241,7 @@ label{ font-size:12px;}
 										<label class="control-label" for="jyXm-info_fzbstatus"><spring:message
 												code="jyXm-info.jyXm-info.input.fzbstatus" text="是否中标" /></label>
 										<div class="controls">
-										
+
 											<select class="form-control" id="jyXm-info_fzbstatus"
 												name="fzbstatus" value="${model.fzbstatus}" class=" " >
 												<option value=""></option>
@@ -1254,7 +1254,21 @@ label{ font-size:12px;}
 										
 										</div>
 									</div>
-								
+
+									<div class="span5">
+										<label class="control-label" for="jyXm-info_ftbzjsfdc"><spring:message
+												code="jyXm-info.jyXm-info.input.ftbzjsfdc" text="是否废标" /></label>
+										<div class="controls">
+											<select class="form-control" id="jyXm-info_ffbstatus"
+													name="ffbstatus" value="${model.ffbstatus}" class=" " >
+												<option value=""></option>
+												<option value="是"
+														<c:if test="${model.ffbstatus=='是'}"> selected="selected"  </c:if>>是</option>
+												<option value="否"
+														<c:if test="${model.ffbstatus=='无'}"> selected="selected"  </c:if>>否</option>
+											</select>
+										</div>
+									</div>
 								</div>
 								
 								

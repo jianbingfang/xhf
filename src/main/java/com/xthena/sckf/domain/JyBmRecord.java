@@ -55,7 +55,6 @@ public class JyBmRecord  implements java.io.Serializable {
     public JyBmRecord() {
     }
 
-    
     /** full constructor */
     public JyBmRecord(Long fweituoren, Long fzhubanren, Long fbaomingren, String fisbeian, Date fbeiandate, String fbeianstatus, String fbeianname, String fbeianurl, String fiszigeyushen, Date fyushendate, String fyushenstatus, String fiszhaobiaowenj, Date fzhaobiaowenjiandate, String fzlname, String fzlurl, String fmemo, String fmemo1, String fmemo2, String fmemo3, String fmemo4, Long fbmid) {
         this.fweituoren = fweituoren;
@@ -305,12 +304,5 @@ public class JyBmRecord  implements java.io.Serializable {
         this.fbmid = fbmid;
     }
    
-
-
-
-
-
-
-
 
 }
