@@ -59,9 +59,10 @@ function drawChartXmfb() {
 
         myChart.setOption(option);
 
-        //myChart.on(myChart.EVENT.MAP_SELECTED, function (param) {
-        //    alert(param.selected);
-        //});
+        var ecConfig = getEcConfig();
+        myChart.on(ecConfig.EVENT.CLICK, function () {
+            window.location.href = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=1";
+        });
     }).error(function () {
         alert('投标数据获取失败');
         $('#loading-xmfb').hide();

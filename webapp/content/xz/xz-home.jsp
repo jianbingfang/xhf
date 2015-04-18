@@ -18,6 +18,8 @@
 </head>
 <body>
 <script src="${ctx}/s/echart/echarts-all.js" type="text/javascript"></script>
+<script src="${ctx}/s/echart/echarts-config.js" type="text/javascript"></script>
+
 <%@include file="/header/bpm-workspace.jsp" %>
 
 <div class="row-fluid">
