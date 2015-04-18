@@ -8,7 +8,7 @@ function drawChartTbqk(year) {
         $('#loading-tbqk').hide();
 
         if (data[0].sum() === 0) {
-            data = [[],[],[]];
+            data = [[], [], []];
         }
 
         $('#chart-tbqk').highcharts({
@@ -55,8 +55,8 @@ function drawChartTbqk(year) {
                     str += '<tr>';
                     str += '<td style="color:#804000;padding:0">中标金额: </td>';
                     str += '<td style="padding:0"><b>￥'
-                    + this.x
-                    + '</b></td>';
+                    + formatNum(data[2][this.points[0].point.x]);
+                    +'</b></td>';
                     str += '</tr>';
                     str += '</table>';
                     return str;
@@ -87,6 +87,7 @@ function drawChartTbqk(year) {
                             console.log('redirect to page '
                             + this.series.index
                             + '-' + this.x);
+                            window.location.href = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
                         }
                     }
                 }
@@ -100,6 +101,7 @@ function drawChartTbqk(year) {
                             console.log('redirect to page '
                             + this.series.index
                             + '-' + this.x);
+                            window.location.href = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
                         }
                     }
                 }
