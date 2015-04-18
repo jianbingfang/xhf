@@ -9,11 +9,9 @@
 	<lib name="pageoffice.jar" scope="COMPILE">
 		<relative-module-cls project-related="jar://$PROJECT_DIR$/webapp/WEB-INF/lib/pageoffice.jar!/"/>
 	</lib>
-	<lib name="Tomcat 8.0.20" scope="PROVIDED"/>
 	<lib name="Maven: javax.servlet:servlet-api:2.5" scope="PROVIDED"/>
 	<lib name="Maven: javax.servlet.jsp:jsp-api:2.1" scope="PROVIDED"/>
 	<levels>
-		<level name="Tomcat 8.0.20" value="application_server_libraries"/>
 		<level name="Maven: javax.servlet:servlet-api:2.5" value="project"/>
 		<level name="Maven: javax.servlet.jsp:jsp-api:2.1" value="project"/>
 		<level name="Maven: javax.servlet:jstl:1.2" value="project"/>
