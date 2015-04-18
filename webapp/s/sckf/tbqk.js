@@ -41,7 +41,7 @@ function drawChartTbqk(year) {
             tooltip: {
                 formatter: function () {
                     var str = '<span style="font-size:15px">'
-                        + this.x + '月</span><table>';
+                        + this.x + '</span><table>';
                     $.each(this.points, function () {
                         str += '<tr>';
                         str += '<td style="color:'
@@ -55,7 +55,7 @@ function drawChartTbqk(year) {
                     str += '<tr>';
                     str += '<td style="color:#804000;padding:0">中标金额: </td>';
                     str += '<td style="padding:0"><b>￥'
-                    + formatNum(data[2][this.x - 1])
+                    + this.x
                     + '</b></td>';
                     str += '</tr>';
                     str += '</table>';
