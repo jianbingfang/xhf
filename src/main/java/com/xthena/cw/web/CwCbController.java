@@ -147,4 +147,5 @@ public class CwCbController {
 	public void setMessageHelper(MessageHelper messageHelper) {
 		this.messageHelper = messageHelper;
 	}
+
 }

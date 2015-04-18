@@ -2,6 +2,8 @@ target/
 
 out/
 
+.idea/
+
 /webapp/WEB-INF/classes
 /webapp/WEB-INF/lib
 
@@ -12,7 +14,5 @@ out/
 /.project
 /xthena.store
 
-*.class
 *.jar
 *.war
-*.ear
