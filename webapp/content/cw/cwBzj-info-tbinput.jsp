@@ -46,6 +46,34 @@
 
 			})
 </script>
+
+	<style type="text/css">
+		* {
+			/*font-size:15px;*/
+			margin:0;
+			padding:0;
+		}
+		fieldset {
+			padding:0 0 0 100px;
+			margin:0 0 0 100px;
+			/*width:10px;*/
+			color:#333;
+			border:#06c dashed 1px;
+		}
+		legend {
+			/*color:#06c;*/
+			font-size:16px;
+			font-weight:500;
+			/*background:#fff;*/
+		}
+		ul {
+			list-style-type: none;
+			margin:8px 0 4px 0;
+		}
+		li {
+			margin-top:4px;
+		}
+	</style>
 </head>
 <body>
 	<%@include file="/header.jsp"%>
@@ -129,15 +157,31 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<div class="span5">
-								<label class="control-label" for="cwBzj-info_fjnmoney"><spring:message
-										code="cwBzj-info.cwBzj-info.input.fjnmoney" text="金额(元)" /></label>
-								<div class="controls">
-									<input id="cwBzj-info_fjnmoney" type="number" name="fjnmoney"
-										value="${model.fjnmoney}" size="" class="number" 
-										minlength="" maxlength="">
-								</div>
-							</div>
+							<%--<div class="span5">--%>
+								<%--<label class="control-label" for="cwBzj-info_fjnmoney"><spring:message--%>
+										<%--code="cwBzj-info.cwBzj-info.input.fjnmoney" text="交纳金额(元)" /></label>--%>
+								<%--<div class="controls">--%>
+									<%--<input id="cwBzj-info_fjnmoney" type="number" name="fjnmoney"--%>
+										<%--value="${model.fjnmoney}" size="" class="number" --%>
+										<%--minlength="" maxlength="">--%>
+								<%--</div>--%>
+							<%--</div>--%>
+
+							<%--<div class="span5">--%>
+								<%--<label class="control-label" for="cwBzj-info_fjnmoney"><spring:message--%>
+									<%--code="cwBzj-info.cwBzj-info.input.fjnmoney" text="交纳金额(元)" /></label>--%>
+								<%--<div class="controls">--%>
+									<%--<input id="cwBzj-info_fjnmoney" type="number" name="fjnmoney"--%>
+									<%--value="${model.fjnmoney}" size="" class="number"--%>
+									<%--minlength="" maxlength="">--%>
+								<%--</div>--%>
+							<%--</div>--%>
+
+							<%--<form>--%>
+
+
+							<%--</form>--%>
+
 							<div class="span5">
 								<label class="control-label" for="cwBzj-info_fjndate"><spring:message
 										code="cwBzj-info.cwBzj-info.input.fjndate" text="最迟交纳日期" /></label>
@@ -231,34 +275,68 @@
 								</div>
 							</div>
 						</div>
-						
-						
-						<%-- 		<div class="control-group">
-						<div class="span5">
-					    <label class="control-label" for="cwBzj-info_fbackdate"><spring:message code="cwBzj-info.cwBzj-info.input.fbackdate" text="可退还日期"/></label>
-						<div class="controls">
-						      	 <div class="input-append datepicker date" style="padding-left: 0px;">
-							    	<input id="cwBzj-info_fbackdate" type="text" name="fbackdate" value="${model.fbackdate}" size="40" class="text "   style="background-color:white;cursor:default; width: 175px;">
-							 		 <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-calendar"></i></span>
-							 	 </div>
-					    </div>
-					  </div>
-	  
-						<div class="span5">
-					    <label class="control-label" for="cwBzj-info_fbackoprator"><spring:message code="cwBzj-info.cwBzj-info.input.fbackoprator" text="退换经办人"/></label>
-					    <div class="controls">
-							  	<div class="input-append ryPicker">
-									<input id="cwBzj-info_fbackoprator" type="hidden" name="fbackoprator"
-										value="${model.fkhfuzerenid}"> <input
-										id="cwBzj-info_fbackoprator_userName" type="text" value="${ryMap[model.fbackoprator].fname}"
-										disabled class=" required" style="width: 175px;" value="">
-									<span class="add-on"
-										style="padding-top: 2px; padding-bottom: 2px;"><i
-										class="icon-user"></i></span>
+						<div class="control-group">
+							<fieldset style="width:200px;" >
+
+								<legend style=" margin-left: -85px; width: 70px;">金额统计 </legend>
+
+								<%--<label class="control-label" for="cwBzj-info_fjnsummoney"  style=" margin-left: -180px; margin-top: -18px;--%>
+									   <%--padding-left: -105px;" >--%>
+									<%--<spring:message--%>
+											<%--text="余额合计(元)" />--%>
+								<%--</label>--%>
+
+								<%--<div class="controls">--%>
+
+									<%--<input id="cwBzj-info_fjnsummoney" type="number" name="fjnsummoney" readonly="readonly"--%>
+										   <%--size="" class="number"--%>
+										   <%--minlength="" maxlength=""  style=" margin-left: -180px; margin-top: -33px; margin-bottom: 5px;--%>
+										   <%--margin-top: -18px;--%>
+									   <%--padding-left: -105px; width: 150px;" value="${model.fjnbksmoney + model.fjnyingsmoney + model.fjnyismoney}">--%>
+								<%--</div>--%>
+
+								<label class="control-label" for="cwBzj-info_fjnbksmoney"  style=" margin-left: -180px;
+									   padding-left: -105px;">
+									<spring:message text="不可收金额(元)" />
+								</label>
+
+								<div class="controls">
+									<input id="cwBzj-info_fjnbksmoney" type="number" name="fjnbksmoney"
+										   value="${model.fjnbksmoney}" size="" class="number"
+										   minlength="" maxlength=""  style=" margin-left: -180px;margin-bottom: 5px;
+									   padding-left: -5px;
+									   padding-left: -100px; width: 150px;">
 								</div>
-					    </div>
-					    </div>
-					    </div> --%>
+
+								<label class="control-label" for="cwBzj-info_fjnyingsmoney"  style=" margin-left: -180px;
+
+									   padding-left: -105px;"><spring:message
+										text="应收金额(元)" />
+								</label>
+
+
+								<div class="controls">
+									<input id="cwBzj-info_fjnyingsmoney" type="number" name="fjnyingsmoney"
+										   value="${model.fjnyingsmoney}" size="" class="number"
+										   minlength="" maxlength="" style=" margin-left: -180px; margin-bottom: 5px;
+									   padding-left: -5px;
+									   padding-left: -100px; width: 150px;">
+								</div>
+
+								<label class="control-label" for="cwBzj-info_fjnyismoney" style=" margin-left: -180px;
+									   padding-left: -5px;
+									   padding-left: -100px;"><spring:message
+										text="已收金额(元)" />
+								</label>
+								<div class="controls">
+									<input id="cwBzj-info_fjnyismoney" type="number" name="fjnyismoney"
+										   value="${model.fjnyismoney}" size="" class="number"
+										   minlength="" maxlength="" style=" margin-left: -180px;
+									   padding-left: -5px;
+									   padding-left: -100px;width: 150px;">
+								</div>
+								</fieldset>
+							</div>
 					    <div class="control-group">
 							<div class="span5">
 								<label class="control-label" for="cwBzj-info_fmemo4"><spring:message
@@ -269,6 +347,7 @@
 										maxlength="">
 								</div>
 							</div>
+
 							</div>
 						<div class="control-group">
 							<label class="control-label" for="cwBzj-info_fmoneydate"><spring:message
@@ -330,7 +409,8 @@
 									</div>
 								</div>
 							</div>
-							
+
+
 							<div class="control-group">
 								<div class="controls">
 									<button type="submit" class="btn a-submit">

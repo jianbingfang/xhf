@@ -30,7 +30,11 @@ public class CwBzj  implements java.io.Serializable {
      private String fhtname;
      private String fyzname;
      private Date fjndate;
-     private Double fjnmoney;
+
+    private Double fjnbksmoney;
+    private Double fjnyingsmoney;
+    private Double fjnyismoney;
+
      private String fjnmethod;
      private Long foprator;
      private Date fbackdate;
@@ -62,12 +66,16 @@ public class CwBzj  implements java.io.Serializable {
 
     
     /** full constructor */
-    public CwBzj(Long fxmid, String fhtname, String fyzname, Date fjndate, Double fjnmoney, String fjnmethod, Long foprator, Date fbackdate, Long fbackoprator, Date fmoneydate, String fbzjtype, String fskdw, String fzh, String fkhh, String fmemo, String fmemo4, Long ffzr, String fzjyw, String ftaskid, String fstatus, String fcontact, String fcontacttel, String fcontentc, String fissj, String fzhubanren, Date fcreatedate) {
+    public CwBzj(Long fxmid, String fhtname, String fyzname, Date fjndate, Double fjnbksmoney, Double fjnyingsmoney, Double fjnyismoney, String fjnmethod, Long foprator, Date fbackdate, Long fbackoprator, Date fmoneydate, String fbzjtype, String fskdw, String fzh, String fkhh, String fmemo, String fmemo4, Long ffzr, String fzjyw, String ftaskid, String fstatus, String fcontact, String fcontacttel, String fcontentc, String fissj, String fzhubanren, Date fcreatedate) {
         this.fxmid = fxmid;
         this.fhtname = fhtname;
         this.fyzname = fyzname;
         this.fjndate = fjndate;
-        this.fjnmoney = fjnmoney;
+        // 应收 不可收 已收 账款
+        this.fjnbksmoney = fjnbksmoney;
+        this.fjnyingsmoney = fjnyingsmoney;
+        this.fjnyismoney= fjnyismoney;
+
         this.fjnmethod = fjnmethod;
         this.foprator = foprator;
         this.fbackdate = fbackdate;
@@ -145,22 +153,24 @@ public class CwBzj  implements java.io.Serializable {
         this.fjndate = fjndate;
     }
     
-    @Column(name="fjnmoney", precision=20)
+    @Column(name="fjnbksmoney", precision=20)
+    public Double getFjnbksmoney() {return this.fjnbksmoney;}
+    public void setFjnbksmoney(Double fjnbksmoney) {this.fjnbksmoney = fjnbksmoney;}
 
-    public Double getFjnmoney() {
-        return this.fjnmoney;
+    @Column(name="fjnyingsmoney", precision=20)
+    public Double getFjnyingsmoney() { return this.fjnyingsmoney;}
+    public void setFjnyingsmoney(Double fjnyingsmoney) {this.fjnyingsmoney = fjnyingsmoney;}
+
+    @Column(name="fjnyismoney", precision=20)
+    public Double getFjnyismoney() { return this.fjnyismoney;}
+    public void setFjnyismoney(Double fjnyismoney) {
+        this.fjnyismoney = fjnyismoney;
     }
-    
-    public void setFjnmoney(Double fjnmoney) {
-        this.fjnmoney = fjnmoney;
-    }
-    
+
     @Column(name="fjnmethod", length=64)
-
     public String getFjnmethod() {
         return this.fjnmethod;
     }
-    
     public void setFjnmethod(String fjnmethod) {
         this.fjnmethod = fjnmethod;
     }

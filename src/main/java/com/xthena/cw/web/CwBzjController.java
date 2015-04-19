@@ -166,7 +166,6 @@ public class CwBzjController {
 		cwBzjManager.save(dest);
 		messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
 				"保存成功");
-
 		return "redirect:/cw/cwBzj-info-tblist.do?type=" + dest.getFbzjtype();
 	}
 	
