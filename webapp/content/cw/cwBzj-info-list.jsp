@@ -112,7 +112,7 @@
 									<th class="sorting" name="fzh">帐号</th>
 									<th class="sorting" name="fkhh">开户行</th>
 									<th class="sorting" name="fjnmethod">交纳方式</th>
-									<th class="sorting" name="fjnmoney">金额(元)</th>
+									<th class="sorting" name="fjnmoney">交纳金额(元)</th>
 									<th class="sorting" name="fjndate">最迟交纳日期</th>
 									<th class="sorting" name="foprator">经办人</th>
 									<!-- <th class="sorting" name="fbackdate">可退还日期</th>
