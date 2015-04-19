@@ -67,9 +67,10 @@ function drawChartGsfb() {
 
         myChart.setOption(option);
 
-        //myChart.on(myChart.EVENT.MAP_SELECTED, function (param) {
-        //    alert(param.selected);
-        //});
+        var ecConfig = getEcConfig();
+        myChart.on(ecConfig.EVENT.CLICK, function () {
+            window.location.href = "http://" + window.location.host + "/xhf/default/xz/commpany-info-list.do";
+        });
     }).error(function () {
         alert('公司分布数据获取失败');
         $('#loading-gsfb').hide();

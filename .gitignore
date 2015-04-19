@@ -12,7 +12,15 @@ out/
 /.classpath
 
 /.project
-/xthena.store
+/.myumldata
+/.travis.yml
+/assembly-standalone.xml
+/eclipse-formatter-config.xml
+/jalopy.xml
+/standalone.bat
+/webdefault.xml
+/xhf.eml
+/xhf.iml
 
 *.jar
 *.war

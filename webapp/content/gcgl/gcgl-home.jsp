@@ -24,6 +24,7 @@
 <body>
 <%@include file="/header/bpm-workspace.jsp" %>
 <script src="${ctx}/s/echart/echarts-all.js" type="text/javascript"></script>
+<script src="${ctx}/s/echart/echarts-config.js" type="text/javascript"></script>
 
 <div class="row-fluid">
     <%@include file="/menu/gcgl-workspace.jsp" %>
