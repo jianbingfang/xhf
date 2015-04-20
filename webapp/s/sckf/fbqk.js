@@ -43,7 +43,9 @@ function drawChartFbqk() {
                     startAngle: 0,
                     events: {
                         click: function () {
-                            window.location.href = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            var url = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }

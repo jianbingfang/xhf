@@ -69,7 +69,9 @@ function drawChartGsfb() {
 
         var ecConfig = getEcConfig();
         myChart.on(ecConfig.EVENT.CLICK, function () {
-            window.location.href = "http://" + window.location.host + "/xhf/default/xz/commpany-info-list.do";
+            var url = "http://" + window.location.host + "/xhf/default/xz/commpany-info-list.do";
+            //window.location.href = url;
+            window.open(url);
         });
     }).error(function () {
         alert('公司分布数据获取失败');

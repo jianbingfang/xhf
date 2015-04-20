@@ -138,7 +138,9 @@ function drawChartCzqk(data) {
                 point: {
                     events: {
                         click: function () {
-                            window.location.href = "http://" + window.location.host + "/xhf/default/sckf/commHt-info-list.do";
+                            var url = "http://" + window.location.host + "/xhf/default/sckf/commHt-info-list.do";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }

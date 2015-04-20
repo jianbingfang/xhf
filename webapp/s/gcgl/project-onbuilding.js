@@ -85,7 +85,9 @@ function drawChartProjectOnbuilding(year) {
                     startAngle: 0,
                     events: {
                         click: function () {
-                            window.location.href = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=1";
+                            var url = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=1";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }
