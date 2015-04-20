@@ -36,8 +36,6 @@ public class CwHomeController {
 
     @RequestMapping("cw-home")
     public String home(Model model) {
-        int[] yl = {2015, 2014, 2013, 2012, 2011};
-        model.addAttribute("yearList", yl);
         model.addAttribute("locale", "zh_CN");
         return "cw/cw-home";
     }
