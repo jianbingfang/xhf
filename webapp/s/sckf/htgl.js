@@ -4,7 +4,7 @@ function drawChartHtgl(year) {
 
     $.post('sckf-htgl-data.do', {year: year}, function (mdata) {
 
-        console.log(mdata);
+        //console.log(mdata);
         $('#loading-htgl').hide();
 
         //mdata = [
@@ -13,7 +13,7 @@ function drawChartHtgl(year) {
         //];
 
         if (mdata[0].sum() === 0 && mdata[1] === 0) {
-            mdata = [null, null];
+            mdata = [[], []];
         }
 
         var colors = Highcharts.getOptions().colors,

@@ -29,7 +29,7 @@ function drawChartTbbzj(year, month) {
                 text: null
             },
             xAxis: {
-                categories: ['类别']
+                categories: ['投标保证金']
             },
             yAxis: {
                 title: {

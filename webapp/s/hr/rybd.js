@@ -7,18 +7,18 @@ function drawChartRybd(year, month) {
 
     month = month | (new Date().getMonth + 1);
 
-    $.post('hr-rybd-data.do', {year: year, month: month}, function (data) {
+    $.post('hr-rybd-data.do', {year: year}, function (res) {
 
+        console.log(res);
         $('#loading-rybd').hide();
 
-        data = [
-            ['交纳', 10000],
-            ['应收', 200000],
-            ['已收', 30000],
-            ['余额', 40000]
-        ];
+        res = res || [];
+        var data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        res.forEach(function (item) {
+            data[item[0] - 1] = item[1];
+        });
 
-        $('#chart-lybzj').highcharts({
+        $('#chart-rybd').highcharts({
             chart: {
                 type: 'column'
             },
@@ -26,21 +26,23 @@ function drawChartRybd(year, month) {
                 noData: '无数据'
             },
             title: {
-                text: null
+                text: year + '年人员离职情况'
             },
             xAxis: {
-                categories: ['类别']
+                categories: ['1月', '2月', '3月', '4月', '5月', '6月', '7月',
+                    '8月', '9月', '10月', '11月', '12月']
             },
             yAxis: {
                 title: {
-                    text: '金额'
-                }
+                    text: '人数'
+                },
+                allowDecimals: false
             },
             credits: {
                 enabled: false
             },
             tooltip: {
-                valuePrefix: '￥'
+                valuePrefix: ''
             },
             plotOptions: {
                 column: {
@@ -54,7 +56,7 @@ function drawChartRybd(year, month) {
                     },
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/cw/cwBzj-info-list.do?type=2";
+                            var url = "http://" + window.location.host + "/xhf/default/hr/hrLz-info-list.do";
                             //window.location.href = url;
                             window.open(url);
                         }
@@ -62,47 +64,8 @@ function drawChartRybd(year, month) {
                 }
             },
             series: [{
-                name: data[0][0],
-                data: [data[0][1]]
-            }, {
-                name: data[1][0],
-                data: [data[1][1]],
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function () {
-                            console.log('redirect to page '
-                            + this.series.index
-                            + '-' + this.x);
-                        }
-                    }
-                }
-            }, {
-                name: data[2][0],
-                data: [data[2][1]],
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function () {
-                            console.log('redirect to page '
-                            + this.series.index
-                            + '-' + this.x);
-                        }
-                    }
-                }
-            }, {
-                name: data[3][0],
-                data: [data[3][1]],
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function () {
-                            console.log('redirect to page '
-                            + this.series.index
-                            + '-' + this.x);
-                        }
-                    }
-                }
+                name: '离职人数',
+                data: data
             }]
         });
 

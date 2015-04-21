@@ -29,7 +29,7 @@ function drawChartLybzj(year, month) {
                 text: null
             },
             xAxis: {
-                categories: ['类别']
+                categories: ['履约保证金']
             },
             yAxis: {
                 title: {

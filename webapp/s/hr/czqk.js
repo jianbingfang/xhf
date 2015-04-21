@@ -8,8 +8,6 @@ function drawChartCzqk(data) {
 
     $.post('hr-czqk-data.do', function (mdata) {
 
-        console.log(mdata);
-
         mdata = mdata || [];
 
         mdata = [

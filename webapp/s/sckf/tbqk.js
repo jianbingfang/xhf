@@ -4,7 +4,7 @@ function drawChartTbqk(year) {
 
     $.post('sckf-tbqk-data.do', {year: year}, function (data) {
 
-        console.log(data);
+        //console.log(data);
         $('#loading-tbqk').hide();
 
         if (data[0].sum() === 0) {

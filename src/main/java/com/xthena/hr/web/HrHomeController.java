@@ -8,7 +8,6 @@ import com.xthena.hr.manager.CommRyManager;
 import com.xthena.hr.manager.HrGwbmManager;
 import com.xthena.hr.manager.HrRyZjManager;
 import com.xthena.util.ConstValue;
-import com.xthena.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -328,14 +327,13 @@ public class HrHomeController {
     @RequestMapping("hr-rybd-data")
     public Object getDataRybd(@RequestParam int year) {
 
-        String hql = "select MONTH(ys.fdzdate), sum(ys.fdebit), sum(ys.fcreditor)" +
-                " from CwYingShou ys" +
-                " where ys.fdzdate >= ? and ys.fdzdate < ?" +
-                " group by MONTH(ys.fdzdate)" +
-                " order by MONTH(ys.fdzdate)";
+        String hql = "select MONTH(lz.fstartdate) as m, count(v.fid) " +
+                "from CommRy v, HrLz lz " +
+                "where v.fgyxz='4' and v.fid = lz.fry and YEAR(lz.fstartdate)='" + year + "' " +
+                "group by MONTH(lz.fstartdate) " +
+                "order by m";
 
-        List list = hrRyZjManager.find(hql, DateUtil.getYearFirst(year), DateUtil.getYearFirst(year + 1));
-
+        List list = commRyManager.find(hql);
         return list;
     }
 }

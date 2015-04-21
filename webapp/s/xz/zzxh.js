@@ -2,15 +2,28 @@ function drawChartZzxh(year) {
 
     $('#loading-zzxh').show();
 
-    $.post('xz-gsfb-data.do', {year: year}, function (data) {
+    $.post('xz-zzxh-data.do', {year: year}, function (res) {
 
+        console.log(res);
 
-        data = [
-            [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 0, 0],
-            [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 0, 0, 0, 0, 0]
+        res = res || [];
+
+        var data = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ];
 
-        data = data || [];
+        res[0].forEach(function (item) {
+            data[0][parseInt(item[0])-1] = item[1];
+        });
+
+        res[1].forEach(function (item) {
+            data[1][parseInt(item[0])-1] = item[1];
+        });
+
+        if (data[0].sum() + data[1].sum() === 0) {
+            data = [[], []];
+        }
 
         $('#loading-zzxh').hide();
 
@@ -50,10 +63,10 @@ function drawChartZzxh(year) {
                 }
             },
             series: [{
-                name: '百旺纸',
+                name: '普通纸',
                 data: data[0]
             }, {
-                name: '普通纸',
+                name: '百旺纸',
                 data: data[1]
             }]
         });

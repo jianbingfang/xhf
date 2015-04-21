@@ -206,13 +206,16 @@ public class SckfHomeController {
 
     @ResponseBody
     @RequestMapping("sckf-fbqk-data")
-    public Object getDataFbqk() {
-        List<Long> ids = new ArrayList<>();
-        for (long i = 4; i < 11; i++) {
-            ids.add(i);
-        }
-        List<JyXm> list = jyXmManager.findByIds(ids);
-        int[] data = {97, list.size()};
+    public Object getDataFbqk(@RequestParam int year) {
+
+        String hql = "select (case xm.ffbstatus when '是' then '废标' else '好标' end) as nm, count(case xm.ffbstatus when '是' then '废标' else '好标' end) as cnt " +
+                "from JyXm xm " +
+                "where YEAR(xm.fkbdate)='" + year + "'" +
+                "group by case xm.ffbstatus when '是' then '废标' else '好标' end " +
+                "order by nm";
+
+        List data = jyXmManager.find(hql);
+
         return data;
     }
 
