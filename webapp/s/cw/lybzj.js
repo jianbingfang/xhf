@@ -29,7 +29,7 @@ function drawChartLybzj(year, month) {
                 text: null
             },
             xAxis: {
-                categories: ['类别']
+                categories: ['履约保证金']
             },
             yAxis: {
                 title: {
@@ -54,7 +54,9 @@ function drawChartLybzj(year, month) {
                     },
                     events: {
                         click: function () {
-                            window.location.href = "http://" + window.location.host + "/xhf/default/cw/cwBzj-info-list.do?type=2";
+                            var url = "http://" + window.location.host + "/xhf/default/cw/cwBzj-info-list.do?type=2";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }

@@ -46,19 +46,19 @@
             </div>
         </div> -->
         <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="content content-inner" style="padding:0 0 0px 20px">
-                    <form name="hr-plain-infoForm" method="post"
-                          action="hr-plain-info-list.do" class="form-inline">
-                        <label class="hrHomeTitle" style="font-size: 22px;">在职员工总数：</label> <label
-                            class="hrHomeValue" style="font-size: 26px;color: blue;">120</label>&nbsp&nbsp&nbsp
-                        <label class="hrHomeTitle" style="font-size: 22px;">本月新入职员工数：</label>
-                        <label class="hrHomeValue" style="font-size: 26px;color: blue;">10</label> &nbsp&nbsp&nbsp
-                        <label class="hrHomeTitle" style="font-size: 22px;">本月离职员工数：</label>
-                        <label class="hrHomeValue" style="font-size: 26px;color: blue;">1</label>&nbsp&nbsp&nbsp
-                    </form>
-                </div>
-            </div>
+            <%--<div class="row-fluid">--%>
+            <%--<div class="content content-inner" style="padding:0 0 0px 20px">--%>
+            <%--<form name="hr-plain-infoForm" method="post"--%>
+            <%--action="hr-plain-info-list.do" class="form-inline">--%>
+            <%--<label class="hrHomeTitle" style="font-size: 22px;">在职员工总数：</label> <label--%>
+            <%--class="hrHomeValue" style="font-size: 26px;color: blue;">120</label>&nbsp&nbsp&nbsp--%>
+            <%--<label class="hrHomeTitle" style="font-size: 22px;">本月新入职员工数：</label>--%>
+            <%--<label class="hrHomeValue" style="font-size: 26px;color: blue;">10</label> &nbsp&nbsp&nbsp--%>
+            <%--<label class="hrHomeTitle" style="font-size: 22px;">本月离职员工数：</label>--%>
+            <%--<label class="hrHomeValue" style="font-size: 26px;color: blue;">1</label>&nbsp&nbsp&nbsp--%>
+            <%--</form>--%>
+            <%--</div>--%>
+            <%--</div>--%>
             <div class="row-fluid">
                 <div class="span6">
                     <article class="m-widget">

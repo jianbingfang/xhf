@@ -49,7 +49,9 @@ function drawChartZcqk() {
                     startAngle: 0,
                     events: {
                         click: function () {
-                            window.location.href = "http://" + window.location.host + "/xhf/default/hr/hrRyZj-treelist.do";
+                            var url = "http://" + window.location.host + "/xhf/default/hr/hrRyZj-treelist.do";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }

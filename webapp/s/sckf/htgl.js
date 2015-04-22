@@ -4,7 +4,7 @@ function drawChartHtgl(year) {
 
     $.post('sckf-htgl-data.do', {year: year}, function (mdata) {
 
-        console.log(mdata);
+        //console.log(mdata);
         $('#loading-htgl').hide();
 
         //mdata = [
@@ -13,7 +13,7 @@ function drawChartHtgl(year) {
         //];
 
         if (mdata[0].sum() === 0 && mdata[1] === 0) {
-            mdata = [null, null];
+            mdata = [[], []];
         }
 
         var colors = Highcharts.getOptions().colors,
@@ -142,7 +142,9 @@ function drawChartHtgl(year) {
                 point: {
                     events: {
                         click: function () {
-                            window.location.href = "http://" + window.location.host + "/xhf/default/sckf/commHt-info-list.do";
+                            var url = "http://" + window.location.host + "/xhf/default/sckf/commHt-info-list.do";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }

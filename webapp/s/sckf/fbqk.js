@@ -1,14 +1,10 @@
-function drawChartFbqk() {
+function drawChartFbqk(year) {
 
     $('#loading-fbqk').show();
 
-    $.post('sckf-fbqk-data.do', function (data) {
+    $.post('sckf-fbqk-data.do', {year: year}, function (data) {
 
         $('#loading-fbqk').hide();
-
-        if (data.sum() === 0) {
-            data = [];
-        }
 
         $('#chart-fbqk').highcharts({
             chart: {
@@ -20,7 +16,7 @@ function drawChartFbqk() {
                 noData: '无数据'
             },
             title: {
-                text: '废标比例 (' + Math.round(10 * 100 * data[1] / data.sum()) / 10 + '%)'
+                text: '废标比例'
             },
             credits: {
                 enabled: false
@@ -43,7 +39,9 @@ function drawChartFbqk() {
                     startAngle: 0,
                     events: {
                         click: function () {
-                            window.location.href = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            var url = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }
@@ -51,15 +49,7 @@ function drawChartFbqk() {
             series: [{
                 type: 'pie',
                 name: '数量',
-                data: [{
-                    name: '好标',
-                    y: data[0],
-                    color: Highcharts.getOptions().colors[0]
-                }, {
-                    name: '废标',
-                    y: data[1],
-                    color: Highcharts.getOptions().colors[5]
-                }]
+                data: data
             }]
         });
 

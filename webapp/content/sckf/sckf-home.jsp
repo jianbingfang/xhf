@@ -78,7 +78,7 @@
             <div class="span6">
                 <article class="m-widget">
                     <header class="header">
-                        <h4 class="title">废标比例(效果图)</h4>
+                        <h4 class="title">废标比例</h4>
                         <img id="loading-fbqk" src="${ctx}/common/loading-circle.gif" alt="加载中..." class="loading-img"/>
                     </header>
                     <div id="chart-fbqk" style="height: 400px">

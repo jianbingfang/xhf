@@ -61,7 +61,9 @@ function drawChartXmfb() {
 
         var ecConfig = getEcConfig();
         myChart.on(ecConfig.EVENT.CLICK, function () {
-            window.location.href = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=1";
+            var url = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=1";
+            //window.location.href = url;
+            window.open(url);
         });
     }).error(function () {
         alert('投标数据获取失败');

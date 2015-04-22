@@ -4,7 +4,7 @@ function drawChartTbqk(year) {
 
     $.post('sckf-tbqk-data.do', {year: year}, function (data) {
 
-        console.log(data);
+        //console.log(data);
         $('#loading-tbqk').hide();
 
         if (data[0].sum() === 0) {
@@ -98,10 +98,9 @@ function drawChartTbqk(year) {
                 point: {
                     events: {
                         click: function () {
-                            console.log('redirect to page '
-                            + this.series.index
-                            + '-' + this.x);
-                            window.location.href = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            var url = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }

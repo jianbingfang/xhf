@@ -112,7 +112,9 @@ function drawChartJlf(year) {
                 point: {
                     events: {
                         click: function () {
-                            window.location.href = "http://" + window.location.host + "/xhf/default/cw/cwYingShou-treelist.do";
+                            var url = "http://" + window.location.host + "/xhf/default/cw/cwYingShou-treelist.do";
+                            //window.location.href = url;
+                            window.open(url);
                         }
                     }
                 }
