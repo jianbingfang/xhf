@@ -46,23 +46,6 @@
         <%--</div>--%>
         <%--</div>--%>
 
-        <span style="font-size: medium"><b>选择年份：</b></span>
-        <input id="year-container" type="text" type="text" class="form-control">
-        <script type="text/javascript">
-            $('#year-container').val(moment().format('YYYY'));
-            $('#year-container').datepicker({
-                format: "yyyy",
-                startView: 2,
-                minViewMode: 2,
-                autoclose: true
-            }).on('changeDate', function (ev) {
-                if (ev.date) {
-                    var year = ev.date.getFullYear();
-                    drawAllChart(year);
-                }
-            });
-        </script>
-
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span6">
@@ -98,6 +81,7 @@
                         <div id="chart-xmfb" style="height: 400px;"></div>
                     </article>
                 </div>
+
                 <div class="span6">
                     <article class="m-widget">
                         <header class="header">
@@ -105,6 +89,22 @@
                             <img id="loading-jxkh" src="${ctx}/common/loading-circle.gif" alt="加载中..."
                                  style="margin: -3px 0px 0px 10px;"/>
                         </header>
+                        <span style="font-size: medium"><b>选择年份：</b></span>
+                        <input id="year-container" type="text" type="text" class="form-control">
+                        <script type="text/javascript">
+                            $('#year-container').val(moment().format('YYYY'));
+                            $('#year-container').datepicker({
+                                format: "yyyy",
+                                startView: 2,
+                                minViewMode: 2,
+                                autoclose: true
+                            }).on('changeDate', function (ev) {
+                                if (ev.date) {
+                                    var year = ev.date.getFullYear();
+                                    drawChartJxkh(year);
+                                }
+                            });
+                        </script>
                         <div id="chart-jxkh" style="height: auto;"></div>
                     </article>
                 </div>
@@ -118,12 +118,9 @@
 <script src="${ctx}/s/gcgl/jxkh.js" type="text/javascript"></script>
 <script src="${ctx}/s/gcgl/xmfb.js" type="text/javascript"></script>
 <script>
-    var drawAllChart = function (year) {
-        drawChartProjectType(year);
-        drawChartProjectOnbuilding(year);
-        drawChartJxkh(year);
-    };
-    drawAllChart(new Date().getFullYear());
+    drawChartJxkh(new Date().getFullYear());
+    drawChartProjectType();
+    drawChartProjectOnbuilding();
     drawChartXmfb();
 </script>
 </body>

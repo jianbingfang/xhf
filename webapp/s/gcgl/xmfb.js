@@ -10,7 +10,7 @@ function drawChartXmfb() {
         text: '加载中...'
     });
 
-    $.post('gcgl-xmfb-data.do', null, function (list) {
+    $.post('gcgl-xmfb-data.do', function (list) {
 
         var data = [];
 

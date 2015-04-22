@@ -15,11 +15,11 @@ var getTypeIndex = function (name) {
     }
 };
 
-function drawChartProjectType(year) {
+function drawChartProjectType() {
 
     $('#loading-project-type').show();
 
-    $.post('gcgl-project-type-data.do', {year: year}, function (data) {
+    $.post('gcgl-project-type-data.do', function (data) {
 
         $('#loading-project-type').hide();
 
@@ -78,7 +78,7 @@ function drawChartProjectType(year) {
         });
 
     }).error(function () {
-        alert('投标数据获取失败');
+        alert('在建项目类别数据获取失败');
         $('#loading-project-type').hide();
     });
 }

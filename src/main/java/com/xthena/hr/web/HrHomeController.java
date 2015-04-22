@@ -327,13 +327,37 @@ public class HrHomeController {
     @RequestMapping("hr-rybd-data")
     public Object getDataRybd(@RequestParam int year) {
 
-        String hql = "select MONTH(lz.fstartdate) as m, count(v.fid) " +
+        String sql = "select count(*) " +
+                "from v_commry_order_name v left join t_hr_lz lz on v.fid = lz.fry " +
+                "where YEAR(v.frzdate) < '" + year + "' and (v.fgyxz != '4' or YEAR(lz.fstartdate) = '" + year + "')";
+
+        String lzHql = "select MONTH(lz.fstartdate) as m, count(v.fid) " +
                 "from CommRy v, HrLz lz " +
                 "where v.fgyxz='4' and v.fid = lz.fry and YEAR(lz.fstartdate)='" + year + "' " +
                 "group by MONTH(lz.fstartdate) " +
                 "order by m";
 
-        List list = commRyManager.find(hql);
-        return list;
+        String rzHql = "select MONTH(v.frzdate) as m, count(*) " +
+                "from CommRy v " +
+                "where YEAR(v.frzdate) = '" + year + "' " +
+                "group by MONTH(v.frzdate) " +
+                "order by m";
+
+//        int zzNum = commRyManager.getCount(zzHql);
+
+        List zzNum = commRyManager.getSession().createSQLQuery(sql).list();
+
+        List lzList = commRyManager.find(lzHql);
+        List rzList = commRyManager.find(rzHql);
+
+        Map data = new HashMap();
+        if (zzNum != null && !zzNum.isEmpty()) {
+            data.put("num", zzNum.get(0));
+        }
+
+        data.put("lzList", lzList);
+        data.put("rzList", rzList);
+
+        return data;
     }
 }

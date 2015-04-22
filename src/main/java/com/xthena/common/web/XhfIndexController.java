@@ -1,28 +1,26 @@
 package com.xthena.common.web;
 
-import javax.annotation.Resource;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.xthena.api.user.UserConnector;
-import com.xthena.common.domain.XhfCommonDoc;
 import com.xthena.common.manager.XhfCommonDocManager;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
 
 @Controller
 @RequestMapping("comm")
 public class XhfIndexController {
-   
-	private XhfCommonDocManager xhfCommonDocManager;
+
+    private XhfCommonDocManager xhfCommonDocManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
     private MessageHelper messageHelper;
 
-   @RequestMapping("xhfindex")
+    @RequestMapping("xhfindex")
     public String input() {
         return "../common/index";
     }

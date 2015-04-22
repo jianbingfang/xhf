@@ -12,11 +12,23 @@ function drawChartRybd(year, month) {
         console.log(res);
         $('#loading-rybd').hide();
 
-        res = res || [];
-        var data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        res.forEach(function (item) {
-            data[item[0] - 1] = item[1];
+        res = res || {num: 0, lzList: [], rzList: []};
+        var rzData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  //入职人数
+        var lzData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  //离职人数
+        var zzData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];  //在职人数
+
+        res.rzList.forEach(function (item) {
+            rzData[item[0] - 1] = item[1];
         });
+
+        res.lzList.forEach(function (item) {
+            lzData[item[0] - 1] = item[1];
+        });
+
+        zzData[0] = res.num + rzData[0] - lzData[0];
+        for (var i = 1; i < 12; i++) {
+            zzData[i] = zzData[i - 1] + rzData[i] - lzData[i];
+        }
 
         $('#chart-rybd').highcharts({
             chart: {
@@ -42,7 +54,9 @@ function drawChartRybd(year, month) {
                 enabled: false
             },
             tooltip: {
-                valuePrefix: ''
+                valuePrefix: '',
+                shared: true,
+                useHTML: true
             },
             plotOptions: {
                 column: {
@@ -64,8 +78,11 @@ function drawChartRybd(year, month) {
                 }
             },
             series: [{
+                name: '在职人数',
+                data: zzData
+            },{
                 name: '离职人数',
-                data: data
+                data: lzData
             }]
         });
 

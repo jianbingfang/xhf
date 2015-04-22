@@ -1,11 +1,11 @@
 /**
  * Created by jianbingfang on 2015/4/12.
  */
-function drawChartProjectOnbuilding(year) {
+function drawChartProjectOnbuilding() {
 
     $('#loading-project-onbuilding').show();
 
-    $.post('gcgl-project-onbuilding-data.do', {year: year}, function (res) {
+    $.post('gcgl-project-onbuilding-data.do', function (res) {
 
         var data;
         if (res && res.length > 0) {

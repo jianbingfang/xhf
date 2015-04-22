@@ -114,9 +114,9 @@ public class GcglHomeController {
 
     @ResponseBody
     @RequestMapping("gcgl-project-onbuilding-data")
-    public Object getDataProjectOnbuilding(@RequestParam int year) {
+    public Object getDataProjectOnbuilding() {
 
-        logger.info("gcgl-project-onbuilding-data: " + year);
+        logger.info("gcgl-project-onbuilding-data");
 
         String hql = "select xm.fxmtype, count(*) as cnt" +
                 " from PjXm xm" +
