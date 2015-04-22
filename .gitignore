@@ -1,17 +1,19 @@
 target/
-
 out/
-
 .idea/
+/.classpath
+/.project
+/webapp/META-INF
+/src/main/META-INF
+/src/main/webapp
+/src/main/main.eml
+/src/main/main.iml
+*.jar
+*.war
 
 /webapp/WEB-INF/classes
 /webapp/WEB-INF/lib
-
 /.settings
-
-/.classpath
-
-/.project
 /.myumldata
 /.travis.yml
 /assembly-standalone.xml
@@ -19,8 +21,6 @@ out/
 /jalopy.xml
 /standalone.bat
 /webdefault.xml
+
 /xhf.eml
 /xhf.iml
-
-*.jar
-*.war
