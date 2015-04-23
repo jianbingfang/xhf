@@ -88,23 +88,28 @@
                             <h4 class="title">绩效考核</h4>
                             <img id="loading-jxkh" src="${ctx}/common/loading-circle.gif" alt="加载中..."
                                  style="margin: -3px 0px 0px 10px;"/>
+
+                            <div style="float: right">
+                                <span style="font-size: small">选择年份：</span>
+                                <input id="year-container" type="text"
+                                       style="height: 14px;margin: -2px 0 2px 0;width: 35px;">
+                                <script type="text/javascript">
+                                    $('#year-container').val(moment().format('YYYY'));
+                                    $('#year-container').datepicker({
+                                        format: "yyyy",
+                                        startView: 2,
+                                        minViewMode: 2,
+                                        autoclose: true
+                                    }).on('changeDate', function (ev) {
+                                        if (ev.date) {
+                                            var year = ev.date.getFullYear();
+                                            drawChartJxkh(year);
+                                        }
+                                    });
+                                </script>
+                            </div>
                         </header>
-                        <span style="font-size: medium"><b>选择年份：</b></span>
-                        <input id="year-container" type="text" type="text" class="form-control">
-                        <script type="text/javascript">
-                            $('#year-container').val(moment().format('YYYY'));
-                            $('#year-container').datepicker({
-                                format: "yyyy",
-                                startView: 2,
-                                minViewMode: 2,
-                                autoclose: true
-                            }).on('changeDate', function (ev) {
-                                if (ev.date) {
-                                    var year = ev.date.getFullYear();
-                                    drawChartJxkh(year);
-                                }
-                            });
-                        </script>
+
                         <div id="chart-jxkh" style="height: auto;"></div>
                     </article>
                 </div>

@@ -26,6 +26,8 @@ public class CwBzj implements java.io.Serializable {
     private String fyzname;
     private Date fjndate;
 
+    private Double fjnmoney;
+
     private Double fjnbksmoney;
     private Double fjnyingsmoney;
     private Double fjnyismoney;
@@ -65,11 +67,13 @@ public class CwBzj implements java.io.Serializable {
     /**
      * full constructor
      */
-    public CwBzj(Long fxmid, String fhtname, String fyzname, Date fjndate, Double fjnbksmoney, Double fjnyingsmoney, Double fjnyismoney, String fjnmethod, Long foprator, Date fbackdate, Long fbackoprator, Date fmoneydate, String fbzjtype, String fskdw, String fzh, String fkhh, String fmemo, String fmemo4, Long ffzr, String fzjyw, String ftaskid, String fstatus, String fcontact, String fcontacttel, String fcontentc, String fissj, String fzhubanren, Date fcreatedate) {
+    public CwBzj(Long fxmid, String fhtname, String fyzname, Date fjndate, Double fjnmoney, Double fjnbksmoney, Double fjnyingsmoney, Double fjnyismoney, String fjnmethod, Long foprator, Date fbackdate, Long fbackoprator, Date fmoneydate, String fbzjtype, String fskdw, String fzh, String fkhh, String fmemo, String fmemo4, Long ffzr, String fzjyw, String ftaskid, String fstatus, String fcontact, String fcontacttel, String fcontentc, String fissj, String fzhubanren, Date fcreatedate) {
         this.fxmid = fxmid;
         this.fhtname = fhtname;
         this.fyzname = fyzname;
         this.fjndate = fjndate;
+
+        this.fjnmoney = fjnmoney;
 
         this.fjnbksmoney = fjnbksmoney;
         this.fjnyingsmoney = fjnyingsmoney;
@@ -153,6 +157,16 @@ public class CwBzj implements java.io.Serializable {
     public void setFjndate(Date fjndate) {
         this.fjndate = fjndate;
     }
+
+    @Column(name = "fjnmoney", precision = 20)
+    public Double getFjnmoney() {
+        return this.fjnmoney;
+    }
+
+    public void setFjnmoney(Double fjnmoney) {
+        this.fjnmoney = fjnmoney;
+    }
+
 
     @Column(name = "fjnbksmoney", precision = 20)
     public Double getFjnbksmoney() {
