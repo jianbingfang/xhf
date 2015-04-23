@@ -1,11 +1,11 @@
 /**
  * Created by jianbingfang on 2015/4/12.
  */
-function drawChartTbbzj(year) {
+function drawChartTbbzj() {
 
     $('#loading-tbbzj').show();
 
-    $.post('cw-bzj-data.do', {year: year, type: 1}, function (res) {
+    $.post('cw-bzj-data.do', {type: 1}, function (res) {
 
         console.log(res);
 

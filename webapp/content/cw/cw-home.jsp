@@ -50,8 +50,6 @@
                     if (ev.date) {
                         var year = ev.date.getFullYear();
                         drawChartJlf(year);
-                        drawChartLybzj(year);
-                        drawChartTbbzj(year);
                     }
                 });
             </script>
@@ -114,8 +112,8 @@
     <script>
         var nowYear = new Date().getFullYear();
         drawChartJlf(nowYear);
-        drawChartLybzj(nowYear);
-        drawChartTbbzj(nowYear);
+        drawChartLybzj();
+        drawChartTbbzj();
     </script>
     <!-- end of main -->
 </div>

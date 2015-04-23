@@ -73,10 +73,10 @@ public class CwHomeController {
 
     @ResponseBody
     @RequestMapping("cw-bzj-data")
-    public Object getDataTbbzj(@RequestParam int year, @RequestParam int type) {
+    public Object getDataTbbzj(@RequestParam int type) {
         String hql = "select sum(bzj.fjnbksmoney), sum(bzj.fjnyingsmoney), sum(bzj.fjnyismoney) " +
                 "from CwBzj bzj " +
-                "where bzj.fbzjtype = '" + type + "' and YEAR(bzj.fmoneydate) = '" + year + "'";
+                "where bzj.fbzjtype = '" + type + "'";
 
         List data = cwBzjManager.find(hql);
         if (data != null && !data.isEmpty()) {

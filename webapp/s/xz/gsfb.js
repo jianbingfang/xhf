@@ -15,6 +15,7 @@ function drawChartGsfb() {
         addrList = addrList || [];
 
         var comInfo = {};
+        var cntInfo = {};
         var unknown = [];
 
         var name;
@@ -26,15 +27,24 @@ function drawChartGsfb() {
                 } else {
                     comInfo[name] += '<br/>' + item[1];
                 }
+
+                if (!cntInfo[name]) {
+                    cntInfo[name] = 0;
+                }
+                cntInfo[name]++;
+
             } else {
                 unknown.push(item[1]);
             }
         });
 
         var data = [];
-
+        var max = 0;
         for (var province in comInfo) {
-            data.push({name: province, selected: true});
+            data.push({name: province, value: cntInfo[province]});
+            if (max < cntInfo[province]) {
+                max = cntInfo[province];
+            }
         }
 
         $('#loading-gsfb').hide();
@@ -52,6 +62,20 @@ function drawChartGsfb() {
                 formatter: function (a) {
                     return comInfo[a[1]] ? comInfo[a[1]] : '无';
                 }
+            },
+            dataRange: {
+                min: 0,
+                max: max,
+                x: 'left',
+                y: 'bottom',
+                color: ['orange', 'yellow'],
+                text: ['多', '少'],
+                orient: 'horizontal',
+                x: 'center',
+                y: 'top',
+                calculable: true,
+                splitNumber: 5,
+                precision: 0
             },
             series: [{
                 name: '分公司',
