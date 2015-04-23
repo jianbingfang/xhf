@@ -3,6 +3,7 @@ package com.xthena.cw.web;
 import com.xthena.api.user.UserConnector;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.spring.MessageHelper;
+import com.xthena.cw.manager.CwBzjManager;
 import com.xthena.cw.manager.CwYingShouManager;
 import com.xthena.ext.export.Exportor;
 import com.xthena.hr.manager.HrGwbmManager;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +33,9 @@ public class CwHomeController {
 
     @Autowired
     private CwYingShouManager cwYingShouManager;
+
+    @Autowired
+    private CwBzjManager cwBzjManager;
 
     @RequestMapping("cw-home")
     public String home(Model model) {
@@ -69,24 +72,18 @@ public class CwHomeController {
     }
 
     @ResponseBody
-    @RequestMapping("cw-tbbzj-data")
-    public Object getDataTbbzj(@RequestParam int year, @RequestParam int month) {
-        List<Long> ids = new ArrayList<>();
-        for (long i = 4; i < 11; i++) {
-            ids.add(i);
+    @RequestMapping("cw-bzj-data")
+    public Object getDataTbbzj(@RequestParam int year, @RequestParam int type) {
+        String hql = "select sum(bzj.fjnbksmoney), sum(bzj.fjnyingsmoney), sum(bzj.fjnyismoney) " +
+                "from CwBzj bzj " +
+                "where bzj.fbzjtype = '" + type + "' and YEAR(bzj.fmoneydate) = '" + year + "'";
+
+        List data = cwBzjManager.find(hql);
+        if (data != null && !data.isEmpty()) {
+            return data.get(0);
+        } else {
+            return null;
         }
-        int[] data = {97};
-        return data;
     }
 
-    @ResponseBody
-    @RequestMapping("cw-lybzj-data")
-    public Object getDataLybzj(@RequestParam int year, @RequestParam int month) {
-        List<Long> ids = new ArrayList<>();
-        for (long i = 4; i < 11; i++) {
-            ids.add(i);
-        }
-        int[] data = {97};
-        return data;
-    }
 }

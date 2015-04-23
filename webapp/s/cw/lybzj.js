@@ -1,55 +1,61 @@
 /**
  * Created by jianbingfang on 2015/4/12.
  */
-function drawChartLybzj(year, month) {
+function drawChartLybzj(year) {
 
     $('#loading-lybzj').show();
 
-    month = month | (new Date().getMonth + 1);
+    $.post('cw-bzj-data.do', {year: year, type: 2}, function (res) {
 
-    $.post('cw-lybzj-data.do', {year: year, month: month}, function (data) {
+        console.log(res);
 
         $('#loading-lybzj').hide();
 
-        data = [
-            ['交纳', 10000],
-            ['应收', 200000],
-            ['已收', 30000],
-            ['余额', 40000]
-        ];
+        var data;
+
+        if (res) {
+            data = [
+                ['不可收', res[0] || 0]
+                , ['应收', res[1] || 0]
+                , ['已收', res[2] || 0]
+            ];
+            console.log('----------------');
+        }
+        console.log(data);
 
         $('#chart-lybzj').highcharts({
-            chart: {
-                type: 'column'
-            },
             lang: {
                 noData: '无数据'
             },
             title: {
-                text: null
-            },
-            xAxis: {
-                categories: ['履约保证金']
-            },
-            yAxis: {
-                title: {
-                    text: '金额'
-                }
+                text: '<b>交纳额</b>:￥' + (formatNum(res.sum()) || 0)
             },
             credits: {
                 enabled: false
             },
             tooltip: {
-                valuePrefix: '￥'
+                formatter: function () {
+                    var str = '<span style="font-size:15px"><b>' + this.point.name + '</b></span><table>';
+                    str += '<tr>';
+                    str += '<td style="color:' + this.series.color + ';">' + this.series.name + ': </td>';
+                    str += '<td style="padding:0"><b>￥' + (formatNum(this.y) || 0) + '</b></td>';
+                    str += '</tr>';
+                    str += '</table>';
+                    return str;
+                },
+                useHTML: true
             },
             plotOptions: {
-                column: {
+                pie: {
                     allowPointSelect: false,
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        style: {"color": "#606060", "fontSize": "14px"},
                         formatter: function () {
-                            return this.y ? this.y : null;
+                            return '<span style="font-size:14px"><b>' + this.point.name + '</span></b>:￥' + (formatNum(this.point.y) || 0)
                         }
                     },
                     events: {
@@ -62,47 +68,9 @@ function drawChartLybzj(year, month) {
                 }
             },
             series: [{
-                name: data[0][0],
-                data: [data[0][1]]
-            }, {
-                name: data[1][0],
-                data: [data[1][1]],
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function () {
-                            console.log('redirect to page '
-                            + this.series.index
-                            + '-' + this.x);
-                        }
-                    }
-                }
-            }, {
-                name: data[2][0],
-                data: [data[2][1]],
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function () {
-                            console.log('redirect to page '
-                            + this.series.index
-                            + '-' + this.x);
-                        }
-                    }
-                }
-            }, {
-                name: data[3][0],
-                data: [data[3][1]],
-                cursor: 'pointer',
-                point: {
-                    events: {
-                        click: function () {
-                            console.log('redirect to page '
-                            + this.series.index
-                            + '-' + this.x);
-                        }
-                    }
-                }
+                type: 'pie',
+                name: '金额',
+                data: data
             }]
         });
 

@@ -50,6 +50,8 @@
                     if (ev.date) {
                         var year = ev.date.getFullYear();
                         drawChartJlf(year);
+                        drawChartLybzj(year);
+                        drawChartTbbzj(year);
                     }
                 });
             </script>
@@ -85,30 +87,11 @@
                 </div>
             </div>
 
-            <span style="font-size: medium"><b>选择月份：</b></span>
-            <input id="date-container" type="text" type="text" class="form-control">
-            <script type="text/javascript">
-                $('#date-container').val(moment().format('YYYY-MM'));
-                $('#date-container').datepicker({
-                    format: "yyyy-mm",
-                    startView: 1,
-                    minViewMode: 1,
-                    autoclose: true
-                }).on('changeDate', function (ev) {
-                    if (ev.date) {
-                        var year = ev.date.getFullYear();
-                        var month = ev.date.getMonth() + 1;
-                        drawChartLybzj(year, month);
-                        drawChartTbbzj(year, month);
-                    }
-                });
-            </script>
-
             <div class="row-fluid">
                 <div class="span6">
                     <article class="m-widget">
                         <header class="header">
-                            <h4 class="title">投标保证金回收情况图(效果图)</h4>
+                            <h4 class="title">投标保证金回收情况图</h4>
                             <img id="loading-tbbzj" src="${ctx}/common/loading-circle.gif" alt="加载中..."
                                  style="margin: -3px 0px 0px 10px;"/>
                         </header>
@@ -118,7 +101,7 @@
                 <div class="span6">
                     <article class="m-widget">
                         <header class="header">
-                            <h4 class="title">履约保证金回收情况图(效果图)</h4>
+                            <h4 class="title">履约保证金回收情况图</h4>
                             <img id="loading-lybzj" src="${ctx}/common/loading-circle.gif" alt="加载中..."
                                  style="margin: -3px 0px 0px 10px;"/>
                         </header>

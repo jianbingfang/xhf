@@ -168,8 +168,9 @@
         }
 
         .m-widget-2 .content.content-inner {
-            padding-left: 10px;
-            padding-top: 10px;
+            /*padding-left: 10px;*/
+            /*padding-top: 10px;*/
+            padding: 10px;
             font-size: 12px;
         }
 
@@ -336,7 +337,6 @@
             </div>
         </article>
 
-
         <article class="m-widget-2">
             <header class="header">
                 <h4 class="title"><i class="icon-volume-up"></i> 通知公告</h4>
@@ -345,13 +345,34 @@
                     <a class="btn"><i class="icon-chevron-up"></i></a>
                 </div>
             </header>
-            <div class="content content-inner" style="overflow: auto;">
-                <c:forEach items="${cmsArticles}" var="item">
-                    <div>
-                        <h6><a href="comm-news-input.do?id=${item.fid}" target="_blank">${item.fname}</a></h6>
-                            <%--  <p>${item.content}</p> --%>
-                    </div>
-                </c:forEach>
+            <div class="content content-inner">
+                <table style="" width="100%">
+                    <c:forEach items="${cmsArticles}" var="item">
+                        <tr>
+                            <td style="width: 45px;" nowrap>
+                                <fmt:formatDate value="${item.fcreatedate}" pattern="[MM-dd]"/>
+                            </td>
+                            <td style="text-overflow: ellipsis;overflow:hidden; max-width: 270px;" nowrap>
+                                <a href="comm-news-input.do?id=${item.fid}"
+                                   target="_blank" style="font-size: 13px;font-weight: bold;">${item.fname}</a>
+                            </td>
+                            <td style="float: right;" nowrap>
+                                <c:if test="${item.fitop=='是'}">
+                                    <span class="label label-important" style="display: inline-block;">顶</span>
+                                </c:if>
+
+                                <c:if test="${item.ftuijian=='是'}">
+                                    <span class="label label-success" style="display: inline-block;">荐</span>
+                                </c:if>
+
+                                <c:set var="now" value="<%=System.currentTimeMillis()%>"></c:set>
+                                <c:if test="${now - item.fcreatedate.time < 1000 * 60 * 60 * 24 * 3}">
+                                    <span class="label label-warning" style="display: inline-block;">新</span>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
             </div>
         </article>
 

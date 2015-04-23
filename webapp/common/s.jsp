@@ -150,8 +150,11 @@ var formatNum = function (num, n) {
 };
 
 Array.prototype.sum = function () {
-    for (var sum = i = 0; i < this.length; i++)
-        sum += this[i];
+    for (var sum = i = 0; i < this.length; i++){
+        if(!isNaN(this[i])){
+            sum += this[i];
+        }
+    }
     return sum;
 };
     </script>

@@ -14,73 +14,11 @@
     <%@include file="/common/s.jsp" %>
 </head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<script src="${ctx}/s/xthena/amcharts/amcharts.js"
-        type="text/javascript"></script>
-<script src="${ctx}/s/xthena/amcharts/pie.js" type="text/javascript"></script>
-<script src="${ctx}/s/xthena/amcharts/serial.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 
     $(function () {
         $('.carousel-inner div:first-child').addClass("active");
-    });
-
-    var chartData = [{
-        "projectName": "项目形象进度",
-        "rate": 80,
-        "color": "#FF6600"
-    }, {
-        "projectName": "项目资料搜集进度",
-        "rate": 90,
-        "color": "#04D215"
-    }, {
-        "projectName": "监理费回收进度",
-        "rate": 50,
-        "color": "#0D52D1"
-    }];
-    AmCharts.ready(function () {
-        // SERIAL CHART
-        chart = new AmCharts.AmSerialChart();
-        chart.dataProvider = chartData;
-        chart.categoryField = "projectName";
-        chart.startDuration = 1;
-        chart.plotAreaBorderColor = "#DADADA";
-        chart.plotAreaBorderAlpha = 1;
-        // this single line makes the chart a bar chart
-        chart.rotate = true;
-
-        // AXES
-        // Category
-        var categoryAxis = chart.categoryAxis;
-        categoryAxis.gridPosition = "start";
-        categoryAxis.gridAlpha = 0.1;
-        categoryAxis.axisAlpha = 0;
-
-        // Value
-        var valueAxis = new AmCharts.ValueAxis();
-        valueAxis.axisAlpha = 0;
-        valueAxis.gridAlpha = 0.1;
-        valueAxis.position = "top";
-        chart.addValueAxis(valueAxis);
-
-        // GRAPHS
-        // first graph
-        var graph1 = new AmCharts.AmGraph();
-        graph1.type = "column";
-        graph1.title = "进度";
-        graph1.labelText = "[[value]]%";
-        graph1.valueField = "rate";
-        graph1.balloonText = "[[title]]:[[value]]%";
-        graph1.lineAlpha = 0.5;
-        graph1.topRadius = 1;
-        graph1.fillAlphas = 0.9;
-        graph1.colorField = "color";
-        chart.addGraph(graph1);
-
-        chart.creditsPosition = "top-right";
-
-        // WRITE
-        chart.write("chartdiv");
     });
 
     $(function () {
