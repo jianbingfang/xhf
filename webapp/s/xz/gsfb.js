@@ -66,8 +66,6 @@ function drawChartGsfb() {
             dataRange: {
                 min: 0,
                 max: max,
-                x: 'left',
-                y: 'bottom',
                 color: ['orange', 'yellow'],
                 text: ['多', '少'],
                 orient: 'horizontal',
