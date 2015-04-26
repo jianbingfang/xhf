@@ -150,53 +150,62 @@
                         <input type="button" class="btn btn-primary btn-xs" value="上传" onclick="showUpload()"
                                style="float: right;margin: -2px 0 0 0; padding: 1px 5px;font-size: 10px;">
                     </header>
-                    <div class="carousel slide" id="carousel-169351">
-                        <ol class="carousel-indicators">
-                            <c:forEach items="${xmImgs}" var="item" varStatus="status">
-                                <c:choose>
-                                    <c:when test="${status.first}">
-                                        <li data-target="#carousel-169351" data-slide-to="${status.index}"
-                                            class="active"></li>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <li data-target="#carousel-169351" data-slide-to="${status.index}"></li>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                        </ol>
-                        <div class="carousel-inner" style="max-height: 410px;">
-                            <c:forEach items="${xmImgs}" var="item" varStatus="status">
-                                <c:choose>
-                                    <c:when test="${status.first}">
-                                        <div class="item active" style="height: 410px;">
-                                            <img alt="图片获取失败..." src="${item.fimgurl}" width="100%" height="100%"
-                                                 style="margin: auto 0;"/>
+                    <c:choose>
+                        <c:when test="${empty xmImgs}">
+                            <h4 style="text-align: center; line-height: 400px; height: 400px;">暂无图片</h4>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="carousel slide" id="carousel-169351">
+                                <ol class="carousel-indicators">
+                                    <c:forEach items="${xmImgs}" var="item" varStatus="status">
+                                        <c:choose>
+                                            <c:when test="${status.first}">
+                                                <li data-target="#carousel-169351" data-slide-to="${status.index}"
+                                                    class="active"></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li data-target="#carousel-169351" data-slide-to="${status.index}"></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </ol>
+                                <div class="carousel-inner" style="max-height: 410px;">
+                                    <c:forEach items="${xmImgs}" var="item" varStatus="status">
+                                        <c:choose>
+                                            <c:when test="${status.first}">
+                                                <div class="item active" style="height: 410px;">
+                                                    <img alt="图片获取失败..." src="${item.fimgurl}" width="100%"
+                                                         height="100%"
+                                                         style="margin: auto 0;"/>
 
-                                            <div class="carousel-caption">
-                                                <p>${item.fdescribe}</p>
-                                            </div>
-                                        </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <div class="item" style="height: 410px;">
-                                            <img alt="图片获取失败..." src="${item.fimgurl}" width="100%" height="100%"
-                                                 style="margin: auto 0"/>
-
-                                            <c:if test="${!empty item.fdescribe}">
-                                                <div class="carousel-caption">
-                                                    <p>${item.fdescribe}</p>
+                                                    <div class="carousel-caption">
+                                                        <p>${item.fdescribe}</p>
+                                                    </div>
                                                 </div>
-                                            </c:if>
-                                        </div>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-169351"
-                           data-slide="prev"><h5><</h5></a>
-                        <a class="right carousel-control" href="#carousel-169351"
-                           data-slide="next"><h5>></h5></a>
-                    </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="item" style="height: 410px;">
+                                                    <img alt="图片获取失败..." src="${item.fimgurl}" width="100%"
+                                                         height="100%"
+                                                         style="margin: auto 0"/>
+
+                                                    <c:if test="${!empty item.fdescribe}">
+                                                        <div class="carousel-caption">
+                                                            <p>${item.fdescribe}</p>
+                                                        </div>
+                                                    </c:if>
+                                                </div>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </div>
+                                <a class="left carousel-control" href="#carousel-169351"
+                                   data-slide="prev"><h5><</h5></a>
+                                <a class="right carousel-control" href="#carousel-169351"
+                                   data-slide="next"><h5>></h5></a>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </article>
             </div>
             <div class="span6">

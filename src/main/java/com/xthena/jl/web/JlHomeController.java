@@ -18,6 +18,7 @@ import com.xthena.jl.manager.JlDeptManager;
 import com.xthena.jl.manager.JlfManager;
 import com.xthena.jl.manager.JlfRecordManager;
 import com.xthena.jl.manager.PjXmImgManager;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,9 +73,15 @@ public class JlHomeController {
             return "../common/jianlibutiaozhuanyemian";
         }
 
-        List<PjXmImg> pjXmJds = pjXmImgManager.findBy("fxmid", fxmid);
-        model.addAttribute("xmImgs", pjXmJds);
+        String hql = "from PjXmImg img " +
+                " where img.fxmid=" + fxmid +
+                " order by img.fid desc";
 
+        Query query = pjXmImgManager.getSession().createQuery(hql);
+        query.setFirstResult(0);
+        query.setMaxResults(5);
+        List<PjXmImg> pjXmJds = query.list();
+        model.addAttribute("xmImgs", pjXmJds);
 
         PjXm pjXm = pjXmManager.get(jlDeptManager.getXmId(request));
         String xmgaikuang = pjXm.getFxmgaikuang();
