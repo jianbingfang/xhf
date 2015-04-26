@@ -222,7 +222,7 @@ public class CwBzjController {
 	}
 
 	@RequestMapping("cwBzj-info-remove")
-	public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
+	public String remove(@RequestParam("selectedItem") List<Long> selectedItem,@RequestParam(value = "type", required = false) String type,
 			RedirectAttributes redirectAttributes) {
 		List<CwBzj> cwBzjs = cwBzjManager.findByIds(selectedItem);
 
@@ -231,7 +231,7 @@ public class CwBzjController {
 		messageHelper.addFlashMessage(redirectAttributes,
 				"core.success.delete", "删除成功");
 
-		return "redirect:/cw/cwBzj-info-list.do";
+		return "redirect:/cw/cwBzj-info-list.do?type="+cwBzjs.get(0).getFbzjtype();
 	}
 
 	@RequestMapping("cwBzj-info-export")

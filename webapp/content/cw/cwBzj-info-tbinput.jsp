@@ -52,20 +52,26 @@
         $(
                 function () {
                     $("#cwBzj-info_fjnbksmoney").change(function () {
-                        $("#cwBzj-info_fsum_money").html((parseFloat($("#cwBzj-info_fjnbksmoney").val()) + parseFloat($("#cwBzj-info_fjnyismoney").val()) + parseFloat($("#cwBzj-info_fjnyingsmoney").val())).toFixed(4))
+                        var Value = (parseFloat($("#cwBzj-info_fjnbksmoney").val()) + parseFloat($("#cwBzj-info_fjnyismoney").val()) + parseFloat($("#cwBzj-info_fjnyingsmoney").val())).toFixed(4);
+                        $("#cwBzj-info_fsum_money").html(Value);
+                        $("#cwBzj-info_fjnmoney").val(Value);
                     });
                 })
         $(
                 function () {
                     $("#cwBzj-info_fjnyismoney").change(function () {
-                        $("#cwBzj-info_fsum_money").html((parseFloat($("#cwBzj-info_fjnbksmoney").val()) + parseFloat($("#cwBzj-info_fjnyismoney").val()) + parseFloat($("#cwBzj-info_fjnyingsmoney").val())).toFixed(4))
+                        var Value = (parseFloat($("#cwBzj-info_fjnbksmoney").val()) + parseFloat($("#cwBzj-info_fjnyismoney").val()) + parseFloat($("#cwBzj-info_fjnyingsmoney").val())).toFixed(4);
+                        $("#cwBzj-info_fsum_money").html(Value);
+                        $("#cwBzj-info_fjnmoney").val(Value);
                     });
                 })
 
         $(
                 function () {
                     $("#cwBzj-info_fjnyingsmoney").change(function () {
-                        $("#cwBzj-info_fsum_money").html((parseFloat($("#cwBzj-info_fjnbksmoney").val()) + parseFloat($("#cwBzj-info_fjnyismoney").val()) + parseFloat($("#cwBzj-info_fjnyingsmoney").val())).toFixed(4))
+                        var Value = (parseFloat($("#cwBzj-info_fjnbksmoney").val()) + parseFloat($("#cwBzj-info_fjnyismoney").val()) + parseFloat($("#cwBzj-info_fjnyingsmoney").val())).toFixed(4);
+                        $("#cwBzj-info_fsum_money").html(Value);
+                        $("#cwBzj-info_fjnmoney").val(Value);
                     });
                 })
     </script>
@@ -118,7 +124,7 @@
             </header>
             <div class="content content-inner">
                 <form id="cwBzj-infoForm" method="post" action="cwBzj-info-tbsave.do"
-                      class="form-horizontal">
+                     class="form-horizontal">
                     <c:if test="${model != null}">
                         <input id="cwBzj-info_id" type="hidden" name="fid"
                                value="${model.fid}">
@@ -340,7 +346,7 @@
 
                                 <label class="control-label" for="cwBzj-info_fsum_money" style=" margin-left: -180px;
 									padding-left: -105px; margin-top: 0px">
-                                    <spring:message text="余额总和(元)"></spring:message>
+                                    <spring:message text="交纳总和(元)"></spring:message>
 
                                     <div class="controls">
                                         <label id="cwBzj-info_fsum_money" type="number" name="fsummoney" style=" margin-left: -100px;
@@ -350,51 +356,11 @@
 
                             </fieldset>
 
-                            <div class="span5">
-                                <label class="control-label" for="cwBzj-info_fmemo4"
-                                       style="margin-top: 30px; margin-left: -15px;"><spring:message
-                                        code="cwBzj-info.cwBzj-info.input.fmemo4" text="领导意见"/></label>
+                            <input id="cwBzj-info_fjnmoney" type="number" name="fjnmoney"
+                                   value="${model.fjnyismoney + model.fjnyingsmoney+ model.fjnbksmoney}"
+                                   style="display: none">
 
-                                <div class="controls">
-                                    <input id="cwBzj-info_fmemo4" type="text" name="fmemo4"
-                                           value="${model.fmemo4}" size="" class="text " minlength="" readonly
-                                           maxlength="" style="margin-top: 30px; margin-left: -20px;">
-                                </div>
-                            </div>
 
-                            <div class="span5">
-                                <div class="control-group" style="margin-top: 15px; margine-right:20px">
-                                    <label class="control-label" for="cwBzj-info_fmoneydate"
-                                           style="padding-left:270px; padding-top:20px"><spring:message
-                                            code="cwBzj-info.cwBzj-info.input.fmoneydate" text="交纳日期"/></label>
-
-                                    <div class="controls"
-                                         style=" margin-left: 450px;
-                                         margin-top: 10px" ;
-                                            >
-                                        <div class="input-append datepicker date"
-                                             style="padding-left: 0px;">
-                                            <input id="cwBzj-info_fmoneydate" type="text" name="fmoneydate"
-                                                   value="${model.fmoneydate}" size="40" class="text "
-                                                   style="background-color:white;cursor:default;  width: 175px;">
-									<span class="add-on"
-                                          style="padding-top: 2px; padding-bottom: 2px;"><i
-                                            class="icon-calendar"></i></span> <label
-                                                style="font-size: 10px;color: red; ">财务部填写</label>
-                                        </div>
-                                    </div>
-                                    <div class="span5 hidden">
-                                        <label class="control-label" for="cwBzj-info_fbzjtype"><spring:message
-                                                code="cwBzj-info.cwBzj-info.input.fbzjtype" text="保证金类型"/></label>
-
-                                        <div class="controls">
-                                            <input id="cwBzj-info_fbzjtype" type="text" name="fbzjtype"
-                                                   <c:if test="${model!=null }">value="${model.fbzjtype}"</c:if>
-                                                   value="${type }" size="" class="text required" maxlength="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
 
@@ -440,20 +406,69 @@
                         </div>
 
 
-                        <div class="control-group">
+                    </div>
+                    <div class="control-groups">
+                        <div class="span5">
+                            <label class="control-label" for="cwBzj-info_fmemo4"
+                                   style="margin-top: 30px; margin-left: -15px;"><spring:message
+                                    code="cwBzj-info.cwBzj-info.input.fmemo4" text="领导意见"/></label>
+
                             <div class="controls">
-                                <button type="submit" class="btn a-submit">
-                                    <spring:message code='core.input.save' text='保存'/>
-                                </button>
-                                &nbsp;
-                                <button type="button" class="btn a-cancel"
-                                        onclick="history.back();">
-                                    <spring:message code='core.input.back' text='返回'/>
-                                </button>
+                                <input id="cwBzj-info_fmemo4" type="text" name="fmemo4"
+                                       value="${model.fmemo4}" size="" class="text " minlength="" readonly
+                                       maxlength="" style="margin-top: 30px; margin-left: -20px;">
                             </div>
                         </div>
+
+                        <div class="span5">
+                            <div class="control-group" style="margin-top: 15px; margine-right:20px">
+                                <label class="control-label" for="cwBzj-info_fmoneydate"
+                                       style="padding-left:0px; padding-top:20px"><spring:message
+                                        code="cwBzj-info.cwBzj-info.input.fmoneydate" text="交纳日期"/></label>
+
+                                <div class="controls" style="  margin-left: 180px;
+                                        margin-top: 10px; width:10px" ;>
+                                    <div class="input-append datepicker date"
+                                         style="padding-left: -100px;">
+                                        <input id="cwBzj-info_fmoneydate" type="text" name="fmoneydate"
+                                               value="${model.fmoneydate}" size="40" class="text "
+                                               style="background-color:white;cursor:default;  width: 175px;">
+									<span class="add-on"
+                                          style="padding-top: 2px; padding-bottom: 2px;"><i
+                                            class="icon-calendar"></i></span> <label
+                                            style="font-size: 10px;color: red; ">财务部填写</label>
+                                    </div>
+                                </div>
+                                <div class="span5 hidden">
+                                    <label class="control-label" for="cwBzj-info_fbzjtype"><spring:message
+                                            code="cwBzj-info.cwBzj-info.input.fbzjtype" text="保证金类型"/></label>
+
+                                    <div class="controls">
+                                        <input id="cwBzj-info_fbzjtype" type="text" name="fbzjtype"
+                                               <c:if test="${model!=null }">value="${model.fbzjtype}"</c:if>
+                                               value="${type }" size="" class="text required" maxlength="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn a-submit">
+                                <spring:message code='core.input.save' text='保存'/>
+                            </button>
+                            &nbsp;
+                            <button type="button" class="btn a-cancel"
+                                    onclick="history.back();">
+                                <spring:message code='core.input.back' text='返回'/>
+                            </button>
+                        </div>
+                    </div>
+
                 </form>
             </div>
+
         </article>
     </section>
     <!-- end of main -->
