@@ -453,7 +453,7 @@
                         </div>
                     </div>
 
-                    <div class="control-group">
+                    <div class="control-group" style="width: 500px;">
                         <div class="controls">
                             <button type="submit" class="btn a-submit">
                                 <spring:message code='core.input.save' text='保存'/>
