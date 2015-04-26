@@ -91,14 +91,14 @@
                     <input type="file" name="files[]" multiple>
                     <!-- <input type="hidden" name="filePath" vlaue=""> -->
                 </span>
-                <button type="button" class="btn btn-primary start" >
-                    <i class="glyphicon glyphicon-upload"></i>
-                    <span>开始上传</span>
-                </button>
-                 <button type="reset" class="btn btn-warning cancel">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>取消上传</span>
-                </button>
+                <%--<button type="button" class="btn btn-primary start" >--%>
+                    <%--<i class="glyphicon glyphicon-upload"></i>--%>
+                    <%--<span>开始上传</span>--%>
+                <%--</button>--%>
+                 <%--<button type="reset" class="btn btn-warning cancel">--%>
+                    <%--<i class="glyphicon glyphicon-ban-circle"></i>--%>
+                    <%--<span>取消上传</span>--%>
+                <%--</button>--%>
                 <span class="fileupload-process"></span>
             </div>
             <!-- The global progress state -->
@@ -117,8 +117,8 @@
 	</div>
 	</div>
 	 <div class="modal-footer">
-	 	<button type="button" class="btn btn-primary" id="confirmBtn">确定</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	 	<button type="button" class="btn btn-primary" id="confirmBtn">下一步</button>
+        <%--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--%>
       </div>
 	 </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

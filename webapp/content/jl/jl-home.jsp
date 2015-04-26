@@ -107,6 +107,42 @@
         <!-- /.modal-dialog -->
 
         <div class="row-fluid">
+            <div class="span12">
+                <article class="m-widget">
+                    <header class="header">
+                        <h4 class="title">项目概况</h4>
+                    </header>
+                    <table style="font-size: 14px;" cellpadding="8px">
+                        <tr style="">
+                            <td style="font-weight: bold; float: right; white-space: nowrap;">项目概况:</td>
+                            <td style="text-overflow:ellipsis;">
+                                ${xmgaikuang}
+                            </td>
+                        </tr>
+                        <tr class="hidden">
+                            <td style="font-weight: bold; float: right; white-space: nowrap;">工程进度:</td>
+                            <td>
+                                <div class="progress progress-success" style="width: 500px; margin-bottom: 0;">
+                                    <div class="bar" style="width: 60%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; float: right; white-space: nowrap;">监理费回收情况:</td>
+                            <td>
+                                <fmt:formatNumber value="${jlf}" type="currency"/>
+                                /
+                                <fmt:formatNumber value="${(empty htek) ? 0 : htek}" type="currency"/>
+                                &nbsp;&nbsp;-&nbsp;&nbsp;
+                                (<fmt:formatNumber value="${(empty htek) ? 0 : (jlf/htek)}" type="percent"/>)
+                            </td>
+                        </tr>
+                    </table>
+                </article>
+            </div>
+        </div>
+
+        <div class="row-fluid">
             <div class="span6">
                 <article class="m-widget">
                     <header class="header">
@@ -114,35 +150,68 @@
                         <input type="button" class="btn btn-primary btn-xs" value="上传" onclick="showUpload()"
                                style="float: right;margin: -2px 0 0 0; padding: 1px 5px;font-size: 10px;">
                     </header>
-                    <div class="carousel slide" id="carousel-169351">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-169351" data-slide-to="0"></li>
-                            <li data-target="#carousel-169351" data-slide-to="1"></li>
-                            <li class="active" data-target="#carousel-169351"
-                                data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner" style="width: 100%;height: 500px;">
-                            <c:forEach items="${xmImgs}" var="item">
-                                <div class="item" style="width: 100%;height: 500px;">
-                                    <img alt="" src="${item.fimgurl}"/>
+                    <c:choose>
+                        <c:when test="${empty xmImgs}">
+                            <h4 style="text-align: center; line-height: 400px; height: 400px;">暂无图片</h4>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="carousel slide" id="carousel-169351">
+                                <ol class="carousel-indicators">
+                                    <c:forEach items="${xmImgs}" var="item" varStatus="status">
+                                        <c:choose>
+                                            <c:when test="${status.first}">
+                                                <li data-target="#carousel-169351" data-slide-to="${status.index}"
+                                                    class="active"></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <li data-target="#carousel-169351" data-slide-to="${status.index}"></li>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </ol>
+                                <div class="carousel-inner" style="max-height: 410px;">
+                                    <c:forEach items="${xmImgs}" var="item" varStatus="status">
+                                        <c:choose>
+                                            <c:when test="${status.first}">
+                                                <div class="item active" style="height: 410px;">
+                                                    <img alt="图片获取失败..." src="${item.fimgurl}" width="100%"
+                                                         height="100%"
+                                                         style="margin: auto 0;"/>
 
-                                    <div class="carousel-caption">
-                                        <p>${item.fdescribe}</p>
-                                    </div>
+                                                    <div class="carousel-caption">
+                                                        <p>${item.fdescribe}</p>
+                                                    </div>
+                                                </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="item" style="height: 410px;">
+                                                    <img alt="图片获取失败..." src="${item.fimgurl}" width="100%"
+                                                         height="100%"
+                                                         style="margin: auto 0"/>
+
+                                                    <c:if test="${!empty item.fdescribe}">
+                                                        <div class="carousel-caption">
+                                                            <p>${item.fdescribe}</p>
+                                                        </div>
+                                                    </c:if>
+                                                </div>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
                                 </div>
-                            </c:forEach>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-169351"
-                           data-slide="prev"><h5><</h5></a> <a
-                            class="right carousel-control" href="#carousel-169351"
-                            data-slide="next"><h5>></h5></a>
-                    </div>
+                                <a class="left carousel-control" href="#carousel-169351"
+                                   data-slide="prev"><h5><</h5></a>
+                                <a class="right carousel-control" href="#carousel-169351"
+                                   data-slide="next"><h5>></h5></a>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </article>
             </div>
             <div class="span6">
                 <article class="m-widget">
                     <header class="header">
-                        <h4 class="title">项目实况</h4>
+                        <h4 class="title">项目实况 (效果图)</h4>
                     </header>
                     <div id="video-area">
                         <video width="100%" height="100%" controls>
@@ -180,6 +249,27 @@
                         <div id="chartdiv" style="width: 100%; height: 400px;"></div>
                     </article>
                 </div> -->
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="well">
+                    <table style="font-size: 14px;" cellpadding="4px">
+                        <tr style="">
+                            <td style="font-weight: bold; float: right; white-space: nowrap;">总监:</td>
+                            <c:forEach items="${zjList}" var="item">
+                                <td style="text-overflow:ellipsis;">${item}</td>
+                            </c:forEach>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; float: right; white-space: nowrap;">其他监理人员:</td>
+                            <c:forEach items="${qtList}" var="item">
+                                <td style="text-overflow:ellipsis;">${item}</td>
+                            </c:forEach>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
 
     </section>
