@@ -215,11 +215,11 @@
                     </header>
                     <div id="video-area">
                         <video width="100%" height="100%" autoplay controls>
-                            <source src="/xhf/s/upload/SOHO-Life.mp4" type="video/mp4">
+                            <source src="/xhf/s/upload/soho.mp4" type="video/mp4">
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.ogg" type="video/ogg">--%>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.webm" type="video/webm">--%>
-                            <%--<object data="http://localhost:8080/xhf/s/upload/SOHO-Life.mp4" width="100%" height="100%">--%>
-                                <%--<embed src="http://localhost:8080/xhf/s/upload/SOHO-Life.mp4" width="100%"--%>
+                            <%--<object data="http://localhost:8080/xhf/s/upload/soho.mp4" width="100%" height="100%">--%>
+                                <%--<embed src="http://localhost:8080/xhf/s/upload/soho.mp4" width="100%"--%>
                                        <%--height="100%">--%>
                             <%--</object>--%>
                         </video>
