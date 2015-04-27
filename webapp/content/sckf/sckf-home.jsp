@@ -52,7 +52,8 @@
                     format: "yyyy",
                     startView: 2,
                     minViewMode: 2,
-                    autoclose: true
+                    autoclose: true,
+                    endDate: moment().format('YYYY')
                 }).on('changeDate', function (ev) {
                     if (ev.date) {
                         var year = ev.date.getFullYear();

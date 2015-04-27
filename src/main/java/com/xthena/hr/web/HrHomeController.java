@@ -284,21 +284,78 @@ public class HrHomeController {
     @RequestMapping("hr-czqk-data")
     public Object getDataCzqk() {
 
-        String hql = "select " +
-                "case zj.fname " +
-                "when '初级工程师职称证' then '初级工程师' " +
-                "when '中级工程师职称证' then '中级工程师' " +
-                "when '高级工程师职称证' then '高级工程师' " +
-                "end " +
-                ", count(zj.fname) as cnt " +
-                "from HrRyZj zj " +
-                "where zj.fname in ('初级工程师职称证', '中级工程师职称证',  '高级工程师职称证') " +
-                "group by zj.fname " +
-                "order by cnt desc";
-
-        List list = hrRyZjManager.find(hql);
-
         List<List<Object>> res = new ArrayList<>();
+
+        String sql = "select count(*) from " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '监理工程师注册%' " +
+                "union " +
+                "select count(*) from  " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '一级建造师%' " +
+                "union " +
+                "select count(*) from  " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '造价师注册证' " +
+                "union " +
+                "select count(*) from  " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '设计师%'";
+        List<Object> list = hrRyZjManager.getSession().createSQLQuery(sql).list();
+        res.add(list);
+
+        sql = "select count(*) from " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '专业监理工程师%' " +
+                "union " +
+                "select count(*) from  " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '监理员%' " +
+                "union " +
+                "select count(*) from  " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '见证员%' " +
+                "union " +
+                "select count(*) from  " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '安全员%'" +
+                "union " +
+                "select count(*) from  " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t " +
+                "where t.fname like '资料员%'";
+        list = hrRyZjManager.getSession().createSQLQuery(sql).list();
+
+        for (Object i : list) {
+            List tl = new LinkedList();
+            tl.add(i);
+            res.add(tl);
+        }
+
+        sql = "select count(*) from  " +
+                "(select zj.userid, zj.fname " +
+                "from t_hr_ry_zj zj " +
+                "group by zj.userid, zj.fname) t ";
+        list = hrRyZjManager.getSession().createSQLQuery(sql).list();
+        res.add(list);
+
         return res;
     }
 

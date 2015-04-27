@@ -6,7 +6,42 @@ function drawChartGdzc() {
 
     $('#loading-gdzc').show();
 
-    $.post('xz-gdzc-data.do', function (data) {
+    $.post('xz-gdzc-data.do', function (mdata) {
+
+        var data;
+        if (mdata && mdata.length > 0) {
+            data = [];
+            var nm;
+            var other = 0;
+            var kt = 0;
+            var xj = 0;
+            for (var i = 0; i < mdata.length; i++) {
+                nm = mdata[i][0];
+                if (nm === '主机'
+                    || nm === '显示器'
+                    || nm === '笔记本电脑'
+                    || nm === '打印机'
+                    || nm === '水准仪'
+                    || nm === '办公桌'
+                    || nm === '办公椅'
+                    || nm === '移动硬盘'
+                ) {
+                    data.push(mdata[i]);
+                } else if (nm.indexOf('空调') >= 0) {
+                    kt += mdata[i][1];
+                } else if (nm.indexOf('相机') >= 0) {
+                    xj += mdata[i][1];
+                } else {
+                    other += mdata[i][1];
+                }
+            }
+            data.push(['空调', kt]);
+            data.push(['照相机', xj]);
+            data.sort(function (a, b) {
+                return b[1] - a[1];
+            });
+            data.push(['其他', other]);
+        }
 
         $('#loading-gdzc').hide();
 
