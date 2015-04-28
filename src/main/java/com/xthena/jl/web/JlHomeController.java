@@ -74,7 +74,7 @@ public class JlHomeController {
             return "../common/jianlibutiaozhuanyemian";
         }
 
-        String hql = "from yPjXmImg img " +
+        String hql = "from PjXmImg img " +
                 " where img.fxmid=" + fxmid +
                 " order by img.fid desc";
 
