@@ -177,10 +177,11 @@
                                                     <img alt="图片获取失败..." src="${item.fimgurl}" width="100%"
                                                          height="100%"
                                                          style="margin: auto 0;"/>
-
-                                                    <div class="carousel-caption">
-                                                        <p>${item.fdescribe}</p>
-                                                    </div>
+                                                    <c:if test="${!empty item.fdescribe}">
+                                                        <div class="carousel-caption">
+                                                            <p>${item.fdescribe}</p>
+                                                        </div>
+                                                    </c:if>
                                                 </div>
                                             </c:when>
                                             <c:otherwise>
@@ -199,10 +200,12 @@
                                         </c:choose>
                                     </c:forEach>
                                 </div>
-                                <a class="left carousel-control" href="#carousel-169351"
-                                   data-slide="prev"><h5><</h5></a>
-                                <a class="right carousel-control" href="#carousel-169351"
-                                   data-slide="next"><h5>></h5></a>
+                                <c:if test="${fn:length(xmImgs)>1}">
+                                    <a class="left carousel-control" href="#carousel-169351"
+                                       data-slide="prev"><h5><</h5></a>
+                                    <a class="right carousel-control" href="#carousel-169351"
+                                       data-slide="next"><h5>></h5></a>
+                                </c:if>
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -219,8 +222,8 @@
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.ogg" type="video/ogg">--%>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.webm" type="video/webm">--%>
                             <%--<object data="http://localhost:8080/xhf/s/upload/soho.mp4" width="100%" height="100%">--%>
-                                <%--<embed src="http://localhost:8080/xhf/s/upload/soho.mp4" width="100%"--%>
-                                       <%--height="100%">--%>
+                            <%--<embed src="http://localhost:8080/xhf/s/upload/soho.mp4" width="100%"--%>
+                            <%--height="100%">--%>
                             <%--</object>--%>
                         </video>
                     </div>
