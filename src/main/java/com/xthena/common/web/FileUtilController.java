@@ -3,6 +3,7 @@ package com.xthena.common.web;
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.ConfUtil;
 import com.xthena.util.JsonResponseUtil;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,8 +60,7 @@ public class FileUtilController {
         attachment.transferTo(file);
 
         if (needCompress(file)) {
-            ImgCompress ic = new ImgCompress(file);
-            ic.resizeByWidth(1024);
+            Thumbnails.of(file).size(1024, 768).toFile(file);
         }
 
         HashMap<String, String> fileMap = new HashMap<String, String>();
