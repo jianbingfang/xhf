@@ -215,13 +215,15 @@
                     </header>
                     <div id="video-area">
                         <video width="100%" height="100%" controls>
-                            <source src="http://www.w3cschool.cc/try/demo_source/movie.mp4" type="video/mp4">
-                            <source src="http://www.w3cschool.cc/try/demo_source/movie.ogg" type="video/ogg">
-                            <source src="http://www.w3cschool.cc/try/demo_source/movie.webm" type="video/webm">
-                            <object data="http://www.w3cschool.cc/try/demo_source/movie.mp4" width="100%" height="100%">
-                                <embed src="http://www.w3cschool.cc/try/demo_source/movie.swf" width="100%"
-                                       height="100%">
-                            </object>
+                            <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.mp4" type="video/mp4">--%>
+
+                            <source src="/xhf/s/upload/soho.mp4" type="video/mp4">
+                            <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.ogg" type="video/ogg">--%>
+                            <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.webm" type="video/webm">--%>
+                            <%--<object data="http://www.w3cschool.cc/try/demo_source/movie.mp4" width="100%" height="100%">--%>
+                                <%--<embed src="http://www.w3cschool.cc/try/demo_source/movie.swf" width="100%"--%>
+                                       <%--height="100%">--%>
+                            <%--</object>--%>
                         </video>
                     </div>
                 </article>

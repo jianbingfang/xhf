@@ -26,6 +26,7 @@ public class JlShiqian  implements java.io.Serializable {
     // Fields    
 
      private Long fid;
+     //private String fname;
      private String ftype;
      private String fitem;
      private String fstatus;
@@ -47,7 +48,8 @@ public class JlShiqian  implements java.io.Serializable {
 
     
     /** full constructor */
-    public JlShiqian(String ftype, String fitem, String fstatus, Date fuploaddate, String ffujianids, Long fxmid, String finfo, String ffilename, String ffileurl, String fmemo, String fshstatus) {
+    public JlShiqian( String ftype, String fitem, String fstatus, Date fuploaddate, String ffujianids, Long fxmid, String finfo, String ffilename, String ffileurl, String fmemo, String fshstatus) {
+        //this.fname=
         this.ftype = ftype;
         this.fitem = fitem;
         this.fstatus = fstatus;

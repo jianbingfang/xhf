@@ -66,6 +66,10 @@ function changeUploadFile(){
 			    <div class="control-group">
 			    <div class="span10">
 				    <label class="control-label" for="jlShiqian-info_ftype"><spring:message code="jlShiqian-info.jlShiqian-info.input.ftype" text="建设工地土地使用证"/></label>
+
+					<%--<input id="jlShiqian-zl_" type="text" name="fskdw" value="${model.fskdw}" size="" class="text " minlength=""--%>
+							   <%--maxlength="">--%>
+					<input type="radio" name="jlShiqian[1].fstatus" value="有" <c:if test="${model['SHIQIAN_ZILIAO_JIANSHEYONGDIXUKEZHENG'].fstatus=='有'}"> checked="checked"  </c:if> > 有
 					<div class="controls">
 						<input id="jlShiqian-info_ftype" type="hidden" name="jlShiqian[0].fid" value="${model['SHIQIAN_ZILIAO_TUDISHIYONGZHENG'].fid}" size="" class="text required" minlength="" maxlength="">
 						 <input id="jlShiqian-info_ftype" type="hidden" name="jlShiqian[0].ftype" value="SHIQIAN_ZILIAO" size="" class="text required" minlength="" maxlength="">

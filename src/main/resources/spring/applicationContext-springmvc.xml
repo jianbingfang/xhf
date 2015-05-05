@@ -32,7 +32,8 @@
 	<mvc:default-servlet-handler/>
 
 	<!-- 定义无需Controller的url<->view直接映射 -->
-	<mvc:view-controller path="/" view-name="index.jsp"/>
+	<!--<mvc:view-controller path="/" view-name="/menu/dashboard.jsp"/>-->
+	<mvc:view-controller path="/" view-name="dashboard.jsp"/>
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"/>
