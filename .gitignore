@@ -8,6 +8,8 @@ out/
 /src/main/webapp
 /src/main/main.eml
 /src/main/main.iml
+/webapp/s/upload
+
 *.jar
 *.war
 

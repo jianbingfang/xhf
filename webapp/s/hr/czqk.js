@@ -8,17 +8,25 @@ function drawChartCzqk(data) {
 
     $.post('hr-czqk-data.do', function (mdata) {
 
-        mdata = mdata || [];
+        console.log(mdata);
 
-        mdata = [
-            [2, 3, 4, 3, 2]
-            , [5]
-            , [8]
-            , [6]
-            , [10]
-            , [3]
-            , [2]
-        ];
+        mdata = mdata || [[], [], [], [], [], [], []];
+
+        //mdata = [
+        //    [2, 3, 4, 3]
+        //    , [5]
+        //    , [8]
+        //    , [6]
+        //    , [10]
+        //    , [3]
+        //    , [32]
+        //];
+
+        var sum = mdata[mdata.length - 1][0];
+        for (var i = 0; i < mdata.length - 1; i++) {
+            sum -= mdata[i].sum();
+        }
+        mdata[mdata.length - 1][0] = sum;
 
         var colors = Highcharts.getOptions().colors;
         var categories = ['注册人员', '专业监理工程师', '监理员', '见证员', '安全员', '资料员', '其他'];
@@ -27,7 +35,7 @@ function drawChartCzqk(data) {
             color: colors[0],
             drilldown: {
                 name: categories[0],
-                categories: ['注册监理工程师', '注册造价工程师', '注册设计师', '一级建造师', '其他'],
+                categories: ['注册监理工程师', '注册造价工程师', '注册设计师', '一级建造师'],
                 data: mdata[0],
                 color: colors[0]
             }

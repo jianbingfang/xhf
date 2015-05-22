@@ -10,6 +10,7 @@ import com.xthena.gcgl.domain.PjXm;
 import com.xthena.gcgl.manager.JlShizhongTempManager;
 import com.xthena.gcgl.manager.PjRyManager;
 import com.xthena.gcgl.manager.PjXmManager;
+import com.xthena.hr.domain.CommRy;
 import com.xthena.hr.manager.CommRyManager;
 import com.xthena.jl.domain.Jlf;
 import com.xthena.jl.domain.JlfRecord;
@@ -114,10 +115,15 @@ public class JlHomeController {
         List<String> zjList = new ArrayList<>();
         List<String> qtList = new ArrayList<>();
         for (PjRy pjRy : pjRies) {
-            if ("总监".equals(pjRy.getFgangwei())) {
-                zjList.add(commRyManager.get(pjRy.getFryid()).getFname());
-            } else {
-                qtList.add(commRyManager.get(pjRy.getFryid()).getFname());
+            if (pjRy.getFryid() != null) {
+                CommRy ry = commRyManager.get(pjRy.getFryid());
+                if (ry != null && ry.getFname() != null && ry.getFname().isEmpty()) {
+                    if ("总监".equals(pjRy.getFgangwei())) {
+                        zjList.add(ry.getFname());
+                    } else {
+                        qtList.add(ry.getFname());
+                    }
+                }
             }
         }
 

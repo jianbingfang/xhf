@@ -14,9 +14,11 @@
     <title>市场开发</title>
     <%@include file="/common/s.jsp" %>
 </head>
+
 <link rel="stylesheet" href="${ctx}/s/sckf/sckf.css" type="text/css">
 <script src="${ctx}/s/highcharts/highcharts.js" type="text/javascript"></script>
 <script src="${ctx}/s/highcharts/no-data-to-display.js" type="text/javascript"></script>
+
 
 <body>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -34,15 +36,17 @@
             drawChartFbqk(year);
         };
     </script>
+
     <!-- start of main -->
     <section id="m-main" class="span10" style="float: right">
 
         <div style="margin-bottom: 10px;">
-            <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#chart-area"
-                    aria-expanded="false" aria-controls="collapseExample">
-                显示/隐藏图表
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#chart-area"
+                        aria-expanded="false" aria-controls="collapseExample">
+                    显示/隐藏图表
             </button>
         </div>
+
         <div class="collapse" id="chart-area">
             <span style="font-size: medium"><b>选择年份：</b></span>
             <input id="year-container" type="text" type="text" class="form-control">
@@ -52,7 +56,8 @@
                     format: "yyyy",
                     startView: 2,
                     minViewMode: 2,
-                    autoclose: true
+                    autoclose: true,
+                    endDate: moment().format('YYYY')
                 }).on('changeDate', function (ev) {
                     if (ev.date) {
                         var year = ev.date.getFullYear();
@@ -60,6 +65,7 @@
                     }
                 });
             </script>
+
             <div class="row-fluid">
                 <div class="span12">
                     <article class="m-widget">
@@ -73,6 +79,7 @@
                     </article>
                 </div>
             </div>
+
             <div class="row-fluid">
                 <div class="span6">
                     <article class="m-widget">

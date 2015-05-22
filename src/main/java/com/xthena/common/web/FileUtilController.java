@@ -3,15 +3,19 @@ package com.xthena.common.web;
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.ConfUtil;
 import com.xthena.util.JsonResponseUtil;
-import org.apache.commons.io.FileUtils;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +57,12 @@ public class FileUtilController {
         String simpleNewFilename = fileName + "." + fileType;
         File file = new File(filePath + simpleNewFilename);
 
-        FileUtils.copyInputStreamToFile(attachment.getInputStream(), file);
+        attachment.transferTo(file);
+
+        if (needCompress(file)) {
+            Thumbnails.of(file).size(1024, 768).toFile(file);
+        }
+
         HashMap<String, String> fileMap = new HashMap<String, String>();
         fileMap.put("fileName", srcFileName);
         fileMap.put("fileUrl", ConfUtil.getProperty("download.url") + simpleNewFilename);
@@ -72,6 +81,7 @@ public class FileUtilController {
     @RequestMapping("editor-article-uploadImage")
     public void uploadImage1(@RequestParam("CKEditorFuncNum") String callback,
                              @RequestParam("upload") MultipartFile attachment, HttpServletResponse httpServletResponse) throws Exception {
+
         String uploadFileName = attachment.getOriginalFilename();
         String srcFileName = null;
         String fileType = null;
@@ -95,7 +105,7 @@ public class FileUtilController {
         String fileName = String.valueOf(System.currentTimeMillis());
         String simpleNewFilename = fileName + "." + fileType;
         File file = new File(ConfUtil.getProperty("upload.dir") + filePath + simpleNewFilename);
-        FileUtils.copyInputStreamToFile(attachment.getInputStream(), file);
+        attachment.transferTo(file);
         HashMap<String, String> fileMap = new HashMap<String, String>();
         fileMap.put("fileName", srcFileName);
         fileMap.put("fileUrl", ConfUtil.getProperty("download.url") + filePath + simpleNewFilename);
@@ -112,4 +122,43 @@ public class FileUtilController {
                 + ",'" + ConfUtil.getProperty("download.url") + filePath + simpleNewFilename + "','')"
                 + "</script>");
     }
+
+    public boolean needCompress(File mf) throws IOException {
+        return (isImage(mf) && mf.length() > 1048576);
+    }
+
+    public boolean isImage(File imageFile) {
+        if (!imageFile.exists()) {
+            return false;
+        }
+        Image img = null;
+        try {
+            img = ImageIO.read(imageFile);
+            if (img == null || img.getWidth(null) <= 0 || img.getHeight(null) <= 0) {
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            img = null;
+        }
+    }
+
+    public boolean isImage(InputStream imageFile) {
+        Image img = null;
+        try {
+            img = ImageIO.read(imageFile);
+            if (img == null || img.getWidth(null) <= 0 || img.getHeight(null) <= 0) {
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            img = null;
+        }
+    }
 }
+
+

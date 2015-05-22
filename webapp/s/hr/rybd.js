@@ -1,11 +1,9 @@
 /**
  * Created by jianbingfang on 2015/4/12.
  */
-function drawChartRybd(year, month) {
+function drawChartRybd(year) {
 
     $('#loading-rybd').show();
-
-    month = month | (new Date().getMonth + 1);
 
     $.post('hr-rybd-data.do', {year: year}, function (res) {
 

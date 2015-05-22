@@ -86,7 +86,7 @@ public class PjXmController {
     @RequestMapping("gc-jl-home")
     public String gcjlhome(Model model,HttpServletRequest request,@RequestParam(value = "fxmid", required = false) Long fxmid) {
     	jlDeptManager.setXmId(request, fxmid);
-        return "jl/jl-home";
+        return "redirect:/jl/jl-home.do";
     }
     
     

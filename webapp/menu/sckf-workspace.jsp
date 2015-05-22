@@ -9,6 +9,7 @@
               <span class="title">管理制度</span>
             </a>
           </div>
+
           <div id="collapse-bpm-process" class="accordion-body collapse ${currentMenu == 'sckf-zd' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
 			  <li><a href="${scopePrefix}/sckf/sckf-doc-bmze-info.do"><i class="icon-user"></i>部门职责</a></li>
@@ -86,9 +87,10 @@
           <div id="sckf-xmtb" class="accordion-body collapse ${currentMenu == 'sckf-xmtb' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
             <li><a href="${scopePrefix}/sckf/jyXm-info-list.do"><i class="icon-user"></i>投标项目台账</a></li>
-			 <li><a href="${scopePrefix}/sckf/jyXm-info-toubiao-list.do"><i class="icon-user"></i>投标文件制作及审核</a></li>
+             <li><a href="${scopePrefix}/sckf/jyXm-info-toubiao-list.do"><i class="icon-user"></i>投标文件制作及审核</a></li>
 			 <li><a href="${scopePrefix}/sckf/jyXm-info-kaibiao-list.do"><i class="icon-user"></i>开标项目</a></li>
-			 <li><a href="${scopePrefix}/sckf/jyXm-info-tongzhishu-list.do"><i class="icon-user"></i>中标通知书记录</a></li> 
+             <li><a href="${scopePrefix}/sckf/jyXmFb-info-list.do"><i class="icon-user"></i>废标项目</a></li>
+             <li><a href="${scopePrefix}/sckf/jyXm-info-tongzhishu-list.do"><i class="icon-user"></i>中标通知书记录</a></li>
 			 <li><a href="${scopePrefix}/sckf/xzZjOrder-info-list.do"><i class="icon-user"></i>证件预定</a></li>
 			<%--  <li><a href="${scopePrefix}/xz/xzZjDxlist-info-list.do"><i class="icon-user"></i>证件预定表</a></li> --%>
 			<li><a href="${scopePrefix}/sckf/xzZjlist-info.do"><i class="icon-user"></i>证件表</a></li>
