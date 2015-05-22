@@ -6,7 +6,11 @@
 <%
 	pageContext.setAttribute("currentMenu", "sckf-workspace");
 %>
+
+
+
 <!doctype html>
+
 <html lang="zh">
 <head>
 <%@include file="/common/meta.jsp"%>
@@ -70,7 +74,6 @@
 		event = event ? event : window.event;
 		var btn = event.srcElement ? event.srcElement : event.target;
 		if (btn.className == "btn btn-block") {
-			
 			btn.className = "btn btn-block btn-primary";
 			$('#'+$(btn).attr('forHidden')).val('1');
 
@@ -126,7 +129,103 @@
 	function xmyj(){
 		window.location.href="jyXmYj-info-input.do?xmid=${model.fid}";
 	}
-	
+
+	function getFbdata()
+	{
+		var value=$("#jyXm-infoForm").val();
+		if(value!=""){
+			window.location.href="jyXmFb-info-input.do?xmid="+$('#jyXm-info_id').val()+"&name="+$('#jyXm-info_fname').val();
+		}
+		else{
+			window.location.href="jyXmFb-info-input.do?xmid="+"&name="+$('#jyXm-info_fname').val();
+		}
+	}
+
+	function fbjl(){
+		GET_FBinfo();
+
+	}
+
+	<%--$(document).ready(function () {--%>
+		<%--$("#Btn_toFeibiao_name").click(function () {--%>
+			<%--$('#documentForm').submitForm({--%>
+
+				<%--url: "${scopePrefix}/sckf/jyXmFb-info-input.do",--%>
+				<%--dataType: "json",--%>
+<%--//				callback: function (data) {--%>
+<%--//					endFileUpload();--%>
+<%--//					data = eval("(" + data + ")");--%>
+<%--//					alert(data.Content);--%>
+<%--//					if (data.Result > 0) {--%>
+<%--//						location.href = data.Redirect;--%>
+<%--//					}--%>
+<%--//				},--%>
+<%--//				before: function () {--%>
+<%--//					startFileUpload();--%>
+<%--//					var errMsg = "";--%>
+<%--//				}--%>
+			<%--}).submit();--%>
+		<%--});--%>
+
+	<%--}--%>
+
+	function GET_FBinfo(){
+		$.ajax({
+			url : '${scopePrefix}/sckf/jyXmFb-info-savefb.do?xmid=${model.fid}',
+			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+			type:'POST',
+			dataType:'json',
+			async: false,
+			data:{
+				fname:$('#jyXm-info_fname').val(),
+				fkbdate:$('#jyXm-info_fkbdate').val(),
+				ffuzeren:$('#jyXm-info_ffuzeren_text').val(),
+				//$('jyXm-info_ffuzeren_text').val(),
+			},
+			success : function(data) {
+				alert("数据传递成功！");
+				//var a=eval("["+data+"]");
+				getFbdata();
+				//window.location.href="jyXmFb-info-input.do";
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+				alert(XMLHttpRequest.status);
+				alert(XMLHttpRequest.readyState);
+				alert(textStatus);
+			}
+			<%--error: function () {--%>
+				<%--alert("获取AJAX数据失败！");--%>
+				<%--error: function(XMLHttpRequest, textStatus, errorThrown) {--%>
+					<%--alert(XMLHttpRequest.status);--%>
+					<%--alert(XMLHttpRequest.readyState);--%>
+					<%--alert(textStatus);--%>
+				<%--},--%>
+				<%--window.location.href="jyXmFb-info-input.do?xmid=${model.fid}";--%>
+			<%--}--%>
+		});
+	}
+
+
+
+	function FBstatus_btn(val) {
+		if (val == "是") {
+			var Btn_toProject=document.getElementById("Btn_Toproject");
+			var Btn_toFeibiao=document.getElementById("Btn_toFeibiao_name");
+			Btn_toProject.style.visibility='hidden';
+			Btn_toFeibiao.style.visibility='visible';
+
+		}
+		else{
+			var Btn_toProject=document.getElementById("Btn_Toproject");
+			var Btn_toFeibiao=document.getElementById("Btn_toFeibiao_name");
+			Btn_toProject.style.visibility='visible';
+			Btn_toFeibiao.style.visibility='hidden';
+		}
+	}
+
+
+
 </script>
 <style type="text/css">
 .form-horizontal .control-label{ width:120px;}
@@ -286,12 +385,20 @@ label{ font-size:12px;}
 												<input id="jyXm-info_fkbdate" type="text" name="fkbdate"
 													value="${model.fkbdate}" size="40" class="text "
 													style="background-color:white;cursor:default; width: 100px;">
+
+												<fmt:formatDate value="${item.deploymentTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+
 												<span class="add-on"
 													style="padding-top: 2px; padding-bottom: 2px;"><i
 													class="icon-calendar time"></i></span>
 											</div>
 										</div>
-									</div> 
+									</div>
+
+
+									<fmt:formatDate value="${item.deploymentTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+
+
 									<div class="row-fluid">
 										<label class="control-label" for="jyXm-info_fzblqdate"><spring:message
 												code="jyXm-info.jyXm-info.input.fzblqdate" text="领取中标通知书" /></label>
@@ -315,7 +422,7 @@ label{ font-size:12px;}
 									code="jyXm-info.jyXm-info.input.ffuzeren" text="主办人" /></label>
 							<div class="controls">
 									<input
-										id="ryBxRecord-info_ffuzeren_text" type="text"
+										id="jyXm-info_ffuzeren" type="text"
 										value="${model.ffuzeren}" disabled class=" "
 										style="width: 100px;" > <span id="fzhubanrentel"></span>
 							</div>
@@ -544,7 +651,7 @@ label{ font-size:12px;}
 										<div class="controls">
 											<input id="jyXm-info_fscale" type="text" name="fscale"
 												value="${model.fscale}" size="" class="text " minlength=""
-												maxlength="">
+												maxlength="" readonly>
 										</div>
 									</div>
 								</div>
@@ -1255,20 +1362,24 @@ label{ font-size:12px;}
 										</div>
 									</div>
 
-									<div class="span5">
-										<label class="control-label" for="jyXm-info_ftbzjsfdc"><spring:message
-												code="jyXm-info.jyXm-info.input.ftbzjsfdc" text="是否废标" /></label>
-										<div class="controls">
-											<select class="form-control" id="jyXm-info_ffbstatus"
-													name="ffbstatus" value="${model.ffbstatus}" class=" " >
-												<option value=""></option>
-												<option value="是"
-														<c:if test="${model.ffbstatus=='是'}"> selected="selected"  </c:if>>是</option>
-												<option value="否"
-														<c:if test="${model.ffbstatus=='无'}"> selected="selected"  </c:if>>否</option>
-											</select>
-										</div>
-									</div>
+									<%--<div class="span5">--%>
+										<%--<label class="control-label" for="jyXm-info_ftbzjsfdc"><spring:message--%>
+												<%--code="jyXm-info.jyXm-info.input.ftbzjsfdc" text="是否废标" /></label>--%>
+										<%--<div class="controls">--%>
+											<%--<select class="form-control" id="jyXm-info_ffbstatus"--%>
+													<%--name="ffbstatus" value="${model.ffbstatus}" class=" "  onclick="FBstatus_btn(value)">--%>
+												<%--<option value=""></option>--%>
+												<%--<option value="是"--%>
+														<%--<c:if test="${model.ffbstatus=='是'}"> selected="selected"  </c:if>>是</option>--%>
+												<%--<option value="否"--%>
+														<%--<c:if test="${model.ffbstatus=='无'}"> selected="selected"  </c:if>>否</option>--%>
+
+											<%--</select>--%>
+										<%--</div>--%>
+									<%--</div>--%>
+
+
+
 								</div>
 								
 								
@@ -1409,9 +1520,46 @@ label{ font-size:12px;}
 								</div>
 							</div>
 						</article>
-						
-					<button class="btn btn-block btn-warning" style="height:50px; margin-bottom:40px;" type="button" onclick="xmyj()">转换成项目</button> 
+
+
+
+
+				<article class="m-widget">
+					<header class="header">
+						<h4 class="title">
+							<p>废标记录</p>
+						</h4>
+						<div class="ctrl">
+							<a class="btn"><i id="jyxm-infoFormIcon_feibiaojilu"
+											  class="icon-chevron-up"></i></a>
+						</div>
+					</header>
+					<div id="feibiaoshu" class="content content-inner" style="padding-bottom:20px;">
+						<div class="row-fluid">
+
+							<label class="control-label" for="jyXm-info_ftbzjsfdc"><spring:message
+									code="jyXm-info.jyXm-info.input.ftbzjsfdc" text="是否废标" /></label>
+							<div class="controls">
+								<select class="form-control" id="jyXm-info_ffbstatus"
+										name="ffbstatus" value="${model.ffbstatus}" class=" " onchange="FBstatus_btn(this.value)" >
+									<option value=""></option>
+									<option value="是"
+											<c:if test="${model.ffbstatus=='是'}"> selected="selected"  </c:if>> 是 </option>
+									<option value="否"
+											<c:if test="${model.ffbstatus=='无'}"> selected="selected"  </c:if>>否</option>
+								</select>
+							</div>
+
+						</div>
+
 					</div>
+				</article>
+
+				<button  id="Btn_Toproject" name="Btn_toproject_name" class="btn btn-block btn-warning" style="height:50px;  margin-bottom:40px; visibility:visible;" type="button" onclick="xmyj()">转换成项目</button>
+
+				<button  id="Btn_toFeibiao_name"  name="Btn_toFeibiao_name" class="btn btn-block btn-warning" style="height:50px;  margin-bottom:40px; visibility:hidden;" type="button" onclick="fbjl()">生成废标记录</button>
+
+			</div>
 				</div>
 			</form>
 		</section>
