@@ -183,12 +183,11 @@
 						<button class="btn btn-small a-insert"
 							onclick="location.href='jyXm-info-input.do'">新建</button>
 					</region:region-permission>
-					<!--  <region:region-permission permission="jyXm-info:delete">
-		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
-		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
-		</div> -->
-				</div>
+					<region:region-permission permission="jyXm-info:delete">
+		  				<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
+					</region:region-permission>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
+		</div>
 			</article>
 			<div class="pull-right">
 				每页显示 <select class="m-page-size">
