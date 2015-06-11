@@ -17,6 +17,9 @@ import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
+import com.xthena.sckf.domain.JyXm;
+import com.xthena.sckf.domain.JyXmYj;
+import com.xthena.sckf.manager.JyXmManager;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.HtMapUtil;
 import com.xthena.util.JsonResponseUtil;
@@ -24,6 +27,7 @@ import com.xthena.util.JyXmMapUtil;
 import com.xthena.util.PjXmMapUtil;
 import com.xthena.gcgl.domain.PjXm;
 import com.xthena.gcgl.manager.PjXmManager;
+import com.xthena.sckf.manager.JyXmYjManager;
 import com.xthena.jl.manager.JlDeptManager;
 
 import org.hibernate.Criteria;
@@ -46,7 +50,12 @@ public class PjXmController {
     
     @Autowired
     private JlDeptManager jlDeptManager;
-    
+
+    @Autowired
+    private JyXmYjManager jyXmYjManager;
+
+    @Autowired
+    private JyXmManager jyXmManager;
     @PostConstruct
     public void intRmMap(){
     	PjXmMapUtil.initRyMap(pjXmManager);
@@ -162,7 +171,37 @@ public class PjXmController {
         return "gcgl/pjXm-info-list1";
     }
 
-    
+
+
+    @RequestMapping("jyXmYj-info-inputforShenpi")
+    public String inputforShenpi(@RequestParam(value = "id", required = false) Long id,@RequestParam(value = "taskId",
+            required = false) String taskid,
+                        Model model) {
+        PjXm pjXm= new PjXm();
+        if (taskid != null) {
+            JyXmYj jyXmYj = jyXmYjManager.loadJyXmyj(taskid);
+            model.addAttribute("jyxmyj", jyXmYj);
+            Long xmid= jyXmYj.getFxmid();
+            JyXm jyXm = jyXmManager.get(xmid);
+            String xmname= jyXm.getFname();
+            pjXm.setFxmname(xmname);
+        }
+
+        model.addAttribute("model", pjXm);
+        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
+        model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
+        model.addAttribute("htMap", HtMapUtil.getHtMap());
+
+        if(taskid!=null) {
+            jyXmYjManager.completetask(taskid);
+        }
+
+        return "gcgl/jyXmYj-info-inputforShenpi";
+    }
+
+
+
+
     @RequestMapping("pjXm-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,@RequestParam(value = "type", required = false) String type,
             Model model) {
@@ -289,7 +328,7 @@ public class PjXmController {
         
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
-       
+
         return "redirect:/gcgl/pjXm-info-list.do";
     }
     
