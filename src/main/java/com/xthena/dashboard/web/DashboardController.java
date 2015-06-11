@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -60,7 +61,10 @@ public class DashboardController {
 
         model.addAttribute("cmsArticles", commNews);
         model.addAttribute("processKeyName", processKeyName);
-        String hql = "select commRemind from CommRemind commRemind where commRemind.fremindtime< ? and commRemind.fremindry= ? and ( commRemind.fstatus='未提醒' or commRemind.fstatus='已提醒' or commRemind.fstatus='已忽略' or commRemind.fstatus='已延迟')";
+        String hql = "select commRemind from CommRemind commRemind" +
+                " where commRemind.fremindtime < ?" +
+                " and commRemind.fremindry = ?" +
+                " and (commRemind.fstatus='未提醒' or commRemind.fstatus='已提醒' or commRemind.fstatus='已忽略' or commRemind.fstatus='已延迟')";
         model.addAttribute("remindList", commRemindManager.find(hql, new Date(), Long.valueOf(userId)));
 
         return "dashboard/dashboard";
@@ -78,6 +82,16 @@ public class DashboardController {
         return "comm/comm-news-info";
     }
 
+    @ResponseBody
+    @RequestMapping("get-remind-list")
+    public Object remindList() {
+
+        String userId = SpringSecurityUtils.getCurrentUserId();
+        String hql = "select commRemind from CommRemind commRemind where commRemind.fremindtime< ? and commRemind.fremindry= ? and ( commRemind.fstatus='未提醒' or commRemind.fstatus='已提醒' or commRemind.fstatus='已忽略' or commRemind.fstatus='已延迟')";
+        List remindList = commRemindManager.find(hql, new Date(), Long.valueOf(userId));
+
+        return remindList;
+    }
 
     // ~ ==================================================
     @Resource
