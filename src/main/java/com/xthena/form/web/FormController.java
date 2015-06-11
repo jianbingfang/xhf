@@ -54,7 +54,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * 电子表单与流程集成的地方.
- * 
+ *
  * @author Lingo
  */
 @Controller
@@ -289,23 +289,25 @@ public class FormController {
      */
     @RequestMapping("form-viewTaskForm")
     public String viewTaskForm(@RequestParam("taskId") String taskId,
-            Model model, RedirectAttributes redirectAttributes)
+                               Model model, RedirectAttributes redirectAttributes)
             throws Exception {
         TaskService taskService = processEngine.getTaskService();
         Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
 
         if (task == null) {
             messageHelper.addFlashMessage(redirectAttributes, "任务不存在");
-
             return "redirect:/bpm/workspace-listPersonalTasks.do";
         }
 
         FormService formService = processEngine.getFormService();
         String taskFormKey = formService.getTaskFormKey(
                 task.getProcessDefinitionId(), task.getTaskDefinitionKey());
+
+
         FormTemplate formTemplate = formTemplateManager.get(Long
                 .parseLong(taskFormKey));
         model.addAttribute("formTemplate", formTemplate);
+
 
         FormInfo formInfo = new FormInfo();
         formInfo.setTaskId(taskId);
@@ -315,6 +317,7 @@ public class FormController {
                 .find("from BpmConfOperation where bpmConfNode.bpmConfBase.processDefinitionId=? and bpmConfNode.code=?",
                         task.getProcessDefinitionId(),
                         task.getTaskDefinitionKey());
+
 
         for (BpmConfOperation bpmConfOperation : bpmConfOperations) {
             formInfo.getButtons().add(bpmConfOperation.getValue());
