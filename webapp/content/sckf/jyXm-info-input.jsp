@@ -54,7 +54,40 @@
 		});
 		choseDiv();
 	});
-	
+
+	$(document).ready(function () {
+		$("#Btn_Toproject").click(function () {
+			$('#documentForm').submitForm({
+				url: "${scopePrefix}/sckf/jyXmJy-info-savefb.do?xmid=${model.fid}",
+				contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+				type:'POST',
+				dataType:'json',
+				async: false,
+//				data:{
+//					fname:$('#jyXm-info_fname').val(),          // 项目名称
+//					fjsdw:$('#jyXm-info_fjsdw').val(), 		    // 业主单位
+//					ffuzeren:$('#ryBxRecord-info_userName_text').val(), //总监
+//					ftze: $('#jyXm-info_ftze').val(), // 投资额
+//					fscale: $('#jyXm-info_fscale').val(), //规模
+//					faddress: $('#jyXm-info_fprovince').val()+$('#jyXm-info_fcity').val(),//地址
+//					fyijiaostatus:$('#jyXmYj-info_fyijiaostatus').val(), // 移交状态
+//				},
+//				callback: function (data) {
+//					endFileUpload();
+//					data = eval("(" + data + ")");
+//					alert(data.Content);
+//					if (data.Result > 0) {
+//						location.href = data.Redirect;
+//					}
+//				},
+//				before: function () {
+//					startFileUpload();
+//					var errMsg = "";
+//				}
+			}).submit();
+		});
+	});
+
 	function showUploadDiv(inputName){
 		uploadInput=inputName;
 		showUpload();
@@ -125,11 +158,55 @@
 	function changeffuzerentel(){
 		$('#fzhubanrentel').html($('#jyXm-info_ffuzerentel').val());
 	}
-	
+
+
+
 	function xmyj(){
-		window.location.href="jyXmYj-info-input.do?xmid=${model.fid}";
+			document.forms[1].action="jyXmYj-info-input.do";
+			document.forms[1].submit();
+		}
+
+	function GET_XMinfo(){
+		$.ajax({
+			url : '${scopePrefix}/sckf/jyXmJy-info-savefb.do?xmid=${model.fid}',
+			contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+			type:'POST',
+			dataType:'json',
+			async: false,
+			data:{
+				fname:$('#jyXm-info_fname').val(),          // 项目名称
+				fjsdw:$('#jyXm-info_fjsdw').val(), 		    // 业主单位
+				ffuzeren:$('#ryBxRecord-info_userName_text').val(), //总监
+				ftze: $('#jyXm-info_ftze').val(), // 投资额
+				fscale: $('#jyXm-info_fscale').val(), //规模
+				faddress: $('#jyXm-info_fprovince').val()+$('#jyXm-info_fcity').val(),//地址
+				fyijiaostatus:$('#jyXmYj-info_fyijiaostatus').val(), // 移交状态
+			},
+			success : function(data) {
+				alert("数据传递成功！");
+				//var a=eval("["+data+"]");
+				getFbdata();
+				//window.location.href="jyXmFb-info-input.do";
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+				alert(XMLHttpRequest.status);
+				alert(XMLHttpRequest.readyState);
+				alert(textStatus);
+			}
+		});
 	}
 
+	function getXMinfo()
+	{
+		var value=$("#jyXm-info_id").val();
+		if(value!=""){
+			window.location.href="jyXmYj-info-input.do?xmid="+$('#jyXm-info_id').val()+"&name="+$('#jyXm-info_fname').val();
+		}
+		else{
+			window.location.href="jyXmYj-info-input.do?xmid="+"&name="+$('#jyXm-info_fname').val();
+		}
+	}
 	function getFbdata()
 	{
 		var value=$("#jyXm-infoForm").val();
@@ -146,28 +223,8 @@
 
 	}
 
-	<%--$(document).ready(function () {--%>
-		<%--$("#Btn_toFeibiao_name").click(function () {--%>
-			<%--$('#documentForm').submitForm({--%>
 
-				<%--url: "${scopePrefix}/sckf/jyXmFb-info-input.do",--%>
-				<%--dataType: "json",--%>
-<%--//				callback: function (data) {--%>
-<%--//					endFileUpload();--%>
-<%--//					data = eval("(" + data + ")");--%>
-<%--//					alert(data.Content);--%>
-<%--//					if (data.Result > 0) {--%>
-<%--//						location.href = data.Redirect;--%>
-<%--//					}--%>
-<%--//				},--%>
-<%--//				before: function () {--%>
-<%--//					startFileUpload();--%>
-<%--//					var errMsg = "";--%>
-<%--//				}--%>
-			<%--}).submit();--%>
-		<%--});--%>
 
-	<%--}--%>
 
 	function GET_FBinfo(){
 		$.ajax({
@@ -194,15 +251,6 @@
 				alert(XMLHttpRequest.readyState);
 				alert(textStatus);
 			}
-			<%--error: function () {--%>
-				<%--alert("获取AJAX数据失败！");--%>
-				<%--error: function(XMLHttpRequest, textStatus, errorThrown) {--%>
-					<%--alert(XMLHttpRequest.status);--%>
-					<%--alert(XMLHttpRequest.readyState);--%>
-					<%--alert(textStatus);--%>
-				<%--},--%>
-				<%--window.location.href="jyXmFb-info-input.do?xmid=${model.fid}";--%>
-			<%--}--%>
 		});
 	}
 
@@ -239,6 +287,8 @@ label{ font-size:12px;}
 	<%@include file="../comm/comm-upload.jsp"%>
 		<!-- start of main -->
 		<section id="m-main" class="span12">
+
+
 			<form id="jyXm-infoForm" method="post" action="jyXm-info-save.do"
 				class="form-horizontal">
 				<c:if test="${model != null}">

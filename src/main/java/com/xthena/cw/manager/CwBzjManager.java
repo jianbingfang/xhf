@@ -31,10 +31,10 @@ public class CwBzjManager extends HibernateEntityDao<CwBzj> {
 	
 	@Transactional
 	public void newBzj(CwBzj cwBzj){
-		   
- 	    BpmProcess bpmProcess = bpmProcessManager.findUniqueBy("name", "投标保证金申请");
-        String processDefinitionId = bpmProcess.getBpmConfBase()
-                .getProcessDefinitionId();
+
+		BpmProcess bpmProcess = bpmProcessManager.findUniqueBy("name", "投标保证金申请");
+		String processDefinitionId = bpmProcess.getBpmConfBase()
+				.getProcessDefinitionId();
 
         IdentityService identityService = processEngine.getIdentityService();
         identityService.setAuthenticatedUserId(SpringSecurityUtils
@@ -45,28 +45,24 @@ public class CwBzjManager extends HibernateEntityDao<CwBzj> {
         save(cwBzj);
         
         ProcessInstance processInstance = processEngine.getRuntimeService()
-                .startProcessInstanceById(processDefinitionId, cwBzj.getFid().toString(),
-                        processParameters);
-        cwBzj.setFtaskid(processInstance.getProcessInstanceId());
-    	save(cwBzj);
+				.startProcessInstanceById(processDefinitionId, cwBzj.getFid().toString(),
+						processParameters);
+		cwBzj.setFtaskid(processInstance.getProcessInstanceId());
+		save(cwBzj);
     	
 	}
 	
-	
-	
-	
+
 	
 	@Transactional
-	public void dealBzj(CwBzj cwBzj,String taskId){
-      
-		 BeanMapper beanMapper=new BeanMapper();
-		 CwBzj dest  = get(cwBzj.getFid());
-	     beanMapper.copy(cwBzj, dest);
-	     Map<String, Object> processParameters = new HashMap<String, Object>();
-	     processParameters.put("fshenpistatus", dest.getFstatus());
-	     save(dest);
-	     processEngine.getTaskService().complete(taskId,processParameters);
-    	
+	 public void dealBzj(CwBzj cwBzj,String taskId){
+		BeanMapper beanMapper=new BeanMapper();
+		CwBzj dest  = get(cwBzj.getFid());
+		beanMapper.copy(cwBzj, dest);
+		Map<String, Object> processParameters = new HashMap<String, Object>();
+		processParameters.put("fshenpistatus", dest.getFstatus());
+		save(dest);
+		processEngine.getTaskService().complete(taskId,processParameters);
 	}
 
 
@@ -74,7 +70,5 @@ public class CwBzjManager extends HibernateEntityDao<CwBzj> {
 		String processInstanceId=processEngine.getTaskService().createTaskQuery().taskId(taskId).singleResult().getProcessInstanceId();
     	return findUniqueBy("ftaskid", processInstanceId);
 	}
-	
-	
 	
 }

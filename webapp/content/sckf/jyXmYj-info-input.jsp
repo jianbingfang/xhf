@@ -80,14 +80,15 @@ function loadEditor(){
 				    </div>
 				  </div>
 				  
+
 				   <div class="control-group">
 				    <label class="control-label" for="jyXmYj-info_fzj"><spring:message code="jyXmYj-info.jyXmYj-info.input.fzj" text="总监"/></label>
 					<div class="controls">
 				      		<div class="input-append ryPicker">
 									<input id="ryBxRecord-info_fzj" type="hidden"
-										value="${model.fzj}" name="fzj"> <input
+										value="${xm.fzj}" name="fzj"> <input
 										id="ryBxRecord-info_userName_text" type="text"
-										value="${ryMap[model.fzj].fname}" disabled class=" "
+										value="${ryMap[xm.fzj].fname}" disabled class=" "
 										style="width: 100px;" > <span class="add-on"
 										style="padding-top: 2px; padding-bottom: 2px;"><i
 										class="icon-user"></i></span>
@@ -110,10 +111,11 @@ function loadEditor(){
 			      <div class="control-group">
 				    <label class="control-label" for="jyXmYj-info_fyijiaostatus"><spring:message code="jyXmYj-info.jyXmYj-info.input.fyijiaostatus" text="地址"/></label>
 					<div class="controls">
-						<input  type="text" readonly="readonly" value="${xmMap[item.fxmid].fprovince}${xmMap[item.fxmid].fcity}" size=""  >
+						<input  type="text" readonly="readonly" value="${xm.fprovince}${xm.fcity}" size=""  >
 				    </div>
 				  </div>
-			      	<div class="control-group">
+
+		      	<div class="control-group">
 				    <label class="control-label" for="jyXmYj-info_fyijiaostatus"><spring:message code="jyXmYj-info.jyXmYj-info.input.fyijiaostatus" text="移交状态"/></label>
 					<div class="controls">
 				      	 <select class="form-control" id="jyXmYj-info_fyijiaostatus" name="fyijiaostatus" value="${model.fyijiaostatus}" class=" " >
@@ -121,7 +123,8 @@ function loadEditor(){
 					    	 	<option value="已移交"  <c:if test="${model.fyijiaostatus}=='已移交'}"> selected="selected"  </c:if>>已移交</option>
 					 	</select>
 				    </div>
-				  </div>
+				</div>
+
 			      <div class="control-group">
 				    <label class="control-label" for="jyXmYj-info_ffankui"><spring:message code="jyXmYj-info.jyXmYj-info.input.ffankui" text="反馈"/></label>
 					<div class="controls">
@@ -135,6 +138,7 @@ function loadEditor(){
 				      	<textarea id="jyXmYj-info_ftbry"  name="ftbry"  class="form-control" rows="6"  style="width: 560px" class="text  "  minlength="" maxlength="500">${model.ftbry}</textarea>
 				    </div>
 				  </div>
+
 					 <div class="control-group">
 					    <div class="controls">
 					      <button type="submit" class="btn a-submit"><spring:message code='core.input.save' text='保存'/></button>

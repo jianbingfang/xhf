@@ -10,7 +10,6 @@ public class FormEngine {
     private FormModel deploy(String json) {
         FormModel formModel = formModelParser.parse(json);
         formModelCache.setFormModel(formModel);
-
         return formModel;
     }
 
@@ -21,7 +20,6 @@ public class FormEngine {
             String json = formModelSourceFetcher.getFormModelSource(id);
             formModel = this.deploy(json);
         }
-
         return formModel;
     }
 

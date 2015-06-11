@@ -3,6 +3,8 @@ package com.xthena.sckf.manager;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.xthena.core.mapper.BeanMapper;
+import com.xthena.cw.domain.CwBzj;
 import com.xthena.sckf.domain.JyXm;
 import com.xthena.sckf.domain.JyXmYj;
 import com.xthena.security.util.SpringSecurityUtils;
@@ -66,9 +68,28 @@ public class JyXmYjManager extends HibernateEntityDao<JyXmYj> {
         String dest_id=dest.getFid().toString();
         RuntimeService runtimeService=processEngine.getRuntimeService();
         ProcessInstance processInstance = runtimeService.startProcessInstanceById(processDefinitionId, dest_id,
-                        processParameters);
+                processParameters);
         dest.setFtaskid(processInstance.getProcessInstanceId());
     	save(dest);
 	}
+
+
+    @Transactional
+    public void dealxmyj(JyXmYj jyXmYj,String taskId){
+        BeanMapper beanMapper=new BeanMapper();
+        JyXmYj dest  = get(jyXmYj.getFid());
+        beanMapper.copy(jyXmYj, dest);
+        Map<String, Object> processParameters = new HashMap<String, Object>();
+        //processParameters.put("fshenpistatus", dest.getFstatus());
+        save(dest);
+        processEngine.getTaskService().complete(taskId);
+        //processEngine.getTaskService().complete(taskId, processParameters);
+    }
+
+    public JyXmYj loadJyXmyj(String taskId) {
+        String processInstanceId=processEngine.getTaskService().createTaskQuery().taskId(taskId).singleResult().getProcessInstanceId();
+        return findUniqueBy("ftaskid", processInstanceId);
+    }
+
 
 }

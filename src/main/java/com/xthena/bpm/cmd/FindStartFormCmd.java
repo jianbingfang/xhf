@@ -17,6 +17,8 @@ import org.activiti.engine.impl.task.TaskDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public class FindStartFormCmd implements Command<FormInfo> {
     private static Logger logger = LoggerFactory
             .getLogger(FindStartFormCmd.class);
@@ -57,7 +59,23 @@ public class FindStartFormCmd implements Command<FormInfo> {
 
             ActivityImpl startActivity = processDefinitionEntity.getInitial();
 
-            if (startActivity.getOutgoingTransitions().size() != 1) {
+            List<PvmTransition> Trans=startActivity.getOutgoingTransitions();
+
+            //debug
+            for(PvmTransition activityImpl:Trans){
+                System.out.println("当前任务：" + activityImpl.getProperty("name"));
+            }
+//                id = activityImpl.getId();
+//                if(activitiId.equals(id)){
+//                    System.out.println("当前任务："+activityImpl.getProperty("name"));
+//                    return nextTaskDefinition(activityImpl, activityImpl.getId(),"${iscorrect==1}");
+////              System.out.println(taskDefinition.getCandidateGroupIdExpressions().toArray()[0]);
+////              return taskDefinition;
+//                }
+
+
+
+                if (startActivity.getOutgoingTransitions().size() != 1) {
                 throw new IllegalStateException(
                         "start activity outgoing transitions cannot more than 1, now is : "
                                 + startActivity.getOutgoingTransitions().size());
@@ -68,6 +86,7 @@ public class FindStartFormCmd implements Command<FormInfo> {
             PvmActivity targetActivity = pvmTransition.getDestination();
 
             if (!"userTask".equals(targetActivity.getProperty("type"))) {
+
                 logger.info("first activity is not userTask, just skip");
             } else {
                 String taskDefinitionKey = targetActivity.getId();

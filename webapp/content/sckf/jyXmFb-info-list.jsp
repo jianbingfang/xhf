@@ -5,16 +5,19 @@
 <!doctype html>
 <html lang="zh">
 
+
+
 <head>
-<%@include file="/common/meta.jsp"%>
-<title><spring:message code="dev.jyXmFb-info.list.title" text="列表" /></title>
-<%@include file="/common/s.jsp"%>
+	<%@include file="/common/meta.jsp"%>
+	<title><spring:message code="dev.jyXmFb-info.list.title"
+						   text="废标项目 - 项目投标 - 市场开发" /></title>
+	<%@include file="/common/s.jsp"%>
 
 <link type="text/css" rel="stylesheet"
 href="${scopePrefix}/s/xthena/xmpicker/xmpicker.css">
 <script type="text/javascript"
 src="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.js">
-	</script>
+</script>
 
 	  <script type="text/javascript">
 		  var config = {
@@ -41,7 +44,7 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
-    
+
     createjyxmPicker({
 		modalId : 'xmPicker',
 		url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
@@ -51,6 +54,8 @@ $(function() {
     </script>
   </head>
 
+<script type="text/javascript"
+		src="${scopePrefix}/s/xthena/js/linkage.js"></script>
   <body>
     <%@include file="/header.jsp"%>
 
@@ -80,13 +85,13 @@ $(function() {
 
 	  <article class="m-blank">
 	    <div class="pull-left">
-		  <region:region-permission permission="jyXmFb-info:create">
-		  	 <button class="btn btn-small a-insert" onclick="loadJyXm()">新建</button>
-		  </region:region-permission>
+		  <%--<region:region-permission permission="jyXmFb-info:create">--%>
+		  	 <%--<button class="btn btn-small a-insert" onclick="loadJyXm()">新建</button>--%>
+		  <%--</region:region-permission>--%>
 		  <region:region-permission permission="jyXmFb-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

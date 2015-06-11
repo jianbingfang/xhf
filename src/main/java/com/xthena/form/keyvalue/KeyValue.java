@@ -7,6 +7,7 @@ public interface KeyValue {
 
     Record findByRef(String ref);
 
+
     void save(Record record);
 
     void removeByCode(String code);

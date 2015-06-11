@@ -64,7 +64,7 @@ public class XhfCommPlainController {
             @RequestParam Map<String, Object> parameterMap,
             RedirectAttributes redirectAttributes) {
            xhfCommonPlainManager.savePlain(xhfCommonPlain,String.valueOf(parameterMap.get("taskId")));
-        return "dashboard/dashboard";
+        return "redirect:/dashboard/dashboard.do";
     }
 
     

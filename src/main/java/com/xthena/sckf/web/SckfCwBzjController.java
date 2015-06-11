@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.xthena.api.user.UserConnector;
@@ -37,6 +38,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 @Controller
 @RequestMapping("sckf")
@@ -195,8 +198,6 @@ public class SckfCwBzjController {
 			cwBzjManager.newBzj(dest);
 		}
 
-		
-
 		messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
 				"保存成功");
 
@@ -281,8 +282,8 @@ public class SckfCwBzjController {
 	@RequestMapping("sckf-cwBzj-info-shenpi")
 	public String shenpi(@ModelAttribute CwBzj cwBzj,
 			@RequestParam Map<String, Object> parameterMap,@RequestParam(value = "taskId", required = false) String taskId,
-			RedirectAttributes redirectAttributes) {
-		
+			RedirectAttributes redirectAttributes, HttpServletRequest request) {
+
 		if(cwBzj.getFstatus().equals("通过")){
 			cwBzj.setFmemo4("经营部领导已通过");
 		}else{
@@ -293,7 +294,7 @@ public class SckfCwBzjController {
 		//同时发起流程
 		cwBzjManager.dealBzj(cwBzj, taskId);
 
-		 return "dashboard/dashboard";
+		return "redirect:/dashboard/dashboard.do";
 	}
 	
 	
@@ -330,7 +331,7 @@ public class SckfCwBzjController {
 		//同时发起流程
 		cwBzjManager.dealBzj(cwBzj, taskId);
 
-		 return "dashboard/dashboard";
+		 return "redirect:/dashboard/dashboard.do";
 	}
 	
 	
@@ -358,7 +359,7 @@ public class SckfCwBzjController {
 		//同时发起流程
 		cwBzjManager.dealBzj(cwBzj, taskId);
 
-		 return "dashboard/dashboard";
+		 return "redirect:/dashboard/dashboard.do";
 	}
 	
 	

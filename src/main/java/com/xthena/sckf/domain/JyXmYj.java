@@ -1,19 +1,18 @@
 package com.xthena.sckf.domain;
 // default package
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
+
 import static javax.persistence.GenerationType.IDENTITY;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import java.util.Date;
 
 
 /**
  * JyXmYj entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name="t_jy_xm_yj"
+@Table(name="t_jy_xm_yj1"
     ,catalog="xhf"
 )
 
@@ -29,6 +28,9 @@ public class JyXmYj  implements java.io.Serializable {
      private String ftbry;
      private String ftaskid;
      private Long fzj;
+     private Date fcreatedate;
+     private Long foprator;
+
 
 
     // Constructors
@@ -39,13 +41,16 @@ public class JyXmYj  implements java.io.Serializable {
 
     
     /** full constructor */
-    public JyXmYj(String fyijiaostatus, String ffankui, Long fxmid, String ftbry, String ftaskid, Long fzj) {
+    public JyXmYj(String fyijiaostatus, String ffankui, Long fxmid, String ftbry, String ftaskid, Long fzj, Date
+            fcreatedate,Long foprator) {
         this.fyijiaostatus = fyijiaostatus;
         this.ffankui = ffankui;
         this.fxmid = fxmid;
         this.ftbry = ftbry;
         this.ftaskid = ftaskid;
         this.fzj = fzj;
+        this.fcreatedate= fcreatedate;
+        this.foprator=foprator;
     }
 
    
@@ -61,7 +66,7 @@ public class JyXmYj  implements java.io.Serializable {
     public void setFid(Long fid) {
         this.fid = fid;
     }
-    
+
     @Column(name="fyijiaostatus", length=64)
 
     public String getFyijiaostatus() {
@@ -121,12 +126,26 @@ public class JyXmYj  implements java.io.Serializable {
     public void setFzj(Long fzj) {
         this.fzj = fzj;
     }
-   
 
 
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "fcreatedate", length = 10)
+    public Date getFcreatedate() {
+        return this.fcreatedate;
+    }
+    public void setFcreatedate(Date fcreatedate) {
+        this.fcreatedate = fcreatedate;
+    }
 
 
+    @Column(name = "foprator")
+    public Long getFoprator() {
+        return this.foprator;
+    }
+    public void setFoprator(Long foprator) {
+        this.foprator = foprator;
+    }
 
 
 

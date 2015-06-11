@@ -245,11 +245,9 @@ public class JyXm  implements java.io.Serializable {
     }
     
     @Column(name="ftype", length=64)
-
     public String getFtype() {
         return this.ftype;
     }
-    
     public void setFtype(String ftype) {
         this.ftype = ftype;
     }
@@ -1157,8 +1155,6 @@ public class JyXm  implements java.io.Serializable {
 
     public void setFfbstatus(String ffbstatus){this.ffbstatus= ffbstatus;}
 
-
-    // 添加废标原因
     @Column(name="ffbreason", length =64)
     public String getFfbreason(){return this.ffbreason; }
     public void setFfbreason(String ffbreason){this.ffbreason= ffbreason;}

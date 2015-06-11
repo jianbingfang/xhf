@@ -184,7 +184,7 @@ public class CwBzjController {
 		//同时发起流程
 		cwBzjManager.dealBzj(cwBzj, taskId);
 
-		 return "dashboard/dashboard";
+		 return "redirect:/dashboard/dashboard.do";
 	}
 	
 	

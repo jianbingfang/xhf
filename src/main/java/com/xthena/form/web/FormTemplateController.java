@@ -53,7 +53,6 @@ public class FormTemplateController {
             FormTemplate formTemplate = formTemplateManager.get(id);
             model.addAttribute("model", formTemplate);
         }
-
         return "form/form-template-input";
     }
 

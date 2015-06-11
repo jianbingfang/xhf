@@ -63,15 +63,11 @@ public class CommHtManager extends HibernateEntityDao<CommHt> {
 	
 	@Transactional
 	public void dealBzj(CommHt commHt,String taskId){
-      
 		 BeanMapper beanMapper=new BeanMapper();
 		 CommHt dest  = get(commHt.getFid());
 	     beanMapper.copy(commHt, dest);
-	     
 	     save(dest);
-        
      	 processEngine.getTaskService().complete(taskId);
-    	
 	}
 
 

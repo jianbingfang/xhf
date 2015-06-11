@@ -7,7 +7,7 @@ import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.sckf.domain.JyXm;
-import com.xthena.sckf.domain.JyxmFb;
+import com.xthena.sckf.domain.JyXmFb;
 import com.xthena.sckf.manager.JyXmFbManager;
 import com.xthena.sckf.manager.JyXmManager;
 import com.xthena.util.CommRyMapUtil;
@@ -66,7 +66,7 @@ public class JyXmFbController {
 //    public String input(@RequestParam(value = "id", required = false) Long id,@RequestParam(value = "xmid", required = false) Long xmid,
 //            Model model) {
 //        if (id != null) {
-//            JyxmFb jyXmFb = jyXmFbManager.get(id);
+//            JyXmFb jyXmFb = jyXmFbManager.get(id);
 //            model.addAttribute("model", jyXmFb);
 //        }
 //        if(xmid!=null) {
@@ -83,14 +83,14 @@ public class JyXmFbController {
                         @RequestParam (value="name", required = false)String name,  Model model) {
 
         if (id != null) {
-            JyxmFb  jyXmFb = jyXmFbManager.get(id);
+            JyXmFb jyXmFb = jyXmFbManager.get(id);
             model.addAttribute("model", jyXmFb);
         }
         else
         {
-            String hql = "select jyXmFb from JyxmFb jyXmFb where jyXmFb.xiangmuName=?";
-            List<JyxmFb> jyxmFb= jyXmFbManager.find(hql, name);
-            model.addAttribute("model", jyxmFb.get(0));
+            String hql = "select jyXmFb from JyXmFb jyXmFb where jyXmFb.xiangmuName=?";
+            List<JyXmFb> jyXmFb = jyXmFbManager.find(hql, name);
+            model.addAttribute("model", jyXmFb.get(0));
         }
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         return "sckf/jyXmFb-info-input";
@@ -102,10 +102,10 @@ public class JyXmFbController {
     @ResponseBody
     public String saveFb(@RequestParam(value = "xmid", required = false) Long xmid,
                         Model model, HttpServletRequest request) {
-        JyxmFb jyXmFb=null;
+        JyXmFb jyXmFb=null;
         Date date=null;
         SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        jyXmFb=new JyxmFb();
+        jyXmFb=new JyXmFb();
         model.addAttribute("model", jyXmFb);
         String fname=request.getParameter("fname");
         String fkbdate=request.getParameter("fkbdate");
@@ -139,7 +139,7 @@ public class JyXmFbController {
 //    @RequestMapping("jyXmFb-info-input")
 //    public String input(@RequestParam(value = "id", required = false) Long id,@RequestParam(value = "xmid", required = false) Long xmid,
 //                        Model model) {
-//        JyxmFb jyXmFb=null;
+//        JyXmFb jyXmFb=null;
 //        Date date=null;
 //        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm");
 //        if (id != null) {
@@ -147,7 +147,7 @@ public class JyXmFbController {
 //        }
 //        else
 //        {
-//            jyXmFb=new JyxmFb();
+//            jyXmFb=new JyXmFb();
 //        }
 //        model.addAttribute("model", jyXmFb);
 //        return "sckf/jyXmFb-info-input";
@@ -155,10 +155,10 @@ public class JyXmFbController {
 
 
     @RequestMapping("jyXmFb-info-save")
-    public String save(@ModelAttribute JyxmFb jyXmFb,
+    public String save(@ModelAttribute JyXmFb jyXmFb,
             @RequestParam Map<String, Object> parameterMap,
             RedirectAttributes redirectAttributes) {
-        JyxmFb dest = null;
+        JyXmFb dest = null;
         Long id = jyXmFb.getFid();
 
         if (id != null) {
@@ -183,7 +183,7 @@ public class JyXmFbController {
     @RequestMapping("jyXmFb-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
             RedirectAttributes redirectAttributes) {
-        List<JyxmFb> jyxmfbs = jyXmFbManager.findByIds(selectedItem);
+        List<JyXmFb> jyxmfbs = jyXmFbManager.findByIds(selectedItem);
 
         jyXmFbManager.removeAll(jyxmfbs);
 

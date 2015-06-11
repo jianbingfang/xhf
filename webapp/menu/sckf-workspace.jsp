@@ -92,7 +92,7 @@
              <li><a href="${scopePrefix}/sckf/jyXmFb-info-list.do"><i class="icon-user"></i>废标项目</a></li>
              <li><a href="${scopePrefix}/sckf/jyXm-info-tongzhishu-list.do"><i class="icon-user"></i>中标通知书记录</a></li>
 			 <li><a href="${scopePrefix}/sckf/xzZjOrder-info-list.do"><i class="icon-user"></i>证件预定</a></li>
-			<%--  <li><a href="${scopePrefix}/xz/xzZjDxlist-info-list.do"><i class="icon-user"></i>证件预定表</a></li> --%>
+			  <li><a href="${scopePrefix}/xz/xzZjDxlist-info-list.do"><i class="icon-user"></i>证件预定表</a></li>
 			<li><a href="${scopePrefix}/sckf/xzZjlist-info.do"><i class="icon-user"></i>证件表</a></li>
 			<%--  <li><a href="${scopePrefix}/sckf/jyXm-info-list.do?filter_EQS_fstate=投标文件评审"><i class="icon-user"></i>投标文件评审</a></li>
 			 <li><a href="${scopePrefix}/sckf/jyXm-info-list.do?filter_EQS_fstate=开标登记"><i class="icon-user"></i>开标登记</a></li> --%>

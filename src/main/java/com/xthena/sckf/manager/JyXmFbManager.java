@@ -4,7 +4,7 @@ import com.xthena.bpm.persistence.domain.BpmProcess;
 import com.xthena.bpm.persistence.manager.BpmProcessManager;
 import com.xthena.core.hibernate.HibernateEntityDao;
 import com.xthena.gcgl.manager.PjXmManager;
-import com.xthena.sckf.domain.JyxmFb;
+import com.xthena.sckf.domain.JyXmFb;
 import com.xthena.security.util.SpringSecurityUtils;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.ProcessEngine;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class JyXmFbManager extends HibernateEntityDao<JyxmFb> {
+public class JyXmFbManager extends HibernateEntityDao<JyXmFb> {
 
 
 
@@ -32,8 +32,8 @@ public class JyXmFbManager extends HibernateEntityDao<JyxmFb> {
     private BpmProcessManager bpmProcessManager;
 
     @Transactional
-    public void saveForFb(JyxmFb dest) {
-        BpmProcess bpmProcess = bpmProcessManager.findUniqueBy("name", "ÏîÄ¿ÒÆ½»");
+    public void saveForFb(JyXmFb dest) {
+        BpmProcess bpmProcess = bpmProcessManager.findUniqueBy("name", "ï¿½ï¿½Ä¿ï¿½Æ½ï¿½");
         String processDefinitionId = bpmProcess.getBpmConfBase()
                 .getProcessDefinitionId();
 
@@ -42,7 +42,7 @@ public class JyXmFbManager extends HibernateEntityDao<JyxmFb> {
                 .getCurrentUserId());
 
         Map<String, Object> processParameters = new HashMap<String, Object>();
-        //dest.setFyijiaostatus("ÒÑÉêÇë");
+
         save(dest);
 
         ProcessInstance processInstance = processEngine.getRuntimeService()

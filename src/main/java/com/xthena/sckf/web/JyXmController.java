@@ -203,7 +203,6 @@ public class JyXmController {
             model.addAttribute("model", jyXm);
         }
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
-
         return "sckf/jyXm-info-toubiao";
     }
 
@@ -279,7 +278,6 @@ public class JyXmController {
         JyXm dest = null;
 
         Long id = jyXm.getFid();
-
         if (id != null) {
             dest = jyXmManager.get(id);
             beanMapper.copy(jyXm, dest);
@@ -410,23 +408,18 @@ public class JyXmController {
                        @RequestParam Map<String, Object> parameterMap,
                        RedirectAttributes redirectAttributes) {
         JyXm dest = null;
-
         Long id = jyXm.getFid();
-
         if (id != null) {
             dest = jyXmManager.get(id);
             beanMapper.copy(jyXm, dest);
         } else {
             dest = jyXm;
-
         }
         dest.setFtoubiaostatus("1");
         jyXmManager.save(dest);
         JyXmMapUtil.refreshRyMap(dest);
-
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
-
         return "redirect:/sckf/jyXm-info-list.do";
     }
 
