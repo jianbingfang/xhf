@@ -3,7 +3,7 @@
 <%-- <%pageContext.setAttribute("currentHeader", "dashboard");%>
 <%pageContext.setAttribute("currentMenu", "dashboard");%> --%>
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="myApp" ng-init="scopePrefix='${scopePrefix}'">
 
 <head>
     <%@include file="/common/meta.jsp" %>
@@ -24,92 +24,6 @@
             $(document).delegate('.m-widget-2 .header .ctrl .icon-chevron-up', 'click', widget2ToggleContent);
             $(document).delegate('.m-widget-2 .header .ctrl .icon-chevron-down', 'click', widget2ToggleContent);
         });
-
-        function done(fid) {
-            $.ajax({
-                url: '${scopePrefix}/comm/remind-done-ajax.do',
-                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                type: 'POST',
-                async: false,
-                data: {
-                    fid: fid,
-                },
-                success: function (data) {
-                    if (data = "ok") {
-                        $('#remind' + fid).remove();
-                    }
-                },
-                error: function () {
-                    alert("保存失败！");
-                }
-            });
-        }
-
-        function showRemind(fid) {
-            $.ajax({
-                url: '${scopePrefix}/comm/remind-info-ajax.do',
-                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                type: 'POST',
-                async: false,
-                data: {
-                    fid: fid
-                },
-                success: function (data) {
-                    alert(data.fname);
-                },
-                error: function () {
-                    alert("保存失败！");
-                }
-            });
-        }
-
-        function ignore(fid) {
-            $.ajax({
-                url: '${scopePrefix}/comm/remind-ignore-ajax.do',
-                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                type: 'POST',
-                async: false,
-                data: {
-                    fid: fid
-                },
-                success: function (data) {
-                    if (data = "ok") {
-                        $('#remind' + fid).remove();
-                    }
-                },
-                error: function () {
-                    alert("保存失败！");
-                }
-            });
-        }
-
-        var delayFid;
-        function delay() {
-            $.ajax({
-                url: '${scopePrefix}/comm/remind-delay-ajax.do',
-                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
-                type: 'POST',
-                async: false,
-                data: {
-                    fid: delayFid,
-                    nextRemindDate: $('#hrJiaban-info_freminddate').val()
-                },
-                success: function (data) {
-                    if (data = "ok") {
-                        $('#remind' + delayFid).remove();
-                    }
-                },
-                error: function () {
-                    alert("保存失败！");
-                }
-            });
-            $('.modal').modal('hide');
-        }
-
-        function delayShow(fid) {
-            delayFid = fid;
-            $('.modal').modal();
-        }
 
     </script>
     <style type="text/css">
@@ -179,9 +93,12 @@
             margin-bottom: 0px;
         }
     </style>
+
+    <script src="${ctx}/s/angular/angular.js"></script>
+    <script src="${ctx}/s/remind/bzjjn.js"></script>
 </head>
 
-<body>
+<body ng-controller="remindListCtrl">
 <%@include file="/header/dashboard.jsp" %>
 <div id="jlfDiv" class="modal hide fade">
     <div class="modal-dialog">
@@ -203,7 +120,8 @@
 
                         <div class="controls">
                             <div class="input-append datetimepicker date" style="padding-left: 0px;">
-                                <input id="hrJiaban-info_freminddate" type="text" size="40" class="text "
+                                <input id="hrJiaban-info_freminddate" ng-model="nextRemindDate" type="text" size="40"
+                                       class="text "
                                        style="background-color:white;cursor:default; width: 175px;">
                                 <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
                                         class="icon-calendar"></i></span>
@@ -214,7 +132,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button id="uploadPickerBtnSelect" onclick="delay()"
+                <button id="uploadPickerBtnSelect" ng-click="delay()"
                         type="button" class="btn btn-primary">保存
                 </button>
             </div>
@@ -276,22 +194,20 @@
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <c:forEach items="${remindList}" var="item">
-                        <tr id="remind${item.fid}">
-                            <td><a href="${item.fremindurl}">${item.fname}</a></td>
-                                <%-- <td>${item.fremindcontent}</td> --%>
-                            <td><fmt:formatDate value="${item.fremindtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                            <td>
-                                <a href="javascript:void(0)" onclick="ignore(${item.fid})"
-                                   class="btn btn-small btn-success">忽略</a>&nbsp;
-                                <a href="javascript:void(0)" onclick="delayShow(${item.fid})"
-                                   class="btn btn-small btn-success">延迟提醒</a>&nbsp;
-                                <a href="javascript:void(0)" onclick="done(${item.fid})"
-                                   class="btn btn-small btn-success">不再提醒</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
+                    <tbody ng-init="queryRemindList()">
+                    <tr ng-repeat="item in remindList" id="remind{{item.fid}}">
+                        <td><a href="{{item.fremindurl}}">{{item.fname}}</a></td>
+                        <%-- <td>${item.fremindcontent}</td> --%>
+                        <td>{{item.fremindtime | date: 'yyyy-MM-dd'}}</td>
+                        <td>
+                            <a href="javascript:void(0)" ng-click="ignore(item.fid)"
+                               class="btn btn-small btn-success">忽略</a>&nbsp;
+                            <a href="javascript:void(0)" ng-click="delayShow(item.fid)"
+                               class="btn btn-small btn-success">延迟提醒</a>&nbsp;
+                            <a href="javascript:void(0)" ng-click="done(item.fid)"
+                               class="btn btn-small btn-success">不再提醒</a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

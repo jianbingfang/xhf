@@ -1,44 +1,33 @@
-package  com.xthena.common.web;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import javax.servlet.http.HttpServletResponse;
+package com.xthena.common.web;
 
 import com.xthena.api.user.UserConnector;
 import com.xthena.auth.domain.Role;
 import com.xthena.auth.manager.RoleManager;
-
-
+import com.xthena.common.domain.CommRemindConf;
+import com.xthena.common.manager.CommRemindConfManager;
 import com.xthena.core.hibernate.PropertyFilter;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
-
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 import com.xthena.group.manager.OrgDepartmentManager;
 import com.xthena.hr.manager.HrGwbmManager;
-
-import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.JsonResponseUtil;
-import com.xthena.common.domain.CommRemindConf;
-import com.xthena.common.manager.CommRemindConfManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("comm")
@@ -48,22 +37,22 @@ public class CommRemindConfController {
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
     private MessageHelper messageHelper;
-    
-    
+
+
     @Autowired
     private OrgDepartmentManager orgDepartmentManager;
-    
-    
+
+
     @Autowired
     private HrGwbmManager hrGwbmManager;
-    
-    
+
+
     @Autowired
     private RoleManager roleManager;
 
     @RequestMapping("commRemindconf-info-list")
     public String list(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap, Model model) {
+                       @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = commRemindconfManager.pagedQuery(page, propertyFilters);
@@ -75,45 +64,61 @@ public class CommRemindConfController {
 
     @RequestMapping("commRemindconf-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,
-            Model model) {
+                        Model model) {
         if (id != null) {
             CommRemindConf commRemindconf = commRemindconfManager.get(id);
             model.addAttribute("model", commRemindconf);
         }
 
+        String[] remindNameList = {
+//                "保证金缴纳"
+//                , "总监到场"
+//                , "法人到场"
+//                , "开标时间"
+//                , "中标通知书领取"
+//                , "合同起草及谈判"
+//                , "退保证金"
+                "审车时间"
+                , "车辆续保提醒"
+                , "车辆维保提醒"
+                , "监理进度提醒"
+        };
+
+        model.addAttribute("remindNameList", remindNameList);
+
         return "comm/commRemindconf-info-input";
     }
-	
+
     @RequestMapping("loadDept")
-    public void loadDept(HttpServletResponse response){
-    	JsonResponseUtil.write(response,orgDepartmentManager.getAll());
+    public void loadDept(HttpServletResponse response) {
+        JsonResponseUtil.write(response, orgDepartmentManager.getAll());
     }
-    
+
     @RequestMapping("loadHrGwbm")
-    public void loadHrGwbm(HttpServletResponse response){
-    	JsonResponseUtil.write(response,hrGwbmManager.getAll());
+    public void loadHrGwbm(HttpServletResponse response) {
+        JsonResponseUtil.write(response, hrGwbmManager.getAll());
     }
-    
+
     @RequestMapping("loadRole")
-    public void loadRole(HttpServletResponse response){
-    	List<HashMap<String,Object>> roleMapList=new ArrayList<HashMap<String, Object>>();
-    	List<Role> roleList=roleManager.getAll();
-    	for(Role role:roleList){
-    		HashMap<String,Object> roleMap=new HashMap<String,Object>();
-    		roleMap.put("id",role.getId());
-    		roleMap.put("name",role.getName());
-    		roleMapList.add(roleMap);
-    	}
-    	JsonResponseUtil.write(response,roleMapList);
+    public void loadRole(HttpServletResponse response) {
+        List<HashMap<String, Object>> roleMapList = new ArrayList<HashMap<String, Object>>();
+        List<Role> roleList = roleManager.getAll();
+        for (Role role : roleList) {
+            HashMap<String, Object> roleMap = new HashMap<String, Object>();
+            roleMap.put("id", role.getId());
+            roleMap.put("name", role.getName());
+            roleMapList.add(roleMap);
+        }
+        JsonResponseUtil.write(response, roleMapList);
     }
-    
-    
+
+
     @RequestMapping("commRemindconf-info-save")
     public String save(@ModelAttribute CommRemindConf commRemindconf,
-            @RequestParam Map<String, Object> parameterMap,
-            RedirectAttributes redirectAttributes) {
-       
-    	CommRemindConf dest = null;
+                       @RequestParam Map<String, Object> parameterMap,
+                       RedirectAttributes redirectAttributes) {
+
+        CommRemindConf dest = null;
 
         Long id = commRemindconf.getFid();
 
@@ -134,7 +139,7 @@ public class CommRemindConfController {
 
     @RequestMapping("commRemindconf-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
-            RedirectAttributes redirectAttributes) {
+                         RedirectAttributes redirectAttributes) {
         List<CommRemindConf> commRemindconfs = commRemindconfManager.findByIds(selectedItem);
 
         commRemindconfManager.removeAll(commRemindconfs);
@@ -147,8 +152,8 @@ public class CommRemindConfController {
 
     @RequestMapping("commRemindconf-info-export")
     public void export(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap,
-            HttpServletResponse response) throws Exception {
+                       @RequestParam Map<String, Object> parameterMap,
+                       HttpServletResponse response) throws Exception {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = commRemindconfManager.pagedQuery(page, propertyFilters);
