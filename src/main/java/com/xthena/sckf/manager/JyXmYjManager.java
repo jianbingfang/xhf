@@ -2,7 +2,6 @@ package com.xthena.sckf.manager;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.cw.domain.CwBzj;
 import com.xthena.sckf.domain.JyXm;
@@ -21,6 +20,8 @@ import org.activiti.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+
 
 @Service
 public class JyXmYjManager extends HibernateEntityDao<JyXmYj> {
@@ -75,13 +76,13 @@ public class JyXmYjManager extends HibernateEntityDao<JyXmYj> {
 
 
     @Transactional
-    public void dealxmyj(JyXmYj jyXmYj,String taskId){
-        BeanMapper beanMapper=new BeanMapper();
-        JyXmYj dest  = get(jyXmYj.getFid());
-        beanMapper.copy(jyXmYj, dest);
-        Map<String, Object> processParameters = new HashMap<String, Object>();
-        //processParameters.put("fshenpistatus", dest.getFstatus());
-        save(dest);
+    public void completetask(String taskId){
+//        BeanMapper beanMapper=new BeanMapper();
+//        JyXmYj dest  = get(jyXmYj.getFid());
+//        beanMapper.copy(jyXmYj, dest);
+//        Map<String, Object> processParameters = new HashMap<String, Object>();
+//        //processParameters.put("fshenpistatus", dest.getFstatus());
+//        save(dest);
         processEngine.getTaskService().complete(taskId);
         //processEngine.getTaskService().complete(taskId, processParameters);
     }
