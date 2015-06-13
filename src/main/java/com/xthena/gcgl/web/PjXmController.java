@@ -184,18 +184,25 @@ public class PjXmController {
             Long xmid= jyXmYj.getFxmid();
             JyXm jyXm = jyXmManager.get(xmid);
             String xmname= jyXm.getFname();
+//            Long zongjianid=jyXm.getFzj();
+//            String tze=jyXm.getFtze().toString();
+//            String scale=jyXm.getFscale();
+//            String address=jyXm.getFprovince()+jyXm.getFcity()+jyXm.getFkbaddress();
             pjXm.setFxmname(xmname);
+//            pjXm.setFxmzongjianid(zongjianid);
+//            pjXm.setFxmmoney(tze);
+//            pjXm.setFjggm(scale);
+//            pjXm.setFxmaddr(address);
         }
 
         model.addAttribute("model", pjXm);
         model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         model.addAttribute("htMap", HtMapUtil.getHtMap());
-
+       // 结束项目移交流程
         if(taskid!=null) {
             jyXmYjManager.completetask(taskid);
         }
-
         return "gcgl/jyXmYj-info-inputforShenpi";
     }
 
