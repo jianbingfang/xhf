@@ -65,15 +65,15 @@ $(function() {
 	  </article>
 
 	  <article class="m-blank">
-	    <div class="pull-left">
-		  <region:region-permission permission="hrYwxjn-info:create">
-		  <button class="btn btn-small a-insert" onclick="location.href='hrYwxjn-info-input.do'">新建</button>
-		  </region:region-permission>
-		  <region:region-permission permission="hrYwxjn-info:delete">
-		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
-		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
-		</div>
+	    <%--<div class="pull-left">--%>
+		  <%--<region:region-permission permission="hrYwxjn-info:create">--%>
+		  <%--<button class="btn btn-small a-insert" onclick="location.href='hrYwxjn-info-input.do'">新建</button>--%>
+		  <%--</region:region-permission>--%>
+		  <%--<region:region-permission permission="hrYwxjn-info:delete">--%>
+		  <%--<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>--%>
+		  <%--</region:region-permission>--%>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
+		<%--</div>--%>
 
 		<div class="pull-right">
 		  每页显示

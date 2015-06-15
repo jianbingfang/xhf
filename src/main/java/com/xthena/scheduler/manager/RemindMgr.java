@@ -41,8 +41,10 @@ public class RemindMgr {
     @Autowired
     private ApplicationContext applicationContext;
 
-    @Scheduled(cron = "0/60 * * * * ?")
+    @Scheduled(fixedRate = 1000 * 60)
     private void exRemindMgr() throws SQLException {
+
+        System.out.println(">>>>>>>> Scheduled task <<<<<<<<<");
 
         //查出需要提醒的数据 插入到待提醒列表
         List<CommRemindConf> commRemindConfs = commRemindConfManager.getAll();

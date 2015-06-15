@@ -77,5 +77,5 @@ app.controller('remindListCtrl', ['$scope', '$rootScope', '$http', function ($sc
 
     setInterval(function () {
         $scope.queryRemindList();
-    }, 60 * 60 * 1000);
+    }, 10 * 1000);
 }]);
