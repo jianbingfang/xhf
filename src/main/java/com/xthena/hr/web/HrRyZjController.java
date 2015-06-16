@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.xthena.api.user.UserConnector;
@@ -29,7 +30,7 @@ import com.xthena.util.DateJsonValueProcessor;
 import com.xthena.util.JsonResponseUtil;
 import com.xthena.xz.domain.XzZj;
 import com.xthena.xz.manager.XzZjDxlistManager;
-
+import javax.servlet.http.HttpServletRequest;
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
 
@@ -41,6 +42,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -316,17 +318,26 @@ public class HrRyZjController {
     
 
     @RequestMapping("hrRyZj-info-remove")
-    public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
-            RedirectAttributes redirectAttributes) {
-        List<HrRyZj> hrRyZjs = hrRyZjManager.findByIds(selectedItem);
+	@ResponseBody
+    public String remove(@ModelAttribute HrRyZj hrRyZj,
+						 RedirectAttributes redirectAttributes, HttpServletRequest request) {
 
+        String[] selectitems= request.getParameter("selecteditems").split("@");
+
+		List<Long> Selectedlist= new ArrayList<>();
+
+		for(int i=0; i<selectitems.length; i++){
+			 Long cur=Long.parseLong(selectitems[i]);
+			Selectedlist.add(cur);
+		}
+
+		List<HrRyZj> hrRyZjs = hrRyZjManager.findByIds(Selectedlist);
         hrRyZjManager.removeAll(hrRyZjs);
-
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
-		//hrRyZj-info-list
-		return "redirect:/hr/hrRyZj-treelist.do";
-        //return "redirect:/hr/hrRyZj-info-list.do";
+
+		return null;
+		//return "redirect:/hr/hrRyZj-info-list";
     }
 
     @RequestMapping("hrRyZj-info-export")
