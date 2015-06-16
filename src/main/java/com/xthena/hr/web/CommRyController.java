@@ -110,7 +110,6 @@ public class CommRyController {
 			// commRy.setFobjyear(getGongl(new Date(), commRy.getFrzdate()));
 			model.addAttribute("model", commRy);
 		}
-
 		// 岗位下拉
 		List<OrgDepartment> orgDepartments = orgDepartmentManager.getAll();
 		HashMap<Long, String> orgDeptHashMap = new HashMap<Long, String>();

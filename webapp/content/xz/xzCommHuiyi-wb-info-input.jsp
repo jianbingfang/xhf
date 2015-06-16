@@ -45,7 +45,7 @@
 				</header>
 				<div class="content content-inner">
 					<form id="xzCommHuiyi-infoForm" method="post"
-						action="xzCommHuiyi-info-save.do" class="form-horizontal">
+						action="xzCommHuiyi-wb-info-save.do" class="form-horizontal">
 						<c:if test="${model != null}">
 							<input id="xzCommHuiyi-info_id" type="hidden" name="fid"
 								value="${model.fid}">
@@ -70,7 +70,7 @@
 										style="padding-left: 0px;">
 										<input id="xzCommHuiyi-info_fhydate" type="text"
 											name="fhydate" value="${model.fhydate}" size="40"
-											class="text "
+											class="text required"
 											style="background-color:white;cursor:default; width: 175px;">
 										<span class="add-on"
 											style="padding-top: 2px; padding-bottom: 2px;"><i
@@ -123,7 +123,7 @@
 									<textarea id="xzCommHuiyi-info_fcanyurenyuan"
 										name="fcanyurenyuan" class="form-control" rows="3"
 										style="width: 560px" class="text  " minlength=""
-										maxlength="4,000">${model.fcanyurenyuan}</textarea>
+										maxlength="4000">${model.fcanyurenyuan}</textarea>
 								</div>
 							</div>
 						</div>
@@ -135,7 +135,7 @@
 								<div class="controls">
 									<textarea id="xzCommHuiyi-info_fhycontent" name="fhycontent"
 										class="form-control" rows="6" style="width: 560px"
-										class="text  " minlength="" maxlength="4,000">${model.fhycontent}</textarea>
+										class="text  " minlength="" maxlength="4000">${model.fhycontent}</textarea>
 								</div>
 							</div>
 						</div>

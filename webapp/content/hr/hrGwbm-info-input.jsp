@@ -78,7 +78,7 @@
 								<div class="controls">
 									<input id="hrGwbm-info_fjobid" type="text" name="fname"
 										value="${model.fname}" size="" class="text required"
-										minlength="2" maxlength="14">
+										minlength="" maxlength="">
 								</div>
 							</div>
 							<div class="span5">
@@ -87,7 +87,7 @@
 								<div class="controls">
 									<input id="hrGwbm-info_fzpsl" type="text" name="fzpsl"
 										value="${model.fzpsl}<c:if test="${model.fzpsl==null}">0</c:if>" size="" class="number required"
-										minlength="1" maxlength="4">
+										minlength="" maxlength="">
 								</div>
 							</div>
 						</div>
@@ -115,7 +115,7 @@
 								<div class="controls">
 									<input id="hrGwbm-info_fdqsl" type="text" name="fdqsl"
 										value="${model.fdqsl}" size="" class="number"
-										minlength="1" maxlength="4">
+										minlength="" maxlength="">
 								</div>
 
 							</div>
@@ -173,7 +173,7 @@
 								<div class="controls">
 									<input id="hrGwbm-info_fyjsl" type="text" name="fyjsl"
 										value="${model.fyjsl}" size="" class="number "
-										minlength="1" maxlength="4">
+										minlength="" maxlength="">
 								</div>
 							</div>
 						</div>
@@ -193,7 +193,7 @@
 							<div class="controls">
 								<textarea name="fgwzz" id="hrGwbm-info_fgwzz" rows="6"
 									cols="1200" style="width: 560px" class="text required"
-									minlength="20" maxlength="500">${model.fgwzz}</textarea>
+									minlength="" maxlength="">${model.fgwzz}</textarea>
 							</div>
 						</div>
 						<div class="control-group">
@@ -202,7 +202,7 @@
 							<div class="controls">
 								<textarea name="fgwyq" id="hrGwbm-info_fgwyq" rows="6"
 									cols="1200" style="width: 560px" class="text required"
-									minlength="20" maxlength="500">${model.fgwyq}</textarea>
+									minlength="" maxlength="">${model.fgwyq}</textarea>
 							</div>
 						</div>
 

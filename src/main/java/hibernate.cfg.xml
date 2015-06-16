@@ -6,9 +6,10 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/xhf</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-      <mapping class="com.xthena.sckf.domain.TJyFbxmEntity"/>
+    <mapping class="com.xthena.sckf.domain.TJyFbxmEntity"/>
     <mapping resource="com/xthena/sckf/domain/TJyFbxmEntity.hbm.xml"/>
-    <!-- DB schema will be updated if needed -->
+      <mapping class="com.xthena.hr.domain.HrZhengjianinfoEntity"/>
+      <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>
