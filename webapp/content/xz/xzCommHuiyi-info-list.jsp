@@ -122,6 +122,9 @@
 										<td><a href="xzCommHuiyi-info-input.do?id=${item.fid}"
 											class="a-update"><spring:message code="core.list.edit"
 													text="${item.fhyzt}" /></a></td>
+
+
+
 										<td>${item.fhydate}</td>
 										<td>${item.fhycode}</td>
 										<td>${item.fzhuchir}</td>

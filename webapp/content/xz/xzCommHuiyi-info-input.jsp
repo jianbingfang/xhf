@@ -105,7 +105,7 @@
 										style="padding-left: 0px;">
 										<input id="xzCommHuiyi-info_fhydate" type="text"
 											name="fhydate" value="${model.fhydate}" size="40"
-											class="text "
+											class="text required"
 											style="background-color:white;cursor:default; width: 175px;">
 										<span class="add-on"
 											style="padding-top: 2px; padding-bottom: 2px;"><i
@@ -163,42 +163,10 @@
 									code="xzCommHuiyi-info.xzCommHuiyi-info.input.fcanyurenyuan"
 									text="参会人员" /></label>
 							<div class="controls">
-								<textarea id="hrPx-info_fzlmc" name="fpxnrzy"
+								<textarea id="hrPx-info_fzlmc" name="fcanyurenyuan"
 									class="form-control" rows="3" style="width: 560px"
-									class="text " minlength="20" maxlength="500">${model.fpxnrzy}</textarea>
-								<%-- <div class="span3">
-									<select multiple size="5" name="list1" id="list1"
-										style="width:250px ;height:160px">
-										<c:forEach items="${userNames}" var="item">
-											<option value="${item}">${item.fname}</option>
-										</c:forEach>
-									</select>
-								</div>
-								<div class="span1">
-									<div class="span12">
-										<input type="button" value=" >"
-											onclick="move(this.form.list1,this.form.list2)" name="B1"/>
-									</div>
-									<div class="span12">
-										<input type="button" value=" <"
-										onclick="move(this.form.list2,this.form.list1)" name="B2"/>
-									</div>
-									<div class="span12">
-										<input type="button" value=">>" 
-											onclick="moveall(this.form.list1,this.form.list2)" name="B3"/>
-									</div>
-									<div class="span12">
-										<input type="button" value="<<"
-		                                     onclick="moveall(this.form.list2,this.form.list1)" name="B4"/>
-									</div>
+									class="text " minlength="" maxlength="">${model.fcanyurenyuan}</textarea>
 
-								</div>
-								<div class="span3">
-									<select multiple size="5" name="list2" id="list2"
-										style="width:250px ;height:160px" value="s">
-
-									</select>
-								</div> --%>
 							</div>
 						</div>
 						<div class="control-group">
@@ -208,7 +176,7 @@
 							<div class="controls">
 								<textarea id="xzCommHuiyi-info_fhycontent" name="fhycontent"
 									class="form-control" rows="6" style="width: 560px"
-									class="text  " minlength="" maxlength="4,000">${model.fhycontent}</textarea>
+									class="text  " minlength="" maxlength="4000">${model.fhycontent}</textarea>
 							</div>
 						</div>
 						<div class="control-group">
@@ -218,7 +186,7 @@
 							<div class="controls">
 								<textarea id="xzCommHuiyi-info_fresult" name="fresult"
 									class="form-control" rows="6" style="width: 560px"
-									class="text  " minlength="" maxlength="4,000">${model.fresult}</textarea>
+									class="text  " minlength="" maxlength="4000">${model.fresult}</textarea>
 							</div>
 						</div>
 						<div class="control-group">

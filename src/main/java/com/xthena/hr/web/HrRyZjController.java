@@ -3,10 +3,7 @@ package  com.xthena.hr.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +17,10 @@ import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
-import com.xthena.hr.domain.CommRy;
-import com.xthena.hr.domain.HrLdht;
-import com.xthena.hr.domain.HrPzRy;
-import com.xthena.hr.domain.HrRyZj;
+import com.xthena.hr.domain.*;
 import com.xthena.hr.manager.CommRyManager;
 import com.xthena.hr.manager.HrRyZjManager;
+import com.xthena.hr.manager.HrZhengjianinfoManager;
 import com.xthena.jl.domain.JlFujian;
 //import com.xthena.jl.domain.JlFujianArray;
 import com.xthena.jl.manager.JlFujianManager;
@@ -64,7 +59,10 @@ public class HrRyZjController {
     
     @Autowired
     private XzZjDxlistManager xzZjDxlistManager;
-    
+
+	@Autowired
+	private HrZhengjianinfoManager hrZhengjianinfoManager;
+
     @RequestMapping("hrRyZj-info-list")
     public void list(@ModelAttribute Page page,@RequestParam(value = "ryid", required = false) Long ryid,
             @RequestParam Map<String, Object> parameterMap, Model model,HttpServletResponse response) {
@@ -104,14 +102,7 @@ public class HrRyZjController {
 				.buildFromMap(parameterMap);
 		List result = hrRyZjManager.find(hql.toString());
 		
-    	/*if (ryid != null) {
-				return "redirect:/hr/hrRyZj-info-input.do?ryid="+ryid;
-    	}*/
- 	/*model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
-        model.addAttribute("page", page);*/
-       /* model.addAttribute("result", result);*/
-		
-		
+
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");  
 		PrintWriter printWriter = null;
@@ -127,6 +118,9 @@ public class HrRyZjController {
 		
        // return result;
     }
+
+
+
 
     @RequestMapping("hrRyZj-treelist")
     public String treelist(@ModelAttribute Page page,
@@ -193,7 +187,20 @@ public class HrRyZjController {
 			
 		List result=commRyManager.find(hql.toString());
 		page.setTotalCount(result.size());
-		
+
+
+		// 下拉证书菜单
+		List<HrZhengjianinfoEntity> zhengjianinfoEntities=hrZhengjianinfoManager.getAll();
+		List<HashMap<String, Object>> deptList = new ArrayList<HashMap<String, Object>>();
+		for (HrZhengjianinfoEntity zhengjianinfoEntity : zhengjianinfoEntities) {
+			HashMap<String, Object> hashMap = new HashMap<String, Object>();
+			hashMap.put("fid", zhengjianinfoEntity.getFid());
+			hashMap.put("fname", zhengjianinfoEntity.getFname());
+			deptList.add(hashMap);
+		}
+
+		model.addAttribute("zjInfos", deptList);
+
     	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         model.addAttribute("page", page);
         model.addAttribute("hql",hql.toString());
@@ -208,7 +215,6 @@ public class HrRyZjController {
             model.addAttribute("model", hrPzRy);
         }
     	if (ryid != null) {
-
 			/*List<HrRyZj> hrLdhts = hrRyZjManager.findBy("userid", ryid);
 			if (!hrLdhts.isEmpty()) {
 				hrLdhts.get(0).setUserid(ryid);
@@ -217,9 +223,19 @@ public class HrRyZjController {
 			HrRyZj hrLdht = new HrRyZj();
 			hrLdht.setUserid(ryid);
 			model.addAttribute("model", hrLdht);
-			/*}*/
 		}
 
+       // 下拉证书菜单
+		List<HrZhengjianinfoEntity> zhengjianinfoEntities=hrZhengjianinfoManager.getAll();
+		List<HashMap<String, Object>> deptList = new ArrayList<HashMap<String, Object>>();
+		for (HrZhengjianinfoEntity zhengjianinfoEntity : zhengjianinfoEntities) {
+			HashMap<String, Object> hashMap = new HashMap<String, Object>();
+			hashMap.put("fid", zhengjianinfoEntity.getFid());
+			hashMap.put("fname", zhengjianinfoEntity.getFname());
+			deptList.add(hashMap);
+		}
+
+		model.addAttribute("zjInfos", deptList);
     	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         return "hr/hrRyZj-info-input";
     }
@@ -308,8 +324,9 @@ public class HrRyZjController {
 
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
-
-        return "redirect:/hr/hrRyZj-info-list.do";
+		//hrRyZj-info-list
+		return "redirect:/hr/hrRyZj-treelist.do";
+        //return "redirect:/hr/hrRyZj-info-list.do";
     }
 
     @RequestMapping("hrRyZj-info-export")

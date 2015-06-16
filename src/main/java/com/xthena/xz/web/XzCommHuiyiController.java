@@ -37,6 +37,7 @@ public class XzCommHuiyiController {
     private MessageHelper messageHelper;
     @Autowired
     private CommRyManager ryManager;
+
     @RequestMapping("xzCommHuiyi-info-list")
     public String list(@ModelAttribute Page page,
             @RequestParam Map<String, Object> parameterMap, Model model) {
@@ -44,9 +45,8 @@ public class XzCommHuiyiController {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = xzCommHuiyiManager.pagedQuery(page, propertyFilters);
-
         model.addAttribute("page", page);
-        model.addAttribute("userNames", ryManager.getAll());
+       // model.addAttribute("userNames", ryManager.getAll());
         return "xz/xzCommHuiyi-info-list";
     }
 
@@ -57,7 +57,7 @@ public class XzCommHuiyiController {
             XzCommHuiyi xzCommHuiyi = xzCommHuiyiManager.get(id);
             model.addAttribute("model", xzCommHuiyi);
         }
-        model.addAttribute("userNames", ryManager.getAll());
+       // model.addAttribute("userNames", ryManager.getAll());
         return "xz/xzCommHuiyi-info-input";
     }
 
@@ -124,7 +124,7 @@ public class XzCommHuiyiController {
         page = xzCommHuiyiManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("userNames", ryManager.getAll());
+        //model.addAttribute("userNames", ryManager.getAll());
         return "xz/xzCommHuiyi-wb-info-list";
     }
 
@@ -135,7 +135,7 @@ public class XzCommHuiyiController {
             XzCommHuiyi xzCommHuiyi = xzCommHuiyiManager.get(id);
             model.addAttribute("model", xzCommHuiyi);
         }
-        model.addAttribute("userNames", ryManager.getAll());
+       // model.addAttribute("userNames", ryManager.getAll());
         return "xz/xzCommHuiyi-wb-info-input";
     }
 

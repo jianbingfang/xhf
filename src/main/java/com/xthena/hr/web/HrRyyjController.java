@@ -16,6 +16,8 @@ import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
+import com.xthena.hr.domain.HrZhengjianinfoEntity;
+import com.xthena.hr.manager.HrZhengjianinfoManager;
 import com.xthena.sckf.domain.CommHt;
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.CommRyMapUtil;
@@ -45,7 +47,10 @@ public class HrRyyjController {
     
     @Autowired
     private HrRyZjManager hrRyZjManager; 
-    
+
+    @Autowired
+    private HrZhengjianinfoManager hrZhengjianinfoManager;
+
     @RequestMapping("hrRyyj-info-list")
     public String list(@ModelAttribute Page page,
             @RequestParam Map<String, Object> parameterMap, Model model) {
@@ -57,7 +62,38 @@ public class HrRyyjController {
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         return "hr/hrRyyj-info-list";
     }
-    
+
+
+    @RequestMapping("hrZhengjian-managelist")
+    public String HrZhengshu_ManageList(@ModelAttribute Page page,
+                       @RequestParam Map<String, Object> parameterMap, Model model) {
+        List<PropertyFilter> propertyFilters = PropertyFilter
+                .buildFromMap(parameterMap);
+        page = hrZhengjianinfoManager.pagedQuery(page, propertyFilters);
+        model.addAttribute("page", page);
+        return "hr/hrZhengjian-managelist";
+    }
+
+
+    @RequestMapping("hrZhengjian-info-input")
+    public String HrZhengshuinput(@RequestParam(value = "id", required = false) Long id,
+                        Model model) {
+        if (id != null)
+        {
+            HrZhengjianinfoEntity hrZhengjian = hrZhengjianinfoManager.get(id);
+            model.addAttribute("model", hrZhengjian);
+        }
+        else
+        {
+                HrZhengjianinfoEntity hrZhengjianinfoEntity = new HrZhengjianinfoEntity();
+                model.addAttribute("model", hrZhengjianinfoEntity);
+
+        }
+        return "hr/hrZhengjian-info-input";
+    }
+
+
+
 
     @RequestMapping("hrRyyj-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,@RequestParam(value = "ryid", required = false) Long ryid,
@@ -118,6 +154,25 @@ public class HrRyyjController {
     	JsonResponseUtil.write(response, hrRyZjManager.findBy("userid", id));
     }
 
+
+    @RequestMapping("hrZhengjian-info-save")
+    public String HrZhengjiansave(@ModelAttribute HrZhengjianinfoEntity hrZhengjian,
+                       @RequestParam Map<String, Object> parameterMap,
+                       RedirectAttributes redirectAttributes) {
+        HrZhengjianinfoEntity dest =null;
+        Long id = hrZhengjian.getFid();
+        if (id != null) {
+            dest = hrZhengjianinfoManager.get(id);
+            beanMapper.copy(hrZhengjian, dest);
+        } else {
+           // dest=new HrZhengjianinfoEntity();
+            dest = hrZhengjian;
+        }
+        hrZhengjianinfoManager.save(dest);
+        messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
+                "保存成功");
+        return "redirect:/hr/hrZhengjian-managelist.do";
+    }
     
     @RequestMapping("hrRyyj-info-save")
     public String save(@ModelAttribute HrRyyj hrRyyj,
@@ -141,6 +196,21 @@ public class HrRyyjController {
 
         return "redirect:/hr/hrRyyj-info-list.do";
     }
+
+
+    @RequestMapping("hrZhengjian-info-remove")
+    public String HrZhengjianremove(@RequestParam("selectedItem") List<Long> selectedItem,
+                         RedirectAttributes redirectAttributes) {
+        List<HrZhengjianinfoEntity> hrZhengjianinfoEntity = hrZhengjianinfoManager.findByIds(selectedItem);
+
+        hrZhengjianinfoManager.removeAll(hrZhengjianinfoEntity);
+
+        messageHelper.addFlashMessage(redirectAttributes,
+                "core.success.delete", "删除成功");
+
+        return "redirect:/hr/hrZhengjian-managelist.do";
+    }
+
 
     @RequestMapping("hrRyyj-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,

@@ -127,6 +127,10 @@
 	function showImg(url) {
 		$('#scanFileid').attr('src', url);
 	}
+
+
+
+
 	function loadScanFile(zjid) {
 		editZjid = zjid;
 
@@ -240,61 +244,102 @@
 								<div class="control-group">
 									<label class="control-label" for="hrRyZj-info_fname"><spring:message
 											code="hrRyZj-info.hrRyZj-info.input.fname" text="证书名称" /></label>
+
 									<div class="controls">
 										<select class="form-control" id="hrRyZj-info_name"
-											name="fname" value="${model.fname}" class=" required">
-											<option value="身份证"
-												<c:if test="${model.fname=='身份证'}"> selected="selected"  </c:if>>身份证</option>
-											<option value="毕业证"
-												<c:if test="${model.fname=='毕业证'}"> selected="selected"  </c:if>>毕业证</option>
-											<option value="监理工程师注册证"
-												<c:if test="${model.fname=='监理工程师注册证'}"> selected="selected"  </c:if>>监理工程师注册证</option>
-											<option value="监理工程师资格证"
-												<c:if test="${model.fname=='监理工程师资格证'}"> selected="selected" </c:if>>监理工程师资格证</option>
-											<option value="一级建造师注册证"
-												<c:if test="${model.fname=='一级建造师注册证'}"> selected="selected"  </c:if>>一级建造师注册证</option>
-											<option value="一级建造师资格证"
-												<c:if test="${model.fname=='一级建造师资格证'}"> selected="selected"  </c:if>>一级建造师资格证</option>
-											<option value="一级建造师继续教育证"
-												<c:if test="${model.fname=='一级建造师继续教育证'}"> selected="selected"  </c:if>>一级建造师继续教育证</option>
-											<option value="二级建造师注册证"
-												<c:if test="${model.fname=='二级建造师注册证'}"> selected="selected"  </c:if>>二级建造师注册证</option>
-											<option value="二级建造师资格证"
-												<c:if test="${model.fname=='二级建造师资格证'}"> selected="selected"  </c:if>>二级建造师资格证</option>
-											<option value="造价师注册证"
-												<c:if test="${model.fname=='造价师注册证'}"> selected="selected" </c:if>>造价师注册证</option>
-											<option value="造价师资格证"
-												<c:if test="${model.fname=='造价师资格证'}"> selected="selected"  </c:if>>造价师资格证</option>
-											<option value="造价师继续教育证"
-												<c:if test="${model.fname=='造价师继续教育证'}"> selected="selected"  </c:if>>造价师继续教育证</option>
-											<option value="交通部监理工程师资格证"
-												<c:if test="${model.fname=='交通部监理工程师资格证'}"> selected="selected"  </c:if>>交通部监理工程师资格证</option>
-											<option value="交通部监理工程师注册证"
-												<c:if test="${model.fname=='交通部监理工程师注册证'}"> selected="selected"  </c:if>>交通部监理工程师注册证</option>
-											<option value="专业监理工程师证"
-												<c:if test="${model.fname=='专业监理工程师证'}"> selected="selected" </c:if>>专业监理工程师证</option>
-											<option value="高级工程师职称证"
-												<c:if test="${model.fname=='高级工程师职称证'}"> selected="selected"  </c:if>>高级工程师职称证</option>
-											<option value="中级工程师职称证"
-												<c:if test="${model.fname=='中级工程师职称证'}"> selected="selected"  </c:if>>中级工程师职称证</option>
-											<option value="初级工程师职称证"
-												<c:if test="${model.fname=='初级工程师职称证'}"> selected="selected"  </c:if>>初级工程师职称证</option>
-											<option value="监理员证"
-												<c:if test="${model.fname=='监理员证'}"> selected="selected"  </c:if>>监理员证</option>
-											<option value="资料员证"
-												<c:if test="${model.fname=='资料员证'}"> selected="selected" </c:if>>资料员证</option>
-											<option value="见证员证"
-												<c:if test="${model.fname=='见证员证'}"> selected="selected"  </c:if>>见证员证</option>
-											<option value="安全员证"
-												<c:if test="${model.fname=='安全员证'}"> selected="selected"  </c:if>>安全员证</option>
-											<option value="造价员证"
-												<c:if test="${model.fname=='造价员证'}"> selected="selected"  </c:if>>造价员证</option>
-											<option value="试验员证"
-												<c:if test="${model.fname=='试验员证'}"> selected="selected"  </c:if>>试验员证</option>
-											<option value="建筑节能培训证"
-												<c:if test="${model.fname=='建筑节能培训证'}"> selected="selected" </c:if>>建筑节能培训证</option>
+												name="fname" value="${model.fname}" class=" required">
+
+											<c:forEach items="${zjInfos}" var="item">
+												<option value="${item.fname}"
+													${item.fname==model.fname? 'selected' : ''}>${item.fname}</option>
+											</c:forEach>
+
+
+
+											<%--<c:forEach items="${zjInfos}" var="item">--%>
+												<%--<option value="${item.fid}" selected}>--%>
+														<%--${item.fid==model.fjobid? 'selected' : ''}>${item.fgwname}</option>--%>
+													<%--${item.fname}--%>
+												<%--</option>--%>
+											<%--</c:forEach>--%>
 										</select>
 									</div>
+
+									<%--<div class="controls">--%>
+										<%--<select class="form-control" id="hrRyZj-info_name"--%>
+											<%--name="fname" value="${model.fname}" class=" required">--%>
+											<%--<option value="身份证"--%>
+												<%--<c:if test="${model.fname=='身份证'}"> selected="selected"  </c:if>>身份证</option>--%>
+											<%--<option value="毕业证"--%>
+												<%--<c:if test="${model.fname=='毕业证'}"> selected="selected"  </c:if>>毕业证</option>--%>
+											<%--<option value="监理工程师注册证"--%>
+												<%--<c:if test="${model.fname=='监理工程师注册证'}"> selected="selected"  </c:if>>监理工程师注册证</option>--%>
+											<%--<option value="监理工程师资格证"--%>
+												<%--<c:if test="${model.fname=='监理工程师资格证'}"> selected="selected" </c:if>>监理工程师资格证</option>--%>
+											<%--<option value="一级建造师注册证"--%>
+												<%--<c:if test="${model.fname=='一级建造师注册证'}"> selected="selected"  </c:if>>一级建造师注册证</option>--%>
+											<%--<option value="一级建造师资格证"--%>
+												<%--<c:if test="${model.fname=='一级建造师资格证'}"> selected="selected"  </c:if>>一级建造师资格证</option>--%>
+											<%--<option value="一级建造师继续教育证"--%>
+												<%--<c:if test="${model.fname=='一级建造师继续教育证'}"> selected="selected"  </c:if>>一级建造师继续教育证</option>--%>
+											<%--<option value="二级建造师注册证"--%>
+												<%--<c:if test="${model.fname=='二级建造师注册证'}"> selected="selected"  </c:if>>二级建造师注册证</option>--%>
+											<%--<option value="二级建造师资格证"--%>
+												<%--<c:if test="${model.fname=='二级建造师资格证'}"> selected="selected"  </c:if>>二级建造师资格证</option>--%>
+											<%--<option value="造价师注册证"--%>
+												<%--<c:if test="${model.fname=='造价师注册证'}"> selected="selected" </c:if>>造价师注册证</option>--%>
+											<%--<option value="造价师资格证"--%>
+												<%--<c:if test="${model.fname=='造价师资格证'}"> selected="selected"  </c:if>>造价师资格证</option>--%>
+											<%--<option value="造价师继续教育证"--%>
+												<%--<c:if test="${model.fname=='造价师继续教育证'}"> selected="selected"  </c:if>>造价师继续教育证</option>--%>
+											<%--<option value="交通部监理工程师资格证"--%>
+												<%--<c:if test="${model.fname=='交通部监理工程师资格证'}"> selected="selected"  </c:if>>交通部监理工程师资格证</option>--%>
+											<%--<option value="交通部监理工程师注册证"--%>
+												<%--<c:if test="${model.fname=='交通部监理工程师注册证'}"> selected="selected"  </c:if>>交通部监理工程师注册证</option>--%>
+											<%--<option value="专业监理工程师证"--%>
+												<%--<c:if test="${model.fname=='专业监理工程师证'}"> selected="selected" </c:if>>专业监理工程师证</option>--%>
+											<%--<option value="高级工程师职称证"--%>
+												<%--<c:if test="${model.fname=='高级工程师职称证'}"> selected="selected"  </c:if>>高级工程师职称证</option>--%>
+											<%--<option value="中级工程师职称证"--%>
+												<%--<c:if test="${model.fname=='中级工程师职称证'}"> selected="selected"  </c:if>>中级工程师职称证</option>--%>
+											<%--<option value="初级工程师职称证"--%>
+												<%--<c:if test="${model.fname=='初级工程师职称证'}"> selected="selected"  </c:if>>初级工程师职称证</option>--%>
+											<%--<option value="监理员证"--%>
+												<%--<c:if test="${model.fname=='监理员证'}"> selected="selected"  </c:if>>监理员证</option>--%>
+											<%--<option value="资料员证"--%>
+												<%--<c:if test="${model.fname=='资料员证'}"> selected="selected" </c:if>>资料员证</option>--%>
+											<%--<option value="见证员证"--%>
+												<%--<c:if test="${model.fname=='见证员证'}"> selected="selected"  </c:if>>见证员证</option>--%>
+											<%--<option value="安全员证"--%>
+												<%--<c:if test="${model.fname=='安全员证'}"> selected="selected"  </c:if>>安全员证</option>--%>
+											<%--<option value="造价员证"--%>
+												<%--<c:if test="${model.fname=='造价员证'}"> selected="selected"  </c:if>>造价员证</option>--%>
+											<%--<option value="试验员证"--%>
+												<%--<c:if test="${model.fname=='试验员证'}"> selected="selected"  </c:if>>试验员证</option>--%>
+											<%--<option value="建筑节能培训证"--%>
+												<%--<c:if test="${model.fname=='建筑节能培训证'}"> selected="selected" </c:if>>建筑节能培训证</option>--%>
+											<%--<option value="注册安全师证"--%>
+													<%--<c:if test="${model.fname=='注册安全师证'}"> selected="selected" </c:if>>注册安全师证</option>--%>
+											<%--<option value="地铁培训证"--%>
+													<%--<c:if test="${model.fname=='注册安全师证'}"> selected="selected" </c:if>>注册安全师证</option>--%>
+											<%--<option value="交通部安全监理培训证"--%>
+													<%--<c:if test="${model.fname=='交通部安全监理培训证'}"> selected="selected" </c:if>>注册安全师证</option>--%>
+
+											<%--<option value="交通部安全监理培训证"--%>
+													<%--<c:if test="${model.fname=='交通部安全监理培训证'}"> selected="selected" </c:if>>注册安全师证</option>--%>
+											<%--<option value="交通部安全监理培训证"--%>
+													<%--<c:if test="${model.fname=='交通部安全监理培训证'}"> selected="selected" </c:if>>注册安全师证</option>--%>
+
+											<%--<option value="交通部安全监理培训证"--%>
+													<%--<c:if test="${model.fname=='交通部安全监理培训证'}"> selected="selected" </c:if>>注册安全师证</option>--%>
+
+											<%--<option value="交通部安全监理培训证"--%>
+													<%--<c:if test="${model.fname=='交通部安全监理培训证'}"> selected="selected" </c:if>>注册安全师证</option>--%>
+
+											<%--<option value="交通部安全监理培训证"--%>
+													<%--<c:if test="${model.fname=='交通部安全监理培训证'}"> selected="selected" </c:if>>注册安全师证</option>--%>
+										<%--</select>--%>
+									<%--</div>--%>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="hrRyZj-info_fzhuanye"><spring:message

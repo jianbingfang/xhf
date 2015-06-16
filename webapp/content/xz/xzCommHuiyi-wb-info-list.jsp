@@ -98,7 +98,7 @@
 				</header>
 				<div class="content">
 					<form id="xzCommHuiyi-infoGridForm" name="xzCommHuiyi-infoGridForm"
-						method='post' action="xzCommHuiyi-info-remove.do"
+						method='post' action="xzCommHuiyi-wb-info-remove.do"
 						class="m-form-blank">
 						<table id="xzCommHuiyi-infoGrid" class="m-table table-hover table-bordered">
 							<thead>
@@ -126,7 +126,7 @@
 											name="selectedItem" value="${item.fid}"></td>
 									<%-- 	<td>${item.ftype}</td> --%>
 										<%--   	 	 <td>${item.faddress}</td> --%>
-										<td><a href="xzCommHuiyi-info-input.do?id=${item.fid}"
+										<td><a href="xzCommHuiyi-wb-info-input.do?id=${item.fid}"
 											class="a-update"><spring:message code="core.list.edit"
 													text="${item.fhyzt}" /></a></td>
 										<td>${item.fhydate}</td>
