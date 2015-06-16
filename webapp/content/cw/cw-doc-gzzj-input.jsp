@@ -129,7 +129,7 @@
 							</div>
 						</div> --%>
 						<div class="control-group">
-							<label class="control-label" for="plain-info_fmemo">备注</label>
+							<label class="control-label" for="plain-info_fmemo">姓名</label>
 							<div class="controls">
 								<input id="plain-info_creator" type="text" name="fmemo"
 									value="${model.fmemo}" size="40" class="text "
