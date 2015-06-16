@@ -41,7 +41,7 @@ public class RemindMgr {
     @Autowired
     private ApplicationContext applicationContext;
 
-    @Scheduled(fixedRate = 1000 * 60)
+    @Scheduled(cron = "0/60 * * * * ?")
     private void exRemindMgr() throws SQLException {
 
         System.out.println(">>>>>>>> Scheduled task <<<<<<<<<");
