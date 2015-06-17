@@ -37,7 +37,7 @@ function loadPjRy(){
 		url: '${scopePrefix}/gcgl/pjXmRy-simple-list-ajax.do',
 		type:'POST',
 		data: {
-			fxmid:$('#xzChufa-info_fdcxm').val(),
+			fxmid:$('#xzChufa-info_fdcxm').val()
 		},
 		dataType:'json',
 		success: function(data) {
