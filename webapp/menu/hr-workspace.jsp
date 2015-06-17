@@ -63,6 +63,9 @@
 			  <li><a href="${scopePrefix}/hr/hrryzp-input.do"><i class="icon-th"></i>人员招聘</a></li>
 			  <li><a href="${scopePrefix}/hr/hrypRecord-info-list.do"><i class="icon-th"></i>应聘记录</a></li>
 			  <li><a href="${scopePrefix}/hr/commRy-info-input.do"><i class="icon-th"></i>人员录用</a></li>
+              <li><a href="${scopePrefix}/hr/hrGwbm-info-list.do"><i class="icon-th"></i>人员录用</a></li>
+
+
             </ul>
           </div>
         </div>
