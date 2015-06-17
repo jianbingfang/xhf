@@ -77,7 +77,7 @@
 								<div class="controls">
 									<input id="cwXmhs-info_fhetongjine" type="text"
 										name="fhetongjine" value="${model.fhetongjine}" size=""
-										class="text " disabled="disabled">
+										class="text">
 								</div>
 							</div>
 						</div>

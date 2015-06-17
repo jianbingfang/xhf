@@ -73,7 +73,7 @@ $(function() {
 		  <region:region-permission permission="cwreport-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -100,7 +100,7 @@ $(function() {
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
         	<th class="sorting" name="fname">报表名称</th>
-        	<th class="sorting" name="fupdatedate">修改时间</th>
+        	<th class="sorting" name="fupdatedate">时间</th>
         	<th class="sorting" name="fupdatery">修改人</th>
         	<!-- <th class="sorting" name="fcontent">修改内容</th> -->
         <th width="80">&nbsp;</th>
