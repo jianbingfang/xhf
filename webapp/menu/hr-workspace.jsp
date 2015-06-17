@@ -63,7 +63,7 @@
 			  <li><a href="${scopePrefix}/hr/hrryzp-input.do"><i class="icon-th"></i>人员招聘</a></li>
 			  <li><a href="${scopePrefix}/hr/hrypRecord-info-list.do"><i class="icon-th"></i>应聘记录</a></li>
 			  <li><a href="${scopePrefix}/hr/commRy-info-input.do"><i class="icon-th"></i>人员录用</a></li>
-              <li><a href="${scopePrefix}/hr/hrGwbm-info-list.do"><i class="icon-th"></i>人员录用</a></li>
+              <li><a href="${scopePrefix}/hr/hrGwbm-info-list.do"><i class="icon-th"></i>招聘岗位</a></li>
 
 
             </ul>
@@ -81,12 +81,17 @@
           </div>
           <div id="collapse-yggl" class="accordion-body collapse ${currentMenu == 'commRy' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
+
 			  <li><a href="${scopePrefix}/hr/commRy-info-list.do"><i class="icon-comment"></i>员工信息</a></li>
 			  <li><a href="${scopePrefix}/hr/hrRyyj-info-list.do"><i class="icon-comment"></i>业绩档案</a></li>
 			  <li><a href="${scopePrefix}/hr/hrRyZj-treelist.do"><i class="icon-book"></i>证件台账</a></li><!-- hrRyZj-info-list -->
-			  <li><a href="${scopePrefix}/hr/hrLdht-info-list.do"><i class="icon-file"></i>劳动合同</a></li>
+
+              <li><a href="${scopePrefix}/hr/hrZhengjian-managelist.do"><i class="icon-book"></i>证书录入</a></li>
+
+              <li><a href="${scopePrefix}/hr/hrLdht-info-list.do"><i class="icon-file"></i>劳动合同</a></li>
 			  <li><a href="${scopePrefix}/hr/hrShtc-info-list.do"><i class="icon-certificate"></i>社会统筹 </a></li>
 			  <li><a href="${scopePrefix}/hr/ldjl-input.do"><i class="icon-certificate"></i>劳动纪律 </a></li>
+
             </ul>
           </div>
         </div>
