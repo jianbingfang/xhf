@@ -102,7 +102,7 @@ $(function() {
         	<th class="sorting" id="fno">序号</th>
         	<th class="sorting" id="fyearmonth">年月</th>
         	<th class="sorting" id="fuploaddate">上传时间</th>
-        	<th class="sorting" id="fuploadry">上传人</th>
+        	<%--<th class="sorting" id="fuploadry">上传人</th>--%>
         	<th class="sorting" id="fmemo">备注</th>
         	<th class="sorting" id="ffilename">下载</th>
         <th width="80">&nbsp;</th>
@@ -116,7 +116,7 @@ $(function() {
       	 	 <td>${item.fno}</td>
       	 	 <td>${item.fyearmonth}</td>
       	 	 <td>${item.fuploaddate}</td>
-      	 	 <td>${ryMap[item.fuploadry].fname}</td>
+      	 	 <%--<td>${ryMap[item.fuploadry].fname}</td>--%>
       	 	 <td>${item.fmemo}</td>
       	 	 <td><a href="${item.ffileurl}">${item.ffilename}</a> </td>
         <td>
