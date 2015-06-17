@@ -50,15 +50,43 @@
 	});
 
 
-	function removeitem(selecteditem) {
+	function getcheckeditem(){
+		var inputs = document.getElementsByTagName("input");//获取所有的input标签对象
+		var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+
+		for(var i=0;i<inputs.length;i++){
+			var obj = inputs[i];
+			if(obj.type=='checkbox' ){
+				if (inputs[i].checked)
+				{
+					//这个地方是获取你选定了的的checkbox的Value
+					var valuetext=inputs[i].value;
+					checkboxArray.push(valuetext);
+				}
+			}
+		}
+		return checkboxArray.join('@');
+	};
+
+	function removeflow(){
+		var checkboxs=getcheckeditem();
+
+		removeitem(checkboxs);
+	}
+
+	function removeitem(checkboxs) {
 		$.ajax({
 			url :  "${scopePrefix}/hr/hrRyZj-info-remove.do",
 			type : 'POST',
+			traditional :true,
+			dataType:'json',
 			data : {
-				SelectedId : selecteditem
+				'selecteditems' : checkboxs
 			},
 			async : false,
 			success : function(data) {
+
+				window.location.href="hrRyZj-treelist.do";
 
 			}
 		});
@@ -96,9 +124,7 @@
 						}
 
 						html += "<tr id='child"+item.fid+"' ondblclick='openZj("+item.fid+")' >"
-							+'<td><input type="checkbox" id="childselected" class="selectedItem a-check" name="selectedItem" ' +
-						'value="${item.fid}"></td>'
-							+ '</td>'
+							+'<td><input type="checkbox" id="childselected" class="selectedItem a-check" name="selectedItems"  value="'+ item.fid +'"></td>' + '</td>'
 						 + "<td>" + item.fname + "</td>" + "<td>"
 								+ item.fzhengjianno + "</td>" + "<td>"
 								+ item.fzcno + "</td>" + "<td>" + item.fzhuanye
@@ -273,9 +299,9 @@
 						<button class="btn btn-small a-insert"
 							onclick="location.href='hrRyZj-info-input.do'">新建</button>
 					</region:region-permission>
-					 <%--<region:region-permission permission="hrRyZj-info:delete">--%>
-						<%--<button class="btn btn-small a-remove" onclick="removeitem()">删除</button>--%>
-					<%--</region:region-permission>--%>
+					 <region:region-permission permission="hrRyZj-info:delete">
+						<button class="btn btn-small a-remove" onclick="removeflow()">删除</button>
+					</region:region-permission>
 					<%--<button class="btn btn-small a-export"--%>
 						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
