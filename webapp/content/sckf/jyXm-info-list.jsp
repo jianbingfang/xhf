@@ -13,19 +13,21 @@
 <title><spring:message code="dev.jyXm-info.list.title"
 		text="投标项目台账 - 项目投标 - 市场开发" /></title>
 <%@include file="/common/s.jsp"%>
+
+<script type="text/javascript"
+			src="${scopePrefix}/s/xthena/js/linkage.js"></script>
+
 <link type="text/css" rel="stylesheet"
 	href="${scopePrefix}/s/xthena/xmpicker/xmpicker.css">
 <script type="text/javascript"
 	src="${scopePrefix}/s/xthena/xmpicker/jyxmpicker.js">
-	
 </script>
 <script type="text/javascript">
 
 
-	window.onload = function() {
-		pc_init();
-		setProvCity("${param.filter_EQS_fprovince}", "${param.filter_EQS_fcity}");
-	};
+//	window.onload = function() {
+//
+//	};
 
 	var config = {
 		id : 'jyXm-infoGrid',
@@ -51,6 +53,11 @@
 	var table;
 
 	$(function() {
+
+		pc_init();
+		setProvCity('${param.filter_EQS_fprovince}', '${param.filter_EQS_fcity}');
+
+
 		table = new Table(config);
 		table.configPagination('.m-pagination');
 		table.configPageInfo('.m-page-info');
@@ -171,9 +178,9 @@
 						</select> <label class="control-label"
 							for="jyXm-info.jyXm-info.input.fcity"><spring:message
 								code="jyBm-info.jyBm-info.input.fprovince" text="所属城市" /></label> <select
-							id="jyXm-info_fprovince" type="text" name="filter_EQS_fprovince"
+							id="jyXm-info_fprovince" type="text" name="fprovince"
 							value="${param.filter_EQS_fprovince}" style="width:100px;"></select>省 <select
-							id="jyXm-info_fcity" type="text" name="filter_EQS_fcity"
+							id="jyXm-info_fcity" type="text" name="fcity"
 							value="${param.filter_EQS_fcity}" style="width:100px;"></select>市
 						<button class="btn btn-small a-search"
 							onclick="document.jyXm-infoForm.submit()">查询</button>
