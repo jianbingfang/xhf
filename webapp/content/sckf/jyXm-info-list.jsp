@@ -20,6 +20,13 @@
 	
 </script>
 <script type="text/javascript">
+
+
+	window.onload = function() {
+		pc_init();
+		setProvCity("${param.filter_EQS_fprovince}", "${param.filter_EQS_fcity}");
+	};
+
 	var config = {
 		id : 'jyXm-infoGrid',
 		pageNo : ${page.pageNo},

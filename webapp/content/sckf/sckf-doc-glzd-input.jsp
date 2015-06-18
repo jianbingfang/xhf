@@ -44,15 +44,15 @@ $(function() {
 						</li>
 						<li><a href="sckf-doc-glzd-list.do">管理制度</a><span class="divider">/</span></li>
 						<li class="active">管理制度</li> -->
-						<li style="float: right;">
-							<button type="submit" class="btn a-submit">
-								<spring:message code='core.input.save' text='保存' />
-							</button>
-							<button type="button" class="btn a-cancel"
-								onclick="history.back();">
-								<spring:message code='core.input.back' text='返回' />
-							</button>
-						</li>
+						<%--<li style="float: right;">--%>
+							<%--<button type="submit" class="btn a-submit">--%>
+								<%--<spring:message code='core.input.save' text='保存' />--%>
+							<%--</button>--%>
+							<%--<button type="button" class="btn a-cancel"--%>
+								<%--onclick="history.back();">--%>
+								<%--<spring:message code='core.input.back' text='返回' />--%>
+							<%--</button>--%>
+						<%--</li>--%>
 					</ul>
 				</div>
       <article class="m-widget">

@@ -1059,7 +1059,7 @@ label{ font-size:12px;}
 									</div>
 									<div class="span5">
 										<label class="control-label" for="jyXm-info_fbzjje"><spring:message
-												code="jyXm-info.jyXm-info.input.fbzjje" text="保证金金额" /></label>
+												code="jyXm-info.jyXm-info.input.fbzjje" text="保证金金额（元）" /></label>
 										<div class="controls">
 											<input id="jyXm-info_fbzjje" type="number" name="fbzjje"
 												value="${model.fbzjje}" size="" class="number" minlength=""
@@ -1373,7 +1373,7 @@ label{ font-size:12px;}
 										<label class="control-label" for="jyXm-info_fkbaddress"><spring:message
 												code="jyXm-info.jyXm-info.input.fkbaddress" text="开标地点" /></label>
 										<div class="controls">
-											<input id="jyXm-info_fkbaddress" type="number" name="fkbaddress"
+											<input id="jyXm-info_fkbaddress" type="text" name="fkbaddress"
 												value="${model.fkbaddress}" size="" class="  "
 												minlength="" maxlength="">
 										</div>
@@ -1436,7 +1436,7 @@ label{ font-size:12px;}
 								<div class="row-fluid">
 									<div class="span5">
 										<label class="control-label" for="jyXm-info_fzbkzj"><spring:message
-												code="jyXm-info.jyXm-info.input.fzbkzj" text="招标控制价" /></label>
+												code="jyXm-info.jyXm-info.input.fzbkzj" text="招标控制价（万元）" /></label>
 										<div class="controls">
 											<input id="jyXm-info_fzbkzj" type="number" name="fzbkzj"
 												value="${model.fzbkzj}" size="" class="number   "
@@ -1445,7 +1445,7 @@ label{ font-size:12px;}
 									</div>
 									<div class="span5">
 										<label class="control-label" for="jyXm-info_fzbmoney"><spring:message
-												code="jyXm-info.jyXm-info.input.fzbmoney" text="中标金额" /></label>
+												code="jyXm-info.jyXm-info.input.fzbmoney" text="中标金额（万元）" /></label>
 										<div class="controls">
 											<input id="jyXm-info_fzbmoney" type="number" name="fzbmoney"
 												value="${model.fzbmoney}" size="" class="number   "
@@ -1536,7 +1536,7 @@ label{ font-size:12px;}
 												code="jyXm-info.jyXm-info.input.fzbtzslqr" text="中标通知书领取人" /></label>
 										<div class="controls">
 											<input id="jyXm-info_fzbtzslqr" type="text" name="fzbtzslqr"
-												value="${model.fzbtzslqr}" size="" class="number   "
+												value="${model.fzbtzslqr}" size="" class="text   "
 												minlength="" maxlength="">
 										</div>
 									</div>
