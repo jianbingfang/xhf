@@ -53,6 +53,16 @@ public class JyXmController {
     @RequestMapping("jyXm-info-list")
     public String list(@ModelAttribute Page page,
                        @RequestParam Map<String, Object> parameterMap, Model model) {
+
+//        if(parameterMap.containsKey("fprovince")) {
+//            Object province = parameterMap.get("fprovince");
+//            parameterMap.put("filter_EQS_fprovince", province);
+//        }
+//        if(parameterMap.containsKey("fcity")) {
+//            Object city = parameterMap.get("fcity");
+//            parameterMap.put("filter_EQS_fcity", city);
+//        }
+
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page.setOrderBy("fkbdate");

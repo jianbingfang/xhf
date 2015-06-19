@@ -42,9 +42,10 @@ function setProvCity(prov, city){
 function _findPC(){ 
 	var _selects = document.getElementsByTagName("select"); 
 	var _province, _city = null; 
-	for(var i=0 in _selects){ 
-	if(_selects[i].name && 'fprovince' == _selects[i].name) _province = _selects[i]; 
-	if(_selects[i].name && 'fcity' == _selects[i].name) _city = _selects[i]; 
+	for(var i=0 in _selects){
+
+	if(_selects[i].name && ('fprovince' == _selects[i].name||'filter_EQS_fprovince'==_selects[i].name)) _province = _selects[i];
+	if(_selects[i].name && 'fcity' == _selects[i].name||'filter_EQS_fcity'==_selects[i].name) _city = _selects[i];
 	} 
 	return [_province, _city]; 
 } 

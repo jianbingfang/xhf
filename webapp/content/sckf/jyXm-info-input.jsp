@@ -105,6 +105,7 @@
 	
 	function specialButtonClick(event) {
 		event = event ? event : window.event;
+
 		var btn = event.srcElement ? event.srcElement : event.target;
 		if (btn.className == "btn btn-block") {
 			btn.className = "btn btn-block btn-primary";
