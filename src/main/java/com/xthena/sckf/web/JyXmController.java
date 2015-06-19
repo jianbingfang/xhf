@@ -186,6 +186,9 @@ public class JyXmController {
         page = jyXmManager.pagedQuery(page, propertyFilters);
         model.addAttribute("page", page);
         model.addAttribute("fstate", parameterMap.get("filter_EQS_fstate"));
+        model.addAttribute("fprovince", parameterMap.get("filter_EQS_fprovince"));
+        model.addAttribute("fcity", parameterMap.get("filter_EQS_fcity"));
+
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         return "sckf/jyXm-info-toubiao-list";
     }

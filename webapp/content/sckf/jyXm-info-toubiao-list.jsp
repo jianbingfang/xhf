@@ -35,7 +35,8 @@
 			'filter_LIKES_fname' : '${param.filter_LIKES_fname}',
 			'filter_LIKES_ftype' : '${param.filter_LIKES_ftype}',
 			'filter_LIKES_fstate' : '${param.filter_LIKES_fstate}',
-			'filter_LIKES_fcity' : '${param.filter_LIKES_fcity}'
+			'filter_EQS_fprovince' : '${param.filter_EQS_fprovince}',
+			'filter_EQS_fcity' : '${param.filter_EQS_fcity}'
 		},
 		selectedItemClass : 'selectedItem',
 		gridFormId : 'jyXm-infoGridForm',
@@ -150,10 +151,10 @@
 						</select> <label class="control-label"
 							for="jyXm-info.jyXm-info.input.fcity"><spring:message
 								code="jyBm-info.jyBm-info.input.fprovince" text="所属城市" /></label> <select
-							id="jyXm-info_fprovince" type="text" name="fprovince"
-							value="${model.fprovince}" style="width:100px;"></select>省 <select
-							id="jyXm-info_fcity" type="text" name="fcity"
-							value="${model.fcity}" style="width:100px;"></select>市
+							id="jyXm-info_fprovince" type="text" name="filter_EQS_fprovince"
+							value="${param.filter_EQS_fprovince}" style="width:100px;"></select>省 <select
+							id="jyXm-info_fcity" type="text" name="filter_EQS_fcity"
+							value="${param.filter_EQS_fcity}" style="width:100px;"></select>市
 						<button class="btn btn-small a-search"
 							onclick="document.jyXm-infoForm.submit()">查询</button>
 						&nbsp;
