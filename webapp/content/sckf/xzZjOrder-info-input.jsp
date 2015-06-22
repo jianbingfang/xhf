@@ -232,6 +232,7 @@ function saveSelected(){
 			'xzZjOrder.fstarttime':$('#xzZjOrder-info_fstarttime').val(),
 			'xzZjOrder.fendtime':$('#xzZjOrder-info_fendtime').val(),
 			'xzZjOrder.fmemo':$('#xzZjOrder-info_fmemo').val(),
+			'xzZjOrder.ffzrid_str':$('#xzZjOrder-info_ffzrid').val(),
 			 fzjlist:zjArr
 		},
 		async : false,

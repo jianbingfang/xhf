@@ -56,6 +56,7 @@ var createryPicker = function(conf) {
 +'</div>');
 	}
 
+
 	$(document).delegate('.ryPicker .add-on', 'click', function(e) {
 		$('#' + conf.modalId).data('ryPicker', $(this).parent());
 		$('#' + conf.modalId).modal();
@@ -97,6 +98,7 @@ var createryPicker = function(conf) {
 		if(checkedEl.val()==null||checkedEl.val()==""){
 			ryPickerElement.children('input[type=hidden]').val(-1);	
 		}else{
+			var value=checkedEl.val();
 			ryPickerElement.children('input[type=hidden]').val(checkedEl.val());
 		}
 		ryPickerElement.children('input[type=text]').val(checkedEl.attr('title'));

@@ -1,12 +1,7 @@
 package  com.xthena.sckf.web;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.xthena.api.user.UserConnector;
 
 
+import com.xthena.common.domain.CommCfilds;
 import com.xthena.core.hibernate.PropertyFilter;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.page.Page;
@@ -22,6 +18,7 @@ import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 import com.xthena.hr.domain.CommRy;
 import com.xthena.hr.domain.HrRyZj;
+import com.xthena.hr.manager.CommRyManager;
 import com.xthena.hr.manager.HrRyZjManager;
 import com.xthena.jl.domain.JlShiZhongAndFujianArray;
 import com.xthena.sckf.domain.CommHt;
@@ -89,13 +86,129 @@ public class SckfXzZjOrderController {
     @Autowired
     private XzZjOrderListManager xzZjOrderListManager;
 
+	@Autowired
+	private CommRyManager commRyManager;
+
+
+//	@RequestMapping("xzZjOrder-info-listsearch")
+//	public void listRy(@ModelAttribute Page page,
+//					   @RequestParam Map<String, Object> parameterMap,
+//					   HttpServletResponse response) {
+//		List<PropertyFilter> propertyFilters = PropertyFilter
+//				.buildFromMap(parameterMap);
+//		page = commRyManager.pagedQuery(page, propertyFilters);
+//		JsonResponseUtil.write(response, page);
+//	}
+//
+
+	@RequestMapping("xzZjOrder-info-listsearch")
+	public void listsearch(@ModelAttribute Page page,
+					   @RequestParam Map<String, Object> parameterMap, HttpServletResponse response) {
+
+		List<HashMap<String, Object>> responseMapList=new ArrayList<HashMap<String, Object>>();
+		String valuestr="";
+		String hql="";
+		Long ffzrid=null;
+//		if(parameterMap.containsKey("filter_LIKES_fname")) {
+			Object value = parameterMap.get("filter_LIKES_fname");
+			valuestr=value.toString();
+			parameterMap.remove("filter_LIKES_fname");
+			hql="select commry from CommRy commry where commry.fname=?";
+			List<CommRy> commRyList=commRyManager.find(hql, valuestr);
+			HashMap<Long,CommRy> map=CommRyMapUtil.getRyMap();
+			Set<Map.Entry<Long, CommRy>> commlst=map.entrySet();
+			Iterator<Map.Entry<Long, CommRy>> iterator= commlst.iterator();
+			while(iterator.hasNext()){
+				Map.Entry<Long,  CommRy> cur= iterator.next();
+				if(cur.getValue().getFname().equals(valuestr))
+				{
+					ffzrid=cur.getKey();
+					parameterMap.put("filter_EQL_ffzrid", ffzrid);
+					//break;
+				}
+			}
+//		}
+
+
+		List<PropertyFilter> propertyFilters = PropertyFilter
+				.buildFromMap(parameterMap);
+
+		page = xzZjOrderManager.pagedQuery(page, propertyFilters);
+		JsonResponseUtil.write(response, page);
+//		List<XzZjOrder> resultList	=(List<XzZjOrder>)page.getResult();
+
+//		HashMap<Long,CommRy> rymap=CommRyMapUtil.getRyMap();
+//		HashMap<String, Object> responseMap=new HashMap<String, Object>();
+//		responseMap.put("XzZjOrder_data", resultList);
+//		responseMap.put("rymap", rymap);
+
+
+//		for(XzZjOrder xzzj:resultList){
+//			HashMap<String, Object> responseMap=new HashMap<String, Object>();
+//			responseMap.put(xzzj.get)
+//			responseMap.put("fcreatetime", xzzj.getFcreatetime());
+
+//			Object[] obj=(Object[])xzzj;
+//			XzZjDxlist xzZjDxlist=(XzZjDxlist) obj[0];
+//			XzZjOrderList zjOl=(XzZjOrderList) obj[1];
+//			HashMap<String, Object> responseMap=new HashMap<String, Object>();
+//			responseMap.put("fid", zjOl.getFid());
+//			responseMap.put("fzjid", xzZjDxlist.getFid());
+//			responseMap.put("ftype", xzZjDxlist.getFtype());
+//			responseMap.put("fzjinfo",xzZjDxlist.getFname());
+//			responseMap.put("fstatus",xzZjDxlist.getFstate());
+//			responseMap.put("lastupdate",xzZjDxlist.getFupdatetime());
+//			responseMapList.add(responseMap);
+//		}
+
+
+	}
+
+//	return "sckf/xzZjOrder-info-input";
+//
+//
+//		Object pageobj= page.getResult();
+//
+//		page.setResult();
+//		JsonResponseUtil.write(response, page);
+
+
+
+
     @RequestMapping("xzZjOrder-info-list")
     public String list(@ModelAttribute Page page,
             @RequestParam Map<String, Object> parameterMap, Model model) {
+
+		List<HashMap<String, Object>> responseMapList=new ArrayList<HashMap<String, Object>>();
+		String valuestr="";
+		String hql="";
+		Long ffzrid=null;
+		if(parameterMap.containsKey("filter_LIKES_fname")) {
+			Object value = parameterMap.get("filter_LIKES_fname");
+			valuestr=value.toString();
+			parameterMap.remove("filter_LIKES_fname");
+			hql="select commry from CommRy commry where commry.fname=?";
+			List<CommRy> commRyList=commRyManager.find(hql, valuestr);
+			HashMap<Long,CommRy> map=CommRyMapUtil.getRyMap();
+			Set<Map.Entry<Long, CommRy>> commlst=map.entrySet();
+			Iterator<Map.Entry<Long, CommRy>> iterator= commlst.iterator();
+			while(iterator.hasNext()){
+				Map.Entry<Long,  CommRy> cur= iterator.next();
+				if(cur.getValue().getFname().equals(valuestr))
+				{
+					ffzrid=cur.getKey();
+					parameterMap.put("filter_EQL_ffzrid", ffzrid);
+					//break;
+				}
+			}
+		}
+
+
         List<PropertyFilter> propertyFilters = PropertyFilter
-                .buildFromMap(parameterMap);
+				.buildFromMap(parameterMap);
+
         page = xzZjOrderManager.pagedQuery(page, propertyFilters);
-      
+
         model.addAttribute("ryMap",CommRyMapUtil.getRyMap());
       	model.addAttribute("xmMap",JyXmMapUtil.getXmMap());
         model.addAttribute("page", page);

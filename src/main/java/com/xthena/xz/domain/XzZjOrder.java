@@ -35,7 +35,7 @@ public class XzZjOrder  implements java.io.Serializable {
      private Long fxmid;
      private String fmemo;
      private Date fbackdate;
-
+     private String ffzrid_str;
 
     // Constructors
 
@@ -45,7 +45,8 @@ public class XzZjOrder  implements java.io.Serializable {
 
     
     /** full constructor */
-    public XzZjOrder(String forderno, String fstatus, Date fcreatetime, Date fstarttime, Date fendtime, Long ffzrid, Long fxmid, String fmemo, Date fbackdate) {
+    public XzZjOrder(String forderno, String fstatus, Date fcreatetime, Date fstarttime, Date fendtime, Long ffzrid,
+                     Long fxmid, String fmemo, Date fbackdate, String ffzrid_str) {
         this.forderno = forderno;
         this.fstatus = fstatus;
         this.fcreatetime = fcreatetime;
@@ -55,6 +56,7 @@ public class XzZjOrder  implements java.io.Serializable {
         this.fxmid = fxmid;
         this.fmemo = fmemo;
         this.fbackdate = fbackdate;
+        this.ffzrid_str=ffzrid_str;
     }
 
    
@@ -129,8 +131,11 @@ public class XzZjOrder  implements java.io.Serializable {
     
     public void setFfzrid(Long ffzrid) {
         this.ffzrid = ffzrid;
+
     }
-    
+
+
+
     @Column(name="fxmid")
 
     public Long getFxmid() {
@@ -160,11 +165,17 @@ public class XzZjOrder  implements java.io.Serializable {
     public void setFbackdate(Date fbackdate) {
         this.fbackdate = fbackdate;
     }
-   
 
+    @Column(name="ffzrid_str", length=1000)
 
+    public void setFfzrid_str(String ffzrid_str)
+    {
+        this.ffzrid_str=ffzrid_str;
+    }
 
-
+    public  String getFfzrid_str(){
+        return  this.ffzrid_str;
+    }
 
 
 
