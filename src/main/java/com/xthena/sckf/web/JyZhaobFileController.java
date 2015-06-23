@@ -19,6 +19,7 @@ import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 
+import com.xthena.sckf.domain.JyXm;
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.sckf.domain.JyZhaobFile;
 import com.xthena.sckf.manager.JyXmManager;
@@ -63,13 +64,17 @@ public class JyZhaobFileController {
     @RequestMapping("jyZhaobFile-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,@RequestParam(value = "xmid", required = false) Long xmid,
             Model model) {
+
         if (id != null) {
             JyZhaobFile jyZhaobFile = jyZhaobFileManager.get(id);
             model.addAttribute("model", jyZhaobFile);
             model.addAttribute("xm", jyXmManager.get(jyZhaobFile.getFxmid()));
-        }else{
-        	model.addAttribute("xm", jyXmManager.get(xmid));
         }
+        model.addAttribute("xmMap", JyXmMapUtil.getXmMap());
+//        else{
+//
+//        	model.addAttribute("xm", jyXmManager.get(xmid));
+//        }
         return "sckf/jyZhaobFile-info-input";
     }
 
@@ -79,6 +84,10 @@ public class JyZhaobFileController {
             RedirectAttributes redirectAttributes) {
         JyZhaobFile dest = null;
 
+        if(parameterMap.containsKey("filter_EQL_fxmid")) {
+            String fxmid = (String) parameterMap.get("filter_EQL_fxmid");
+            jyZhaobFile.setFxmid(Long.parseLong(fxmid));
+        }
         Long id = jyZhaobFile.getFid();
 
         if (id != null) {

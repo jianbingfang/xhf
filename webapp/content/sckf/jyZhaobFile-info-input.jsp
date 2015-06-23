@@ -9,7 +9,20 @@
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="jyZhaobFile-info.jyZhaobFile-info.input.title" text="编辑"/></title>
     <%@include file="/common/s.jsp"%>
+
+	<link type="text/css" rel="stylesheet"
+	  href="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.css">
+
+	<script type="text/javascript"
+			src="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.js">
+	</script>
+
+
     <script type="text/javascript">
+
+
+
+
 $(function() {
     $("#jyZhaobFile-infoForm").validate({
         submitHandler: function(form) {
@@ -19,10 +32,36 @@ $(function() {
         },
         errorClass: 'validate-error'
     });
+
+	createjyxmPicker({
+		modalId : 'jyxmPicker',
+		url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
+		redUrl : '${scopePrefix}/sckf/jyXmYj-info-input.do'
+	});
+
 	$("#confirmBtn").click(function() {
 		getFiles();
 	});
 });
+
+<%--createjyxmPicker({--%>
+	<%--modalId : 'jyxmPicker',--%>
+	<%--url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',--%>
+	<%--redUrl : '${scopePrefix}/sckf/jyZhaobFile-info-input.do'--%>
+<%--});--%>
+
+
+//var table;
+//
+//$(function() {
+//	table = new Table(config);
+//	table.configPagination('.m-pagination');
+//	table.configPageInfo('.m-page-info');
+//	table.configPageSize('.m-page-size');
+//
+//
+//});
+
 
 
 //在页面定义怎么使用 缓存数据
@@ -54,6 +93,7 @@ function getFiles() {
 		  <h4 class="title"><spring:message code="jyZhaobFile-info.jyZhaobFile-info.input.title" text="编辑" /></h4>
 		</header>
 
+
 		<div class="content content-inner">
 
 <form id="jyZhaobFile-infoForm" method="post" action="jyZhaobFile-info-save.do" class="form-horizontal">
@@ -64,28 +104,48 @@ function getFiles() {
   <c:if test="${xm != null}">
 	  <input id="jyZhaobFile-info_id" type="hidden" name="fxmid" value="${xm.fid}">
   </c:if>
-   
-				   <div class="control-group">
-				  <label class="control-label" for="jyXmYj-info_fyijiaostatus"><spring:message code="jyXmYj-info.jyXmYj-info.input.fyijiaostatus" text="项目名称"/></label>
-					<div class="controls">
-				      	<input  type="text" readonly="readonly" value="${xm.fname}" size=""  >
-				    </div>
-				  </div>
+
+		<div class="control-group">
+
+			<label  class="control-label" for="jyZhaobFile-info_xmid"><spring:message
+					code='jyXmYj-info.jyXmYj-info.list.search.name'
+														  text='项目名称'/></label>
+				<div class="input-append jyxmPicker">
+					<input class="controls" id="jyZhaobFile-info_xmid" type="hidden" name="filter_EQL_fxmid"
+						value="${model.fxmid}">
+
+					<input
+						id="jyZhaobFile-info_xmmc" type="text"
+						value="${xmMap[model.fxmid].fname}" disabled
+						class=" required" style="width: 175px;" value="">
+					<span
+						class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
+						class="icon-th-list"></i></span>
+
+					<%--<div class="controls">--%>
+						<%--<input  type="text" readonly="readonly" value="${xmMap[model.fxmid].fkbdate}" size=""  >--%>
+					<%--</div>--%>
+
+				</div>
+
+
+
+			</div>
 				  
-				   <div class="control-group">
-				    <label class="control-label" for="jyXmYj-info_fyijiaostatus"><spring:message code="jyXmYj-info.jyXmYj-info.input.fyijiaostatus" text="开标时间"/></label>
-					<div class="controls">
-				      		<input  type="text" readonly="readonly" value="${xm.fkbdate}" size=""  >
-				    </div>
-				  </div>
+				   <%--<div class="control-group">--%>
+				    <%--<label class="control-label" for="jyXmYj-info_fyijiaostatus"><spring:message code="jyXmYj-info.jyXmYj-info.input.fyijiaostatus" text="开标时间"/></label>--%>
+					<%--<div class="controls">--%>
+				      		<%--<input  type="text" readonly="readonly" value="${xm.fkbdate}" size=""  >--%>
+				    <%--</div>--%>
+				  <%--</div>--%>
+				  <%----%>
 				  
-				  
-				   <div class="control-group">
-				    <label class="control-label" for="jyXmYj-info_fyijiaostatus"><spring:message code="jyXmYj-info.jyXmYj-info.input.fyijiaostatus" text="中标金额"/></label>
-					<div class="controls">
-					    	 	<input  type="text" readonly="readonly" value="${xm.fzbmoney}" size=""  >
-				    </div>
-				  </div>
+				   <%--<div class="control-group">--%>
+				    <%--<label class="control-label" for="jyXmYj-info_fyijiaostatus"><spring:message code="jyXmYj-info.jyXmYj-info.input.fyijiaostatus" text="中标金额"/></label>--%>
+					<%--<div class="controls">--%>
+					    	 	<%--<input  type="text" readonly="readonly" value="${xm.fzbmoney}" size=""  >--%>
+				    <%--</div>--%>
+				  <%--</div>--%>
 				  
 			    	<div class="control-group">
 				    <label class="control-label" for="jyZhaobFile-info_fweizhi"><spring:message code="jyZhaobFile-info.jyZhaobFile-info.input.fweizhi" text="放置位置"/></label>
@@ -116,14 +176,15 @@ function getFiles() {
 							<a type="button" class="btn a-link" href="javascript:void(0)"
 										onclick="showUpload()">上传</a>
 										
-							<a id="jyXm-info_fbmzlDown"  class="btn"  href="${model.ffileurl}"
-													target="_blank">下载</a>
+							<%--<a id="jyXm-info_fbmzlDown"  class="btn"  href="${model.ffileurl}"--%>
+													<%--target="_blank">下载</a>--%>
 						</div>
 					</div>
 					
 					 	<div class="control-group">
 					    <div class="controls">
-					      <button type="submit" class="btn a-submit"><spring:message code='core.input.save' text='保存'/></button>
+					      <button type="submit" class="btn a-submit" ><spring:message code='core.input.save'
+																					  text='保存'/></button>
 						  &nbsp;
 					      <button type="button" class="btn a-cancel" onclick="history.back();"><spring:message code='core.input.back' text='返回'/></button>
 					    </div>

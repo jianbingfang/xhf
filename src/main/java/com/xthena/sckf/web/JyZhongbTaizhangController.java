@@ -42,15 +42,14 @@ public class JyZhongbTaizhangController {
     private UserConnector userConnector;
     private MessageHelper messageHelper;
 
+
     @RequestMapping("jyZhongbTaizhang-info-list")
     public String list(@ModelAttribute Page page,
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = jyZhongbTaizhangManager.pagedQuery(page, propertyFilters);
-
         model.addAttribute("page", page);
-
         return "sckf/jyZhongbTaizhang-info-list";
     }
 

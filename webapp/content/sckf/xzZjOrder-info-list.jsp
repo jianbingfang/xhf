@@ -269,7 +269,7 @@
                 </region:region-permission>
 
                 <region:region-permission permission="xzZjOrder-info：delete">
-                    <button class="btn btn-small a-remove" onclick="table.removeAll()"">删除</button>
+                    <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
                 </region:region-permission>
 
 

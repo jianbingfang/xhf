@@ -11,7 +11,9 @@
     <%@include file="/common/s.jsp"%>
    
     <link type="text/css" rel="stylesheet"
-	href="${scopePrefix}/s/xthena/xmpicker/xmpicker.css">
+	href="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.css">
+
+
 <script type="text/javascript"
 	src="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.js">
 	</script>
@@ -43,13 +45,75 @@ $(function() {
     table.configPageSize('.m-page-size');
     
     createjyxmPicker({
-		modalId : 'xmPicker',
+		modalId : 'jyxmPicker',
 		url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
 		redUrl : '${scopePrefix}/sckf/jyXmYj-info-input.do'
 	});
 });
-    </script>
+
+
+//function showXMpicker() {
+//	$('#pjrydiv').modal();
+//	$('#Body').html("");
+//	// loadRyList();
+//}
+
+	</script>
   </head>
+
+
+  <%--<div id="pjrydiv" class="modal hide fade">--%>
+	  <%--<div class="modal-header">--%>
+		  <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+		  <%--<h3>选择项目</h3>--%>
+	  <%--</div>--%>
+	  <%--<div class="modal-body">--%>
+		  <%--<article class="m-blank">--%>
+			  <%--<div class="pull-left">--%>
+				  <%--<form name="ryForm" method="post" action="javascript:void(0);return false;"--%>
+						<%--class="form-inline m-form-bottom">--%>
+					  <%--<label for="ry_ryname">姓名:</label>--%>
+					  <%--<input type="text" style="width:100px;" id="filter_LIKES_fname1" name="filter_LIKES_fname"--%>
+							 <%--value="">--%>
+					  <%--<label for="ry_rycard">工号:</label>--%>
+					  <%--<input type="text" style="width:100px;" id="filter_LIKES_fcardno" name="filter_LIKES_fcardno"--%>
+							 <%--value="">--%>
+					  <%--&lt;%&ndash;<button id="search" class="btn btn-small" onclick="document.xzZjOrder-infoForm.submit()">查询</button>&ndash;%&gt;--%>
+
+					  <%--<button id="search" class="btn btn-small">查询</button>--%>
+				  <%--</form>--%>
+			  <%--</div>--%>
+			  <%--<div class="m-clear"></div>--%>
+		  <%--</article>--%>
+		  <%--<article class="m-widget">--%>
+			  <%--<header class="header">--%>
+				  <%--<h4 class="title">人员列表</h4>--%>
+			  <%--</header>--%>
+			  <%--<div class="content">--%>
+				  <%--<form id="ryPickerForm" name="ryPickerForm" method="post" action="#" class="m-form-blank">--%>
+
+					  <%--<table id="ryPickerGrid" class="m-table table-hover table-bordered">--%>
+						  <%--<thead>--%>
+						  <%--<tr>--%>
+							  <%--<th width="10" class="m-table-check">&nbsp;</th>--%>
+							  <%--<th>工号</th>--%>
+							  <%--<th>姓名</th>--%>
+							  <%--<th>性别</th>--%>
+						  <%--</tr>--%>
+						  <%--</thead>--%>
+						  <%--<tbody id="ryPickerBody">--%>
+						  <%--</tbody>--%>
+					  <%--</table>--%>
+				  <%--</form>--%>
+			  <%--</div>--%>
+		  <%--</article>--%>
+	  <%--</div>--%>
+	  <%--<div class="modal-footer">--%>
+		  <%--<span id="ryPickerResult"></span>--%>
+		  <%--<a id="ryPickerBtnClose" href="#" class="btn" data-dismiss="modal">关闭</a>--%>
+		  <%--<a id="ryPickerBtnSelect" href="#" onclick="selectry()" class="btn btn-primary">选择</a>--%>
+	  <%--</div>--%>
+  <%--</div>--%>
 
   <body>
     <%@include file="/header.jsp"%>
@@ -69,9 +133,45 @@ $(function() {
 		</header>
         <div id="jyXmYj-infoSearch" class="content content-inner">
 
+
+			<%--<div class="input-append jyxmPicker">--%>
+				<%--<input id="xmBxRecord-info_xmid" type="hidden" name="fxmid"--%>
+					   <%--value="${model.fxmid}"> <input--%>
+					<%--id="xmBxRecord-info_xmmc" type="text"--%>
+					<%--value="${xmMap[model.fxmid].fname}" disabled--%>
+					<%--class=" required" style="width: 175px;" value=""> <span--%>
+					<%--class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i--%>
+					<%--class="icon-th-list"></i></span>--%>
+			<%--</div>--%>
+
+
+				<%--<div class="controls">--%>
+					<%--<div class="input-append ryPicker">--%>
+						<%--<input id="ryBxRecord-info_fryid" type="hidden" name="fry" value="${model.fry}">--%>
+						<%--<input id="ryBxRecord-info_userName" type="text" value="${userName}" disabled="disabled"--%>
+							   <%--style="width: 175px;" value="">--%>
+					<%--<span class="add-on" onclick="loadJyXm()"--%>
+						  <%--style="padding-top: 2px;   padding-bottom: 2px;"><i class="icon-user"></i></span>--%>
+						<%--&lt;%&ndash;<button class="btn btn-small a-search" onclick="searchitem()">查询&ndash;%&gt;--%>
+						<%--&lt;%&ndash;</button>&ndash;%&gt;--%>
+						<%--&lt;%&ndash;&nbsp;&ndash;%&gt;--%>
+					<%--</div>--%>
+
 		  <form name="jyXmYj-infoForm" method="post" action="jyXmYj-info-list.do" class="form-inline">
-		    <label for="jyXmYj-info_name"><spring:message code='jyXmYj-info.jyXmYj-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jyXmYj-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+
+		    <label for="xmBxRecord-info_xmid"><spring:message code='jyXmYj-info.jyXmYj-info.list.search.name'
+														  text='项目名称'/>:</label>
+			  <div class="input-append jyxmPicker">
+				  <input id="xmBxRecord-info_xmid" type="hidden" name="filter_EQL_fxmid"
+						 value="${model.fxmid}"> <input
+					  id="xmBxRecord-info_xmmc" type="text"
+					  value="${xmMap[model.fxmid].fname}" disabled
+					  class=" required" style="width: 175px;" value=""> <span
+					  class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
+					  class="icon-th-list"></i></span>
+			  </div>
+
+			  <%--<input type="text" id="jyXmYj-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">--%>
 			<button class="btn btn-small a-search" onclick="document.jyXmYj-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -80,13 +180,13 @@ $(function() {
 
 	  <article class="m-blank">
 	    <div class="pull-left">
-		  <region:region-permission permission="jyXmYj-info:create">
-		  	 <button class="btn btn-small a-insert" onclick="loadJyXm()">新建</button>
-		  </region:region-permission>
+		  <%--<region:region-permission permission="jyXmYj-info:create">--%>
+		  	 <%--<button class="btn btn-small a-insert" onclick="loadJyXm()">新建</button>--%>
+		  <%--</region:region-permission>--%>
 		  <region:region-permission permission="jyXmYj-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

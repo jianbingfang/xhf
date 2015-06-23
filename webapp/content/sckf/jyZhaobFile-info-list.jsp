@@ -9,14 +9,14 @@
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.jyZhaobFile-info.list.title" text="列表" /></title>
     <%@include file="/common/s.jsp"%>
-    
-    
+
+
     <link type="text/css" rel="stylesheet"
-	href="${scopePrefix}/s/xthena/xmpicker/xmpicker.css">
+	href="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.css">
 <script type="text/javascript"
-	src="${scopePrefix}/s/xthena/xmpicker/jyxmpicker.js">
+	src="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.js">
 	</script>
-	
+
     <script type="text/javascript">
 var config = {
     id: '${lowerName}-infoGrid',
@@ -42,15 +42,18 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
-    
-    
-	createxmPicker({
-		modalId : 'xmPicker',
+
+	createjyxmPicker({
+		modalId : 'jyxmPicker',
 		url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
 		redUrl : '${scopePrefix}/sckf/jyZhaobFile-info-input.do'
 	});
+
 	
 });
+
+
+
     </script>
   </head>
 
@@ -72,11 +75,31 @@ $(function() {
 		</header>
         <div id="jyZhaobFile-infoSearch" class="content content-inner">
 
-		  <form name="jyZhaobFile-infoForm" method="post" action="jyZhaobFile-info-list.do" class="form-inline">
-		    <label for="jyZhaobFile-info_name"><spring:message code='jyZhaobFile-info.jyZhaobFile-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jyZhaobFile-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
-			<button class="btn btn-small a-search" onclick="document.jyZhaobFile-infoForm.submit()">查询</button>&nbsp;
-		  </form>
+		  <%--<form name="jyZhaobFile-infoForm" method="post" action="jyZhaobFile-info-list.do" class="form-inline">--%>
+		    <%--<label for="jyZhaobFile-info_name"><spring:message code='jyZhaobFile-info.jyZhaobFile-info.list.search.name' text='名称'/>:</label>--%>
+		    <%--<input type="text" id="jyZhaobFile-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">--%>
+			<%--<button class="btn btn-small a-search" onclick="document.jyZhaobFile-infoForm.submit()">查询</button>&nbsp;--%>
+		  <%--</form>--%>
+
+
+			<form name="jyZhaobFile-infoForm" method="post" action="jyZhaobFile-info-list.do" class="form-inline">
+
+				<label for="xmBxRecord-info_xmid"><spring:message code='jyXmYj-info.jyXmYj-info.list.search.name'
+																  text='项目名称'/>:</label>
+				<div class="input-append jyxmPicker">
+					<input id="xmBxRecord-info_xmid" type="hidden" name="filter_EQL_fxmid"
+						   value="${model.fxmid}"> <input
+						id="xmBxRecord-info_xmmc" type="text"
+						value="${xmMap[model.fxmid].fname}" disabled
+						class=" required" style="width: 175px;" value=""> <span
+						class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
+						class="icon-th-list"></i></span>
+				</div>
+
+				<%--<input type="text" id="jyXmYj-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">--%>
+				<button class="btn btn-small a-search" onclick="document.jyZhaobFile-infoForm.submit()">查询</button>&nbsp;
+			</form>
+
 
 		</div>
 	  </article>
@@ -84,12 +107,12 @@ $(function() {
 	  <article class="m-blank">
 	    <div class="pull-left">
 		  <region:region-permission permission="jyZhaobFile-info:create">
-		  <button class="btn btn-small a-insert" onclick="loadJyXm()">新建</button>
+		  <button class="btn btn-small a-insert" onclick="window.location.href ='jyZhaobFile-info-input.do'">新建</button>
 		  </region:region-permission>
 		  <region:region-permission permission="jyZhaobFile-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -129,9 +152,9 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${mxMap[item.fxmid].fname}</td>
-      	 	 <td>${mxMap[item.fxmid].fkbdate}</td>
-      	 	 <td>${mxMap[item.fxmid].fzbmoney}</td>
+      	 	 <td>${xmMap[item.fxmid].fname}</td>
+      	 	 <td>${xmMap[item.fxmid].fkbdate}</td>
+      	 	 <td>${xmMap[item.fxmid].fzbmoney}</td>
       	 	 <td>${item.fweizhi}</td>
       	 	 <td>${item.fdahno}</td>
       	 	 <td>${item.ffilename}</td>

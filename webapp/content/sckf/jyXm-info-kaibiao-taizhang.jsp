@@ -16,9 +16,9 @@
 <%@include file="/common/s.jsp"%>
 
 <link type="text/css" rel="stylesheet"
-	href="${scopePrefix}/s/xthena/xmpicker/xmpicker.css">
+	href="${scopePrefix}/s/xthena/jyxmpicker/xmpicker.css">
 <script type="text/javascript"
-	src="${scopePrefix}/s/xthena/xmpicker/jyxmpicker.js">
+	src="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.js">
 	</script>
 	
 <script type="text/javascript">
@@ -50,8 +50,8 @@
 		table.configPageInfo('.m-page-info');
 		table.configPageSize('.m-page-size');
 		
-		createxmPicker({
-			modalId : 'xmPicker',
+		createjyxmPicker({
+			modalId : 'jyxmPicker',
 			url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
 			redUrl : '${scopePrefix}/sckf/jyXm-info-kaibiao.do'
 		});
@@ -151,12 +151,12 @@
 
 			<article class="m-blank">
 			  <div class="pull-left">
-		<!--  <region:region-permission permission="jyXm-info:create">
-		 	 <button class="btn btn-small a-insert" onclick="loadJyXm()">新建</button>
-		 </region:region-permission> 
+		<%--<region:region-permission permission="jyXm-info:create">--%>
+		 	 <%--<button class="btn btn-small a-insert" onclick="loadJyXm()">新建</button>--%>
+		 <%--</region:region-permission> --%>
 		  <region:region-permission permission="jyXm-info:delete">
-		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
-		  </region:region-permission>-->
+		  	<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
+		  </region:region-permission>
 		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
 		</div>
 		</article> 

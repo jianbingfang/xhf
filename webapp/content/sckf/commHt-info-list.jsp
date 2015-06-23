@@ -68,7 +68,7 @@
 					<form name="commHt-infoForm" method="post"
 						action="commHt-info-list.do" class="form-inline">
 						<label for="commHt-info_name"><spring:message
-								code='commHt-info.commHt-info.list.search.name' text='名称' />:</label> <input
+								code='commHt-info.commHt-info.list.search.name' text='合同名称' />:</label> <input
 							type="text" id="commHt-info_name" name="filter_LIKES_fhtname"
 							value="${param.filter_LIKES_fhtname}">
 						<button class="btn btn-small a-search"
@@ -86,8 +86,8 @@
 					<region:region-permission permission="commHt-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 				<div class="pull-right">
 					每页显示 <select class="m-page-size">
@@ -122,7 +122,7 @@
 									<th class="sorting" name="fadrr">工程地点</th>
 									<th class="sorting" name="fjiafang">业主名称</th>
 									<th class="sorting" name="ftotalMoney">工程总投资</th>
-									<th class="sorting" name="fguimo">建筑规模</th>
+									<%--<th class="sorting" name="fguimo">建筑规模</th>--%>
 									<th class="sorting" name="fstartdate">合同开工时间</th>
 									<th class="sorting" name="fenddate">合同竣工时间</th>
 									<!-- <th class="sorting" name="fhetongno">合同编号</th>
@@ -168,7 +168,7 @@
 										<td>${item.fadrr}</td>
 										<td>${item.fjiafang}</td>
 										<td>${item.ftotalMoney}</td>
-										<td>${item.fguimo}</td>
+										<%--<td>${item.fguimo}</td>--%>
 										<td>${item.fstartdate}</td>
 										<td>${item.fenddate}</td>
 										<%--  	 <td>${item.fhetongno}</td>

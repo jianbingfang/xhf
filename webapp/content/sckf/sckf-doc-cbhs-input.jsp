@@ -66,8 +66,8 @@
 									code="plain-info.plain-info.input.ftitle" text="制度名称" /></label>
 							<div class="controls">
 								<input id="plain-info_ftitle" type="text" name="ftitle"
-									value="${model.ftitle}" size="40" class="text required"
-									minlength="4" maxlength="50">
+									value="${model.ftitle}" size="40" class="text"
+									minlength="" maxlength="">
 							</div>
 						</div>
 						 <div class="control-group">

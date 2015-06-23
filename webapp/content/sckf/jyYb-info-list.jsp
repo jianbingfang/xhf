@@ -57,8 +57,9 @@ $(function() {
         <div id="jyYb-infoSearch" class="content content-inner">
 
 		  <form name="jyYb-infoForm" method="post" action="jyYb-info-list.do" class="form-inline">
-		    <label for="jyYb-info_name"><spring:message code='jyYb-info.jyYb-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jyYb-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="jyYb-info_name"><spring:message code='jyYb-info.jyYb-info.list.search.name'
+														text='年月名称'/>:</label>
+		    <input type="text" id="jyYb-info_name" name="filter_LIKES_fyearmonth" value="${param.filter_LIKES_fyearmonth}">
 			<button class="btn btn-small a-search" onclick="document.jyYb-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +74,7 @@ $(function() {
 		  <region:region-permission permission="jyYb-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

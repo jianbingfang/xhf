@@ -57,8 +57,10 @@ $(function() {
         <div id="jyZhongbTaizhang-infoSearch" class="content content-inner">
 
 		  <form name="jyZhongbTaizhang-infoForm" method="post" action="jyZhongbTaizhang-info-list.do" class="form-inline">
-		    <label for="jyZhongbTaizhang-info_name"><spring:message code='jyZhongbTaizhang-info.jyZhongbTaizhang-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jyZhongbTaizhang-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="jyZhongbTaizhang-info_name"><spring:message
+					code='jyZhongbTaizhang-info.jyZhongbTaizhang-info.list.search.name' text='年度名称'/>:</label>
+		    <input type="text" id="jyZhongbTaizhang-info_name" name="filter_LIKES_fyear"
+				   value="${param.filter_LIKES_fyear}">
 			<button class="btn btn-small a-search" onclick="document.jyZhongbTaizhang-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +75,7 @@ $(function() {
 		  <region:region-permission permission="jyZhongbTaizhang-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
