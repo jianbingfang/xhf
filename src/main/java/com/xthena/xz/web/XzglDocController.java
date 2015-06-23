@@ -504,7 +504,7 @@ public class XzglDocController {
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
 
-        return "redirect:/xz/xz-bmze-list.do";
+        return "redirect:/xz/xz-doc-bmze-list.do";
     }
 
     @RequestMapping("xz-doc-bmze-export")

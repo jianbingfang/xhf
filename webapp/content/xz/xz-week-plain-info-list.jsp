@@ -20,11 +20,11 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-       // 'filter_LIKES_name': '${param.filter_LIKES_name}',
+       'filter_LIKES_ftitle': '${param.filter_LIKES_ftitle}',
         //'filter_EQS_fmodulecode': 'hr'
     },
 	selectedItemClass: 'selectedItem',
-	gridFormId: 'xz-plain-infoGridForm',
+	gridFormId: 'xz-week-plain-infoGridForm',
 	exportUrl: 'xz-week-plain-info-export.do'
 };
 
@@ -56,10 +56,10 @@ $(function() {
 		</header>
         <div id="xz-plain-infoSearch" class="content content-inner">
 
-		  <form name="xz-plain-infoForm" method="post" action="xz-plain-info-list.do" class="form-inline">
+		  <form name="xz-week-plain-infoForm" method="post" action="xz-week-plain-info-list.do" class="form-inline">
 		    <label for="xz-plain-info_name"><spring:message code='xz-plain-info.xz-plain-info.list.search.name' text='名称'/>:</label>
-		  <%--   <input type="text" id="xz-plain-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}"> --%>
-			<button class="btn btn-small a-search" onclick="document.xz-plain-infoForm.submit()">查询</button>&nbsp;
+		     <input type="text" id="xz-plain-info_name" name="filter_LIKES_ftitle" value="${param.filter_LIKES_ftitle}">
+			<button class="btn btn-small a-search" onclick="document.xz-week-plain-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
@@ -73,7 +73,7 @@ $(function() {
 		  <region:region-permission permission="xz-plain-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -94,7 +94,8 @@ $(function() {
 		  <h4 class="title"><spring:message code="xz-plain-info.xz-plain-info.list.title" text="列表"/></h4>
 		</header>
         <div class="content">
-<form id="xz-plain-infoGridForm" name="xz-plain-infoGridForm" method='post' action="xz-week-plain-info-remove.do" class="m-form-blank">
+<form id="xz-week-plain-infoGridForm" name="xz-week-plain-infoGridForm" method='post'
+      action="xz-week-plain-info-remove.do" class="m-form-blank">
   <table id="xz-plain-infoGrid" class="m-table table-hover table-bordered">
     <thead>
       <tr>
