@@ -21,7 +21,7 @@ var config = {
     asc: ${page.asc},
     params: {
    	 'fstatus': '${param.fstatus}',
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'cwZc-infoGridForm',
@@ -59,7 +59,7 @@ $(function() {
 
 		  <form name="cwZc-infoForm" method="post" action="cwZc-info-list.do" class="form-inline">
 		    <label for="cwZc-info_name"><spring:message code='cwZc-info.cwZc-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="cwZc-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="cwZc-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.cwZc-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
