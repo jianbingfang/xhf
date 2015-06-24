@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fquarter': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'cwXmhslist-infoGridForm',
@@ -58,7 +58,7 @@ $(function() {
 
 		  <form name="cwXmhslist-infoForm" method="post" action="cwXmhslist-info-list.do" class="form-inline">
 		    <label for="cwXmhslist-info_name"><spring:message code='cwXmhslist-info.cwXmhslist-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="cwXmhslist-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="cwXmhslist-info_name" name="filter_LIKES_fquarter" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.cwXmhslist-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 

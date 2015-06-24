@@ -27,7 +27,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}',
+        'filter_LIKES_fitem': '${param.filter_LIKES_name}',
         'fszleix':'${fszleix}',
         'divStyle':'${divStyle}'
     },
@@ -257,7 +257,7 @@ function getFiles() {
         <div id="jlShizhong-infoSearch" class="content content-inner">
 		  <form name="jlShizhong-infoForm" method="post" action="jlShizhong-info-list.do" class="form-inline">
 		    <label for="jlShizhong-info_name"><spring:message code='jlShizhong-info.jlShizhong-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jlShizhong-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="jlShizhong-info_name" name="filter_LIKES_fitem" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.jlShizhong-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 		</div>
@@ -271,7 +271,7 @@ function getFiles() {
 		  <region:region-permission permission="jlShizhong-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -829,7 +829,7 @@ function getFiles() {
 
 	<article class="multiple">
 	    <div class="m-page-info pull-left">
-		  共100条记录 显示1到10条记录
+		  没有数据
 		</div>
 		<div class="btn-group m-pagination pull-right">
 		  <button class="btn btn-small">&lt;</button>
