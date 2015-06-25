@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'hrYwxjn-infoGridForm',
@@ -57,7 +57,7 @@ $(function() {
 
 		  <form name="hrYwxjn-infoForm" method="post" action="hrYwxjn-info-list.do" class="form-inline">
 		    <label for="hrYwxjn-info_name"><spring:message code='hrYwxjn-info.hrYwxjn-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrYwxjn-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="hrYwxjn-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.hrYwxjn-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 

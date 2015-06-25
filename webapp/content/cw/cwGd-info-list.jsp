@@ -59,7 +59,7 @@
 						class="form-inline">
 						<label for="cwGd-info_name"><spring:message
 								code='cwGd-info.cwGd-info.list.search.name' text='名称' />:</label> <input
-							type="text" id="cwGd-info_name" name="filter_LIKES_name"
+							type="text" id="cwGd-info_name" name="filter_LIKES_fwzname"
 							value="${param.filter_LIKES_name}">
 						<button class="btn btn-small a-search"
 							onclick="document.cwGd-infoForm.submit()">查询</button>

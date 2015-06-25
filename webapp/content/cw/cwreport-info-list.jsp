@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'cwreport-infoGridForm',
@@ -58,7 +58,7 @@ $(function() {
 
 		  <form name="cwreport-infoForm" method="post" action="cwreport-info-list.do" class="form-inline">
 		    <label for="cwreport-info_name"><spring:message code='cwreport-info.cwreport-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="cwreport-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="cwreport-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.cwreport-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 

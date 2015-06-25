@@ -47,6 +47,7 @@
     <!-- start of main -->
     <section id="m-main" class="span10">
 
+        <%--
         <article class="m-widget">
             <header class="header">
                 <h4 class="title">查询</h4>
@@ -68,6 +69,7 @@
 
             </div>
         </article>
+        --%>
 
         <article class="m-blank">
             <div class="pull-left">

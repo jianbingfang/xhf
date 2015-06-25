@@ -58,7 +58,7 @@ $(function() {
 
 		  <form name="cwHtfxlist-infoForm" method="post" action="cwHtfxlist-info-list.do" class="form-inline">
 		    <label for="cwHtfxlist-info_name"><spring:message code='cwHtfxlist-info.cwHtfxlist-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="cwHtfxlist-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="cwHtfxlist-info_name" name="filter_LIKES_fquarter" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.cwHtfxlist-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 

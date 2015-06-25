@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjGuifantuji-infoGridForm',
@@ -47,6 +47,7 @@ $(function() {
 	  <!-- start of main -->
       <section id="m-main" class="span10">
 
+	  <%--
 	  <article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
@@ -58,16 +59,17 @@ $(function() {
 
 		  <form name="pjGuifantuji-infoForm" method="post" action="pjGuifantuji-info-list.do" class="form-inline">
 		    <label for="pjGuifantuji-info_name"><spring:message code='pjGuifantuji-info.pjGuifantuji-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjGuifantuji-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="pjGuifantuji-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjGuifantuji-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
 	  </article>
+	  --%>
 
 	  <article class="m-blank">
 	    <div class="pull-left">
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

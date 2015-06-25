@@ -76,6 +76,10 @@
     <!-- print -->
     <script type="text/javascript" src="${ctx}/s/xthena/js/jquery.PrintArea.js"></script>
 
+    <!-- scoll up -->
+    <link rel="stylesheet" type="text/css" href="${ctx}/s/util/scrollUp.css">
+    <script src="${ctx}/s/util/scrollUp.js"></script>
+
     <script type="text/javascript">
 $(function() {
     $.showMessage($('#m-success-message').html(), {
