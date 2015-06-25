@@ -21,7 +21,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fwzname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'jl-pjWz-infoGridForm',
@@ -84,7 +84,7 @@ function  backAsk() {
 
 		  <form name="jl-pjWz-infoForm" method="post" action="jl-pjWz-info-list.do" class="form-inline">
 		    <label for="jl-pjWz-info_name"><spring:message code='jl-pjWz-info.jl-pjWz-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jl-pjWz-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="jl-pjWz-info_name" name="filter_LIKES_fwzname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.jl-pjWz-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -101,7 +101,7 @@ function  backAsk() {
 			  <button class="btn btn-small a-insert" onclick="backAsk()">归还</button>
 			  </region:region-permission>
 		  </c:if>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
