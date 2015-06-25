@@ -64,11 +64,9 @@ public class XzZjOrderManager extends HibernateEntityDao<XzZjOrder> {
         for(HashMap<String, Object> orderListMap:orderList){
         	//更新最后显示时间，以防止多人选择，如果更新结果大于0才会继续
         	if(xzZjOrderListManager.batchUpdate("update XzZjDxlist xzZjDxlist set xzZjDxlist.fupdatetime=? where xzZjDxlist.fupdatetime=? and fid=?", System.currentTimeMillis(),Long.valueOf(String.valueOf(orderListMap.get("fupdatetime"))),Long.valueOf(String.valueOf(orderListMap.get("zjid"))))>0){
-	        	
 	        	if(orderListMap.get("fid")!=null&&!String.valueOf(orderListMap.get("fid")).trim().equals("")&&!String.valueOf(orderListMap.get("fid")).equalsIgnoreCase(("undefined"))){
 	        		xzZjOrderListManager.removeById(Long.valueOf(String.valueOf(orderListMap.get("fid"))));
 	        	}
-	        	
 	        	XzZjOrderList xzZjOrderList=new XzZjOrderList();
 	        	xzZjOrderList.setFzjid(Long.valueOf(String.valueOf(orderListMap.get("zjid"))));
 	        	xzZjOrderList.setFtype(String.valueOf(orderListMap.get("ftype")));
@@ -78,11 +76,8 @@ public class XzZjOrderManager extends HibernateEntityDao<XzZjOrder> {
         }
         
     	List<XzZjOrderList> xzZjOrderLists= xzZjOrderListManager.findBy("forderid", dest.getFid());
-    	
-    	
         	for(XzZjOrderList xzZjOrderList:xzZjOrderLists){
         		XzZjDxlist xzZjDxlist=xzZjDxlistManager.get(xzZjOrderList.getFzjid());
-        			
         		  if(dest.getFstatus().equals("已领取")){
         			  xzZjDxlist.setFstate("2");
         			  xzZjDxlistManager.batchUpdate(zjHqlMap.get(Integer.parseInt(xzZjOrderList.getFtype())),"未在库",xzZjDxlist.getFzjid());
@@ -91,13 +86,7 @@ public class XzZjOrderManager extends HibernateEntityDao<XzZjOrder> {
         			  xzZjDxlistManager.batchUpdate(zjHqlMap.get(Integer.parseInt(xzZjOrderList.getFtype())),"在库",xzZjDxlist.getFzjid());
         	      }
         		  xzZjDxlistManager.save(xzZjDxlist);
-        		  
-        		 
         	}
-        	
-        	
-      
-        
      return dest;   
 	}
 	

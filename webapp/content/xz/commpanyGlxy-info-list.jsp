@@ -57,11 +57,11 @@
 				</header>
 				<div id="commpany-infoSearch" class="content content-inner">
 					<form name="commpany-infoForm" method="post"
-						action="commpany-info-list.do" class="form-inline">
+						action="commpanyGlxy-info-list.do" class="form-inline">
 						<label for="commpany-info_name"><spring:message
-								code='commpany-info.commpany-info.list.search.name' text='名称' />:</label>
+								code='commpany-info.commpany-info.list.search.name' text='分公司/注册名称' />:</label>
 						<input type="text" id="commpany-info_name"
-							name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+							name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">
 						<button class="btn btn-small a-search"
 							onclick="document.commpany-infoForm.submit()">查询</button>
 						&nbsp;
@@ -77,8 +77,8 @@
 					<region:region-permission permission="commpany-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 				<div class="pull-right">
 					每页显示 <select class="m-page-size">

@@ -137,8 +137,8 @@
 					<region:region-permission permission="xzZbtzs-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 				<div class="pull-right">
 					每页显示 <select class="m-page-size">
@@ -205,7 +205,7 @@
 			<article>
 				<div class="m-page-info pull-left">共100条记录 显示1到10条记录</div>
 				<div class="btn-group m-page pull-right">
-					<input />
+					<%--<input />--%>
 				</div>
 				<div class="btn-group m-pagination pull-right">
 					<button class="btn btn-small">&lt;</button>

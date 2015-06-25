@@ -165,12 +165,9 @@ public class XzCommHtController {
 	public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
 			RedirectAttributes redirectAttributes) {
 		List<CommHt> commHts = commHtManager.findByIds(selectedItem);
-
 		commHtManager.removeAll(commHts);
-
 		messageHelper.addFlashMessage(redirectAttributes,
 				"core.success.delete", "删除成功");
-
 		return "redirect:/xz/xz-commHt-info-list.do";
 	}
 

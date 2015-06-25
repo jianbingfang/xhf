@@ -57,7 +57,8 @@ $(function() {
 
 		<div class="content content-inner">
 
-<form id="xzGdzctj-infoForm" method="post" action="xzGdzctj-info-save.do" class="form-horizontal">
+<form id="xzGdzctj-infoForm"  name="xzGdzctj-infoForm"  method="post" action="xzGdzctj-info-save.do"
+	  class="form-horizontal">
   <c:if test="${model != null}">
 	  <input id="xzGdzctj-info_id" type="hidden" name="fid" value="${model.fid}">
   </c:if>
@@ -130,9 +131,11 @@ $(function() {
 					  </div>
 	  
 						<div class="span5">
-					    <label class="control-label" for="xzGdzctj-info_fdj"><spring:message code="xzGdzctj-info.xzGdzctj-info.input.fdj" text="单价"/></label>
+					    <label class="control-label" for="xzGdzctj-info_fdj"><spring:message
+								code="xzGdzctj-info.xzGdzctj-info.input.fdj" text="单价（元）"/></label>
 						<div class="controls">
-							  	 <input id="xzGdzctj-info_fdj" type="text" name="fdj" value="${model.fdj}" size="" class="text required" minlength="" maxlength="">	
+							  	 <input id="xzGdzctj-info_fdj" type="number" name="fdj" value="${model.fdj}" size=""
+										class="number" minlength="" maxlength="">
 					    </div>
 					    </div>
 					    </div>

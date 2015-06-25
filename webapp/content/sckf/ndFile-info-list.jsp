@@ -58,7 +58,7 @@ $(function() {
 
 		  <form name="ndFile-infoForm" method="post" action="ndFile-info-list.do" class="form-inline">
 		    <label for="ndFile-info_name"><spring:message code='ndFile-info.ndFile-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="ndFile-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="ndFile-info_name" name="filter_EQL_fyear" value="${param.filter_EQL_fyear}">
 			<button class="btn btn-small a-search" onclick="document.ndFile-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 

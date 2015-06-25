@@ -2,11 +2,13 @@ package com.xthena.xz.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.xthena.api.user.UserConnector;
@@ -35,6 +37,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -140,7 +143,7 @@ public class XzZjController {
 			
 	    	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 	        model.addAttribute("zjList", zjList);
-	        model.addAttribute("hql",hql.toString());
+	        model.addAttribute("hql", hql.toString());
 				return "xz/xzZj-info-list";
 	    	}
 	    
@@ -174,12 +177,41 @@ public class XzZjController {
 		messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
 				"保存成功");
 
-		return "redirect:/xz/xzZj-info-list.do";
+		//return "redirect:/xz/xzZj-info-list.do";
+		return "redirect:/xz/xzZj-treelist.do";
 	}
+
+	@RequestMapping("xzZj-info-removeitem")
+	@ResponseBody
+	public String remove1(@ModelAttribute XzZj hrRyZj,
+						 RedirectAttributes redirectAttributes, HttpServletRequest request) {
+
+		String[] selectitems= request.getParameter("selecteditems").split("@");
+
+		List<Long> Selectedlist= new ArrayList<>();
+
+		for(int i=0; i<selectitems.length; i++){
+			Long cur=Long.parseLong(selectitems[i]);
+			Selectedlist.add(cur);
+		}
+
+		List<XzZj> hrRyZjs = xzZjManager.findByIds(Selectedlist);
+		xzZjManager.removeAll(hrRyZjs);
+		messageHelper.addFlashMessage(redirectAttributes,
+				"core.success.delete", "删除成功");
+
+		return null;
+		//return "redirect:/hr/hrRyZj-info-list";
+	}
+
+
+
+
 
 	@RequestMapping("xzZj-info-remove")
 	public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, HttpServletRequest request) {
+
 		List<XzZj> xzZjs = xzZjManager.findByIds(selectedItem);
 
 		xzZjManager.removeAll(xzZjs);

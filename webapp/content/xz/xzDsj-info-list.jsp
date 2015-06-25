@@ -57,8 +57,9 @@ $(function() {
         <div id="xzDsj-infoSearch" class="content content-inner">
 
 		  <form name="xzDsj-infoForm" method="post" action="xzDsj-info-list.do" class="form-inline">
-		    <label for="xzDsj-info_name"><spring:message code='xzDsj-info.xzDsj-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="xzDsj-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="xzDsj-info_name"><spring:message code='xzDsj-info.xzDsj-info.list.search.name'
+														 text='事件'/>:</label>
+		    <input type="text" id="xzDsj-info_name" name="filter_LIKES_fshijian" value="${param.filter_LIKES_fshijian}">
 			<button class="btn btn-small a-search" onclick="document.xzDsj-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +74,7 @@ $(function() {
 		  <region:region-permission permission="xzDsj-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -101,9 +102,9 @@ $(function() {
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
         	<th class="sorting" name="fshijian">事件</th>
         	<th class="sorting" name="fdate">日期</th>
-        	<th class="sorting" name="fcontent">内容</th>
+        	<%--<th class="sorting" name="fcontent">内容</th>--%>
         	<!-- <th class="sorting" name="fmemo">备注</th> -->
-        <th width="80">&nbsp;</th>
+        <th width="80">操作&nbsp;</th>
       </tr>
     </thead>
 
@@ -113,7 +114,7 @@ $(function() {
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
       	 	 <td>${item.fshijian}</td>
       	 	 <td>${item.fdate}</td>
-      	 	 <td>${item.fcontent}</td>
+      	 	 <%--<td>${item.fcontent}</td>--%>
       	 	<%--  <td>${item.fmemo}</td> --%>
         <td>
           <a href="xzDsj-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>

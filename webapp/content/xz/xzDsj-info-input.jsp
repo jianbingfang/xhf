@@ -61,7 +61,7 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="xzDsj-info_fcontent"><spring:message code="xzDsj-info.xzDsj-info.input.fcontent" text="内容"/></label>
 					<div class="controls">
-				      	<textarea id="xzDsj-info_fcontent"  name="fcontent"  class="form-control" rows="6"  style="width: 560px" class="text  "  minlength="" maxlength="4,000">${model.fcontent}</textarea>
+				      	<textarea id="xzDsj-info_fcontent"  name="fcontent"  class="form-control" rows="6"  style="width: 560px" class="text  "  minlength="" maxlength="">${model.fcontent}</textarea>
 				    </div>
 				  </div>
 			    	<%-- <div class="control-group">

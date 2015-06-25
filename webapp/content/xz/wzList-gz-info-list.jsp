@@ -103,12 +103,11 @@
 						<button class="btn btn-small a-insert"
 							onclick="location.href='wzList-info-input.do'">新建</button>
 					</region:region-permission>
-					<!-- <region:region-permission permission="wzList-info:delete">
-												<button class="btn btn-small a-remove"
-													onclick="gdtable.removeAll()">删除</button>
-											</region:region-permission> -->
-					<button class="btn btn-small a-export"
-						onclick="gdtable.exportExcel()">导出</button>
+					<region:region-permission permission="wzList-info:delete">
+					<button class="btn btn-small a-remove" onclick="gdtable.removeAll()">删除</button>
+					</region:region-permission>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="gdtable.exportExcel()">导出</button>--%>
 				</div>
 				<div class="pull-right">
 					每页显示 <select class="m-page-size">
@@ -128,7 +127,7 @@
 				</header>
 				<div class="content">
 					<form id="wzList-infoGridForm" name="wzList-infoGridForm"
-						method='post' action="wzList-info-remove.do" class="m-form-blank">
+						method='post' action="wzList-gd-info-remove.do" class="m-form-blank">
 						<table id="wzList-infoGrid" class="m-table table-hover table-bordered">
 							<thead>
 								<tr>
@@ -153,7 +152,7 @@
 								<c:forEach items="${page.result}" var="item">
 									<tr>
 										<td><input type="checkbox" class="selectedItem a-check"
-											id="selectedItem" value="${item.fid}"></td>
+											id="selectedItem" name="selectedItem" value="${item.fid}"></td>
 										<td><a href="wzList-info-input.do?id=${item.fid}"
 											class="a-update"><spring:message code="core.list.edit"
 													text="${item.fcode}" /></a></td>

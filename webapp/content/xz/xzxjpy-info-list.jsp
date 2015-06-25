@@ -57,7 +57,8 @@ $(function() {
         <div id="xzxjpy-infoSearch" class="content content-inner">
 
 		  <form name="xzxjpy-infoForm" method="post" action="xzxjpy-info-list.do" class="form-inline">
-		    <label for="xzxjpy-info_ftitle"><spring:message code='xzxjpy-info.xzxjpy-info.list.search.ftitle' text='名称'/>:</label>
+		    <label for="xzxjpy-info_ftitle"><spring:message code='xzxjpy-info.xzxjpy-info.list.search.ftitle'
+															text='标题'/>:</label>
 		    <input type="text" id="xzxjpy-info_ftitle" name="filter_LIKES_ftitle" value="${param.filter_LIKES_ftitle}">
 			<button class="btn btn-small a-search" onclick="document.xzxjpy-infoForm.submit()">查询</button>&nbsp;
 		  </form>
@@ -73,7 +74,7 @@ $(function() {
 		  <region:region-permission permission="xzxjpy-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -111,6 +112,7 @@ $(function() {
         	<th class="sorting" name="fmemo">备注</th> -->
         	<th class="sorting" id="ffzwz">放置位置</th>
         	<th class="sorting" id="fzkstate">在库状态</th>
+		  <th class="sorting" id="">操作</th>
 <!--         	<th class="sorting" name="ftype">类型（内部，外部）</th> -->
     <!--     <th width="80">&nbsp;</th> -->
       </tr>
@@ -135,9 +137,9 @@ $(function() {
 			<c:if test="${item.fzkstate=='未在库'}"> <font color="red">未在库</font>  </c:if></td>
 			
     <%--  <td>${item.ftype}</td> --%>
-       <%--  <td>
+        <td>
           <a href="xzxjpy-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
-        </td> --%>
+        </td>
       </tr>
       </c:forEach>
     </tbody>

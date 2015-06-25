@@ -57,7 +57,8 @@ $(function() {
         <div id="xz-plain-infoSearch" class="content content-inner">
 
 		  <form name="xz-week-plain-infoForm" method="post" action="xz-week-plain-info-list.do" class="form-inline">
-		    <label for="xz-plain-info_name"><spring:message code='xz-plain-info.xz-plain-info.list.search.name' text='名称'/>:</label>
+		    <label for="xz-plain-info_name"><spring:message code='xz-plain-info.xz-plain-info.list.search.name'
+                                                            text='标题名称'/>:</label>
 		     <input type="text" id="xz-plain-info_name" name="filter_LIKES_ftitle" value="${param.filter_LIKES_ftitle}">
 			<button class="btn btn-small a-search" onclick="document.xz-week-plain-infoForm.submit()">查询</button>&nbsp;
 		  </form>

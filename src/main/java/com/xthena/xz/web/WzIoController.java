@@ -58,9 +58,20 @@ public class WzIoController {
 			hql.append(" and wz.fcode like '%"
 					+ parameterMap.get("filter_LIKES_fcode") + "%' ");
 		}
-	/*	hql.append(" order by  io.fdate");*/
-		parameterMap.remove("filter_LIKES_fname");
+		if (parameterMap.get("filter_LIKES_flyr") != null && !parameterMap.get("filter_LIKES_flyr").equals("")) {
+			hql.append(" and wz.flyr like '%"
+					+ parameterMap.get("filter_LIKES_flyr") + "%' ");
+		}
+		if (parameterMap.get("filter_EQL_fxmid") != null) {
+			hql.append(" and wz.fxmid ="
+					+ parameterMap.get("filter_EQL_fxmid"));
+		}
+
+	  	hql.append(" order by  io.fdate");
+		 parameterMap.remove("filter_LIKES_fname");
 		 parameterMap.remove("filter_LIKES_fcode");
+		parameterMap.remove("filter_LIKES_flyr");
+		parameterMap.remove("filter_EQL_fxmid");
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
 		page = wzIoManager.pagedQuery(hql.toString(), page, propertyFilters);

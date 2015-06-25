@@ -188,10 +188,29 @@ public class WzListController {
 		if(type.equals("1")){
 			return "redirect:/xz/wzList-gz-info-list.do";
 		}
-		return "redirect:/xz/wzList-info-list.do?ftype=" + dest.getFtype();
+		else if(type.equals("2")) {
+			return "redirect:/xz/wzList-info-list.do?ftype=" + dest.getFtype();
+		}
+		else{
+			return "redirect:/xz/wzList-info-list.do?ftype=" + dest.getFtype();
+		}
+
 	}
 
 	@RequestMapping("wzList-info-remove")
+	public String remove1(@RequestParam("selectedItem") List<Long> selectedItem,
+						 RedirectAttributes redirectAttributes) {
+		List<WzList> wzLists = wzListManager.findByIds(selectedItem);
+
+		wzListManager.removeAll(wzLists);
+		WzMapUtil.deleteWzMap(wzLists);
+		messageHelper.addFlashMessage(redirectAttributes,
+				"core.success.delete", "删除成功");
+
+		return "redirect:/xz/wzList-info-list.do";
+	}
+
+	@RequestMapping("wzList-gd-info-remove")
 	public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
 			RedirectAttributes redirectAttributes) {
 		List<WzList> wzLists = wzListManager.findByIds(selectedItem);
@@ -201,7 +220,7 @@ public class WzListController {
 		messageHelper.addFlashMessage(redirectAttributes,
 				"core.success.delete", "删除成功");
 
-		return "redirect:/xz/wzList-info-list.do";
+		return "redirect:/xz/wzList-gz-info-list.do";
 	}
 
 	@RequestMapping("wzList-info-export")

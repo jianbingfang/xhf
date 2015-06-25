@@ -33,13 +33,25 @@
 			'filter_LTN_fjianlifei' : '${param.filter_LTN_fjianlifei}',
 		},
 		selectedItemClass : 'selectedItem',
-		gridFormId : 'cw-commHt-infoGridForm',
-		exportUrl : 'cw-commHt-info-export.do'
+		gridFormId : 'xz-commHt-infoGridForm',
+		exportUrl : 'xz-commHt-info-export.do'
 	};
 
 	var table;
-
 	$(function() {
+		$("#xz-commHt-infoForm")
+				.validate(
+				{
+					submitHandler : function(form) {
+						bootbox.animate(false);
+						var box = bootbox
+								.dialog('<div class="progress progress-striped active" style="margin:0px;"><div class="bar" style="width: 100%;"></div></div>');
+						form.submit();
+					},
+					errorClass : 'validate-error'
+				});
+
+
 		table = new Table(config);
 		table.configPagination('.m-pagination');
 		table.configPageInfo('.m-page-info');
@@ -138,8 +150,8 @@
 					<region:region-permission permission="xz-commHt-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 				<div class="pull-right">
 					每页显示 <select class="m-page-size">

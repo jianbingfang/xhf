@@ -8,8 +8,19 @@
   <head>
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.wzIo-info.list.title" text="列表" /></title>
+
+	  <link type="text/css" rel="stylesheet"
+			href="${scopePrefix}/s/xthena/xmpicker/xmpicker.css">
+	  <script type="text/javascript"
+			  src="${scopePrefix}/s/xthena/xmpicker/xmpicker.js"></script>
+
     <%@include file="/common/s.jsp"%>
     <script type="text/javascript">
+
+
+
+
+
 var config = {
     id: '${lowerName}-infoGrid',
     pageNo: ${page.pageNo},
@@ -24,7 +35,9 @@ var config = {
         'filter_LIKES_fcode': '${param.filter_LIKES_fcode}',
 		'filter_GTD_fdate' : '${param.filter_GTD_fdate}',
 		'filter_LTD_fdate' : '${param.filter_LTD_fdate}',
-    },
+		'filter_LTD_fmemo1' : '${param.filter_LTD_fmemo1}',
+
+	},
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'wzIo-infoGridForm',
 	exportUrl: 'wzIo-info-export.do'
@@ -37,6 +50,13 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
+
+		createxmPicker({
+		modalId : 'xmPicker',
+		url : '${scopePrefix}/gcgl/pjXm-simple-list.do'
+		});
+
+
 });
     </script>
   </head>
@@ -64,29 +84,50 @@ $(function() {
 		    <input type="text" id="wzIo-info_fcode" name="filter_LIKES_fcode" value="${param.filter_LIKES_fcode}">
 		    <label for="wzIo-info_fname"><spring:message code='wzIo-info.wzIo-info.list.search.fname' text='名称'/>:</label>
 		    <input type="text" id="wzIo-info_fname" name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">
-		      	<label for="wzIo-info_fdate"><spring:message
-								code='wzIo-info.wzIo-info.list.search.fdate' text='调入时间' />:</label>
-						<div class="input-append datepicker date"
-							style="padding-left: 0px;">
-							<input id="wzIo-info_fdate" type="text"
-								name="filter_GTD_fdate" value="${param.filter_GTD_fdate}"
-								size="40" class="text "
-								style="background-color:white;cursor:default; width: 100px;">
-							<span class="add-on"
-								style="padding-top: 2px; padding-bottom: 2px;"><i
-								class="icon-calendar"></i></span>
-						</div>
-						至
-						<div class="input-append datepicker date"
-							style="padding-left: 0px;">
-							<input id="wzIo-info_fdate" type="text"
-								name="filter_LTD_fdate" value="${param.filter_LTD_fdate}"
-								size="40" class="text "
-								style="background-color:white;cursor:default; width: 100px;">
-							<span class="add-on"
-								style="padding-top: 2px; padding-bottom: 2px;"><i
-								class="icon-calendar"></i></span>
-						</div>&nbsp;&nbsp;
+
+			  <label for="wzIo-info_flyr"><spring:message code='wzIo-info.wzIo-info.list.search.fname'
+														text='领用人'/>:</label>
+			  <input type="text" id="wzIo-info_flyr" name="filter_LIKES_flyr" value="${param.filter_LIKES_flyr}">
+
+
+		  <label class="control-label" for="wzIo-info_fdrxm"><spring:message
+					  code="wzIo-info.wzIo-info.input.fdrxm" text="调入项目" /></label>
+
+			  <div class="input-append xmPicker">
+				  <input id="wzIo-info_fxmid1" type="hidden" name="filter_EQL_fxmid"
+						 value="${param.filter_EQL_fxmid}">
+				  <input id="wzIo-info_fxmid"
+						name="filter_EQL_fxmid"	type="text" value="${xmMap[model.fxmid].fxmname}" disabled
+														class=" required" style="width: 175px;" value=""> <span
+					  class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
+					  class="icon-th-list"></i></span>
+			  </div>
+
+		      	<%--<label for="wzIo-info_fdate"><spring:message--%>
+								<%--code='wzIo-info.wzIo-info.list.search.fdate' text='调入时间' />:</label>--%>
+						<%--<div class="input-append datepicker date"--%>
+							<%--style="padding-left: 0px;">--%>
+							<%--<input id="wzIo-info_fdate" type="text"--%>
+								<%--name="filter_GTD_fdate" value="${param.filter_GTD_fdate}"--%>
+								<%--size="40" class="text "--%>
+								<%--style="background-color:white;cursor:default; width: 100px;">--%>
+							<%--<span class="add-on"--%>
+								<%--style="padding-top: 2px; padding-bottom: 2px;"><i--%>
+								<%--class="icon-calendar"></i></span>--%>
+						<%--</div>--%>
+						<%--至--%>
+						<%--<div class="input-append datepicker date"--%>
+							<%--style="padding-left: 0px;">--%>
+							<%--<input id="wzIo-info_fdate" type="text"--%>
+								<%--name="filter_LTD_fdate" value="${param.filter_LTD_fdate}"--%>
+								<%--size="40" class="text "--%>
+								<%--style="background-color:white;cursor:default; width: 100px;">--%>
+							<%--<span class="add-on"--%>
+								<%--style="padding-top: 2px; padding-bottom: 2px;"><i--%>
+								<%--class="icon-calendar"></i></span>--%>
+						<%--</div>&nbsp;&nbsp;--%>
+
+
 			<button class="btn btn-small a-search" onclick="document.wzIo-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 

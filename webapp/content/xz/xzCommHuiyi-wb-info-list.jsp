@@ -57,11 +57,11 @@
 				</header>
 				<div id="xzCommHuiyi-infoSearch" class="content content-inner">
 					<form name="xzCommHuiyi-infoForm" method="post"
-						action="xzCommHuiyi-info-list.do" class="form-inline">
+						action="xzCommHuiyi-wb-info-list.do" class="form-inline">
 						<label for="xzCommHuiyi-info_name"><spring:message
 								code='xzCommHuiyi-info.xzCommHuiyi-info.list.search.name'
-								text='名称' />:</label> <input type="text" id="xzCommHuiyi-info_name"
-							name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+								text='会议主题' />:</label> <input type="text" id="xzCommHuiyi-info_name"
+							name="filter_LIKES_fhyzt" value="${param.filter_LIKES_fhyzt}">
 						<button class="btn btn-small a-search"
 							onclick="document.xzCommHuiyi-infoForm.submit()">查询</button>
 						&nbsp;
@@ -77,8 +77,8 @@
 					<region:region-permission permission="xzCommHuiyi-wb-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 				<div class="pull-right">
 					每页显示 <select class="m-page-size">

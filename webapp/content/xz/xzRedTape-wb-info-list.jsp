@@ -89,7 +89,7 @@ $(function() {
 		  <region:region-permission permission="xzRedTape-wb-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -145,7 +145,7 @@ $(function() {
       	 	 <td>${item.ffzwz }</td>
       	 	 	 <td><c:if test="${item.fzkstate=='在库'}"> <font color="green">在库</font>  </c:if>
 			<c:if test="${item.fzkstate=='未在库'}"> <font color="red">未在库</font>  </c:if></td>
-      	 	 <td class="span2">${item.fmemo}</td>
+      	 	 <td >${item.fmemo}</td>
         <td>
           <a href="xzRedTape-wb-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
         </td>

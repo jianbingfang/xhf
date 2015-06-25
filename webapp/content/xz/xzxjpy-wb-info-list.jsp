@@ -26,7 +26,7 @@ var config = {
         'filter_LIKES_fjlgcs': '${param.filter_LIKES_fjlgcs}',
     },
 	selectedItemClass: 'selectedItem',
-	gridFormId: 'xzxjpy-infoGridForm',
+	gridFormId: 'xzxjpy-wb-infoGridForm',
 	exportUrl: 'xzxjpy-info-export.do'
 };
 
@@ -82,7 +82,7 @@ $(function() {
 		  <region:region-permission permission="xzxjpy-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -103,7 +103,8 @@ $(function() {
 		  <h4 class="title"><spring:message code="xzxjpy-info.xzxjpy-info.list.title" text="列表"/></h4>
 		</header>
         <div class="content">
-<form id="xzxjpy-infoGridForm" name="xzxjpy-infoGridForm" method='post' action="xzxjpy-info-remove.do" class="m-form-blank">
+<form id="xzxjpy-wb-infoGridForm" name="xzxjpy-wb-infoGridForm" method='post' action="xzxjpy-wb-info-remove.do"
+	  class="m-form-blank">
   <table id="xzxjpy-infoGrid" class="m-table table-hover table-bordered">
     <thead>
       <tr>

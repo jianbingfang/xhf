@@ -12,7 +12,24 @@
 <%@include file="/common/meta.jsp"%>
 <title><spring:message code="dev.xzZjOrder-info.list.title"
 		text="列表" /></title>
-<%@include file="/common/s.jsp"%>
+
+
+	<link type="text/css" rel="stylesheet"
+		  href="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.css">
+
+
+	<script type="text/javascript"
+			src="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.js">
+	</script>
+
+	<link type="text/css" rel="stylesheet"
+		  href="${scopePrefix}/s/xthena/rypicker/rypicker.css">
+	<script type="text/javascript"
+			src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
+
+
+
+	<%@include file="/common/s.jsp"%>
 <script type="text/javascript">
 	var config = {
 		id : '${lowerName}-infoGrid',
@@ -38,6 +55,17 @@
 		table.configPagination('.m-pagination');
 		table.configPageInfo('.m-page-info');
 		table.configPageSize('.m-page-size');
+
+		createjyxmPicker({
+			modalId : 'jyxmPicker',
+			url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
+			redUrl : '${scopePrefix}/sckf/jyXmYj-info-input.do'
+		});
+
+		createryPicker({
+			modalId : 'ryPicker',
+			url : '${scopePrefix}/hr/commRy-simple-list.do'
+		});
 	});
 </script>
 </head>
@@ -56,16 +84,52 @@
 					</div>
 				</header>
 				<div id="xzZjOrder-infoSearch" class="content content-inner">
-					<form name="xzZjOrder-infoForm" method="post"
-						action="xzZjOrder-info-list.do" class="form-inline">
-						<label for="xzZjOrder-info_name"><spring:message
-								code='xzZjOrder-info.xzZjOrder-info.list.search.name' text='名称' />:</label>
-						<input type="text" id="xzZjOrder-info_name"
-							name="filter_LIKES_name" value="${param.filter_LIKES_name}">
-						<button class="btn btn-small a-search"
-							onclick="document.xzZjOrder-infoForm.submit()">查询</button>
-						&nbsp;
+					<%--<form name="xzZjOrder-infoForm" method="post"--%>
+						<%--action="xzZjOrder-info-list.do" class="form-inline">--%>
+						<%--<label for="xzZjOrder-info_name"><spring:message--%>
+								<%--code='xzZjOrder-info.xzZjOrder-info.list.search.name' text='名称' />:</label>--%>
+						<%--<input type="text" id="xzZjOrder-info_name"--%>
+							<%--name="filter_LIKES_name" value="${param.filter_LIKES_name}">--%>
+						<%--<button class="btn btn-small a-search"--%>
+							<%--onclick="document.xzZjOrder-infoForm.submit()">查询</button>--%>
+						<%--&nbsp;--%>
+					<%--</form>--%>
+
+
+
+					<form name="xzZjOrder-infoForm" method="post" action="xzZjOrder-info-list.do" class="form-inline">
+
+						<label for="xzZjOrder-info_xmid"><spring:message code='jyXmYj-info.jyXmYj-info.list.search.name'
+																		  text='项目名称'/>:</label>
+						<div class="input-append jyxmPicker">
+							<input id="xzZjOrder-info_xmid" type="hidden" name="filter_EQL_fxmid"
+								   value="${model.fxmid}"> <input
+								id="xzZjOrder-info_xmmc" type="text"
+								value="${xmMap[model.fxmid].fname}" disabled
+								class=" required" style="width: 175px;" value=""> <span
+								class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
+								class="icon-th-list"></i></span>
+						</div>
+
+						<label for="xzZjOrder-info_zrid"><spring:message code='jyXmYj-info.jyXmYj-info.list.search.name'
+																		 text='负责人'/>:</label>
+						<div class="input-append ryPicker">
+								<input id="xzZjOrder-info_ffzrid" type="hidden" name="filter_EQL_ffzrid"
+									   value="${model.ffzrid}"> <input
+									id="ryBxRecord-info_ffzrid" type="text"
+									value="${ryMap[model.ffzrid].fname}" disabled class=" "
+									value=""> <span class="add-on"
+													style="padding-top: 2px; padding-bottom: 2px;"><i
+									class="icon-user"></i></span>
+							</div>
+
+						<%--<input type="text" id="jyXmYj-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">--%>
+						<button class="btn btn-small a-search" onclick="document.xzZjOrder-infoForm.submit()">查询</button>&nbsp;
 					</form>
+
+
+
+
 				</div>
 			</article>
 			<article class="m-blank">
@@ -74,8 +138,13 @@
 						<button class="btn btn-small a-insert"
 							onclick="location.href='xzZjOrder-info-input.do'">新建</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+
+					<region:region-permission permission="xzZjOrder-info:delete">
+						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
+					</region:region-permission>
+
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 				<div class="pull-right">
 					每页显示 <select class="m-page-size">
@@ -109,7 +178,7 @@
 									<th class="sorting" name="fstarttime">开始使用时间</th>
 									<th class="sorting" name="fendtime">使用截止时间</th>
 									<th class="sorting" name="ffzrid">负责人</th>
-									<th class="sorting" name="fxmid">项目</th>
+									<th class="sorting" name="fxmid">使用项目</th>
 									<!-- 	<th class="sorting" name="fmemo">备注</th> -->
 									<th class="sorting" name="fbackdate">归还时间</th>
 									<th width="80">&nbsp;</th>

@@ -75,7 +75,7 @@
 										code="wzAsk-info.wzAsk-info.input.faskxm" text="申请项目" /></label>
 								<div class="controls">
 									<input id="wzAsk-info_faskxm" type="text" name="faskxm"
-										value="${model.faskxm}" size="" class="number   " minlength=""
+										value="${model.faskxm}" size="" class="text   " minlength=""
 										maxlength="">
 								</div>
 							</div>

@@ -104,12 +104,13 @@ public class XzRyzsController {
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
 
-        return "redirect:/xz/xzRyzs-info-input.do";
+        return "redirect:/xz/xzRyzs-info-list.do";
     }
 
     @RequestMapping("xzRyzs-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
             RedirectAttributes redirectAttributes) {
+
         List<XzRyzs> xzRyzss = xzRyzsManager.findByIds(selectedItem);
 
         xzRyzsManager.removeAll(xzRyzss);

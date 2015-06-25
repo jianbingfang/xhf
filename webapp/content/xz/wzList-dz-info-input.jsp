@@ -44,7 +44,7 @@
 					</h4>
 				</header>
 				<div class="content content-inner">
-					<form id="wzList-infoForm" method="post"
+					<form id="wzList-infoForm" method="post" name="wzList-infoForm"
 						action="wzList-info-save.do" class="form-horizontal">
 						<c:if test="${model != null}">
 							<input id="wzList-info_id" type="hidden" name="fid"
@@ -105,8 +105,8 @@
 								<label class="control-label" for="wzList-info_fnum"><spring:message
 										code="wzList-info.wzList-info.input.fnum" text="数量" /></label>
 								<div class="controls">
-									<input id="wzList-info_fnum" type="text" name="fnum" readonly
-										value="${model.fnum}" size="" class="number   " minlength=""
+									<input id="wzList-info_fnum" type="text" name="fnum"
+										value="${model.fnum}" size="" class="number  required " minlength=""
 										maxlength="">
 								</div>
 							</div>

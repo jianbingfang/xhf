@@ -57,7 +57,8 @@ $(function() {
         <div id="xzYinzhang-infoSearch" class="content content-inner">
 
 		  <form name="xzYinzhang-infoForm" method="post" action="xzYinzhang-info-list.do" class="form-inline">
-		    <label for="xzYinzhang-info_fname"><spring:message code='xzYinzhang-info.xzYinzhang-info.list.search.fname' text='名称'/>:</label>
+		    <label for="xzYinzhang-info_fname"><spring:message
+					code='xzYinzhang-info.xzYinzhang-info.list.search.fname' text='刻章名称'/>:</label>
 		    <input type="text" id="xzYinzhang-info_fname" name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">
 			<button class="btn btn-small a-search" onclick="document.xzYinzhang-infoForm.submit()">查询</button>&nbsp;
 		  </form>
@@ -73,7 +74,7 @@ $(function() {
 		  <region:region-permission permission="xzYinzhang-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

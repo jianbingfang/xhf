@@ -53,7 +53,7 @@ $(function() {
 
 		  <form name="niandu-infoForm" method="post" action="niandu-info-list.do" class="form-inline">
 		    <label for="niandu-info_name"><spring:message code='niandu-info.niandu-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="niandu-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="niandu-info_name" name="filter_EQS_fyear" value="${param.filter_EQS_fyear}">
 			<button class="btn btn-small a-search" onclick="document.niandu-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 

@@ -124,8 +124,9 @@
 						}
 
 						html += "<tr id='child"+item.fid+"' ondblclick='openZj("+item.fid+")' >"
-							+'<td><input type="checkbox" id="childselected" class="selectedItem a-check" name="selectedItems"  value="'+ item.fid +'"></td>' + '</td>'
-						 + "<td>" + item.fname + "</td>" + "<td>"
+							+'<td><input type="checkbox" id="childselected" class="selectedItem a-check" name="selectedItems"  value="'+ item.fid +'"></td>'
+						 + "<td>" + item.fname + "</td>"
+						+ "<td>"
 								+ item.fzhengjianno + "</td>" + "<td>"
 								+ item.fzcno + "</td>" + "<td>" + item.fzhuanye
 								+ "</td>" + "<td>" + item.fyxqks + "</td>"

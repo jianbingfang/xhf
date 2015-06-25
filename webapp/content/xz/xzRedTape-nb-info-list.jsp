@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_ftaptitle': '${param.filter_LIKES_ftaptitle}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'xzRedTape-nb-infoGridForm',
@@ -55,11 +55,13 @@ $(function() {
 		</header>
         <div id="xzRedTape-nb-infoSearch" class="content content-inner">
 
-		   <form name="xzRedTape-wb-infoForm" method="post" action="xzRedTape-wb-info-list.do" class="form-inline">
-		    <label for="xzRedTape-wb-info_ftaptitle"><spring:message code='xzRedTape-wb-info.xzRedTape-wb-info.list.search.ftaptitle' text='标题'/>:</label>
+		   <form name="xzRedTape-nb-infoForm" method="post" action="xzRedTape-nb-info-list.do" class="form-inline">
+		    <label for="xzRedTape-nb-info_ftaptitle"><spring:message
+					code='xzRedTape-nb-info.xzRedTape-nb-info.list.search.ftaptitle' text='标题'/>:</label>
 		  <%--   <input type="text" id="xzRedTape-wb-info_ftaptitle" name="filter_LIKES_ftaptitle" value="${param.filter_LIKES_ftaptitle}">
 		    <label for="xzRedTape-wb-info_fsend"><spring:message code='xzRedTape-wb-info.xzRedTape-wb-info.list.search.fsend' text='发文单位'/>:</label> --%>
-		    <input type="text" id="xzRedTape-wb-info_fsend" name="filter_LIKES_fsend" value="${param.filter_LIKES_fsend}">
+		    <input type="text" id="xzRedTape-nb-info_ftaptitle" name="filter_LIKES_ftaptitle"
+				   value="${param.filter_LIKES_ftaptitle}">
 		      <label for="hrPx-info_fcreatedate"><spring:message code='hrPx-info.hrPx-info.list.search.fcreatedate' text='日期'/>: 从</label>
 		      <div class="input-append datepicker date" style="padding-left: 0px;">
 		    <input id="commRy-info_fcreatedate" type="text" name="filter_GTD_fcreatedate" value="${param.filter_GTD_fcreatedate}" size="40" class="text "  style="background-color:white;cursor:default; width: 160px;">
@@ -69,7 +71,7 @@ $(function() {
 		    <input id="commRy-info_fcreatedate" type="text" name="filter_LTD_fcreatedate" value="${param.filter_LTD_fcreatedate}" size="40" class="text "  style="background-color:white;cursor:default; width: 160px;">
 		    <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-calendar"></i></span>
 		  </div>
-			<button class="btn btn-small a-search" onclick="document.xzRedTape-wb-infoForm.submit()">查询</button>&nbsp;
+			<button class="btn btn-small a-search" onclick="document.xzRedTape-nb-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
@@ -83,7 +85,7 @@ $(function() {
 		  <region:region-permission permission="xzRedTape-nb-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

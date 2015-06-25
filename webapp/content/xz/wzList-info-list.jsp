@@ -94,7 +94,7 @@
 												<label for="wzList-info_name"><spring:message
 														code='wzList-info.wzList-info.list.search.name' text='名称' />:</label>
 												<input type="text" id="wzList-info_name"
-													name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+													name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">
 												<button class="btn btn-small a-search"
 													onclick="document.wzList-infoForm.submit()">查询</button>
 												&nbsp;
@@ -109,10 +109,10 @@
 											</region:region-permission>
 											<region:region-permission permission="wzList-info:delete">
 												<button class="btn btn-small a-remove"
-													onclick="table.removeAll()">删除</button>
+													onclick="gdtable.removeAll()">删除</button>
 											</region:region-permission>
-											<button class="btn btn-small a-export"
-												onclick="table.exportExcel()">导出</button>
+											<%--<button class="btn btn-small a-export"--%>
+												<%--onclick="table.exportExcel()">导出</button>--%>
 										</div>
 										<div class="pull-right">
 											每页显示 <select class="m-page-size">
@@ -144,7 +144,7 @@
 															<th class="sorting" id="fname">名称</th>
 															<th class="sorting" id="fgg">规格</th>
 															<th class="sorting" id="fnum">数量</th>
-																<th class="sorting" id="fprice">单价</th>
+															<th class="sorting" id="fprice">单价</th>
 															<th width="80">&nbsp;</th>
 															<th width="80">&nbsp;</th>
 														</tr>
@@ -162,7 +162,7 @@
 																			code="core.list.edit" text="${item.fname}" /></a></td>
 																<td>${item.fgg}</td>
 																<td>${item.fnum}</td>
-																	<td>${item.fprice}</td>
+																<td>${item.fprice}</td>
 																<td><a
 																	href="wzStorage-info-input.do?fwzid=${item.fid}&ftype=1"
 																	class="a-update"><spring:message
@@ -208,7 +208,7 @@
 												<label for="wzList-info_name"><spring:message
 														code='wzList-info.wzList-info.list.search.name' text='名称' />:</label>
 												<input type="text" id="wzList-info_name"
-													name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+													name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">
 												<button class="btn btn-small a-search"
 													onclick="document.wzList-infoForm.submit()">查询</button>
 												&nbsp;
@@ -223,10 +223,10 @@
 											</region:region-permission>
 											<region:region-permission permission="wzList-info:delete">
 												<button class="btn btn-small a-remove"
-													onclick="table.removeAll()">删除</button>
+													onclick="gdtable.removeAll()">删除</button>
 											</region:region-permission> 
-											<button class="btn btn-small a-export"
-												onclick="table.exportExcel()">导出</button>
+											<%--<button class="btn btn-small a-export"--%>
+												<%--onclick="table.exportExcel()">导出</button>--%>
 										</div>
 										<div class="pull-right">
 											每页显示 <select class="m-page-size">

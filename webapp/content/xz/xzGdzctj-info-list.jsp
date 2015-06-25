@@ -57,8 +57,9 @@ $(function() {
         <div id="xzGdzctj-infoSearch" class="content content-inner">
 
 		  <form name="xzGdzctj-infoForm" method="post" action="xzGdzctj-info-list.do" class="form-inline">
-		    <label for="xzGdzctj-info_name"><spring:message code='xzGdzctj-info.xzGdzctj-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="xzGdzctj-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="xzGdzctj-info_name"><spring:message code='xzGdzctj-info.xzGdzctj-info.list.search.name'
+															text='物品名称'/>:</label>
+		    <input type="text" id="xzGdzctj-info_name" name="filter_LIKES_fwpname" value="${param.filter_LIKES_fwpname}">
 			<button class="btn btn-small a-search" onclick="document.xzGdzctj-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +74,7 @@ $(function() {
 		  <region:region-permission permission="xzGdzctj-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

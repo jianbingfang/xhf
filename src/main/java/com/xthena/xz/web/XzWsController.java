@@ -84,7 +84,7 @@ public class XzWsController {
 	}
 
 	@RequestMapping("xzWs-info-remove")
-	public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
+	public String remove(@RequestParam("selectedItem") List<Long> selectedItem,@RequestParam(value = "ftype", required = false) String ftype,
 			RedirectAttributes redirectAttributes) {
 		List<XzWs> xzWss = xzWsManager.findByIds(selectedItem);
 
@@ -93,7 +93,7 @@ public class XzWsController {
 		messageHelper.addFlashMessage(redirectAttributes,
 				"core.success.delete", "删除成功");
 
-		return "redirect:/xz/xzWs-info-list.do";
+		return "redirect:/xz/xzWs-info-list.do?ftype="+ftype;
 	}
 
 	@RequestMapping("xzWs-info-export")

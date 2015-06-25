@@ -18,9 +18,9 @@
 <script type="text/javascript"
 	src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
 <link type="text/css" rel="stylesheet"
-	href="${scopePrefix}/s/xthena/xmpicker/xmpicker.css">
+	href="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.css">
 <script type="text/javascript"
-	src="${scopePrefix}/s/xthena/xmpicker/xmpicker.js"></script>
+	src="${scopePrefix}/s/xthena/jyxmpicker/jyxmpicker.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$("#xzZjOrder-infoForm")
@@ -40,9 +40,10 @@
 			url : '${scopePrefix}/hr/commRy-simple-list.do'
 		});
 
-		createxmPicker({
-			modalId : 'xmPicker',
-			url : '${scopePrefix}/gcgl/jyXm-simple-list.do'
+		createjyxmPicker({
+			modalId : 'jyxmPicker',
+			url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
+			redUrl : '${scopePrefix}/sckf/jyXmYj-info-input.do'
 		});
 	});
 
@@ -632,7 +633,7 @@
 								<label class="control-label" for="xzZjOrder-info_fxmid"><spring:message
 										code="xzZjOrder-info.xzZjOrder-info.input.fxmid" text="使用项目" /></label>
 								<div class="controls">
-									<div class="input-append xmPicker">
+									<div class="input-append jyxmPicker">
 										<input id="xzZjOrder-info_fxmid" type="hidden" name="fxmid"
 											value="${model.fxmid}"> <input
 											id="xmBxRecord-info_xmmc" type="text"

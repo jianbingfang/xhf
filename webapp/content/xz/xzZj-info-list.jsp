@@ -73,9 +73,10 @@
 						}
 						html += "<tr id='child" + item.fid
 								+ "' ondblclick='openZj(" + item.fid + ")' >"
-								/* 	+'<td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>'
-									+ '</td>' */
-								 + "<td></td>"  /* + "<td>" + item.fname + "</td>" */
+								+'<td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value='+item.fid+'></td>'
+								+"</td>"
+
+//								 //+ "<td></td>"  /* + "<td>" + item.fname + "</td>" */
 								+ "<td>" + item.fcode + "</td>" + "<td>"
 								+ item.fnum + "</td>" + "<td>" + item.fendate
 								+ "</td>" + "<td>" + item.fzkstate + "</td>";
@@ -95,6 +96,54 @@
 		}
 
 	}
+
+
+	function removeflow(){
+		var checkboxs=getcheckeditem();
+
+		removeitem(checkboxs);
+	}
+
+
+
+	function removeitem(checkboxs) {
+		$.ajax({
+			url :  "${scopePrefix}/xz/xzZj-info-removeitem.do",
+			type : 'POST',
+			traditional :true,
+			dataType:'json',
+			data : {
+				'selecteditems' : checkboxs
+			},
+			async : false,
+			success : function(data) {
+
+				window.location.href="xzZj-treelist.do";
+
+			}
+		});
+	}
+
+
+
+	function getcheckeditem(){
+		var inputs = document.getElementsByTagName("input");//获取所有的input标签对象
+		var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
+
+		for(var i=0;i<inputs.length;i++){
+			var obj = inputs[i];
+			if(obj.type=='checkbox' ){
+				if (inputs[i].checked)
+				{
+					//这个地方是获取你选定了的的checkbox的Value
+					var valuetext=inputs[i].value;
+					checkboxArray.push(valuetext);
+				}
+			}
+		}
+		return checkboxArray.join('@');
+	};
+
 
 	function openZj(id) {
 		window.open("xzZj-info-input.do?id=" + id);
@@ -158,10 +207,10 @@
 							onclick="location.href='xzZj-info-input.do'">新建</button>
 					</region:region-permission>
 					<region:region-permission permission="xzZj-info:delete">
-						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
+						<button class="btn btn-small a-remove" onclick="removeflow()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 				<!-- <div class="pull-right">
 					每页显示 <select class="m-page-size">
@@ -201,10 +250,10 @@
 								<c:forEach items="${zjList}" var="item">
 									<tr id="${item.fid}" onclick=selectZj(this,'${item.fname}')
 										style="background-color: #EEEEEE" class='a'>
-										<!-- <td></td> -->
-									<%-- 	<td><input type="checkbox"
-															class="selectedItem a-check" name="selectedItem"
-															value="${item.fid}"></td>  --%>
+										 <%--<td></td>--%>
+										<%--<td><input type="checkbox"--%>
+															<%--class="selectedItem a-check" name="selectedItem"--%>
+															<%--value="${item.fid}"></td>--%>
 										<td colspan="5">${item.fname}</td>
 									<!-- 	<td></td>
 										<td></td>

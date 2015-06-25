@@ -57,9 +57,15 @@ $(function() {
         <div id="wzAsk-infoSearch" class="content content-inner">
 
 		  <form name="wzAsk-infoForm" method="post" action="wzAsk-info-list.do" class="form-inline">
-		    <label for="wzAsk-info_name"><spring:message code='wzAsk-info.wzAsk-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="wzAsk-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
-			<button class="btn btn-small a-search" onclick="document.wzAsk-infoForm.submit()">查询</button>&nbsp;
+		    <label for="wzAsk-info_name"><spring:message code='wzAsk-info.wzAsk-info.list.search.name'
+														 text='申请部门'/>:</label>
+		    <input type="text" id="wzAsk-info_name" name="filter_LIKES_faskbm" value="${param.filter_LIKES_faskbm}">
+
+			  <label for="wzAsk-info_name"><spring:message code='wzAsk-info.wzAsk-info.list.search.name'
+														   text='申请项目'/>:</label>
+			  <input type="text" id="wzAsk-info_xmname" name="filter_LIKES_faskxm" value="${param.filter_LIKES_faskxm}">
+
+			  <button class="btn btn-small a-search" onclick="document.wzAsk-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
@@ -73,7 +79,7 @@ $(function() {
 		  <region:region-permission permission="wzAsk-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -102,7 +108,7 @@ $(function() {
         	<th class="sorting" name="faskno">申请单编号</th>
         	<th class="sorting" name="faskbm">申请部门</th>
         	<th class="sorting" name="faskxm">申请项目</th>
-        	<th class="sorting" name="ffzr">负责人</th>
+        	<%--<th class="sorting" name="ffzr">负责人</th>--%>
         	<th class="sorting" name="fwplx">物品类型</th>
         	<!-- <th class="sorting" name="faskyt">用途</th> -->
         	<th class="sorting" name="faskdate">申请日期</th>
@@ -115,6 +121,7 @@ $(function() {
         	<th class="sorting" name="fmemo1">备注1</th>
         	<th class="sorting" name="fmemo2">备注2</th>
         	<th class="sorting" name="fstatus">审批状态</th> -->
+		  <th class="sorting" name="">操作</th>
         <th width="80">&nbsp;</th>
       </tr>
     </thead>
@@ -126,19 +133,19 @@ $(function() {
       	 	 <td>${item.faskno}</td>
       	 	 <td>${item.faskbm}</td>
       	 	 <td>${item.faskxm}</td>
-      	 	 <td>${item.faskxm}</td>
+      	 	 <%--<td>${item.faskxm}</td>--%>
       	 	 <td>${item.fwplx}</td>
-      	 	 <td>${item.faskyt}</td>
+      	 	 <%--<td>${item.faskyt}</td>--%>
       	 	 <td>${item.faskdate}</td>
       	 	 <td>${item.faskry}</td>
       	 	 <td>${item.fspr}</td>
-      	 	 <td>${item.fspyj}</td>
+      	 	 <%--<td>${item.fspyj}</td>--%>
       	 	 <td>${item.fjfqk}</td>
       	 	 <td>${item.fjnje}</td>
-      	 	 <td>${item.fmemo}</td>
-      	 	 <td>${item.fmemo1}</td>
-      	 	 <td>${item.fmemo2}</td>
-      	 	 <td>${item.fstatus}</td>
+      	 	 <%--<td>${item.fmemo}</td>--%>
+      	 	 <%--<td>${item.fmemo1}</td>--%>
+      	 	 <%--<td>${item.fmemo2}</td>--%>
+      	 	 <%--<td>${item.fstatus}</td>--%>
         <td>
           <a href="wzAsk-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
         </td>

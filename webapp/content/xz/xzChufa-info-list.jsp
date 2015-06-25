@@ -80,10 +80,11 @@
 								code='xzChufa-info.xzChufa-info.list.search.fname' text='标题' />:</label>
 						<input type="text" id="xzChufa-info_fname"
 							name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">&nbsp;&nbsp;
-						<label for="xzChufa-info_fxmid"><spring:message
-								code='xzChufa-info.xzChufa-info.list.search.fxmid' text='项目名称' />:</label>
-						<input type="text" id="xzChufa-info_fxmid"
-							name="filter_LIKES_fxmid" value="${param.filter_LIKES_fxmid}">&nbsp;&nbsp;
+						<%--<label for="xzChufa-info_fxmid"><spring:message--%>
+								<%--code='xzChufa-info.xzChufa-info.list.search.fxmid' text='项目名称' />:</label>--%>
+						<%--<input type="text" id="xzChufa-info_fxmid"--%>
+						<%--<input type="text" id="xzChufa-info_fxmid"--%>
+							<%--name="filter_LIKES_fxmid" value="${param.filter_LIKES_fxmid}">&nbsp;&nbsp;--%>
 						<label for="xzChufa-info_fdate"><spring:message
 								code='xzChufa-info.xzChufa-info.list.search.fdate' text='日期' />:</label>
 						<div class="input-append datepicker date"
@@ -122,8 +123,8 @@
 					<region:region-permission permission="xzChufa-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 
 				<div class="pull-right">

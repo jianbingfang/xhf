@@ -57,8 +57,9 @@ $(function() {
         <div id="xzxhptj-infoSearch" class="content content-inner">
 
 		  <form name="xzxhptj-infoForm" method="post" action="xzxhptj-info-list.do" class="form-inline">
-		    <label for="xzxhptj-info_name"><spring:message code='xzxhptj-info.xzxhptj-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="xzxhptj-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="xzxhptj-info_name"><spring:message code='xzxhptj-info.xzxhptj-info.list.search.name'
+														   text='物品名称'/>:</label>
+		    <input type="text" id="xzxhptj-info_name" name="filter_LIKES_fwpname" value="${param.filter_LIKES_fwpname}">
 			<button class="btn btn-small a-search" onclick="document.xzxhptj-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +74,7 @@ $(function() {
 		  <region:region-permission permission="xzxhptj-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -105,7 +106,7 @@ $(function() {
         	<th class="sorting" name="fxingsl">新购数量</th>
         	<th class="sorting" name="fxhsl">消耗数量</th>
         	<th class="sorting" name="fxkcl">现库存量</th>
-        <th width="80">&nbsp;</th>
+        <th width="80">操作&nbsp;</th>
       </tr>
     </thead>
 

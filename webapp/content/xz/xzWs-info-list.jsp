@@ -57,11 +57,12 @@ $(function() {
 		</header>
         <div id="xzWs-infoSearch" class="content content-inner">
 
-		  <form name="xzWs-infoForm" method="post" action="xzWs-info-list.do" class="form-inline">
+		  <form name="xzWs-infoForm" method="post" action="xzWs-info-list.do?ftype=${ftype}" class="form-inline">
+
 		    <label for="xzWs-info_fbjbm"><spring:message code='xzWs-info.xzWs-info.list.search.fbjbm' text='被检部门'/>:</label>
 		    <input type="text" id="xzWs-info_fbjbm" name="filter_LIKES_fbjbm" value="${param.filter_LIKES_fbjbm}">
-		    	    <label for="xzWs-info_fdate"><spring:message code='xzWs-info.xzWs-info.list.search.fdate' text='检查日期'/>:</label>
-		    <input type="text" id="xzWs-info_fdate" name="filter_LIKES_fdate" value="${param.filter_LIKES_fdate}">
+		    	    <%--<label for="xzWs-info_fdate"><spring:message code='xzWs-info.xzWs-info.list.search.fdate' text='检查日期'/>:</label>--%>
+		    <%--<input type="text" id="xzWs-info_fdate" name="filter_LIKES_fdate" value="${param.filter_LIKES_fdate}">--%>
 			<button class="btn btn-small a-search" onclick="document.xzWs-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -76,7 +77,7 @@ $(function() {
 		  <region:region-permission permission="xzWs-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -97,7 +98,8 @@ $(function() {
 		  <h4 class="title"><spring:message code="xzWs-info.xzWs-info.list.title" text="列表"/></h4>
 		</header>
         <div class="content">
-<form id="xzWs-infoGridForm" name="xzWs-infoGridForm" method='post' action="xzWs-info-remove.do" class="m-form-blank">
+<form id="xzWs-infoGridForm" name="xzWs-infoGridForm" method='post' action="xzWs-info-remove.do?ftype=${ftype}"
+	  class="m-form-blank">
   <table id="xzWs-infoGrid" class="m-table table-hover table-bordered">
     <thead>
       <tr>
@@ -111,7 +113,7 @@ $(function() {
    <!--      	<th class="sorting" name="fmemo">备注</th>
         	<th class="sorting" name="fmemo1">备注1</th>
         	<th class="sorting" name="fmemo2">备注2</th> -->
-        <th width="80">&nbsp;</th>
+        <th width="80">操作&nbsp;</th>
       </tr>
     </thead>
 
