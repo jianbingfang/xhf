@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fyearmonth': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'jl-pjKq-infoGridForm',
@@ -58,7 +58,7 @@ $(function() {
 
 		  <form name="jl-pjKq-infoForm" method="post" action="jl-pjKq-info-list.do" class="form-inline">
 		    <label for="jl-pjKq-info_name"><spring:message code='jl-pjKq-info.jl-pjKq-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jl-pjKq-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="jl-pjKq-info_name" name="filter_LIKES_fyearmonth" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.jl-pjKq-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +73,7 @@ $(function() {
 		  <region:region-permission permission="jl-pjKq-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

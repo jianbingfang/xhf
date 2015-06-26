@@ -46,7 +46,7 @@ $(function() {
 
 	  <!-- start of main -->
       <section id="m-main" class="span10">
-
+<%--
 	  <article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
@@ -64,6 +64,7 @@ $(function() {
 
 		</div>
 	  </article>
+--%>
 
 	  <article class="m-blank">
 	    <div class="pull-left">
@@ -73,7 +74,7 @@ $(function() {
 		  <region:region-permission permission="jlWzbackAsk-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -113,9 +114,9 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${ryMap[item.faskuser]}</td>
+      	 	 <td>${ryMap[item.faskuser].fname}</td>
       	 	 <td>${item.faskdate}</td>
-      	 	 <td>${ryMap[item.freceiveuser]}</td>
+      	 	 <td>${ryMap[item.freceiveuser].fname}</td>
       	 	 <td>${item.freceivedate}</td>
       	 	 <td>${item.fbwztype}</td>
       	 	 <td>${item.ffileid}</td>
@@ -132,7 +133,7 @@ $(function() {
 
 	  <article>
 	    <div class="m-page-info pull-left">
-		  共100条记录 显示1到10条记录
+		  没有数据
 		</div>
 
 		<div class="btn-group m-pagination pull-right">

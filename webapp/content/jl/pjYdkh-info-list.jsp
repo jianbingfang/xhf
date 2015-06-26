@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_ffilename': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'jl-pjYdkh-infoGridForm',
@@ -58,7 +58,7 @@ $(function() {
 
 		  <form name="jl-pjYdkh-infoForm" method="post" action="jl-pjYdkh-info-list.do" class="form-inline">
 		    <label for="jl-pjYdkh-info_name"><spring:message code='jl-pjYdkh-info.jl-pjYdkh-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jl-pjYdkh-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="jl-pjYdkh-info_name" name="filter_LIKES_ffilename" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.jl-pjYdkh-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +73,7 @@ $(function() {
 		  <region:region-permission permission="jl-pjYdkh-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

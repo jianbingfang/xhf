@@ -41,6 +41,16 @@
     function doSubmit() {
         $("#pjXmImg-infoForm").submit();
     }
+
+    function deleteImg(imgId) {
+        if (confirm("确认删除？")) {
+            $.post('pjXmImg-info-delete.do', {id: imgId}, function () {
+                location.reload();
+            }).error(function (err) {
+                alert('删除失败\n' + err);
+            });
+        }
+    }
 </script>
 <body>
 <%@include file="/header/bpm-workspace.jsp" %>
@@ -179,7 +189,8 @@
                                                          style="margin: auto 0;"/>
 
                                                     <div class="carousel-caption">
-                                                        <p>${item.fdescribe}</p>
+                                                        <p>${item.fdescribe}<a href="javascript:deleteImg(${item.fid});"
+                                                                               style="float: right;">删除</a></p>
                                                     </div>
                                                 </div>
                                             </c:when>
@@ -189,11 +200,10 @@
                                                          height="100%"
                                                          style="margin: auto 0"/>
 
-                                                    <c:if test="${!empty item.fdescribe}">
-                                                        <div class="carousel-caption">
-                                                            <p>${item.fdescribe}</p>
-                                                        </div>
-                                                    </c:if>
+                                                    <div class="carousel-caption">
+                                                        <p>${item.fdescribe}<a href="javascript:deleteImg(${item.fid});"
+                                                                               style="float: right;">删除</a></p>
+                                                    </div>
                                                 </div>
                                             </c:otherwise>
                                         </c:choose>
@@ -221,8 +231,8 @@
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.ogg" type="video/ogg">--%>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.webm" type="video/webm">--%>
                             <%--<object data="http://www.w3cschool.cc/try/demo_source/movie.mp4" width="100%" height="100%">--%>
-                                <%--<embed src="http://www.w3cschool.cc/try/demo_source/movie.swf" width="100%"--%>
-                                       <%--height="100%">--%>
+                            <%--<embed src="http://www.w3cschool.cc/try/demo_source/movie.swf" width="100%"--%>
+                            <%--height="100%">--%>
                             <%--</object>--%>
                         </video>
                     </div>

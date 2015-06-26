@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fdwname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'xgdwContact-infoGridForm',
@@ -55,7 +55,7 @@ $(function() {
 
 		  <form name="xgdwContact-infoForm" method="post" action="xgdwContact-info-list.do" class="form-inline">
 		    <label for="xgdwContact-info_name"><spring:message code='xgdwContact-info.xgdwContact-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="xgdwContact-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="xgdwContact-info_name" name="filter_LIKES_fdwname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.xgdwContact-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -70,7 +70,7 @@ $(function() {
 		  <region:region-permission permission="xgdwContact-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
