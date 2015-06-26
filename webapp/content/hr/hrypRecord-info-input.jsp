@@ -73,10 +73,10 @@ $(function() {
 						<div class="controls">
 							<select class="form-control" id="commRy-info_fsex"
 								name="fsex" value="${model.fsex}" class=" required">
-								<option value="0"
-									<c:if test="${model.fsex=='0'}"> selected="selected"  </c:if>>女</option>
-								<option value="1"
-									<c:if  test="${model.fsex=='1'}"> selected="selected"  </c:if>>男</option>
+								<option value="女"
+									<c:if test="${model.fsex=='女'}"> selected="selected"  </c:if>>女</option>
+								<option value="男"
+									<c:if  test="${model.fsex=='男'}"> selected="selected"  </c:if>>男</option>
 							</select>
 					    </div>
 					  </div>
@@ -163,7 +163,8 @@ $(function() {
 						<div class="span5">
 					    <label class="control-label" for="hrypRecord-info_fgw"><spring:message code="hrypRecord-info.hrypRecord-info.input.fgw" text="岗位"/></label>
 						<div class="controls">
-							  	<input id="hrypRecord-info_fgw" type="text" name="fgw" value="${model.fgw}" size="" class="number" minlength="" maxlength="">
+							  	<input id="hrypRecord-info_fgw" type="text" name="fgw" value="${model.fgw}" size=""
+									   class="text" minlength="" maxlength="">
 					    </div>
 					  </div>
 	  
@@ -235,7 +236,7 @@ $(function() {
 						<div class="control-group">
 						    <label class="control-label" for="hrypRecord-info_finfo"><spring:message code="hrypRecord-info.hrypRecord-info.input.finfo" text="简介"/></label>
 							<div class="controls">
-							      	<textarea id="hrypRecord-info_finfo"  name="finfo"  class="form-control" rows="6"  style="width: 560px" class="text  "  minlength="" maxlength="2,000">${model.finfo}</textarea>
+							      	<textarea id="hrypRecord-info_finfo"  name="finfo"  class="form-control" rows="6"  style="width: 560px" class="text  "  minlength="" maxlength="">${model.finfo}</textarea>
 						    </div>
 					   </div>
 					  

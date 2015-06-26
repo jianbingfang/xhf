@@ -8,8 +8,17 @@
   <head>
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.hrRydb-info.list.title" text="列表" /></title>
+
+
+
     <%@include file="/common/s.jsp"%>
-    <script type="text/javascript">
+
+	  <link type="text/css" rel="stylesheet"
+			href="${scopePrefix}/s/xthena/rypicker/rypicker.css">
+	  <script type="text/javascript"
+			  src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
+
+	  <script type="text/javascript">
 var config = {
     id: '${lowerName}-infoGrid',
     pageNo: ${page.pageNo},
@@ -20,7 +29,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_EQL_fryid': '${param.filter_EQL_fryid}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'hrRydb-infoGridForm',
@@ -34,6 +43,13 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
+
+
+	createryPicker({
+		modalId : 'ryPicker',
+		url : '${scopePrefix}/hr/commRy-simple-list.do'
+	});
+
 });
     </script>
   </head>
@@ -54,8 +70,22 @@ $(function() {
         <div id="hrRydb-infoSearch" class="content content-inner">
 
 		  <form name="hrRydb-infoForm" method="post" action="hrRydb-info-list.do" class="form-inline">
-		    <label for="hrRydb-info_name"><spring:message code='hrRydb-info.hrRydb-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrRydb-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="hrRydb-info_name"><spring:message code='hrRydb-info.hrRydb-info.list.search.name'
+														  text='人员名称'/>:</label>
+
+
+			  <div class="input-append ryPicker">
+				  <input id="hrRyZj-info_userid" type="hidden" name="filter_EQL_fryid"
+						 value="${param.filter_EQL_fryid}" required="required"> <input
+					  id="hrRyZj-info_userName" type="text"
+					  value="${ryMap[model.fryid].fname}" disabled
+					  class=" required" style="width: 175px;" value=""> <span
+					  class="add-on"
+					  style="padding-top: 2px; padding-bottom: 2px;"><i
+					  class="icon-user"></i></span>
+			  </div>
+
+		    <%--<input type="text" id="hrRydb-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">--%>
 			<button class="btn btn-small a-search" onclick="document.hrRydb-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -70,7 +100,7 @@ $(function() {
 		  <region:region-permission permission="hrRydb-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

@@ -108,8 +108,8 @@ function doUpdateAll(){
 					<region:region-permission permission="hrShtc-info:update">
 						<button class="btn btn-small a-update" onclick="updateAll()">批量修改</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 
 				<div class="pull-right">
@@ -147,7 +147,7 @@ function doUpdateAll(){
 									<th class="sorting" id="fgsyj">公司应缴</th>
 									<th class="sorting" id="flastdate">最后缴纳日期</th>
 									<th class="sorting" id="fjsr">经手人</th>
-									<th width="80">&nbsp;</th>
+									<th width="80">操作&nbsp;</th>
 								</tr>
 							</thead>
 

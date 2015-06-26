@@ -56,7 +56,7 @@
 				</header>
 				<div id="commRy-infoSearch" class="content content-inner">
 					<form name="commRy-infoForm" method="post"
-						action="commRy-info-list.do" class="form-inline">
+						action="commRy-xinzi-list.do" class="form-inline">
 						<label for="commRy-info_name"><spring:message
 								code='commRy-info.commRy-info.list.search.name' text='姓名' />:</label> <input
 							type="text" id="commRy-info_name" name="filter_LIKES_fname"
@@ -135,6 +135,7 @@
 									<th class="sorting" id="fzhuanye">专业</th>
 									<th class="sorting" id="fbyyx">毕业时间</th>
 									<th class="sorting" id="fjibengongzi">基本工资</th>
+
 								</tr>
 							</thead>
 							<tbody>
@@ -160,7 +161,7 @@
 										<td>${item.fzhuanye}</td>
 										<td>${item.fbydate}</td>
 										<td>${item.fjbgz}</td>
-										<td></td>
+										<%--<td></td>--%>
 									</tr>
 								</c:forEach>
 							</tbody>

@@ -54,8 +54,9 @@ $(function() {
         <div id="hrShZhaop-infoSearch" class="content content-inner">
 
 		  <form name="hrShZhaop-infoForm" method="post" action="hrShZhaop-info-list.do" class="form-inline">
-		    <label for="hrShZhaop-info_name"><spring:message code='hrShZhaop-info.hrShZhaop-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrShZhaop-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="hrShZhaop-info_name"><spring:message code='hrShZhaop-info.hrShZhaop-info.list.search.name'
+															 text='岗位名称'/>:</label>
+		    <input type="text" id="hrShZhaop-info_name" name="filter_LIKES_fgwname" value="${param.filter_LIKES_fgwname}">
 			<button class="btn btn-small a-search" onclick="document.hrShZhaop-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -70,7 +71,7 @@ $(function() {
 		  <region:region-permission permission="hrShZhaop-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

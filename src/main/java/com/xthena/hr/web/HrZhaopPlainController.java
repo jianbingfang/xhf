@@ -58,7 +58,7 @@ public class HrZhaopPlainController {
     private  HrGwbmManager hrGwbmManager;
     
     @RequestMapping("hrZhaopPlain-info-list")
-    public String list(@ModelAttribute Page page,
+    public String list(@ModelAttribute Page page, @RequestParam(value = "fdept", required = false) Long fdept,
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
@@ -68,6 +68,13 @@ public class HrZhaopPlainController {
         
 		// 岗位下拉
 		List<OrgDepartment> orgDepartments = orgDepartmentManager.getAll();
+
+        model.addAttribute("deptList",orgDepartments);
+
+//        if(fdept!=null){
+//            OrgDepartment department= orgDepartments.get(fdept);
+//
+//        }
 		HashMap<Long, String> orgDeptHashMap = new HashMap<Long, String>();
 		for (OrgDepartment orgDepartment : orgDepartments) {
 			orgDeptHashMap.put(orgDepartment.getId(), orgDepartment.getName());
@@ -81,7 +88,9 @@ public class HrZhaopPlainController {
 			hashMap.put("fgwname", hrGwbm.getFname());
 			deptList.put(hrGwbm.getFid().toString(),hashMap);
 		}
-      
+
+
+
 		model.addAttribute("gwInfos", deptList);
         model.addAttribute("deptMap", orgDeptHashMap);
 

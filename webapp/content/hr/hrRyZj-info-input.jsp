@@ -211,15 +211,15 @@
 											code="hrLdht-info.hrLdht-info.input.userid" text="姓名" /></label>
 									<div class="controls">
 										<div class="input-append ryPicker">
-											<input id="hrRyZj-info_userid" type="hidden" name="userid"
-												value="${model.userid}" required="required"> <input
-												id="hrRyZj-info_userName" type="text"
-												value="${ryMap[model.userid].fname}" disabled
-												class=" required" style="width: 175px;" value=""> <span
-												class="add-on"
-												style="padding-top: 2px; padding-bottom: 2px;"><i
-												class="icon-user"></i></span>
-										</div>
+										<input id="hrRyZj-info_userid" type="hidden" name="userid"
+											   value="${model.userid}" required="required"> <input
+											id="hrRyZj-info_userName" type="text"
+											value="${ryMap[model.userid].fname}" disabled
+											class=" required" style="width: 175px;" value=""> <span
+											class="add-on"
+											style="padding-top: 2px; padding-bottom: 2px;"><i
+											class="icon-user"></i></span>
+									</div>
 									</div>
 								</div>
 								<div class="control-group">

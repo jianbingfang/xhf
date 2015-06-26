@@ -38,7 +38,7 @@ public class HrypRecord  implements java.io.Serializable {
      private String fbyzhuanye;
      private String fxueli;
      private String fxueli2;
-     private Long fgw;
+     private String fgw;
      private Date fdate;
      private String finfo;
      private String fworkaddr;
@@ -58,7 +58,9 @@ public class HrypRecord  implements java.io.Serializable {
 
     
     /** full constructor */
-    public HrypRecord(String fidno, String fname, String fsex, Date fbirdate, String fminzu, String faddr, String femail, Date fbydate, String fbyxuexiao, String fbyzhuanye, String fxueli, String fxueli2, Long fgw, Date fdate, String finfo, String fworkaddr, String fgzqiw, String ftel, String fcontact, String fcontactr, String fcontacttel, String fmemo) {
+    public HrypRecord(String fidno, String fname, String fsex, Date fbirdate, String fminzu, String faddr, String
+            femail, Date fbydate, String fbyxuexiao, String fbyzhuanye, String fxueli, String fxueli2, String fgw, Date
+            fdate, String finfo, String fworkaddr, String fgzqiw, String ftel, String fcontact, String fcontactr, String fcontacttel, String fmemo) {
         this.fidno = fidno;
         this.fname = fname;
         this.fsex = fsex;
@@ -219,11 +221,11 @@ public class HrypRecord  implements java.io.Serializable {
     
     @Column(name="fgw")
 
-    public Long getFgw() {
+    public String getFgw() {
         return this.fgw;
     }
     
-    public void setFgw(Long fgw) {
+    public void setFgw(String fgw) {
         this.fgw = fgw;
     }
     @Temporal(TemporalType.DATE)

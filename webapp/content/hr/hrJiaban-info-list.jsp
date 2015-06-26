@@ -9,6 +9,12 @@
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.hrJiaban-info.list.title" text="列表" /></title>
     <%@include file="/common/s.jsp"%>
+
+	  <link type="text/css" rel="stylesheet"
+			href="${scopePrefix}/s/xthena/rypicker/rypicker.css">
+	  <script type="text/javascript"
+			  src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
+
     <script type="text/javascript">
 var config = {
     id: '${lowerName}-infoGrid',
@@ -34,6 +40,11 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
+
+	createryPicker({
+		modalId : 'ryPicker',
+		url : '${scopePrefix}/hr/commRy-simple-list.do'
+	});
 });
     </script>
   </head>
@@ -54,8 +65,19 @@ $(function() {
 
 		  <form name="hrJiaban-infoForm" method="post" action="hrJiaban-info-list.do" class="form-inline">
 		    <label for="hrJiaban-info_name"><spring:message code='hrJiaban-info.hrJiaban-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrJiaban-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
-			<button class="btn btn-small a-search" onclick="document.hrJiaban-infoForm.submit()">查询</button>&nbsp;
+		    <%--<input type="text" id="hrJiaban-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">--%>
+			<%----%>
+			  <div class="input-append ryPicker">
+				  <input id="hrRyyj-info_fryid" type="hidden" name="filter_EQL_fryid"
+						 value="${model.fryid}" class="text required"  > <input
+					  id="hrShtc-info_userName" type="text" value="${ryMap[model.fryid].fname}"
+					  class=" text required" disabled style="width: 175px;" value="">
+							<span class="add-on"
+								  style="padding-top: 2px; padding-bottom: 2px;"><i
+									class="icon-user"></i></span>
+			  </div>
+
+			  <button class="btn btn-small a-search" onclick="document.hrJiaban-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
@@ -69,7 +91,7 @@ $(function() {
 		  <region:region-permission permission="hrJiaban-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -103,7 +125,7 @@ $(function() {
         	<th class="sorting" name="fhours">小时数</th>
         	<th class="sorting" name="fjiabancontent">加班工作内容</th>
         	<th class="sorting" name="fresult">加班完成情况</th>
-        <th width="80">&nbsp;</th>
+        <th width="80">操作&nbsp;</th>
       </tr>
     </thead>
 
