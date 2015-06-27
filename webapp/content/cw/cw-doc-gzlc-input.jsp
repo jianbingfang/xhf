@@ -52,7 +52,7 @@ $(function() {
 			  <div class="control-group">
 			    <label class="control-label" for="plain-info_ftitle"><spring:message code="plain-info.plain-info.input.ftitle" text="流程名称"/></label>
 				<div class="controls">
-				  <input id="plain-info_ftitle" type="text" name="ftitle" value="${model.ftitle}" size="40" class="text required" minlength="4" maxlength="50">
+				  <input id="plain-info_ftitle" type="text" name="ftitle" value="${model.ftitle}" size="40" class="text required" minlength="1" maxlength="50">
 			    </div>
 			  </div>
 			    <div class="control-group">
@@ -93,7 +93,7 @@ $(function() {
 			     <div class="control-group">
 			    <label class="control-label" for="plain-info_fmemo">备注</label>
 				<div class="controls">
-					<input id="plain-info_creator" type="text" name="fmemo" value="${model.fmemo}" size="40" class="text " minlength="1" maxlength="50">
+					<input id="plain-info_creator" type="text" name="fmemo" value="${model.fmemo}" size="40" class="text " minlength="0" maxlength="50">
 			    </div>
 			  </div>
 			  <div class="control-group">

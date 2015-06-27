@@ -114,7 +114,7 @@ $(function() {
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-        	<th class="sorting" id="fxmno">项目编号</th>
+        	<th class="sorting" id="fxmno">序号</th>
         	<th class="sorting" id="fxmname">项目名称</th>
         	<th class="sorting" id="fxmzongjianid">总监/总代</th>
         	<th class="sorting" id="fxmzongjianid">联系方式</th>
@@ -124,10 +124,10 @@ $(function() {
     </thead>
 
     <tbody>
-      <c:forEach items="${page.result}" var="item">
+      <c:forEach items="${page.result}" var="item" varStatus="status">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fxmno}</td>
+      	 	 <td>${status.count}</td>
       	 	 <td>${item.fxmname}</td>
       	 	 <td>${ryMap[item.fxmzongjianid].fname}</td>
       	 	 <td>${ryMap[item.fxmzongjianid].ftel}</td>

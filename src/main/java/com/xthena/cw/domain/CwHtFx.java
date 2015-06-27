@@ -95,7 +95,7 @@ public class CwHtFx implements java.io.Serializable {
 		this.fhetongid = fhetongid;
 	}
 
-	@Column(name = "fhetongname", length = 64)
+	@Column(name = "fhetongname", length = 512)
 	public String getFhetongname() {
 		return this.fhetongname;
 	}

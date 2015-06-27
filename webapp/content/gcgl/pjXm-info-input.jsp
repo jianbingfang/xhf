@@ -126,7 +126,7 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<div class="span5">
+							<%--<div class="span5">
 								<label class="control-label" for="pjXm-info_fxmno"><spring:message
 										code="pjXm-info.pjXm-info.input.fxmno" text="项目外部编号" /></label>
 								<div class="controls">
@@ -134,7 +134,7 @@
 										value="${model.fxmno}" size="" class="text " minlength=""
 										maxlength="">
 								</div>
-							</div>
+							</div>--%>
 							<div class="span5">
 								<label class="control-label" for="pjXm-info_fprovince"><spring:message
 										code="pjXm-info.pjXm-info.input.fprovince" text="项目地址" /></label>
@@ -150,7 +150,7 @@
 						<div class="control-group">
 							<div class="span5">
 								<label class="control-label" for="pjXm-info_fnbno"><spring:message
-										code="pjXm-info.pjXm-info.input.fnbno" text="项目内部编号" /></label>
+										code="pjXm-info.pjXm-info.input.fnbno" text="项目编号" /></label>
 								<div class="controls">
 									<input id="pjXm-info_fnbno" type="text" name="fnbno"
 										value="${model.fnbno}" size="" class="text" minlength=""
