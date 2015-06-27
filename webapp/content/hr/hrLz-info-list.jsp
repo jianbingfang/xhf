@@ -9,6 +9,12 @@
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.hrLz-info.list.title" text="离职人员台账 - 员工离职 - 人力资源"/></title>
     <%@include file="/common/s.jsp"%>
+
+
+	  <link type="text/css" rel="stylesheet"
+			href="${scopePrefix}/s/xthena/rypicker/rypicker.css">
+	  <script type="text/javascript"
+			  src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
     <script type="text/javascript">
 var config = {
     id: '${lowerName}-infoGrid',
@@ -36,6 +42,11 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
+
+	createryPicker({
+		modalId : 'ryPicker',
+		url : '${scopePrefix}/hr/commRy-simple-list.do'
+	});
 });
     </script>
   </head>
@@ -76,8 +87,22 @@ $(function() {
 
 		  <form name="hrLz-infoForm" method="post" action="hrLz-info-list.do" class="form-inline">
 		    <label for="hrLz-info_name"><spring:message code='hrLz-info.hrLz-info.list.search.name' text='申请人'/>:</label>
-		    <input type="text" id="hrLz-info_name" name="filter_LIKES_fmemo1" value="${param.filter_LIKES_fmemo1}">
-		     <label for="hrPx-info_name"><spring:message code='hrPx-info.hrPx-info.list.search.name' text='申请时间'/>: 从</label>
+
+			  <%--<input type="text" id="hrLz-info_name" name="filter_LIKES_fmemo1" value="${param.filter_LIKES_fmemo1}">--%>
+
+			  <div class="input-append ryPicker">
+				  <input id="hrRyyj-info_fryid" type="hidden" name="filter_EQL_fry"
+						 value="${model.fryid}" class="text " > <input
+					  id="hrShtc-info_userName" type="text" value="${ryMap[model.fryid].fname}"
+					  class=" text " disabled style="width: 175px;" value="">
+							<span class="add-on"
+								  style="padding-top: 2px; padding-bottom: 2px;"><i
+									class="icon-user"></i></span>
+			  </div>
+
+
+
+			  <label for="hrPx-info_name"><spring:message code='hrPx-info.hrPx-info.list.search.name' text='申请时间'/>: 从</label>
 		      <div class="input-append datepicker date" style="padding-left: 0px;">
 		    <input id="commRy-info_ruzhi" type="text" name="filter_GTD_fstartdate" value="${param.filter_GTD_fstartdate}" size="40" class="text "  style="background-color:white;cursor:default; width: 160px;">
 		    <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-calendar"></i></span>
@@ -100,7 +125,7 @@ $(function() {
 		  <region:region-permission permission="hrLz-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

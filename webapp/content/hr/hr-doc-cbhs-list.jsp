@@ -55,7 +55,7 @@ $(function() {
 		  <region:region-permission permission="hr-plain-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -89,6 +89,7 @@ $(function() {
       <!--   <th class="sorting" name="fuserid">编制人</th> -->
         <th class="sorting" name="name">操作</th>
         <th class="sorting" name="name">备注</th>
+           <th class="sorting" name="name">操作</th>
       </tr>
     </thead>
 
@@ -97,8 +98,9 @@ $(function() {
       <tr>
        
          <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-        <%-- <td>${items.index}</td> --%>
-        <td><a style="color:#005580;" href="../comm/comm-doc-input.do?id=${item.fid}" target="_blank" >${item.ftitle}</a></td>
+         <td>${item.ftitle}</td>
+        <%--<td><a style="color:#005580;" href="../comm/comm-doc-input.do?id=${item.fid}" target="_blank" >${item.ftitle}</a></td>--%>
+
           <td><c:if test="${item.fstatus==1}"><font color="#0066CC">试行</font></c:if>
 	        <c:if test="${item.fstatus==2}">实行</c:if>
 	        <c:if test="${item.fstatus==3}"><font color="#FF3333">废除</font></c:if>
@@ -106,10 +108,11 @@ $(function() {
        <%--  <td>${item.fstartdate}</td>
         <td>${item.fenddate}</td> --%>
         <%-- <td>${item.fcreator}</td> --%>
+          <td>${item.fmemo}</td>
         <td>
           <a href="hr-doc-cbhs-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
         </td> 
-        <td>${item.fmemo}</td>
+
       </tr>
       </c:forEach>
     </tbody>

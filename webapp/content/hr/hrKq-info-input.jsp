@@ -114,9 +114,9 @@
 							<label class="control-label" for="hrKq-info_fmonth"><spring:message
 									code="hrKq-info.hrKq-info.input.fmonth" text="月份" /></label>
 							<div class="controls">
-								<input id="hrKq-info_fmonth" type="text" name="fmonth"
-									value="${model.fmonth}" size="" class="text required"
-									minlength="" maxlength="">
+								<input id="hrKq-info_fmonth" type="number" name="fmonth"
+									value="${model.fmonth}" size="" class="number required"
+									minlength="" maxlength="20">
 							</div>
 						</div>
 						<div class="control-group">

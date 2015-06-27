@@ -48,7 +48,9 @@ public class HrPxController {
        page = hrPxManager.pagedQuery(page, propertyFilters);
        model.addAttribute("page", page);
        model.addAttribute("deptList",orgDepartmentManager.getAll());
-       model.addAttribute("userNames", ryManager.getAll());
+
+      // 发现 userNames 没有用在 jsp中
+      // model.addAttribute("userNames", ryManager.getAll());
       // System.out.println("*****************************"+ryManager.getAll().size());
         return "hr/hrPx-info-list";
     }
@@ -59,9 +61,10 @@ public class HrPxController {
         if (id != null) {
             HrPx hrPx = hrPxManager.get(id);
             model.addAttribute("model", hrPx);
+
         }
         model.addAttribute("deptList",orgDepartmentManager.getAll());
-        model.addAttribute("userNames", ryManager.getAll());
+       // model.addAttribute("userNames", ryManager.getAll());
         return "hr/hrPx-info-input";
     }
 

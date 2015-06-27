@@ -26,7 +26,7 @@ public class HrKs  implements java.io.Serializable {
     // Fields    
 
      private Long fid;
-     private Integer fkstype;
+     private String fkstype;
      private Date fbmdate;
      private Date fjfdate;
      private Long fjfmoney;
@@ -44,7 +44,8 @@ public class HrKs  implements java.io.Serializable {
 
     
     /** full constructor */
-    public HrKs(Integer fkstype, Date fbmdate, Date fjfdate, Long fjfmoney, Date fzkzdate, Date fksdate, String fzl, String fzlurl) {
+    public HrKs(String fkstype, Date fbmdate, Date fjfdate, Long fjfmoney, Date fzkzdate, Date fksdate, String fzl,
+                String fzlurl) {
         this.fkstype = fkstype;
         this.fbmdate = fbmdate;
         this.fjfdate = fjfdate;
@@ -71,11 +72,11 @@ public class HrKs  implements java.io.Serializable {
     
     @Column(name="fkstype")
 
-    public Integer getFkstype() {
+    public String getFkstype() {
         return this.fkstype;
     }
     
-    public void setFkstype(Integer fkstype) {
+    public void setFkstype(String fkstype) {
         this.fkstype = fkstype;
     }
     @Temporal(TemporalType.DATE)

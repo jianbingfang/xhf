@@ -77,7 +77,7 @@
 					<form name="hrPx-infoForm" method="post" action="hrPx-info-list.do"
 						class="form-inline">
 						<label for="hrPx-info_name"><spring:message
-								code='hrPx-info.hrPx-info.list.search.name' text='名称' />:</label> <input
+								code='hrPx-info.hrPx-info.list.search.name' text='培训主题' />:</label> <input
 							type="text" id="hrPx-info_name" name="filter_LIKES_fpxzt"
 							value="${param.filter_LIKES_fpxzt}"> <label
 							for="hrPx-info_name"><spring:message
@@ -119,8 +119,8 @@
 					<region:region-permission permission="hrPx-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 
 				<div class="pull-right">
@@ -150,11 +150,11 @@
 										type="checkbox" name="checkAll"
 										onchange="toggleSelectedItems(this.checked)"></th>
 									<th class="sorting" name="fpxzt">培训主题</th>
-									<th class="sorting" name="fdate">培训地点</th>
+									<th class="sorting" name="fdate">培训时间</th>
 									<th class="sorting" name="fpxdd">培训地点</th>
-									<th class="sorting" name="fzzdw">组织单位</th>
+									<%--<th class="sorting" name="fzzdw">组织部门</th>--%>
 									<th class="sorting" name="fcjrs">参加人数</th>
-									<th class="sorting" name="ftgrs">通过人数</th>
+									<%--<th class="sorting" name="ftgrs">通过人数</th>--%>
 									<th width="80">&nbsp;</th>
 								</tr>
 							</thead>
@@ -167,9 +167,9 @@
 										<td>${item.fpxzt}</td>
 										<td>${item.fdate}</td>
 										<td>${item.fpxdd}</td>
-										<td>${item.fzzdw}</td>
+										<%--<td>${item.fzzdw}</td>--%>
 										<td>${item.fcjrs}</td>
-										<td>${item.ftgrs}</td>
+										<%--<td>${item.ftgrs}</td>--%>
 										<td><a href="hrPx-info-input.do?id=${item.fid}"
 											class="a-update"><spring:message code="core.list.edit"
 													text="编辑" /></a></td>

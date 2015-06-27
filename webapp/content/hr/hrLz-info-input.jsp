@@ -119,25 +119,25 @@ $(function() {
     	<div class="control-group">
 	    <label class="control-label" for="hrLz-info_freason"><spring:message code="hrLz-info.hrLz-info.input.freason" text="辞职原因"/></label>
 		<div class="controls">
-			 <textarea id="hrLz-info_freason"  name="freason"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="20" maxlength="500">${model.freason}</textarea>
+			 <textarea id="hrLz-info_freason"  name="freason"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="" maxlength="">${model.freason}</textarea>
 	    </div>
 	  </div>
     	<div class="control-group">
 	    <label class="control-label" for="hrLz-info_fczbg"><spring:message code="hrLz-info.hrLz-info.input.fczbg" text="辞职报告"/></label>
 		<div class="controls">
-		   <textarea id="hrLz-info_fczbg"  name="fczbg"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="20" maxlength="500">${model.fczbg}</textarea>
+		   <textarea id="hrLz-info_fczbg"  name="fczbg"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="" maxlength="">${model.fczbg}</textarea>
 	    </div>
 	  </div>
     	<div class="control-group">
 	    <label class="control-label" for="hrLz-info_fjy"><spring:message code="hrLz-info.hrLz-info.input.fjy" text="对公司建议"/></label>
 		<div class="controls">
-			<textarea id="hrLz-info_fjy"  name="fjy"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="20" maxlength="500">${model.fjy}</textarea>
+			<textarea id="hrLz-info_fjy"  name="fjy"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="" maxlength="">${model.fjy}</textarea>
 	    </div>
 	  </div>
 	      	<div class="control-group">
 	    <label class="control-label" for="hrLz-info_fmemo1"><spring:message code="hrLz-info.hrLz-info.input.fmemo1" text="工作及物品交接情况"/></label>
 		<div class="controls">
-			<textarea id="hrLz-info_fmemo1"  name="fmemo1"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="20" maxlength="500">${model.fmemo1}</textarea>
+			<textarea id="hrLz-info_fmemo1"  name="fmemo1"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="" maxlength="">${model.fmemo1}</textarea>
 	    </div>
 	  </div>
     

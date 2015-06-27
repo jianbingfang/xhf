@@ -101,15 +101,20 @@ $(function() {
 
     	<div class="control-group">
 	    	<div class="span5">
-		    <label class="control-label" for="hrPx-info_fcjrs"><spring:message code="hrPx-info.hrPx-info.input.fcjrs" text="参加人数"/></label>
+		    <label class="control-label" for="hrPx-info_fcjrs"><spring:message code="hrPx-info.hrPx-info.input.fcjrs"
+																			   text="参加人数(人)"/></label>
 				<div class="controls">
-				  <input id="hrPx-info_fcjrs" type="text" name="fcjrs" value="${model.fcjrs}" size="" class="text required" minlength="" maxlength="">
+				  <input id="hrPx-info_fcjrs" type="number" name="fcjrs" value="${model.fcjrs}" size=""
+						 class="number " minlength="" maxlength="">
 			    </div>
 		  	</div>
 		  	<div class="span5">
-			    <label class="control-label" for="hrPx-info_ftgrs"><spring:message code="hrPx-info.hrPx-info.input.ftgrs" text="通过人数"/></label>
+			    <label class="control-label" for="hrPx-info_ftgrs"><spring:message
+						code="hrPx-info.hrPx-info.input.ftgrs" text="通过人数(人)"/></label>
 				<div class="controls">
-				  <input id="hrPx-info_ftgrs" type="text" name="ftgrs" value="${model.ftgrs}" size="" class="text " minlength="" maxlength="">
+				  <input id="hrPx-info_ftgrs" type="number
+				  " name="ftgrs" value="${model.ftgrs}" size="" class="number "
+						 minlength="" maxlength="">
 			    </div>
 		  </div>
 	    </div>
@@ -138,16 +143,24 @@ $(function() {
 	  
     	<div class="control-group">
     	<div class="span5">
-	 -----
+
 	  </div>
     	<div class="span5">
 	    <label class="control-label" for="hrPx-info_ffzr"><spring:message code="hrPx-info.hrPx-info.input.ffzr" text="负责人"/></label>
-		<div class="controls">
-			<div class="input-append ryPicker">
-			 <input id="ryBxRecord-info_fryid" type="hidden" name="ffzr" value="${model.ffzr}">
-			  <input id="ryBxRecord-info_userName" type="text"  value="${userName}" disabled class=" required"  style="width: 175px;" value="">
-			  <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-user"></i></span>
-		    </div>
+
+
+			<div class="controls">
+				<input id="hrPx-info_ffzr" type="text" name="ffzr"
+					   value="${model.ffzr}" size="" class="text required"
+					   minlength="" maxlength="">
+
+			<%----%>
+			<%--<div class="controls">--%>
+			<%--<div class="input-append ryPicker">--%>
+			 <%--<input id="ryBxRecord-info_fryid" type="hidden" name="ffzr" value="${model.ffzr}">--%>
+			  <%--<input id="ryBxRecord-info_userName" type="text"  value="${userName}" disabled class=" required"  style="width: 175px;" value="">--%>
+			  <%--<span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-user"></i></span>--%>
+		    <%--</div>--%>
 	    </div>
 	  </div>
 	  </div>
@@ -200,13 +213,13 @@ $(function() {
     	<div class="control-group">
 	    <label class="control-label" for="hrPx-info_fpxnrzy"><spring:message code="hrPx-info.hrPx-info.input.fpxnrzy" text="培训内容摘要"/></label>
 		<div class="controls">
-		  <textarea id="hrPx-info_fpxnrzy"  name="fpxnrzy"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="20" maxlength="500">${model.fpxnrzy}</textarea>
+		  <textarea id="hrPx-info_fpxnrzy"  name="fpxnrzy"  class="form-control" rows="6"  style="width: 560px" class="text "  minlength="" maxlength="">${model.fpxnrzy}</textarea>
 	    </div>
 	  </div>
     	<div class="control-group">
 	    <label class="control-label" for="hrPx-info_fksjg"><spring:message code="hrPx-info.hrPx-info.input.fksjg" text="考试结果总结"/></label>
 		<div class="controls">
-			  <textarea id="hrPx-info_fksjg"  name="fksjg"  class="form-control" rows="6" style="width: 560px" class="text "  minlength="20" maxlength="500">${model.fksjg}</textarea>
+			  <textarea id="hrPx-info_fksjg"  name="fksjg"  class="form-control" rows="6" style="width: 560px" class="text "  minlength="" maxlength="">${model.fksjg}</textarea>
 	    </div>
 	  </div>
     	

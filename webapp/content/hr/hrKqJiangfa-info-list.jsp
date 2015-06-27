@@ -9,6 +9,12 @@
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.hrKqJiangfa-info.list.title" text="列表" /></title>
     <%@include file="/common/s.jsp"%>
+	  <link type="text/css" rel="stylesheet"
+			href="${scopePrefix}/s/xthena/rypicker/rypicker.css">
+	  <script type="text/javascript"
+			  src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
+
+
     <script type="text/javascript">
 var config = {
     id: '${lowerName}-infoGrid',
@@ -34,6 +40,12 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
+
+
+	createryPicker({
+		modalId : 'ryPicker',
+		url : '${scopePrefix}/hr/commRy-simple-list.do'
+	});
 });
     </script>
   </head>
@@ -58,7 +70,19 @@ $(function() {
 
 		  <form name="hrKqJiangfa-infoForm" method="post" action="hrKqJiangfa-info-list.do" class="form-inline">
 		    <label for="hrKqJiangfa-info_name"><spring:message code='hrKqJiangfa-info.hrKqJiangfa-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrKqJiangfa-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+
+			  <%--<input type="text" id="hrKqJiangfa-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">--%>
+			<%----%>
+			  <div class="input-append ryPicker">
+				  <input id="hrRyyj-info_fryid" type="hidden" name="filter_EQL_fryid"
+						 value="${model.fryid}" class="text " > <input
+					  id="hrShtc-info_userName" type="text" value="${ryMap[model.fryid].fname}"
+					  class=" text " disabled style="width: 175px;" value="">
+							<span class="add-on"
+								  style="padding-top: 2px; padding-bottom: 2px;"><i
+									class="icon-user"></i></span>
+			  </div>
+
 			<button class="btn btn-small a-search" onclick="document.hrKqJiangfa-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +97,7 @@ $(function() {
 		  <region:region-permission permission="hrKqJiangfa-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
