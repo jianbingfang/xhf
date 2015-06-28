@@ -9,6 +9,12 @@
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.hrKq-info.list.title" text="考勤统计 - 考勤管理 - 人力资源"/></title>
     <%@include file="/common/s.jsp"%>
+
+	  <link type="text/css" rel="stylesheet"
+			href="${scopePrefix}/s/xthena/rypicker/rypicker.css">
+	  <script type="text/javascript"
+			  src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
+
     <script type="text/javascript">
 var config = {
     id: '${lowerName}-infoGrid',
@@ -69,8 +75,9 @@ $(function() {
         <div id="hrKq-infoSearch" class="content content-inner">
 
 		  <form name="hrKq-infoForm" method="post" action="hrKq-info-list.do" class="form-inline">
-		    <label for="hrKq-info_name"><spring:message code='hrKq-info.hrKq-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrKq-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="hrKq-info_name"><spring:message code='hrKq-info.hrKq-info.list.search.name'
+														text='考勤表名称'/>:</label>
+		    <input type="text" id="hrKq-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">
 			<button class="btn btn-small a-search" onclick="document.hrKq-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -85,7 +92,7 @@ $(function() {
 		  <region:region-permission permission="hrKq-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -116,7 +123,7 @@ $(function() {
         	<th class="sorting" name="fname">考勤表名称</th>
         	<th class="sorting" name="fmonth">月份</th>
         	<th class="sorting" name="fmakeuserid">编制人</th>
-        <th width="80">&nbsp;</th>
+        <th width="80">操作&nbsp;</th>
       </tr>
     </thead>
 

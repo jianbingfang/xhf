@@ -40,6 +40,7 @@ $(function() {
 		  <h4 class="title"><spring:message code="hrZhaopPlain-info.hrZhaopPlain-info.input.title" text="编辑" /></h4>
 		</header>
 
+
 		<div class="content content-inner">
 
 <form id="hrZhaopPlain-infoForm" method="post" action="hrZhaopPlain-info-save.do" class="form-horizontal">

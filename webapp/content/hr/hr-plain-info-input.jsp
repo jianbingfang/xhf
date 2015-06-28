@@ -70,14 +70,15 @@
 							<div class="controls">
 								<input id="plain-info_ftitle" type="text" name="ftitle"
 									value="${model.ftitle}" size="40" class="text required"
-									minlength="4" maxlength="20">
+									minlength="" maxlength="">
 							</div>
 						</div>
 						<div class="control-group">
 							<label class="control-label" for="plain-info_fmonth"><spring:message
 									code="plain-info.plain-info.input.ftitle" text="月份" /></label>
 							<div class="controls">
-									<input id="plain-info_fmonth" type="text" name="fmonth" value="${model.fmonth}" size="40" class="text required" minlength="4" maxlength="20">
+									<input id="plain-info_fmonth" type="text" name="fmonth" value="${model.fmonth}"
+										   size="40" class="text required" minlength="" maxlength="6">
 							</div>
 						</div>
 						<div class="control-group">

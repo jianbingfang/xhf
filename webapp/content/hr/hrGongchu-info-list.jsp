@@ -9,6 +9,12 @@
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.hrGongchu-info.list.title" text="列表" /></title>
     <%@include file="/common/s.jsp"%>
+
+	  <link type="text/css" rel="stylesheet"
+			href="${scopePrefix}/s/xthena/rypicker/rypicker.css">
+	  <script type="text/javascript"
+			  src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
+
     <script type="text/javascript">
 var config = {
     id: '${lowerName}-infoGrid',
@@ -34,6 +40,11 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
+
+	createryPicker({
+		modalId : 'ryPicker',
+		url : '${scopePrefix}/hr/commRy-simple-list.do'
+	});
 });
     </script>
   </head>
@@ -54,9 +65,21 @@ $(function() {
         <div id="hrGongchu-infoSearch" class="content content-inner">
 
 		  <form name="hrGongchu-infoForm" method="post" action="hrGongchu-info-list.do" class="form-inline">
-		    <label for="hrGongchu-info_name"><spring:message code='hrGongchu-info.hrGongchu-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrGongchu-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
-			<button class="btn btn-small a-search" onclick="document.hrGongchu-infoForm.submit()">查询</button>&nbsp;
+		    <label for="hrGongchu-info_name"><spring:message code='hrGongchu-info.hrGongchu-info.list.search.name'
+															 text='人员名称'/>:</label>
+		    <%--<input type="text" id="hrGongchu-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">--%>
+			<%----%>
+			  <div class="input-append ryPicker">
+				  <input id="hrRyyj-info_fryid" type="hidden" name="filter_EQL_fryid"
+						 value="${model.fryid}" class="text required"  > <input
+					  id="hrShtc-info_userName" type="text" value="${ryMap[model.fryid].fname}"
+					  class=" text required" disabled style="width: 175px;" value="">
+							<span class="add-on"
+								  style="padding-top: 2px; padding-bottom: 2px;"><i
+									class="icon-user"></i></span>
+			  </div>
+
+			  <button class="btn btn-small a-search" onclick="document.hrGongchu-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
@@ -70,7 +93,7 @@ $(function() {
 		  <region:region-permission permission="hrGongchu-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -103,6 +126,7 @@ $(function() {
         	<th class="sorting" id="fenddate">截止时间</th>
         	<th class="sorting" id="fstatus">状态</th>
         	<th class="sorting" id="fmemo">备注</th>
+		  <th class="sorting" id="foperation">操作</th>
       </tr>
     </thead>
 
@@ -117,6 +141,11 @@ $(function() {
       	 	 <td>${item.fenddate}</td>
       	 	 <td>${item.fstatus}</td>
       	 	 <td>${item.fmemo}</td>
+
+		  <td>
+			  <a href="hrGongchu-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
+		  </td>
+
       </tr>
       </c:forEach>
     </tbody>

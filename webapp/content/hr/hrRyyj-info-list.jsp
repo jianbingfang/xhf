@@ -9,6 +9,12 @@
     <%@include file="/common/meta.jsp"%>
     <title><spring:message code="dev.hrRyyj-info.list.title" text="列表" /></title>
     <%@include file="/common/s.jsp"%>
+	  <link type="text/css" rel="stylesheet"
+			href="${scopePrefix}/s/xthena/rypicker/rypicker.css">
+	  <script type="text/javascript"
+			  src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
+
+
     <script type="text/javascript">
 var config = {
     id: '${lowerName}-infoGrid',
@@ -20,11 +26,13 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fname': '${param.filter_LIKES_fname}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'hrRyyj-infoGridForm',
-	exportUrl: 'hrRyyj-info-export.do'
+	exportUrl: 'hrRyyj-info-export.do',
+
+
 };
 
 var table;
@@ -34,6 +42,12 @@ $(function() {
     table.configPagination('.m-pagination');
     table.configPageInfo('.m-page-info');
     table.configPageSize('.m-page-size');
+
+
+	createryPicker({
+		modalId : 'ryPicker',
+		url : '${scopePrefix}/hr/commRy-simple-list.do'
+	});
 });
     </script>
   </head>
@@ -57,9 +71,21 @@ $(function() {
         <div id="hrRyyj-infoSearch" class="content content-inner">
 
 		  <form name="hrRyyj-infoForm" method="post" action="hrRyyj-info-list.do" class="form-inline">
-		    <label for="hrRyyj-info_name"><spring:message code='hrRyyj-info.hrRyyj-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrRyyj-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
-			<button class="btn btn-small a-search" onclick="document.hrRyyj-infoForm.submit()">查询</button>&nbsp;
+		    <label for="hrRyyj-info_name"><spring:message code='hrRyyj-info.hrRyyj-info.list.search.name'
+														  text='人员'/>:</label>
+		    <%--<input type="text" id="hrRyyj-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">--%>
+			<%----%>
+			  <div class="input-append ryPicker">
+				  <input id="hrRyyj-info_fryid" type="hidden" name="filter_EQL_fryid"
+						 value="${model.fryid}" class="text required" > <input
+					  id="hrShtc-info_userName" type="text" value="${ryMap[model.fryid].fname}"
+					  class=" text required" disabled style="width: 175px;" value="">
+							<span class="add-on"
+								  style="padding-top: 2px; padding-bottom: 2px;"><i
+									class="icon-user"></i></span>
+			  </div>
+
+			  <button class="btn btn-small a-search" onclick="document.hrRyyj-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
@@ -73,7 +99,7 @@ $(function() {
 		  <region:region-permission permission="hrRyyj-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -104,7 +130,7 @@ $(function() {
         	<th class="sorting" name="fgzyeji">工作业绩</th>
         	<th class="sorting" name="fjiangfa">奖罚情况</th>
         	<th class="sorting" name="fmemo">备注</th>
-        <th width="80">&nbsp;</th>
+        <th width="80">操作&nbsp;</th>
       </tr>
     </thead>
 

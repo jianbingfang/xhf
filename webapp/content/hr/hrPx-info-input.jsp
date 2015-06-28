@@ -179,27 +179,36 @@
 							</div>
 						</div>
 						<div class="control-group">
+
 							<div class="span5">
-								<label class="control-label" for="hrPx-info_fzzdw"><spring:message
-										code="hrPx-info.hrPx-info.input.fzzdw" text="组织部门" /></label>
-								<div class="controls">
-									<select id="hrGwbm-info_fbmid" name="fbmid"
-										class="form-control required">
-										<c:forEach items="${deptList}" var="item">
-											<option value="${item.id}"
-												${item.id==model.fbmid ? 'selected' : ''}>${item.name}</option>
-										</c:forEach>
-									</select>
-								</div>
+							<label class="control-label" for="hrPx-info_fpxdd"><spring:message
+									code="hrPx-info.hrPx-info.input.fpxdd" text="组织单位" /></label>
+							<div class="controls">
+								<input id="hrPx-info_fzzdw" type="text" name="fzzdw"
+									   value="${model.fzzdw}" size="" class="text required"
+									   minlength="" maxlength="">
 							</div>
+						</div>
+							<%--<div class="span5">--%>
+								<%--<label class="control-label" for="hrPx-info_fzzdw"><spring:message--%>
+										<%--code="hrPx-info.hrPx-info.input.fzzdw" text="组织部门" /></label>--%>
+								<%--<div class="controls">--%>
+									<%--<select id="hrGwbm-info_fbmid" name="fbmid"--%>
+										<%--class="form-control required">--%>
+										<%--<c:forEach items="${deptList}" var="item">--%>
+											<%--<option value="${item.id}"--%>
+												<%--${item.id==model.fbmid ? 'selected' : ''}>${item.name}</option>--%>
+										<%--</c:forEach>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+							<%--</div>--%>
 							<div class="span5">
 								<label class="control-label" for="hrPx-info_fksfs"><spring:message
 										code="hrPx-info.hrPx-info.input.fksfs" text="考试方式" /></label>
 								<div class="controls">
-									<input id="hrPx-info_fksfs" type="text" name="fksfs"
-										value="${model.fksfs}" size=""
-										<c:if test="${model.fsfks!='1'}">  disabled="disabled" </c:if>
-										class="text " minlength="" maxlength="">
+									<input id="hrPx-info_fmemo1" type="text" name="fmemo1"
+										   value="${model.fmemo1}" size="" class="text"
+										   minlength="" maxlength="">
 								</div>
 							</div>
 						</div>
@@ -209,22 +218,27 @@
 								<label class="control-label" for="hrPx-info_ffzr"><spring:message
 										code="hrPx-info.hrPx-info.input.ffzr" text="负责人" /></label>
 								<div class="controls">
-									<div class="input-append ryPicker">
-										<input id="ryBxRecord-info_fryid" type="hidden" name="ffzr"
-											value="${model.ffzr}"> <input
-											id="ryBxRecord-info_userName" type="text" value="${userName}"
-											disabled class=" required" style="width: 175px;" value="">
-										<span class="add-on"
-											style="padding-top: 2px; padding-bottom: 2px;"><i
-											class="icon-user"></i></span>
-									</div>
+									<input id="hrPx-info_ffzr" type="text" name="ffzr"
+															   value="${model.ffzr}" size="" class="text required"
+											   minlength="" maxlength="">
+
+									<%--<div class="input-append ryPicker">--%>
+										<%--<input id="ryBxRecord-info_fryid" type="hidden" name="ffzr"--%>
+											<%--value="${model.ffzr}"> <input--%>
+											<%--id="ryBxRecord-info_userName" type="text"--%>
+											<%--value="${userNames[model.ffzr].fname}"--%>
+											<%--disabled class=" required" style="width: 175px;" value="">--%>
+										<%--<span class="add-on"--%>
+											<%--style="padding-top: 2px; padding-bottom: 2px;"><i--%>
+											<%--class="icon-user"></i></span>--%>
+									<%--</div>--%>
 								</div>
 							</div>
 							<div class="span5">
 								<label class="control-label" for="hrPx-info_fksjg"><spring:message
 										code="hrPx-info.hrPx-info.input.fksjg" text="考试结果" /></label>
 								<div class="controls">
-									<input id="hrPx-info_fksjg" type="text" name="fcjrs"
+									<input id="hrPx-info_fksjg" type="text" name="fksjg"
 										value="${model.fksjg}" size="" class="text "
 										<c:if test="${model.fsfks!='1'}"> disabled </c:if>>
 								</div>
@@ -235,10 +249,10 @@
 						<div class="control-group">
 							<div class="span5">
 								<label class="control-label" for="hrPx-info_fcjrs"><spring:message
-										code="hrPx-info.hrPx-info.input.fcjrs" text="参加人数" /></label>
+										code="hrPx-info.hrPx-info.input.fcjrs" text="参加人数(人)" /></label>
 								<div class="controls">
-									<input id="hrPx-info_fcjrs" type="text" name="fcjrs"
-										value="${model.fcjrs}" size="" class="text required"
+									<input id="hrPx-info_fcjrs" type="number" name="fcjrs"
+										value="${model.fcjrs}" size="" class="number required"
 										minlength="" maxlength="">
 								</div>
 							</div>
@@ -258,43 +272,43 @@
 							<label class="control-label" for="hrPx-info_fzlmc"><spring:message
 									code="hrPx-info.hrPx-info.input.fzlmc" text="参加人员" /></label>
 							<div class="controls">
-								<!--  	<textarea id="hrPx-info_fzlmc" name="fpxnrzy"
+								 	<textarea id="hrPx-info_fmemo" name="fmemo"
 									class="form-control" rows="6" style="width: 560px"
-									class="text " minlength="20" maxlength="500">${model.fpxnrzy}</textarea>-->
-								<div class="span3">
-									<select multiple size="5" name="list1"  id="list1" style="width:250px ;height:160px" >
-									<c:forEach items="${userNames}" var="item">
-											<option value="${item}">${item.fname}</option>
-										</c:forEach>
-									</select>
-								</div>
-								<div class="span1">
-									<div class="span12">
-										<input type="button" value=" >"
-											onclick="move(this.form.list1,this.form.list2)" name="B1">
-									</div>
-									<div class="span12">
-										<input type="button" value=" <"
-										onclick="
-											move(this.form.list2,this.form.list1)" name="B2">
-									</div>
-									<div class="span12">
-										<input type="button" value=">>"
-											onclick="moveall(this.form.list1,this.form.list2)" name="B3">
-									</div>
-									<div class="span12">
-										<input type="button" value="<<"
-										onclick="
-											moveall(this.form.list2,this.form.list1)" name="B4">
-									</div>
+									class="text " minlength="" maxlength="">${model.fmemo}</textarea>
+								<%--<div class="span3">--%>
+									<%--<select multiple size="5" name="list1"  id="list1" style="width:250px ;height:160px" >--%>
+									<%--<c:forEach items="${userNames}" var="item">--%>
+											<%--<option value="${item}">${item.fname}</option>--%>
+										<%--</c:forEach>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+								<%--<div class="span1">--%>
+									<%--<div class="span12">--%>
+										<%--<input type="button" value=" >"--%>
+											<%--onclick="move(this.form.list1,this.form.list2)" name="B1">--%>
+									<%--</div>--%>
+									<%--<div class="span12">--%>
+										<%--<input type="button" value=" <"--%>
+										<%--onclick="--%>
+											<%--move(this.form.list2,this.form.list1)" name="B2">--%>
+									<%--</div>--%>
+									<%--<div class="span12">--%>
+										<%--<input type="button" value=">>"--%>
+											<%--onclick="moveall(this.form.list1,this.form.list2)" name="B3">--%>
+									<%--</div>--%>
+									<%--<div class="span12">--%>
+										<%--<input type="button" value="<<"--%>
+										<%--onclick="--%>
+											<%--moveall(this.form.list2,this.form.list1)" name="B4">--%>
+									<%--</div>--%>
 
-								</div>
-								<div class="span3">
-									<select multiple size="5" name="list2" id="list2"
-										style="width:250px ;height:160px" value="s">
+								<%--</div>--%>
+								<%--<div class="span3">--%>
+									<%--<select multiple size="5" name="list2" id="list2"--%>
+										<%--style="width:250px ;height:160px" value="s">--%>
 
-									</select>
-								</div>
+									<%--</select>--%>
+								<%--</div>--%>
 							</div>
 
 						</div>
@@ -305,7 +319,7 @@
 							<div class="controls">
 								<textarea id="hrPx-info_fpxnrzy" name="fpxnrzy"
 									class="form-control" rows="6" style="width: 560px"
-									class="text " minlength="20" maxlength="500">${model.fpxnrzy}</textarea>
+									class="text " minlength="" maxlength="">${model.fpxnrzy}</textarea>
 							</div>
 						</div>
 

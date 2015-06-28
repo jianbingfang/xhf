@@ -27,7 +27,7 @@ $(function() {
  <%@include file="/header.jsp"%>
 
     <div class="row-fluid">
-	  <%@include file="/menu/hr-workspace.jsp"%> 手动>
+	  <%@include file="/menu/hr-workspace.jsp"%>
 
 	  <!-- start of main -->
       <section id="m-main" class="span10">
@@ -46,14 +46,14 @@ $(function() {
     	<div class="control-group">
 	    <label class="control-label" for="hrKs-info_fkstype"><spring:message code="hrKs-info.hrKs-info.input.fkstype" text="考试类别"/></label>
 		<div class="controls">
-		  <input id="hrKs-info_fkstype" type="text" name="fkstype" value="${model.fkstype}" size="" class="text required" minlength="" maxlength="">
+		  <input id="hrKs-info_fkstype" type="text" name="fkstype" value="${model.fkstype}" size="" class="text " minlength="" maxlength="">
 	    </div>
 	  </div>
     	<div class="control-group">
 	    <label class="control-label" for="hrKs-info_fbmdate"><spring:message code="hrKs-info.hrKs-info.input.fbmdate" text="报名时间"/></label>
 		<div class="controls">
 	    	<div class="input-append datepicker date" style="padding-left: 0px;">
-		    	<input id="hrKs-info_fbmdate" type="text" name="fbmdate" value="${model.fbmdate}" size="40" class="text required"   style="background-color:white;cursor:default; width: 175px;">
+		    	<input id="hrKs-info_fbmdate" type="text" name="fbmdate" value="${model.fbmdate}" size="40" class="text "   style="background-color:white;cursor:default; width: 175px;">
 		 		 <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-calendar"></i></span>
 		  </div>	
 	    </div>
@@ -62,22 +62,24 @@ $(function() {
 	    <label class="control-label" for="hrKs-info_fjfdate"><spring:message code="hrKs-info.hrKs-info.input.fjfdate" text="缴费时间"/></label>
 		<div class="controls">
 			<div class="input-append datepicker date" style="padding-left: 0px;">
-		    	<input id="hrKs-info_fjfdate" type="text" name="fjfdate" value="${model.fjfdate}" size="40" class="text required"   style="background-color:white;cursor:default; width: 175px;">
+		    	<input id="hrKs-info_fjfdate" type="text" name="fjfdate" value="${model.fjfdate}" size="40" class="text "   style="background-color:white;cursor:default; width: 175px;">
 		 		 <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-calendar"></i></span>
 		  </div>	
 	    </div>
 	  </div>
     	<div class="control-group">
-	    <label class="control-label" for="hrKs-info_fjfmoney"><spring:message code="hrKs-info.hrKs-info.input.fjfmoney" text="缴费金额"/></label>
+	    <label class="control-label" for="hrKs-info_fjfmoney"><spring:message
+				code="hrKs-info.hrKs-info.input.fjfmoney" text="缴费金额(元)"/></label>
 		<div class="controls">
-		  <input id="hrKs-info_fjfmoney" type="text" name="fjfmoney" value="${model.fjfmoney}" size="" class="text required" minlength="" maxlength="">
+		  <input id="hrKs-info_fjfmoney" type="number" name="fjfmoney" value="${model.fjfmoney}" size=""
+				 class="number " minlength="" maxlength="">
 	    </div>
 	  </div>
     	<div class="control-group">
 	    <label class="control-label" for="hrKs-info_fzkzdate"><spring:message code="hrKs-info.hrKs-info.input.fzkzdate" text="准考证领取时间"/></label>
 		<div class="controls">
 	  	 <div class="input-append datepicker date" style="padding-left: 0px;">
-		    	<input id="hrKs-info_fzkzdate" type="text" name="fzkzdate" value="${model.fzkzdate}" size="40" class="text required"   style="background-color:white;cursor:default; width: 175px;">
+		    	<input id="hrKs-info_fzkzdate" type="text" name="fzkzdate" value="${model.fzkzdate}" size="40" class="text "   style="background-color:white;cursor:default; width: 175px;">
 		 		 <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-calendar"></i></span>
 		  </div>
 	    </div>
@@ -86,7 +88,7 @@ $(function() {
 	    <label class="control-label" for="hrKs-info_fksdate"><spring:message code="hrKs-info.hrKs-info.input.fksdate" text="考试时间"/></label>
 		<div class="controls">
 		 <div class="input-append datepicker date" style="padding-left: 0px;">
-		    	<input id="hrKs-info_fksdate" type="text" name="fksdate" value="${model.fksdate}" size="40" class="text required"   style="background-color:white;cursor:default; width: 175px;">
+		    	<input id="hrKs-info_fksdate" type="text" name="fksdate" value="${model.fksdate}" size="40" class="text "   style="background-color:white;cursor:default; width: 175px;">
 		 		 <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-calendar"></i></span>
 		  </div>
 	    </div>
@@ -94,7 +96,7 @@ $(function() {
     	<div class="control-group">
 	    <label class="control-label" for="hrKs-info_fzl"><spring:message code="hrKs-info.hrKs-info.input.fzl" text="考试相关资料"/></label>
 		<div class="controls">
-		  <input id="hrKs-info_fzl" type="text" name="fzl" value="${model.fzl}" size="" class="text required" minlength="" maxlength="">
+		  <input id="hrKs-info_fzl" type="text" name="fzl" value="${model.fzl}" size="" class="text " minlength="" maxlength="">
 	    </div>
 	  </div>
  	<div class="control-group">

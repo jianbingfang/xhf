@@ -34,10 +34,10 @@ public class HrPx  implements java.io.Serializable {
      private Integer fpxtype;
      private Integer fpxfs;
      private Long fzzbm;
-     private Long ffzr;
+     private String ffzr;
      private String fpxnrzy;
      private Integer fsfks;
-     private Integer fksfs;
+     private String fksfs;
      private String fksjg;
      private String fzlurl;
      private String fzlmc;
@@ -59,7 +59,9 @@ public class HrPx  implements java.io.Serializable {
 
     
     /** full constructor */
-    public HrPx(String fpxzt, String fpxdd, String fzzdw, Long fcjrs, Long ftgrs, Integer fpxtype, Integer fpxfs, Long fzzbm, Long ffzr, String fpxnrzy, Integer fsfks, Integer fksfs, String fksjg, String fzlurl, String fzlmc, Integer fzjlq, Date fdate, Integer ffplq, Date fdjdate, String fmemo, String fmemo1, Integer fnwb, String fmemo2) {
+    public HrPx(String fpxzt, String fpxdd, String fzzdw, Long fcjrs, Long ftgrs, Integer fpxtype, Integer fpxfs,
+                Long fzzbm,String ffzr, String fpxnrzy, Integer fsfks, String fksfs, String fksjg, String fzlurl,
+                String fzlmc, Integer fzjlq, Date fdate, Integer ffplq, Date fdjdate, String fmemo, String fmemo1, Integer fnwb, String fmemo2) {
         this.fpxzt = fpxzt;
         this.fpxdd = fpxdd;
         this.fzzdw = fzzdw;
@@ -181,11 +183,11 @@ public class HrPx  implements java.io.Serializable {
     
     @Column(name="ffzr")
 
-    public Long getFfzr() {
+    public String getFfzr() {
         return this.ffzr;
     }
     
-    public void setFfzr(Long ffzr) {
+    public void setFfzr(String ffzr) {
         this.ffzr = ffzr;
     }
     
@@ -211,11 +213,11 @@ public class HrPx  implements java.io.Serializable {
     
     @Column(name="fksfs")
 
-    public Integer getFksfs() {
+    public String getFksfs() {
         return this.fksfs;
     }
     
-    public void setFksfs(Integer fksfs) {
+    public void setFksfs(String fksfs) {
         this.fksfs = fksfs;
     }
     

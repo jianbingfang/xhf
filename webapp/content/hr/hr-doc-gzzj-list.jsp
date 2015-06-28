@@ -55,7 +55,7 @@ $(function() {
 		  <region:region-permission permission="hr-plain-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -87,8 +87,9 @@ $(function() {
    <!--      <th class="sorting" name="fstartdate">开始时间</th>
         <th class="sorting" name="fenddate">废止时间</th> -->
       <!--   <th class="sorting" name="fuserid">编制人</th> -->
+           <th class="sorting" name="name">备注</th>
         <th class="sorting" name="name">操作</th>
-        <th class="sorting" name="name">备注</th>
+
       </tr>
     </thead>
 
@@ -106,10 +107,11 @@ $(function() {
        <%--  <td>${item.fstartdate}</td>
         <td>${item.fenddate}</td> --%>
         <%-- <td>${item.fcreator}</td> --%>
-        <td>
+          <td>${item.fmemo}</td>
+          <td>
           <a href="hr-doc-gzzj-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
         </td> 
-        <td>${item.fmemo}</td>
+
       </tr>
       </c:forEach>
     </tbody>

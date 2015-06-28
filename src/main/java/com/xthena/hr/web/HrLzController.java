@@ -23,6 +23,7 @@ import com.xthena.hr.domain.HrLz;
 import com.xthena.hr.manager.CommRyManager;
 import com.xthena.hr.manager.HrLzManager;
 
+import com.xthena.util.CommRyMapUtil;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,29 +52,38 @@ public class HrLzController {
     @RequestMapping("hrLz-info-list")
     public String list(@ModelAttribute Page page,
             @RequestParam Map<String, Object> parameterMap, Model model) {
+//        List<PropertyFilter> propertyFilters = PropertyFilter
+//                .buildFromMap(parameterMap);
+//
+//        List<CommRy> commRies=commRyManager.find(propertyFilters);
+//        List<Long> ryids=new ArrayList<Long>();
+//        for(CommRy commRy:commRies){
+//        	ryids.add(commRy.getFid());
+//        }
+//
+//        if(!ryids.isEmpty()){
+//        	Criterion criterion=Restrictions.in("fry", ryids);
+//        	page = hrLzManager.pagedQuery(page.getPageNo(), page.getPageSize(),criterion);
+//        }else if(parameterMap.isEmpty()){
+//        	page = hrLzManager.pagedQuery(page.getPageNo(), page.getPageSize());
+//        }
+//        List<HrLz> hrLzs=(List<HrLz>) page.getResult();
+//        for(HrLz hrLdht:hrLzs){
+//        	hrLdht.setFmemo1(commRyManager.get(hrLdht.getFry()).getFname());
+//        }
+//        page = hrLzManager.pagedQuery(page, propertyFilters);
+//        model.addAttribute("page", page);
+//        model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
+
+
+
+
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        
-        List<CommRy> commRies=commRyManager.find(propertyFilters);
-        List<Long> ryids=new ArrayList<Long>();
-        for(CommRy commRy:commRies){
-        	ryids.add(commRy.getFid());
-        }
-        
-        if(!ryids.isEmpty()){
-        	Criterion criterion=Restrictions.in("fry", ryids);
-        	page = hrLzManager.pagedQuery(page.getPageNo(), page.getPageSize(),criterion);
-        }else if(parameterMap.isEmpty()){
-        	page = hrLzManager.pagedQuery(page.getPageNo(), page.getPageSize());
-        }
-        List<HrLz> hrLzs=(List<HrLz>) page.getResult();
-        for(HrLz hrLdht:hrLzs){
-        	hrLdht.setFmemo1(commRyManager.get(hrLdht.getFry()).getFname());
-        }
-        
         page = hrLzManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
+        model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
         return "hr/hrLz-info-list";
     }

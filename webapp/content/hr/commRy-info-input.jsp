@@ -288,7 +288,7 @@
 												<div class="controls">
 													<input id="commRy-info_ftel" type="text" name="ftel"
 														value="${model.ftel}" size="" class="number"
-														minlength="11" maxlength="11" />
+														minlength="" maxlength="" />
 												</div>
 											</div>
 										</div>

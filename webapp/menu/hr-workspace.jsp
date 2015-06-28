@@ -136,7 +136,7 @@
           </div>
           <div id="collapse-lz" class="accordion-body collapse ${currentMenu == 'hrLz' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
-			  <li><a href="${scopePrefix}/hr/hrLz-info-input.do"><i class="icon-list-alt"></i>离职申请</a></li>
+			  <%--<li><a href="${scopePrefix}/hr/hrLz-info-input.do"><i class="icon-list-alt"></i>离职申请</a></li>--%>
 				<%--<li><a href="${scopePrefix}/common/jsz.jsp"><i class="icon-user"></i>离职审批</a></li> --%>
 			   <li><a href="${scopePrefix}/hr/hrLz-info-list.do"><i class="icon-bookmark"></i>离职人员台账</a></li>
             </ul>

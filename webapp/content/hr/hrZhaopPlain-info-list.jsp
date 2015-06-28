@@ -57,9 +57,28 @@ $(function() {
         <div id="hrZhaopPlain-infoSearch" class="content content-inner">
 
 		  <form name="hrZhaopPlain-infoForm" method="post" action="hrZhaopPlain-info-list.do" class="form-inline">
-		    <label for="hrZhaopPlain-info_name"><spring:message code='hrZhaopPlain-info.hrZhaopPlain-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrZhaopPlain-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
-			<button class="btn btn-small a-search" onclick="document.hrZhaopPlain-infoForm.submit()">查询</button>&nbsp;
+		    <%--<label for="hrZhaopPlain-info_name"><spring:message code='hrZhaopPlain-info.hrZhaopPlain-info.list.search.name' text='名称'/>:</label>--%>
+
+			  <div class="control-group">
+				  <label class="control-label" for="hrZhaopPlain-info_fdept"><spring:message code="hrZhaopPlain-info.hrZhaopPlain-info.input.fdept" text="部门"/></label>
+				  <%--<div class="controls">--%>
+					  <select id="hrGwbm-info_fdept" name="filter_EQL_fdept"
+							  class="form-control required" >  <option selected >${model.deptMap[model.fdept].fname}</option>
+						  <c:forEach items="${deptList}" var="item">
+							  <option value="${item.id}"
+								  ${item.id==model.fdept? 'selected' : ''}>${item.name}</option>
+						  </c:forEach>
+					  </select>
+					  <button class="btn btn-small a-search" onclick="document.hrZhaopPlain-infoForm.submit()">查询</button>&nbsp;
+				  <%--</div>--%>
+
+			  </div>
+
+
+
+			  <%--<input type="text" id="hrZhaopPlain-info_name" name="filter_LIKES_name"--%>
+					  <%--value="${param.filter_LIKES_name}">--%>
+
 		  </form>
 
 		</div>
@@ -73,7 +92,7 @@ $(function() {
 		  <region:region-permission permission="hrZhaopPlain-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

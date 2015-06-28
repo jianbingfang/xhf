@@ -69,10 +69,11 @@ $(function() {
 		</header>
         <div id="hr-plain-infoSearch" class="content content-inner">
 
-		  <form name="hr-plain-infoForm" method="post" action="hr-plain-info-list.do" class="form-inline">
-		    <label for="hr-plain-info_name"><spring:message code='hr-plain-info.hr-plain-info.list.search.name' text='名称'/>:</label>
+		  <form name="hr-plain-infoForm" method="post" action="hr-week-plain-info-list.do" class="form-inline">
+		    <label for="hr-plain-info_name"><spring:message code='hr-plain-info.hr-plain-info.list.search.name'
+															text='标题'/>:</label>
 		   <input type="text" id="hr-plain-info_name" name="filter_LIKES_ftitle" value="${param.filter_LIKES_ftitle}"> 
-			<button class="btn btn-small a-search" onclick="document.hr-plain-infoForm.submit()">查询</button>&nbsp;
+			<button class="btn btn-small a-search" onclick="document.hr-week-plain-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
@@ -86,7 +87,7 @@ $(function() {
 		  <region:region-permission permission="hr-plain-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

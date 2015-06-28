@@ -76,7 +76,7 @@ $(function() {
 
 		  <form name="hrKs-infoForm" method="post" action="hrKs-info-list.do" class="form-inline">
 		    <label for="hrKs-info_name"><spring:message code='hrKs-info.hrKs-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="hrKs-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="hrKs-info_name" name="filter_LIKES_fkstype" value="${param.filter_LIKES_fkstype}">
 		     <label for="hrPx-info_name"><spring:message code='hrPx-info.hrPx-info.list.search.name' text='考试时间'/>: 从</label>
 		      <div class="input-append datepicker date" style="padding-left: 0px;">
 		    <input id="commRy-info_ruzhi" type="text" name="filter_GTD_fksdate" value="${param.filter_GTD_fksdate}" size="40" class="text "  style="background-color:white;cursor:default; width: 160px;">
@@ -100,7 +100,7 @@ $(function() {
 		  <region:region-permission permission="hrKs-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -133,7 +133,7 @@ $(function() {
         	<th class="sorting" name="fzkzdate">准考证领取时间</th>
         	<th class="sorting" name="fksdate">考试时间</th>
         	<th class="sorting" name="fzl">考试相关资料</th>
-        <th width="80">&nbsp;</th>
+        <th width="80">操作&nbsp;</th>
       </tr>
     </thead>
 
@@ -150,7 +150,7 @@ $(function() {
       	  <td>${item.fzl}</td>
         <td>
           <a href="hrKs-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>&nbsp;
-           <a href="hrKsRy-info-list.do?ksid=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/>
+           <%--<a href="hrKsRy-info-list.do?ksid=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/>--%>
         </td>
       </tr>
       </c:forEach>

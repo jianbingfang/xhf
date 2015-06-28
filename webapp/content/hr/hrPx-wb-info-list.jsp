@@ -75,7 +75,8 @@ $(function() {
         <div id="hrPx-infoSearch" class="content content-inner">
 
 		  <form name="hrPx-infoForm" method="post" action="hrPx-wb-info-list.do" class="form-inline">
-		    <label for="hrPx-info_name"><spring:message code='hrPx-info.hrPx-info.list.search.name' text='名称'/>:</label>
+		    <label for="hrPx-info_name"><spring:message code='hrPx-info.hrPx-info.list.search.name'
+														text='培训主题'/>:</label>
 		    <input type="text" id="hrPx-info_name" name="filter_LIKES_fpxzt" value="${param.filter_LIKES_fpxzt}" style="width:120px">
 		     <label for="hrPx-info_name"><spring:message code='hrPx-info.hrPx-info.list.search.name' text='培训时间'/>: </label>
 		      <div class="input-append datepicker date" style="padding-left: 0px;">从
@@ -100,7 +101,7 @@ $(function() {
 		  <region:region-permission permission="hrPx-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -132,7 +133,7 @@ $(function() {
         	<th class="sorting" name="fzzdw">组织单位</th>
         	<th class="sorting" name="fcjrs">参加人数</th>
         	<th class="sorting" name="ftgrs">通过人数</th>
-        <th width="80">&nbsp;</th>
+        <th width="80">操作&nbsp</th>
       </tr>
     </thead>
 
