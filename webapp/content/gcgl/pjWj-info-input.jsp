@@ -78,13 +78,13 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="pjWj-info_fwenjianno"><spring:message code="pjWj-info.pjWj-info.input.fwenjianno" text="序号"/></label>
 					<div class="controls">
-					  	 <input id="pjWj-info_fwenjianno" type="text" name="fwenjianno" value="${model.fwenjianno}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjWj-info_fwenjianno" type="text" name="fwenjianno" value="${model.fwenjianno}" size="" class="text required" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">
 				    <label class="control-label" for="pjWj-info_fzhuti"><spring:message code="pjWj-info.pjWj-info.input.fzhuti" text="主题"/></label>
 					<div class="controls">
-					  	 <input id="pjWj-info_fzhuti" type="text" name="fzhuti" value="${model.fzhuti}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjWj-info_fzhuti" type="text" name="fzhuti" value="${model.fzhuti}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">

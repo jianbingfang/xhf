@@ -80,13 +80,13 @@ $(function() {
 
 	  <article class="m-blank">
 	    <div class="pull-left">
-		  <region:region-permission permission="pjXm-info:create">
+		  <region:region-permission permission="pjXm-manager:create">
 		  <button class="btn btn-small a-insert" onclick="location.href='pjXm-manager-input.do'">新建</button>
 		  </region:region-permission>
-		  <region:region-permission permission="pjXm-info:delete">
+		  <region:region-permission permission="pjXm-manager:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -107,14 +107,14 @@ $(function() {
 		  <h4 class="title"><spring:message code="pjXm-info.pjXm-info.list.title" text="列表"/></h4>
 		</header>
         <div class="content">
-<form id="pjXm-infoGridForm" name="pjXm-infoGridForm" method='post'  action="pjXm-info-remove.do" class="m-form-blank">
+<form id="pjXm-infoGridForm" name="pjXm-infoGridForm" method='post'  action="pjXm-manager-remove.do" class="m-form-blank">
   <table id="pjXm-infoGrid" class="m-table table-hover table-bordered">
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-       		<th class="sorting" name="fxmno">项目编号</th>
+       		<th class="sorting" name="fxmno">序号</th>
         	<th class="sorting" name="fxmname">项目名称</th>
-        	<th class="sorting" name="fxmzongjian">总监</th>
+        	<th class="sorting" name="fxmzongjian">总监/总代</th>
         	<th class="sorting" name="fcontact">联系方式</th>
         	<th class="sorting" name="fmemo">备注</th>
         	<th class="sorting" >操作</th>
@@ -126,7 +126,7 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fxmno}</td>
+      	 	 <td>${item.fid}</td>
       	 	 <td>${item.fxmname}</td>
       	 	 <td>${ryMap[item.fxmzongjianid].fname}</td>
       	 	 <td>${ryMap[item.fxmzongjianid].ftel}</td>

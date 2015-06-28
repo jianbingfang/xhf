@@ -88,7 +88,7 @@ $(function() {
 		 <!--  <region:region-permission permission="pjXm-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission> -->
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -127,7 +127,7 @@ $(function() {
       <c:forEach items="${page.result}" var="item" varStatus="status">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${status.count}</td>
+      	 	 <td>${item.fid}</td>
       	 	 <td>${item.fxmname}</td>
       	 	 <td>${ryMap[item.fxmzongjianid].fname}</td>
       	 	 <td>${ryMap[item.fxmzongjianid].ftel}</td>

@@ -52,13 +52,13 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="gcgl-jlFlFg-info_ftype"><spring:message code="gcgl-jlFlFg-info.gcgl-jlFlFg-info.input.ftype" text="分类"/></label>
 					<div class="controls">
-					  	 <input id="gcgl-jlFlFg-info_ftype" type="text" name="ftype" value="${model.ftype}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="gcgl-jlFlFg-info_ftype" type="text" name="ftype" value="${model.ftype}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">
 				    <label class="control-label" for="gcgl-jlFlFg-info_fname"><spring:message code="gcgl-jlFlFg-info.gcgl-jlFlFg-info.input.fname" text="名称"/></label>
 					<div class="controls">
-					  	 <input id="gcgl-jlFlFg-info_fname" type="text" name="fname" value="${model.fname}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="gcgl-jlFlFg-info_fname" type="text" name="fname" value="${model.fname}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 				  	<div class="control-group">
@@ -88,7 +88,7 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="gcgl-jlFlFg-info_forder"><spring:message code="gcgl-jlFlFg-info.gcgl-jlFlFg-info.input.forder" text="显示顺序"/></label>
 					<div class="controls">
-					  	 <input id="gcgl-jlFlFg-info_forder" type="text" name="forder" value="${model.forder}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="gcgl-jlFlFg-info_forder" type="text" name="forder" value="${model.forder}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    

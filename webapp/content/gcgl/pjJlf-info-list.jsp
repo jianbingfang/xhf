@@ -47,7 +47,7 @@ $(function() {
 	  <!-- start of main -->
       <section id="m-main" class="span10">
 
-	  <article class="m-widget">
+	  <%--<article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
 		  <div class="ctrl">
@@ -63,7 +63,7 @@ $(function() {
 		  </form>
 
 		</div>
-	  </article>
+	  </article>--%>
 
 	  <article class="m-blank">
 	    <div class="pull-left">
@@ -73,7 +73,7 @@ $(function() {
 		  <region:region-permission permission="pjJlf-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -112,7 +112,7 @@ $(function() {
       <c:forEach items="${page.result}" var="item" varStatus="index">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-       		 <td>${item.fno}</td>
+       		 <td>${item.fid}</td>
       	 	 <td><a href="jl-ny-jlf-input.do?fxmid=${item.fxmid}" >${xmMap[item.fxmid].fxmname}</a></td>
       	 	 <td>${item.fhtjk}</td>
       	 	 <td>${item.fbcht}</td>

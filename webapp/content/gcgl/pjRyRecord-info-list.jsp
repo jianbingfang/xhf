@@ -73,7 +73,7 @@
 						</ul>
 					</div>
 				</div>
-	  <article class="m-widget">
+	  <%--<article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
 		  <div class="ctrl">
@@ -89,7 +89,7 @@
 		  </form>
 
 		</div>
-	  </article>
+	  </article>--%>
 
 	  <article class="m-blank">
 	    <div class="pull-left">

@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fcontent': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'prXfwj-infoGridForm',
@@ -55,7 +55,7 @@ $(function() {
 
 		  <form name="prXfwj-infoForm" method="post" action="prXfwj-info-list.do" class="form-inline">
 		    <label for="prXfwj-info_name"><spring:message code='prXfwj-info.prXfwj-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="prXfwj-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="prXfwj-info_name" name="filter_LIKES_fcontent" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.prXfwj-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -70,7 +70,7 @@ $(function() {
 		  <region:region-permission permission="prXfwj-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

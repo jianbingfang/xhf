@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fyearmonth': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjYdkh-infoGridForm',
@@ -67,8 +67,8 @@ $(function() {
         <div id="pjYdkh-infoSearch" class="content content-inner">
 
 		  <form name="pjYdkh-infoForm" method="post" action="pjYdkh-info-list.do" class="form-inline">
-		    <label for="pjYdkh-info_name"><spring:message code='pjYdkh-info.pjYdkh-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjYdkh-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="pjYdkh-info_name"><spring:message code='pjYdkh-info.pjYdkh-info.list.search.name' text='年月'/>:</label>
+		    <input type="text" id="pjYdkh-info_name" name="filter_LIKES_fyearmonth" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjYdkh-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -83,7 +83,7 @@ $(function() {
 		  <region:region-permission permission="pjYdkh-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission> -->
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -110,11 +110,11 @@ $(function() {
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
         	<th class="sorting" name="fkhno">序号</th>
+		  <th class="sorting" name="fxmid">考核项目</th>
         	<th class="sorting" name="fyearmonth">年月</th>
         	<th class="sorting" name="fuploaddate">上传时间</th>
         	<th class="sorting" name="fryid">上传人</th>
         	<th class="sorting" name="ffilename">附件下载</th>
-        <th width="80">&nbsp;</th>
       </tr>
     </thead>
 
@@ -122,7 +122,8 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fkhno}</td>
+      	 	 <td>${item.fid}</td>
+		  <td>${xmMap[item.fxmid].fxmname}</td>
       	 	 <td>${item.fyearmonth}</td>
       	 	 <td>${item.fuploaddate}</td>
       	 	 <td>${ryMap[item.fryid].fname}</td>

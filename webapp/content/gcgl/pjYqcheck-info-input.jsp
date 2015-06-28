@@ -56,7 +56,7 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="pjYqcheck-info_fyiqicode"><spring:message code="pjYqcheck-info.pjYqcheck-info.input.fyiqicode" text="仪器编码"/></label>
 					<div class="controls">
-					  	 <input id="pjYqcheck-info_fyiqicode" type="text" name="fyiqicode" value="${model.fyiqicode}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjYqcheck-info_fyiqicode" type="text" name="fyiqicode" value="${model.fyiqicode}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">
@@ -77,7 +77,7 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="pjYqcheck-info_fjingshouren"><spring:message code="pjYqcheck-info.pjYqcheck-info.input.fjingshouren" text="经手人"/></label>
 					<div class="controls">
-					  	 <input id="pjYqcheck-info_fjingshouren" type="text" name="fjingshouren" value="${model.fjingshouren}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjYqcheck-info_fjingshouren" type="text" name="fjingshouren" value="${model.fjingshouren}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">

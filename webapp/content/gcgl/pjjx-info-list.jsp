@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fjxqihao': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjjx-infoGridForm',
@@ -54,8 +54,8 @@ $(function() {
         <div id="pjjx-infoSearch" class="content content-inner">
 
 		  <form name="pjjx-infoForm" method="post" action="pjjx-info-list.do" class="form-inline">
-		    <label for="pjjx-info_name"><spring:message code='pjjx-info.pjjx-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjjx-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="pjjx-info_name"><spring:message code='pjjx-info.pjjx-info.list.search.name' text='期号'/>:</label>
+		    <input type="text" id="pjjx-info_name" name="filter_LIKES_fjxqihao" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjjx-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -70,7 +70,7 @@ $(function() {
 		  <region:region-permission permission="pjjx-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -109,7 +109,7 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fjxno}</td>
+      	 	 <td>${item.fid}</td>
       	 <%-- 	 <td>${ryMap[item.fjingshourenid].fname}</td> --%>
       	 	 <td>${item.fjxqihao}</td>
       	 	 <td>${item.fjxdate}</td>

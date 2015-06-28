@@ -67,7 +67,7 @@ $(function() {
 		</header>
         <div id="pjXm-infoSearch" class="content content-inner">
 
-		  <form name="pjXm-infoForm" method="post" action="pjXm-info-list.do" class="form-inline">
+		  <form name="pjXm-infoForm" method="post" action="pjXm-info-list1.do" class="form-inline">
 		    <label for="pjXm-info_name"><spring:message code='pjXm-info.pjXm-info.list.search.name' text='项目名称'/>:</label>
 		    <input type="text" id="pjXm-info_name" name="filter_LIKES_fxmname" value="${param.filter_LIKES_fxmname}">
 			<button class="btn btn-small a-search" onclick="document.pjXm-infoForm.submit()">查询</button>&nbsp;

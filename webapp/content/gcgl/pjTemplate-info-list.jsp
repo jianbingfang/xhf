@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjTemplate-infoGridForm',
@@ -68,7 +68,7 @@ $(function() {
 
 		  <form name="pjTemplate-infoForm" method="post" action="pjTemplate-info-list.do" class="form-inline">
 		    <label for="pjTemplate-info_name"><spring:message code='pjTemplate-info.pjTemplate-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjTemplate-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="pjTemplate-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjTemplate-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -83,7 +83,7 @@ $(function() {
 		  <region:region-permission permission="pjTemplate-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -109,8 +109,8 @@ $(function() {
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-        	<th class="sorting" name="fname">工程名称</th>
-        	<th class="sorting" name="fcode">资料代码</th>
+        	<th class="sorting" name="fname">项目名称</th>
+        	<th class="sorting" name="fcode">上交日期</th>
         	 <!--<th class="sorting" name="fcontent">模板内容</th>
         	<th class="sorting" name="fcreatedate">创建时间</th>
         	<th class="sorting" name="fupdatedate">修订时间</th>

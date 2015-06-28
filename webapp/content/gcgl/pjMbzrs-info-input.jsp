@@ -90,7 +90,7 @@ $(function() {
 				    </div>
 				  </div>
 			    	<div class="control-group">
-				    <label class="control-label" for="pjMbzrs-info_fdate"><spring:message code="pjMbzrs-info.pjMbzrs-info.input.fdate" text="日期"/></label>
+				    <label class="control-label" for="pjMbzrs-info_fdate"><spring:message code="pjMbzrs-info.pjMbzrs-info.input.fdate" text="签订时间"/></label>
 					<div class="controls">
 				      	 <div class="input-append datepicker date" style="padding-left: 0px;">
 					    	<input id="pjMbzrs-info_fdate" type="text" name="fdate" value="${model.fdate}" size="40" class="text "   style="background-color:white;cursor:default; width: 175px;">

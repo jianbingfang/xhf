@@ -127,7 +127,7 @@ $(function() {
 								<div class="controls">
 									<select id="pjXm-info_fprovince" type="text"
 										name="fprovince" value="${model.fprovince}"
-										style="width: 80px" class="text required" minlength=""
+										style="width: 80px" class="text" minlength=""
 										maxlength=""> </select>
 										<select id="pjXm-info_fcity"
 										type="text" name="fcity" value="${model.fcity}" size=""
