@@ -69,7 +69,7 @@ $(function() {
 		</header>
         <div id="gcgl-plain-infoSearch" class="content content-inner">
 
-		  <form name="gcgl-plain-infoForm" method="post" action="gcgl-plain-info-list.do" class="form-inline">
+		  <form name="gcgl-plain-infoForm" method="post" action="gcgl-week-plain-info-list.do" class="form-inline">
 		    <label for="gcgl-plain-info_name"><spring:message code='gcgl-plain-info.gcgl-plain-info.list.search.name' text='名称'/>:</label>
 		    <input type="text" id="gcgl-plain-info_name" name="filter_LIKES_ftitle" value="${param.filter_LIKES_ftitle}">
 			<button class="btn btn-small a-search" onclick="document.gcgl-plain-infoForm.submit()">查询</button>&nbsp;
