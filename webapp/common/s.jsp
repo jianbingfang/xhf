@@ -80,6 +80,12 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/s/util/scrollUp.css">
     <script src="${ctx}/s/util/scrollUp.js"></script>
 
+    <style type="text/css">
+        .a-export{
+            visibility: hidden;
+        }
+    </style>
+
     <script type="text/javascript">
 $(function() {
     $.showMessage($('#m-success-message').html(), {

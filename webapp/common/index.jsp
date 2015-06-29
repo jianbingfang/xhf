@@ -36,9 +36,9 @@
       </div><!-- /navbar-inner -->
     </div><div class="zhuti">
 	<ul>
-    <li><a href="${scopePrefix}/gh/gh-home.do"><img src="${scopePrefix}/s/xthena/img/icon_main_10.png" alt="">工会</a></li>
-    <li><a href="${scopePrefix}/dzb/dzb-home.do"><img src="${scopePrefix}/s/xthena/img/icon_main_11.png" alt="">党支部</a></li>
-    <li><a href="${scopePrefix}/kh/kh-home.do"><img src="${scopePrefix}/s/xthena/img/icon_main_12.png" alt="">考核委</a></li>
+    <%--<li><a href="${scopePrefix}/gh/gh-home.do"><img src="${scopePrefix}/s/xthena/img/icon_main_10.png" alt="">工会</a></li>--%>
+    <%--<li><a href="${scopePrefix}/dzb/dzb-home.do"><img src="${scopePrefix}/s/xthena/img/icon_main_11.png" alt="">党支部</a></li>--%>
+    <%--<li><a href="${scopePrefix}/kh/kh-home.do"><img src="${scopePrefix}/s/xthena/img/icon_main_12.png" alt="">考核委</a></li>--%>
     
     
 		<li><a href="${scopePrefix}/hr/hr-home.do"><img src="${scopePrefix}/s/xthena/img/icon_main_5.png" alt="">人力资源</a></li>
