@@ -154,8 +154,8 @@
             <ul class="accordion-inner nav nav-list">
               <li class="m-icn-view-cog"><a href="${scopePrefix}/sysconf/commMenu-info-list.do"><i
                     class="icon-list"></i>菜单列表</a></li>
-              <%--<li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfilds-info-list.do"><i class="icon-list"></i>字段管理</a></li>--%>
-              <%--   <li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfilds-info-list.do"><i class="icon-list"></i>字段排序</a></li> --%>
+              <li class="m-icn-view-cog"><a href="${scopePrefix}/sysconf/commMenu-info-input.do"><i
+                      class="icon-list"></i>菜单管理</a></li>
             </ul>
           </div>
         </div>
