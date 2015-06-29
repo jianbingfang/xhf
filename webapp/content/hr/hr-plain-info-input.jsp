@@ -78,7 +78,7 @@
 									code="plain-info.plain-info.input.ftitle" text="月份" /></label>
 							<div class="controls">
 									<input id="plain-info_fmonth" type="text" name="fmonth" value="${model.fmonth}"
-										   size="40" class="text required" minlength="" maxlength="6">
+										   size="40" class="text required" minlength="" maxlength="">
 							</div>
 						</div>
 						<div class="control-group">

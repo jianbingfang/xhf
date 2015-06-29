@@ -103,8 +103,8 @@
 					<region:region-permission permission="commRy-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 					</region:region-permission>
-					<button class="btn btn-small a-export"
-						onclick="table.exportExcel()">导出</button>
+					<%--<button class="btn btn-small a-export"--%>
+						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
 				<div class="pull-right">
 					每页显示 <select class="m-page-size">
