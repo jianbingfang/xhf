@@ -14,13 +14,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="t_comm_menu"
-    ,catalog="xhf"
-)
+            ,catalog="xhf"
+            )
 
-public class CommMenu  implements java.io.Serializable {
+    public class CommMenu  implements java.io.Serializable {
 
 
-    // Fields    
+        // Fields
 
      private Long fid;
      private String fname;

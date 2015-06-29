@@ -127,15 +127,39 @@
               <span class="title">自定义字段管理</span>
             </a>
           </div>
-          
-          <div id="user-defined" class="accordion-body collapse ${currentMenu == 'user-defined' ? 'in' : ''}">
-            <ul class="accordion-inner nav nav-list">
-			  <li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfildsType-info-list.do"><i class="icon-list"></i>类别管理</a></li>
-			  <li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfilds-info-list.do"><i class="icon-list"></i>字段管理</a></li>
+
+              <div id="user-defined" class="accordion-body collapse ${currentMenu == 'user-defined' ? 'in' : ''}">
+                <ul class="accordion-inner nav nav-list">
+                  <li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfildsType-info-list.do"><i class="icon-list"></i>类别管理</a></li>
+                  <li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfilds-info-list.do"><i class="icon-list"></i>字段管理</a></li>
+                  <%--<li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commMenu-info-list.do"><i--%>
+                          <%--class="icon-list"></i>菜单列表</a></li>--%>
+
+
 			<%--   <li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfilds-info-list.do"><i class="icon-list"></i>字段排序</a></li> --%>
             </ul>
           </div>
         </div>
+
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#m-sidebar" href="#menu-defined">
+              <i class="icon-calendar "></i>
+              <span class="title">菜单管理</span>
+            </a>
+          </div>
+
+          <div id="menu-defined" class="accordion-body collapse ${currentMenu == 'menu-defined' ? 'in' : ''}">
+            <ul class="accordion-inner nav nav-list">
+              <li class="m-icn-view-cog"><a href="${scopePrefix}/sysconf/commMenu-info-list.do"><i
+                    class="icon-list"></i>菜单列表</a></li>
+              <%--<li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfilds-info-list.do"><i class="icon-list"></i>字段管理</a></li>--%>
+              <%--   <li class="m-icn-view-cog"><a href="${scopePrefix}/comm/commcfilds-info-list.do"><i class="icon-list"></i>字段排序</a></li> --%>
+            </ul>
+          </div>
+        </div>
+
 
 		<footer id="m-footer" class="text-center copyright">
 		  <hr>

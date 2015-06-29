@@ -71,7 +71,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-         	 <a href="${scopePrefix}/" class="brand" style="float:none; padding-bottom:10px;"><img  alt="新恒丰企业信息化管理系统"  src="${scopePrefix}/s/xthena/img/logo.png"> </a>
+         	 <a href="${scopePrefix}/" class="brand" style="float:none; padding-bottom:10px;"><img
+                     alt="科扬企业信息化管理系统"  src="${scopePrefix}/s/xthena/img/kylogo6.png"> </a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
             <ul id="heardul" class="nav">
             
@@ -95,6 +96,8 @@
              <li class="${currentHeader == 'zjzx-home' ? 'active' : ''}"><a href="${scopePrefix}/zjzx/zjzx-home.do">造价咨询</a></li>
              <li class="${currentHeader == 'das-home' ? 'active' : ''}"><a href="${scopePrefix}/das/das-home.do">档案室</a></li> --%>
             <%--   <li class="${currentHeader == 'report' ? 'active' : ''}"><a href="${scopePrefix}/report/chart-mostActiveProcess.do">统计报表</a></li> --%>
+
+
             <c:if test="<%= SpringSecurityUtils.getRoles().contains(\"超级管理员\") %>">
               <li class="dropdown ${currentHeader == 'scope' ? 'active' : ''}" style="font-size:12px;">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#"> 系统管理 <b class="caret"></b></a>

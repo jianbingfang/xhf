@@ -7,7 +7,7 @@
 
 <head>
     <%@include file="/common/meta.jsp" %>
-    <title>新恒丰企业信息化管理系统</title>
+    <title>科扬企业信息化管理系统</title>
     <%@include file="/common/s.jsp" %>
 
     <script type="text/javascript">

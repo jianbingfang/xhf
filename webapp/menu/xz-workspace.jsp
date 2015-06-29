@@ -161,7 +161,7 @@
           </div>
           <div id="collapse-cl" class="accordion-body collapse ${currentMenu == 'xz-cl' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
-             <li><a href="../content/xz/xzCar-glzd-list.jsp"><i class="icon-user"></i>管理办法</a></li>
+             <%--<li><a href="../content/xz/xzCar-glzd-list.jsp"><i class="icon-user"></i>管理办法</a></li>--%>
 			  <li><a href="${scopePrefix}/xz/xzCar-info-list.do"><i class="icon-user"></i>车辆台账</a></li>
 			 <%--  <li><a href="${scopePrefix}/xz/xzCarRecord-info-list.do"><i class="icon-comment"></i>使用记录</a></li>
 			  <li><a href="${scopePrefix}/xz/xzCarOilRecord-info-list.do"><i class="icon-tint"></i>加油记录</a></li>

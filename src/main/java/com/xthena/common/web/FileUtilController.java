@@ -55,7 +55,7 @@ public class FileUtilController {
         int r = rand.nextInt(100);
         fileName = fileName + "_" + String.format("%03d", r);
         String simpleNewFilename = fileName + "." + fileType;
-        File file = new File(filePath + simpleNewFilename);
+        File file = new File(filePath +"/"+simpleNewFilename);
 
         attachment.transferTo(file);
 
