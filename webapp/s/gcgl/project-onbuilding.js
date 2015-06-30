@@ -85,8 +85,7 @@ function drawChartProjectOnbuilding() {
                     startAngle: 0,
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=1";
-                            //window.location.href = url;
+                            var url = getBaseURL() + "/default/gcgl/pjXm-info-list.do?fstatus=1";
                             window.open(url);
                         }
                     }

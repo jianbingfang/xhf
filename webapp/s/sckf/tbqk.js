@@ -87,7 +87,7 @@ function drawChartTbqk(year) {
                             console.log('redirect to page '
                             + this.series.index
                             + '-' + this.x);
-                            window.location.href = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            window.location.href = getBaseURL() + "/default/sckf/jyXm-info-list.do";
                         }
                     }
                 }
@@ -98,7 +98,7 @@ function drawChartTbqk(year) {
                 point: {
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            var url = getBaseURL() + "/default/sckf/jyXm-info-list.do";
                             //window.location.href = url;
                             window.open(url);
                         }

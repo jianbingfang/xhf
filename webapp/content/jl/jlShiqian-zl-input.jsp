@@ -69,7 +69,7 @@ function changeUploadFile(){
 
 					<%--<input id="jlShiqian-zl_" type="text" name="fskdw" value="${model.fskdw}" size="" class="text " minlength=""--%>
 							   <%--maxlength="">--%>
-					<input type="radio" name="jlShiqian[1].fstatus" value="有" <c:if test="${model['SHIQIAN_ZILIAO_JIANSHEYONGDIXUKEZHENG'].fstatus=='有'}"> checked="checked"  </c:if> > 有
+					<%--<input type="radio" name="jlShiqian[1].fstatus" value="有" <c:if test="${model['SHIQIAN_ZILIAO_JIANSHEYONGDIXUKEZHENG'].fstatus=='有'}"> checked="checked"  </c:if> > 有--%>
 					<div class="controls">
 						<input id="jlShiqian-info_ftype" type="hidden" name="jlShiqian[0].fid" value="${model['SHIQIAN_ZILIAO_TUDISHIYONGZHENG'].fid}" size="" class="text required" minlength="" maxlength="">
 						 <input id="jlShiqian-info_ftype" type="hidden" name="jlShiqian[0].ftype" value="SHIQIAN_ZILIAO" size="" class="text required" minlength="" maxlength="">

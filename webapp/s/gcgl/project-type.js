@@ -68,7 +68,7 @@ function drawChartProjectType() {
                 point: {
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=" + getTypeIndex(this.name);
+                            var url = getBaseURL() + "/default/gcgl/pjXm-info-list.do?fstatus=" + getTypeIndex(this.name);
                             //window.location.href = url;
                             window.open(url);
                         }

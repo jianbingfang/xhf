@@ -60,7 +60,7 @@ function drawChartLybzj() {
                     },
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/cw/cwBzj-info-list.do?type=2";
+                            var url = getBaseURL() + "/default/cw/cwBzj-info-list.do?type=2";
                             //window.location.href = url;
                             window.open(url);
                         }

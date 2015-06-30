@@ -90,7 +90,7 @@ function drawChartGdzc() {
                 point: {
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/xz/wzList-info-list.do";
+                            var url = getBaseURL() + "/default/xz/wzList-info-list.do";
                             //window.location.href = url;
                             window.open(url);
                         }
