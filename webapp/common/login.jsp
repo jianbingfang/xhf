@@ -22,7 +22,7 @@
     <div class="navbar navbar-inverse">
       <div class="navbar-inner" style="float:none;">
         <div class="container" style="float:none; text-align:center; padding:16px 0;">
-          <a href="${scopePrefix}/"  ><img alt="科扬建设监理有限公司"  src="${scopePrefix}/s/xthena/img/kylogo6.png"> </a>
+          <a href="${scopePrefix}/"  ><img alt="科扬建设监理有限公司"  src="${scopePrefix}/s/xthena/img/kylogo3.png"> </a>
         </div>
       </div><!-- /navbar-inner -->
     </div>
@@ -49,13 +49,13 @@
 
 <form id="userForm" name="f" method="post" action="${scopePrefix}/j_spring_security_check" class="form-horizontal">
   <div class="control-group" style="padding-top:20px;">
-    <label class="control-label" for="username"><spring:message code="core.login.username" text=""/></label>
+    <label class="control-label" for="username"><spring:message code="core.login.username" text=""/>账号:</label>
 	<div class="controls">
       <input type='text' id="username" name='j_username' class="text span10 login_input_1"  style="height:40px;" placeholder="账号" value="${sessionScope['SPRING_SECURITY_LAST_USERNAME']}">
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="password"><spring:message code="core.login.password" text=""/></label>
+    <label class="control-label" for="password"><spring:message code="core.login.password" text=""/>密码:</label>
 	<div class="controls">
       <input type='password' id="password" name='j_password' class="text span10 login_input_2" value='' style="height:40px;"  placeholder="密码">
     </div>
