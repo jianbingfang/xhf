@@ -66,7 +66,7 @@ public class HrRyZjController {
 	private HrZhengjianinfoManager hrZhengjianinfoManager;
 
     @RequestMapping("hrRyZj-info-list")
-    public void list(@ModelAttribute Page page,@RequestParam(value = "ryid", required = false) Long ryid,
+    public String list(@ModelAttribute Page page,@RequestParam(value = "ryid", required = false) Long ryid,
             @RequestParam Map<String, Object> parameterMap, Model model,HttpServletResponse response) {
 
     	
@@ -103,21 +103,22 @@ public class HrRyZjController {
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
 		List result = hrRyZjManager.find(hql.toString());
-		
-
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");  
-		PrintWriter printWriter = null;
-		try {
-			printWriter = response.getWriter();
-			JsonConfig config = new JsonConfig();  
-            config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd"));
-			printWriter.write(JSONArray.fromObject(result,config).toString());
-			printWriter.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+		page.setTotalCount(result.size());
+		page.setResult(result);
+		model.addAttribute("page",page);
+//		response.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html;charset=UTF-8");
+//		PrintWriter printWriter = null;
+//		try {
+//			printWriter = response.getWriter();
+//			JsonConfig config = new JsonConfig();
+//            config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd"));
+//			printWriter.write(JSONArray.fromObject(result,config).toString());
+//			printWriter.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		return "hr/hrRyZj-info-list";
        // return result;
     }
 
@@ -204,7 +205,7 @@ public class HrRyZjController {
 		model.addAttribute("zjInfos", deptList);
 
     	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
-        model.addAttribute("page", page);
+		page.setTotalCount(result.size());
         model.addAttribute("hql",hql.toString());
 			return "hr/hrRyZj-info-list";
     	}
