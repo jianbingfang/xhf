@@ -66,7 +66,7 @@ public class HrRyZjController {
 	private HrZhengjianinfoManager hrZhengjianinfoManager;
 
     @RequestMapping("hrRyZj-info-list")
-    public void list(@ModelAttribute Page page,@RequestParam(value = "ryid", required = false) Long ryid,
+    public String list(@ModelAttribute Page page,@RequestParam(value = "ryid", required = false) Long ryid,
             @RequestParam Map<String, Object> parameterMap, Model model,HttpServletResponse response) {
 
     	
@@ -103,9 +103,15 @@ public class HrRyZjController {
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
 		List result = hrRyZjManager.find(hql.toString());
-		
 
-		response.setCharacterEncoding("UTF-8");
+		page.setTotalCount(result.size());
+		page.setResult(result);
+		model.addAttribute("page", page);
+		model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
+
+		return "hr/hrRyZj-info-list";
+
+		/*response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");  
 		PrintWriter printWriter = null;
 		try {
@@ -116,7 +122,7 @@ public class HrRyZjController {
 			printWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
        // return result;
     }
