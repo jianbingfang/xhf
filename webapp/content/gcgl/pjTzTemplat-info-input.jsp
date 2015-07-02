@@ -51,7 +51,7 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="pjTzTemplat-info_fname"><spring:message code="pjTzTemplat-info.pjTzTemplat-info.input.fname" text="台账名称"/></label>
 					<div class="controls">
-					  	 <input id="pjTzTemplat-info_fname" type="text" name="fname" value="${model.fname}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjTzTemplat-info_fname" type="text" name="fname" value="${model.fname}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">

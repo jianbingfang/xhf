@@ -363,12 +363,12 @@ public class CwYingShouController {
 		
 		if(parameterMap.get("filter_GTD_fdzdate") != null&&!parameterMap.get("filter_GTD_fdzdate").toString().trim().equals(""))
 		{
-			hql.append(" and ys.fdzdate > '"+parameterMap.get("filter_GTD_fdzdate") +"' ");
+			hql.append(" and ys.fdzdate >= '"+parameterMap.get("filter_GTD_fdzdate") +"' ");
 		}
 		
 		if(parameterMap.get("filter_LTD_fdzdate") != null&&!parameterMap.get("filter_LTD_fdzdate").toString().trim().equals(""))
 		{
-			hql.append(" and ys.fdzdate < '"+parameterMap.get("filter_LTD_fdzdate") +"' ");
+			hql.append(" and ys.fdzdate <= '"+parameterMap.get("filter_LTD_fdzdate") +"' ");
 		}
 		hql.append(" order by  ht.fhtname");
 

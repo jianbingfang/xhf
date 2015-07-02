@@ -90,13 +90,13 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="pjHtly-info_flvyuelv"><spring:message code="pjHtly-info.pjHtly-info.input.flvyuelv" text="履约率"/></label>
 					<div class="controls">
-					  	 <input id="pjHtly-info_flvyuelv" type="text" name="flvyuelv" value="${model.flvyuelv}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjHtly-info_flvyuelv" type="text" name="flvyuelv" value="${model.flvyuelv}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">
 				    <label class="control-label" for="pjHtly-info_fpjjd"><spring:message code="pjHtly-info.pjHtly-info.input.fpjjd" text="工程进度"/></label>
 					<div class="controls">
-					  	 <input id="pjHtly-info_fpjjd" type="text" name="fpjjd" value="${model.fpjjd}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjHtly-info_fpjjd" type="text" name="fpjjd" value="${model.fpjjd}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">

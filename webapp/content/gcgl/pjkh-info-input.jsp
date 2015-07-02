@@ -117,13 +117,13 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="pjkh-info_fkhry"><spring:message code="pjkh-info.pjkh-info.input.fkhry" text="考核人员"/></label>
 					<div class="controls">
-						<textarea id="pjkh-info_fkhry" type="text" name="fkhry" rows="6"  style="width: 560px" size="" class="text required" minlength="" maxlength="">${model.fkhry}</textarea>
+						<textarea id="pjkh-info_fkhry" type="text" name="fkhry" rows="6"  style="width: 560px" size="" class="text" minlength="" maxlength="">${model.fkhry}</textarea>
 				    </div>
 				  </div>
 			    	<div class="control-group">
 				    <label class="control-label" for="pjkh-info_fkhscore"><spring:message code="pjkh-info.pjkh-info.input.fkhscore" text="考核得分"/></label>
 					<div class="controls">
-					  	 <input id="pjkh-info_fkhscore" type="text" name="fkhscore" value="${model.fkhscore}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjkh-info_fkhscore" type="text" name="fkhscore" value="${model.fkhscore}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 				  

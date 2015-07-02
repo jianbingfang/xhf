@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fxmname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjFirstCheck-infoGridForm',
@@ -58,7 +58,7 @@ $(function() {
 
 		  <form name="pjFirstCheck-infoForm" method="post" action="pjFirstCheck-info-list.do" class="form-inline">
 		    <label for="pjFirstCheck-info_name"><spring:message code='pjFirstCheck-info.pjFirstCheck-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjFirstCheck-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="pjFirstCheck-info_name" name="filter_LIKES_fxmname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjFirstCheck-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -73,7 +73,7 @@ $(function() {
 		  <region:region-permission permission="pjFirstCheck-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -99,7 +99,7 @@ $(function() {
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-        	<th class="sorting" name="fcheckno">编号</th>
+        	<th class="sorting" name="fcheckno">序号</th>
         	<th class="sorting" name="fxmid">项目</th>
         	<th class="sorting" name="fcheckerid">检查人</th>
         	<th class="sorting" name="fdate">检查日期</th>
@@ -116,7 +116,7 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fcheckno}</td>
+      	 	 <td>${item.fid}</td>
       	 	 <td>${xmMap[item.fxmid].fxmname}</td>
       	 	 <td>${ryMap[item.fcheckerid].fname}</td>
       	 	 <td>${item.fdate}</td>

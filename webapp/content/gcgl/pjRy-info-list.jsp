@@ -22,7 +22,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fgangwei': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjRy-infoGridForm',
@@ -70,8 +70,8 @@ $(function() {
         <div id="pjRy-infoSearch" class="content content-inner">
 
 		  <form name="pjRy-infoForm" method="post" action="pjRy-info-list.do" class="form-inline">
-		    <label for="pjRy-info_name"><spring:message code='pjRy-info.pjRy-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjRy-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="pjRy-info_name"><spring:message code='pjRy-info.pjRy-info.list.search.name' text='岗位'/>:</label>
+		    <input type="text" id="pjRy-info_name" name="filter_LIKES_fgangwei" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjRy-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -86,7 +86,7 @@ $(function() {
 		  <region:region-permission permission="pjRy-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission> -->
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">

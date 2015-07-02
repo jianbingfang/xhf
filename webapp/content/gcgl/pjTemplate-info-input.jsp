@@ -60,21 +60,21 @@ $(function() {
   </c:if>
   
 						<div class="control-group">
-					    <label class="control-label" for="pjTemplate-info_fname"><spring:message code="pjTemplate-info.pjTemplate-info.input.fname" text="资料名称"/></label>
+					    <label class="control-label" for="pjTemplate-info_fname"><spring:message code="pjTemplate-info.pjTemplate-info.input.fname" text="项目名称"/></label>
 						<div class="controls">
 							  	 <input id="pjTemplate-info_fname" type="text" name="fname" value="${model.fname}" size="" class="text " minlength="" maxlength="">	
 					    </div>
 					  </div>
 	  
 						<div class="control-group">
-					    <label class="control-label" for="pjTemplate-info_fcode"><spring:message code="pjTemplate-info.pjTemplate-info.input.fcode" text="资料代码"/></label>
+					    <label class="control-label" for="pjTemplate-info_fcode"><spring:message code="pjTemplate-info.pjTemplate-info.input.fcode" text="上交日期"/></label>
 						<div class="controls">
 							  	 <input id="pjTemplate-info_fcode" type="text" name="fcode" value="${model.fcode}" size="" class="text " minlength="" maxlength="">	
 					    </div>
 					    </div>
 	  
 						<div class="control-group">
-					    <label class="control-label" for="pjTemplate-info_fcontent"><spring:message code="pjTemplate-info.pjTemplate-info.input.fcontent" text="资料内容"/></label>
+					    <label class="control-label" for="pjTemplate-info_fcontent"><spring:message code="pjTemplate-info.pjTemplate-info.input.fcontent" text="资料清单"/></label>
 						<div class="controls">
 							  	 <textarea id="pjTemplate-info_fcontent" type="text" name="fcontent"  size="" class="text " minlength="" maxlength="">${model.fcontent}</textarea>
 					    </div>

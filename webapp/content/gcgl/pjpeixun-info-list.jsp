@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fpxzt': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjpeixun-infoGridForm',
@@ -70,7 +70,7 @@ $(function() {
 
 		  <form name="pjpeixun-infoForm" method="post" action="pjpeixun-info-list.do" class="form-inline">
 		    <label for="pjpeixun-info_name"><spring:message code='pjpeixun-info.pjpeixun-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjpeixun-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="pjpeixun-info_name" name="filter_LIKES_fpxzt" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjpeixun-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -85,7 +85,7 @@ $(function() {
 		  <region:region-permission permission="pjpeixun-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -112,7 +112,8 @@ $(function() {
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-        	<th class="sorting" name="fpxzt">培训主题</th>
+        	<th>序号</th>
+		    <th class="sorting" name="fpxzt">培训主题</th>
         	<th class="sorting" name="fpxdate">培训时间</th>
         	<th class="sorting" name="fpxaddr">培训地点</th>
         	<th class="sorting" name="fzhuchiren">主持人</th>
@@ -120,7 +121,7 @@ $(function() {
         	<th class="sorting" name="fpxmethod">方式</th>
         	<!-- <th class="sorting" name="frs">参加人数</th> -->
         	<th class="sorting" name="fcontent">培训内容</th>
-        <th width="80">&nbsp;</th>
+        <th width="80">操作</th>
       </tr>
     </thead>
 
@@ -128,7 +129,8 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fpxzt}</td>
+      	 	 <td>${item.fid}</td>
+		     <td>${item.fpxzt}</td>
       	 	 <td>${item.fpxdate}</td>
       	 	 <td>${item.fpxaddr}</td>
       	 	 <td>${item.fzhuchiren}</td>

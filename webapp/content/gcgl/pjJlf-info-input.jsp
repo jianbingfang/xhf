@@ -68,16 +68,16 @@ $(function() {
 							</div>
 				    </div>
 				  </div>
-			    	<div class="control-group">
+			    	<%--<div class="control-group">
 				    <label class="control-label" for="pjJlf-info_fno"><spring:message code="pjJlf-info.pjJlf-info.input.fno" text="序号"/></label>
 					<div class="controls">
 					  	 <input id="pjJlf-info_fno" type="text" name="fno" value="${model.fno}" size="" class="text required" minlength="" maxlength="">	
-				    </div>
+				    </div>--%>
 				  </div>
 			    	<div class="control-group">
 				    <label class="control-label" for="pjJlf-info_fhtjk"><spring:message code="pjJlf-info.pjJlf-info.input.fhtjk" text="合同价款"/></label>
 					<div class="controls">
-					  	 <input id="pjJlf-info_fhtjk" type="text" name="fhtjk" value="${model.fhtjk}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjJlf-info_fhtjk" type="text" name="fhtjk" value="${model.fhtjk}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">

@@ -56,7 +56,7 @@
 										code="wzList-info.wzList-info.input.fcode" text="物资编码" /></label>
 								<div class="controls">
 									<input id="wzList-info_fcode" type="text" name="fcode"
-										value="${model.fcode}" size="" class="text required" minlength=""
+										value="${model.fcode}" size="" class="text" minlength=""
 										maxlength="">
 								</div>
 							</div>
@@ -67,7 +67,7 @@
 										code="wzList-info.wzList-info.input.fname" text="名称" /></label>
 								<div class="controls">
 									<input id="wzList-info_fname" name="fname" type="text"
-										class="text  required" maxlength="200" value="${model.fname}">
+										class="text" maxlength="200" value="${model.fname}">
 								</div>
 							</div>
 								</div>

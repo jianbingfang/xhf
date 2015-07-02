@@ -180,8 +180,7 @@
                                 <th class="sorting" name="fopratorname">经办人</th>
                                 <th class="sorting" name="fmemo">备注</th>
                                 <th class="sorting" name="fhjjdfx">合计借贷方向</th>
-                                <th class="sorting" name="fhjje">合计金额</th>
-                                <th></th>
+                                <th>操作</th>
                                 <th width="80">&nbsp;</th>
                             </tr>
                             </thead>
@@ -199,7 +198,6 @@
                                     <td>${item.fopratorname}</td>
                                     <td>${item.fmemo}</td>
                                     <td>${item.fhjjdfx}</td>
-                                    <td>${item.fhjje}</td>
                                     <td>
                                         <a href="cwKaiPiao-info-input.do?id=${item.fid}"
                                            class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>

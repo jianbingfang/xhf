@@ -74,7 +74,7 @@ function getFiles(){
 			    	<div class="control-group">
 				    <label class="control-label" for="pjGuifantuji-info_fname"><spring:message code="pjGuifantuji-info.pjGuifantuji-info.input.fname" text="名称"/></label>
 					<div class="controls">
-					  	 <input id="pjGuifantuji-info_fname" type="text" name="fname" value="${model.fname}" size="" class="text required" minlength="" maxlength="">	
+					  	 <input id="pjGuifantuji-info_fname" type="text" name="fname" value="${model.fname}" size="" class="text" minlength="" maxlength="">
 				    </div>
 				  </div>
 			    <%-- 	<div class="control-group">
@@ -113,7 +113,7 @@ function getFiles(){
 				    </div>
 				  </div> --%>
 			    	<div class="control-group">
-				    <label class="control-label" for="pjGuifantuji-info_finfo"><spring:message code="pjGuifantuji-info.pjGuifantuji-info.input.finfo" text="说明"/></label>
+				    <label class="control-label" for="pjGuifantuji-info_finfo"><spring:message code="pjGuifantuji-info.pjGuifantuji-info.input.finfo" text="备注"/></label>
 					<div class="controls">
 				      	<textarea id="pjGuifantuji-info_finfo"  name="finfo"  class="form-control" rows="6"  style="width: 560px" class="text  "  minlength="" maxlength="512">${model.finfo}</textarea>
 				    </div>

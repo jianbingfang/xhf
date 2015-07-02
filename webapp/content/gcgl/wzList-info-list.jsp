@@ -140,6 +140,7 @@
 															<th width="10" class="m-table-check"><input
 																type="checkbox" name="checkAll"
 																onchange="toggleSelectedItems(this.checked)"></th>
+															<th>序号</th>
 															<!-- 		<th class="sorting" id="ftype">物品类别</th> -->
 															<th class="sorting" id="fname">名称</th>
 															<th class="sorting" id="fgg">规格</th>
@@ -156,6 +157,7 @@
 																	class="selectedItem a-check" name="selectedItem"
 																	value="${item.fid}"></td>
 																<%-- <td>${item.ftype}</td> --%>
+																<td>${item.fid}</td>
 																<td><a
 																	href="wzList-dz-info-input.do?id=${item.fid}"
 																	class="a-update"><spring:message

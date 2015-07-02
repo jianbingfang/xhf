@@ -47,7 +47,7 @@ $(function() {
 	  <!-- start of main -->
       <section id="m-main" class="span10">
 
-	  <article class="m-widget">
+	  <%--<article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
 		  <div class="ctrl">
@@ -63,7 +63,7 @@ $(function() {
 		  </form>
 
 		</div>
-	  </article>
+	  </article>--%>
 
 	  <article class="m-blank">
 	    <div class="pull-left">
@@ -73,7 +73,7 @@ $(function() {
 		  <region:region-permission permission="pjMbzrs-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -99,9 +99,10 @@ $(function() {
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-        	<th class="sorting" name="fxmid">项目</th>
+        	<th>序号</th>
+		  	<th class="sorting" name="fxmid">项目</th>
         	<th class="sorting" name="fryid">签署人</th>
-        	<th class="sorting" name="fdate">日期</th>
+        	<th class="sorting" name="fdate">签订时间</th>
         	<th class="sorting" name="fmemo">备注</th>
         <th width="80">&nbsp;</th>
       </tr>
@@ -111,7 +112,8 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${xmMap[item.fxmid].fxmname}</td>
+      	 	 <td>${item.fid}</td>
+		     <td>${xmMap[item.fxmid].fxmname}</td>
       	 	 <td>${ryMap[item.fryid].fname}</td>
       	 	 <td>${item.fdate}</td>
       	 	 <td>${item.fmemo}</td>

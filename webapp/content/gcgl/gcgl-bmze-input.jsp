@@ -61,7 +61,7 @@
 									code="plain-info.plain-info.input.ftitle" text="标题" /></label>
 							<div class="controls">
 								<input id="plain-info_ftitle" type="text" name="ftitle"
-									value="${model.ftitle}" size="40" class="text required"
+									value="${model.ftitle}" size="40" class="text"
 									 maxlength="50">
 							</div>
 						</div>

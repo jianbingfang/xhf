@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fyiqicode': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjYqcheck-infoGridForm',
@@ -68,7 +68,7 @@ $(function() {
 
 		  <form name="pjYqcheck-infoForm" method="post" action="pjYqcheck-info-list.do" class="form-inline">
 		    <label for="pjYqcheck-info_name"><spring:message code='pjYqcheck-info.pjYqcheck-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjYqcheck-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="pjYqcheck-info_name" name="filter_LIKES_fyiqicode" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjYqcheck-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -83,7 +83,7 @@ $(function() {
 		  <region:region-permission permission="pjYqcheck-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -113,7 +113,6 @@ $(function() {
         	<th class="sorting" name="fcheckdate">本次年检时间</th>
         	<th class="sorting" name="fcheckresult">年检结果</th>
         	<th class="sorting" name="fjingshouren">经手人</th>
-        	<th class="sorting" name="fjingshourenid">经手人id</th>
         <th width="80">&nbsp;</th>
       </tr>
     </thead>
@@ -126,7 +125,6 @@ $(function() {
       	 	 <td>${item.fcheckdate}</td>
       	 	 <td>${item.fcheckresult}</td>
       	 	 <td>${item.fjingshouren}</td>
-      	 	 <td>${item.fjingshourenid}</td>
         <td>
           <a href="pjYqcheck-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
         </td>

@@ -77,7 +77,7 @@
 								<div class="controls">
 									<input id="cwXmhs-info_fhetongjine" type="text"
 										name="fhetongjine" value="${model.fhetongjine}" size=""
-										class="text">
+										class="text">（万元）
 								</div>
 							</div>
 						</div>

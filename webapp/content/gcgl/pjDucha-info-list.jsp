@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fxmname': '${param.filter_LIKES_name}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjDucha-infoGridForm',
@@ -47,7 +47,7 @@ $(function() {
 	  <!-- start of main -->
       <section id="m-main" class="span10">
 
-	  <article class="m-widget">
+	  <%--<article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
 		  <div class="ctrl">
@@ -58,12 +58,12 @@ $(function() {
 
 		  <form name="pjDucha-infoForm" method="post" action="pjDucha-info-list.do" class="form-inline">
 		    <label for="pjDucha-info_name"><spring:message code='pjDucha-info.pjDucha-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjDucha-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <input type="text" id="pjDucha-info_name" name="filter_LIKES_fxmname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.pjDucha-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
-	  </article>
+	  </article>--%>
 
 	  <article class="m-blank">
 	    <div class="pull-left">
@@ -73,7 +73,7 @@ $(function() {
 		  <region:region-permission permission="pjDucha-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
-		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
+		  <%--<button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>--%>
 		</div>
 
 		<div class="pull-right">
@@ -114,7 +114,7 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fcheckno}</td>
+      	 	 <td>${item.fid}</td>
       	 	 <td>${xmMap[item.fxmid].fxmname}</td>
       	 	
       	 	 <td>${item.fdate}</td>

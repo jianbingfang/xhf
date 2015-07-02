@@ -121,15 +121,15 @@ $(function() {
         <th class="sorting" name="fuserid">提交人</th>
          <th class="sorting" name="fstatus">状态</th>
         
-        <th width="80">&nbsp;</th>
+        <th width="40">操作</th>
       </tr>
     </thead>
 
     <tbody>
-      <c:forEach items="${page.result}" var="item">
+      <c:forEach items="${page.result}" var="item" varStatus="status">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-        <td>${item.fcode}</td>
+        <td>${status.count}</td>
         <td>${item.ftitle}</td>
         <td>${item.fmonth}</td>
         <td>${item.fsubdate}</td>

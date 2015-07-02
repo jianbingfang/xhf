@@ -504,7 +504,7 @@ public class GcglDocController {
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
 
-        return "redirect:/gcgl/gcgl-bmze-list.do";
+        return "redirect:/gcgl/gcgl-doc-bmze-list.do";
     }
 
     @RequestMapping("gcgl-doc-bmze-export")

@@ -90,9 +90,8 @@
                             <!--      <th class="sorting" name="fstartdate">开始时间</th>
                                  <th class="sorting" name="fenddate">废止时间</th> -->
                             <!--   <th class="sorting" name="fuserid">编制人</th> -->
-                            <th class="sorting" name="name">操作</th>
+                            <th>操作</th>
                             <!-- <th class="sorting" name="name">备注</th> -->
-                            <th></th>
                         </tr>
                         </thead>
 
@@ -105,10 +104,6 @@
                                     <%-- <td>${items.index}</td> --%>
                                 <td><a style="color:#005580;" href="../comm/comm-doc-input.do?id=${item.fid}"
                                        target="_blank">${item.ftitle}</a></td>
-                                <td><c:if test="${item.fstatus==1}"><font color="#0066CC">试行</font></c:if>
-                                    <c:if test="${item.fstatus==2}">实行</c:if>
-                                    <c:if test="${item.fstatus==3}"><font color="#FF3333">废除</font></c:if>
-                                </td>
                                     <%--  <td>${item.fstartdate}</td>
                                      <td>${item.fenddate}</td> --%>
                                     <%-- <td>${item.fcreator}</td> --%>

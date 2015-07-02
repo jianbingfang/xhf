@@ -126,7 +126,7 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<div class="span5">
+							<%--<div class="span5">
 								<label class="control-label" for="pjXm-info_fxmno"><spring:message
 										code="pjXm-info.pjXm-info.input.fxmno" text="项目外部编号" /></label>
 								<div class="controls">
@@ -134,7 +134,7 @@
 										value="${model.fxmno}" size="" class="text " minlength=""
 										maxlength="">
 								</div>
-							</div>
+							</div>--%>
 							<div class="span5">
 								<label class="control-label" for="pjXm-info_fprovince"><spring:message
 										code="pjXm-info.pjXm-info.input.fprovince" text="项目地址" /></label>
@@ -148,15 +148,15 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<div class="span5">
+							<%--<div class="span5">
 								<label class="control-label" for="pjXm-info_fnbno"><spring:message
-										code="pjXm-info.pjXm-info.input.fnbno" text="项目内部编号" /></label>
+										code="pjXm-info.pjXm-info.input.fnbno" text="项目编号" /></label>
 								<div class="controls">
 									<input id="pjXm-info_fnbno" type="text" name="fnbno"
 										value="${model.fnbno}" size="" class="text" minlength=""
 										maxlength="">
 								</div>
-							</div>
+							</div>--%>
 							<div class="span5">
 								<label class="control-label" for="pjXm-info_fjzgm"><spring:message
 										code="pjXm-info.pjXm-info.input.fxmstatus" text="建筑规模" /></label>
@@ -297,7 +297,7 @@
 						<div class="input-append htPicker">
 								<input id="xzChufa-info_fhtid" type="hidden" name="fhtid"
 									value="${model.fhtid}"> <input
-									id="xmBxRecord-info_xmmc" type="text" value="${htMap[model.fhtid].fhtname}" readonly="readonly" onclick="window.open('../gcgl/gcgl-commHt-info-input.do?id=${model.fhtid}')"
+									id="xmBxRecord-info_xmmc" type="text" value="${htMap[model.fhtid].fhtname}" readonly="readonly" <%--onclick="window.open('../gcgl/gcgl-commHt-info-input.do?id=${model.fhtid}')"--%>
 									class=" required" style="width: 175px;" value=""> <span
 									class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
 									class="icon-th-list"></i></span>

@@ -98,7 +98,7 @@ $(function() {
 						<div class="controls">
 									<input
 										id="ryBxRecord-info_userName" type="text" name="fzhuchiren" value="${model.fzhuchiren}"
-										 class=" required" style="width: 175px;" >
+										 class="" style="width: 175px;" >
 					    </div>
 					    </div>
 					    </div>
