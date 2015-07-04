@@ -58,8 +58,7 @@ function drawChartJxkh(year) {
                 point: {
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/gcgl/pjkh-info-list.do";
-                            //window.location.href = url;
+                            var url = getBaseURL() + "/default/gcgl/pjkh-info-list.do";
                             window.open(url);
                         }
                     }

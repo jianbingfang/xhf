@@ -61,7 +61,7 @@ function drawChartXmfb() {
 
         var ecConfig = getEcConfig();
         myChart.on(ecConfig.EVENT.CLICK, function () {
-            var url = "http://" + window.location.host + "/xhf/default/gcgl/pjXm-info-list.do?fstatus=1";
+            var url = getBaseURL() + "/default/gcgl/pjXm-info-list.do?fstatus=1";
             //window.location.href = url;
             window.open(url);
         });

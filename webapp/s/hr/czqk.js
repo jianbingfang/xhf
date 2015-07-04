@@ -144,8 +144,7 @@ function drawChartCzqk(data) {
                 point: {
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/sckf/commHt-info-list.do";
-                            //window.location.href = url;
+                            var url = getBaseURL() + "/default/hr/hrRyZj-treelist.do";
                             window.open(url);
                         }
                     }

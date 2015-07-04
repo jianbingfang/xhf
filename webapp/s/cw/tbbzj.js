@@ -60,7 +60,7 @@ function drawChartTbbzj() {
                     },
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/cw/cwBzj-info-tblist.do?type=1";
+                            var url = getBaseURL() + "/default/cw/cwBzj-info-tblist.do?type=1";
                             //window.location.href = url;
                             window.open(url);
                         }

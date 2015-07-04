@@ -103,22 +103,28 @@ public class HrRyZjController {
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
 		List result = hrRyZjManager.find(hql.toString());
-		
 
-//		response.setCharacterEncoding("UTF-8");
-//		response.setContentType("text/html;charset=UTF-8");
-//		PrintWriter printWriter = null;
-//		try {
-//			printWriter = response.getWriter();
-//			JsonConfig config = new JsonConfig();
-//            config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd"));
-//			printWriter.write(JSONArray.fromObject(result,config).toString());
-//			printWriter.close();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		page.setTotalCount(result.size());
+		page.setResult(result);
+		model.addAttribute("page", page);
+		model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
+
+		return "hr/hrRyZj-info-list";
+
+		/*response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");  
+		PrintWriter printWriter = null;
+		try {
+			printWriter = response.getWriter();
+			JsonConfig config = new JsonConfig();  
+            config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd"));
+			printWriter.write(JSONArray.fromObject(result,config).toString());
+			printWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}*/
 		
-         return "hr/hrRyZj-info-list";
+       // return result;
     }
 
 
@@ -320,21 +326,21 @@ public class HrRyZjController {
     @RequestMapping("hrRyZj-info-remove")
 	@ResponseBody
     public String remove(@ModelAttribute HrRyZj hrRyZj,
-							RedirectAttributes redirectAttributes, HttpServletRequest request) {
+						 RedirectAttributes redirectAttributes, HttpServletRequest request) {
 
-			String[] selectitems= request.getParameter("selecteditems").split("@");
+        String[] selectitems= request.getParameter("selecteditems").split("@");
 
-			List<Long> Selectedlist= new ArrayList<>();
+		List<Long> Selectedlist= new ArrayList<>();
 
-			for(int i=0; i<selectitems.length; i++){
-				Long cur=Long.parseLong(selectitems[i]);
-				Selectedlist.add(cur);
-			}
+		for(int i=0; i<selectitems.length; i++){
+			 Long cur=Long.parseLong(selectitems[i]);
+			Selectedlist.add(cur);
+		}
 
-			List<HrRyZj> hrRyZjs = hrRyZjManager.findByIds(Selectedlist);
-			hrRyZjManager.removeAll(hrRyZjs);
-			messageHelper.addFlashMessage(redirectAttributes,
-					"core.success.delete", "删除成功");
+		List<HrRyZj> hrRyZjs = hrRyZjManager.findByIds(Selectedlist);
+        hrRyZjManager.removeAll(hrRyZjs);
+        messageHelper.addFlashMessage(redirectAttributes,
+                "core.success.delete", "删除成功");
 
 		return null;
 		//return "redirect:/hr/hrRyZj-info-list";

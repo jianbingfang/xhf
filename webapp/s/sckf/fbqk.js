@@ -39,7 +39,7 @@ function drawChartFbqk(year) {
                     startAngle: 0,
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/sckf/jyXm-info-list.do";
+                            var url = getBaseURL() + "/default/sckf/jyXm-info-list.do";
                             //window.location.href = url;
                             window.open(url);
                         }

@@ -105,7 +105,7 @@
             <ul class="accordion-inner nav nav-list">
               <li><a href="${scopePrefix}/jl/jl-doc-mbzrs-list.do"><i class="icon-book"></i>目标责任书</a></li>
 			  <%-- <li><a href="${scopePrefix}/jl/gsdbsy-info.do"><i class="icon-user"></i>物品申领</a></li> --%>
-			  <li><a href="${scopePrefix}/jl/xmdbsy-info.do"><i class="icon-heart"></i>待办事宜</a></li>
+			  <%--<li><a href="${scopePrefix}/jl/xmdbsy-info.do"><i class="icon-heart"></i>待办事宜</a></li>--%>
             </ul>
           </div>
         </div>

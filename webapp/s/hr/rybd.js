@@ -68,7 +68,7 @@ function drawChartRybd(year) {
                     },
                     events: {
                         click: function () {
-                            var url = "http://" + window.location.host + "/xhf/default/hr/hrLz-info-list.do";
+                            var url = getBaseURL() + "/default/hr/hrLz-info-list.do";
                             //window.location.href = url;
                             window.open(url);
                         }

@@ -183,7 +183,7 @@
 				</header>
 				<div id="hrRyZj-infoSearch" class="content content-inner">
 					<form name="hrRyZj-infoForm" method="post"
-						action="hrRyZj-treelist.do" class="form-inline">
+						action="hrRyZj-info-list.do" class="form-inline">
 						<label for="hrRyZj-info_name"><spring:message
 								code='hrRyZj-info.hrRyZj-info.list.search.name' text='人员姓名' />:</label>
 						<!--  <input type="text" style="width: 120px" id="hrRyZj-info_name"
@@ -355,15 +355,15 @@
 														<%--<td><input type="checkbox"--%>
 															<%--class="selectedItem a-check" name="selectedItem"--%>
 															<%--value="${item.fid}"></td>--%>
+														<td>${ryMap[item.userid].fname}</td>
 														<td>${item.fname}</td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td></td>
+														<td>${item.fzhengjianno}</td>
+														<td>${item.fzcno}</td>
+														<td>${item.fzhuanye}</td>
+														<td>${item.fyxqks}</td>
+														<td>${item.fyxjs}</td>
+														<td>${item.fwz}</td>
+														<td>${item.fstatus}</td>
 													</tr>
 												</c:forEach>
 											</tbody>
