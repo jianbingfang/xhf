@@ -159,16 +159,31 @@
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
+                    <script>
+                        function deleteTask(taskId) {
+                            if (confirm('确认删除该任务？')) {
+                                $.post('${scopePrefix}/bpm/remove-task.do?taskId=' + taskId,
+                                        function (status) {
+                                            if (status === 1) {
+                                                $('#task-' + taskId).remove();
+                                            } else {
+                                                alert('删除失败！');
+                                            }
+                                        }
+                                );
+                            }
+                        }
+                    </script>
                     <tbody>
                     <c:forEach items="${personalTasks}" var="item">
-                        <tr>
+                        <tr id="task-${item.id}">
                             <td>${item.id}</td>
                             <td>${item.name}</td>
                             <td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                             <td>
                                 <a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.id}"
                                    class="btn btn-small btn-success">处理</a>
-                                <a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.id}"
+                                <a href="#" onclick="deleteTask(${item.id})"
                                    class="btn btn-small btn-danger">删除</a>
                             </td>
                         </tr>

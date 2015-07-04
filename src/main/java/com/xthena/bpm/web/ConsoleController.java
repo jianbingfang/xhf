@@ -1,30 +1,8 @@
 package com.xthena.bpm.web;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Resource;
-
-import javax.servlet.http.HttpServletResponse;
-
-import com.xthena.bpm.cmd.ChangeSubTaskCmd;
-import com.xthena.bpm.cmd.JumpCmd;
-import com.xthena.bpm.cmd.ListActivityCmd;
-import com.xthena.bpm.cmd.MigrateCmd;
-import com.xthena.bpm.cmd.ProcessDefinitionDiagramCmd;
-import com.xthena.bpm.cmd.ReOpenProcessCmd;
-import com.xthena.bpm.cmd.SyncProcessCmd;
-import com.xthena.bpm.cmd.UpdateProcessCmd;
-
+import com.xthena.bpm.cmd.*;
 import com.xthena.core.util.IoUtils;
-
-import org.activiti.engine.HistoryService;
-import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
+import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricActivityInstance;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricTaskInstance;
@@ -33,15 +11,19 @@ import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
-
 import org.apache.commons.io.IOUtils;
-
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 管理控制台.
@@ -266,7 +248,26 @@ public class ConsoleController {
         return "bpm/console-listTasks";
     }
 
+    /**
+     * 显示任务列表.
+     */
+    @ResponseBody
+    @RequestMapping("remove-task")
+    public Object removeTask(@RequestParam("taskId") String taskId) {
+        int code = 1;
+        try {
+            TaskService taskService = processEngine.getTaskService();
+            taskService.deleteTask(taskId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            code = 0;
+        } finally {
+            return code;
+        }
+    }
+
     // The task cannot be deleted because is part of a running process
+
     /**
      * 显示历史流程实例.
      */
@@ -313,12 +314,13 @@ public class ConsoleController {
     }
 
     // ~ ======================================================================
+
     /**
      * 自由流执行之前，选择跳转到哪个节点.
      */
     @RequestMapping("console-prepareJump")
     public String prepareJump(@RequestParam("executionId") String executionId,
-            Model model) {
+                              Model model) {
         Command<Map<String, String>> cmd = new ListActivityCmd(executionId);
 
         Map activityMap = processEngine.getManagementService().executeCommand(
@@ -334,7 +336,7 @@ public class ConsoleController {
      */
     @RequestMapping("console-jump")
     public String jump(@RequestParam("executionId") String executionId,
-            @RequestParam("activityId") String activityId) {
+                       @RequestParam("activityId") String activityId) {
         Command<Object> cmd = new JumpCmd(executionId, activityId);
 
         processEngine.getManagementService().executeCommand(cmd);
@@ -429,7 +431,7 @@ public class ConsoleController {
      */
     @RequestMapping("console-addSubTask")
     public String addSubTask(@RequestParam("taskId") String taskId,
-            @RequestParam("userId") String userId) {
+                             @RequestParam("userId") String userId) {
         processEngine.getManagementService().executeCommand(
                 new ChangeSubTaskCmd(taskId, userId));
 
