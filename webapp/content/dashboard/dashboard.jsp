@@ -168,6 +168,8 @@
                             <td>
                                 <a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.id}"
                                    class="btn btn-small btn-success">处理</a>
+                                <a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.id}"
+                                   class="btn btn-small btn-danger">删除</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -203,9 +205,9 @@
                             <a href="javascript:void(0)" ng-click="ignore(item.fid)"
                                class="btn btn-small btn-success">忽略</a>&nbsp;
                             <a href="javascript:void(0)" ng-click="delayShow(item.fid)"
-                               class="btn btn-small btn-success">延迟提醒</a>&nbsp;
+                               class="btn btn-small btn-warning">延迟提醒</a>&nbsp;
                             <a href="javascript:void(0)" ng-click="done(item.fid)"
-                               class="btn btn-small btn-success">不再提醒</a>
+                               class="btn btn-small btn-danger">不再提醒</a>
                         </td>
                     </tr>
                     </tbody>
@@ -236,15 +238,32 @@
                     </tr>
                     </thead>
 
+                    <script>
+                        function endProcessInstance(processInstanceId) {
+                            if (confirm('确认终止该流程？')) {
+                                $.post('${scopePrefix}/bpm/workspace-endProcessInstance.do?processInstanceId=' + processInstanceId,
+                                        function (status) {
+                                            if (status === 1) {
+                                                $('#process-' + processInstanceId).remove();
+                                            } else {
+                                                alert('删除失败！');
+                                            }
+                                        }
+                                );
+                            }
+                        }
+                    </script>
                     <tbody>
                     <c:forEach items="${historicProcessInstances}" var="item">
-                        <tr>
+                        <tr id="process-${item.id}">
                             <td>${item.id}</td>
                             <td>${processKeyName[item.processDefinitionId]}</td>
                             <td><fmt:formatDate value="${item.startTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                             <td>
                                 <a href="${scopePrefix}/bpm/workspace-viewHistory.do?processInstanceId=${item.id}"
                                    class="btn btn-small btn-success">历史</a>
+                                <a href="#" onclick="endProcessInstance(${item.id})"
+                                   class="btn btn-small btn-danger">终止</a>
                             </td>
                         </tr>
                     </c:forEach>

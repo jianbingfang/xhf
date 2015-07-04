@@ -1,32 +1,13 @@
 package com.xthena.bpm.web;
 
-import java.io.InputStream;
-
-import java.util.List;
-import javax.annotation.Resource;
-
-import javax.servlet.http.HttpServletResponse;
-
 import com.xthena.api.user.UserConnector;
-
-import com.xthena.bpm.cmd.CounterSignCmd;
-import com.xthena.bpm.cmd.DelegateTaskCmd;
-import com.xthena.bpm.cmd.HistoryProcessInstanceDiagramCmd;
-import com.xthena.bpm.cmd.ProcessDefinitionDiagramCmd;
-import com.xthena.bpm.cmd.RollbackTaskCmd;
-import com.xthena.bpm.cmd.WithdrawTaskCmd;
+import com.xthena.bpm.cmd.*;
 import com.xthena.bpm.persistence.domain.BpmCategory;
 import com.xthena.bpm.persistence.domain.BpmProcess;
 import com.xthena.bpm.persistence.manager.BpmCategoryManager;
 import com.xthena.bpm.persistence.manager.BpmProcessManager;
-
 import com.xthena.security.util.SpringSecurityUtils;
-
-import org.activiti.engine.FormService;
-import org.activiti.engine.HistoryService;
-import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.TaskService;
+import org.activiti.engine.*;
 import org.activiti.engine.form.StartFormData;
 import org.activiti.engine.form.TaskFormData;
 import org.activiti.engine.history.HistoricProcessInstance;
@@ -36,15 +17,17 @@ import org.activiti.engine.impl.interceptor.Command;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.task.DelegationState;
 import org.activiti.engine.task.Task;
-
 import org.apache.commons.io.IOUtils;
-
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * 我的流程 待办流程 已办未结
@@ -85,18 +68,26 @@ public class WorkspaceController {
     }
 
     // ~ ======================================================================
+    @ResponseBody
     @RequestMapping("workspace-endProcessInstance")
-    public String endProcessInstance(
+    public Object endProcessInstance(
             @RequestParam("processInstanceId") String processInstanceId) {
-        processEngine.getRuntimeService().deleteProcessInstance(
-                processInstanceId, "end");
+        int code = 1;
+        try {
+            processEngine.getRuntimeService().deleteProcessInstance(
+                    processInstanceId, "end");
+        } catch (Exception e) {
+            e.printStackTrace();
+            code = 0;
+        } finally {
+            return code;
+        }
 
-        return "redirect:/bpm/workspace-listProcessInstances.do";
     }
 
     /**
      * 流程列表（所有的流程定义即流程模型）
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-listProcessDefinitions")
@@ -126,7 +117,7 @@ public class WorkspaceController {
 
     /**
      * 已结流程.
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-listCompletedProcessInstances")
@@ -144,7 +135,7 @@ public class WorkspaceController {
 
     /**
      * 用户参与的流程（包含已经完成和未完成）
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-listInvolvedProcessInstances")
@@ -163,7 +154,7 @@ public class WorkspaceController {
 
     /**
      * 流程跟踪
-     * 
+     *
      * @throws Exception
      */
     @RequestMapping("workspace-graphHistoryProcessInstance")
@@ -187,7 +178,7 @@ public class WorkspaceController {
 
     /**
      * 待办任务（个人任务）
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-listPersonalTasks")
@@ -203,7 +194,7 @@ public class WorkspaceController {
 
     /**
      * 代领任务（组任务）
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-listGroupTasks")
@@ -219,7 +210,7 @@ public class WorkspaceController {
 
     /**
      * 代理中的任务（代理人还未完成该任务）
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-listDelegatedTasks")
@@ -236,7 +227,7 @@ public class WorkspaceController {
 
     /**
      * 已办任务（历史任务）
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-listHistoryTasks")
@@ -252,9 +243,10 @@ public class WorkspaceController {
     }
 
     // ~ ======================================================================
+
     /**
      * 发起流程页面（启动一个流程实例）内置流程表单方式
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-prepareStartProcessInstance")
@@ -270,14 +262,15 @@ public class WorkspaceController {
     }
 
     // ~ ======================================================================
+
     /**
      * 完成任务页面
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-prepareCompleteTask")
     public String prepareCompleteTask(@RequestParam("taskId") String taskId,
-            Model model) {
+                                      Model model) {
         FormService formService = processEngine.getFormService();
 
         TaskFormData taskFormData = formService.getTaskFormData(taskId);
@@ -289,7 +282,7 @@ public class WorkspaceController {
 
     /**
      * 认领任务（对应的是在组任务，即从组任务中领取任务）
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-claimTask")
@@ -304,7 +297,7 @@ public class WorkspaceController {
 
     /**
      * 任务代理页面
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-prepareDelegateTask")
@@ -314,12 +307,12 @@ public class WorkspaceController {
 
     /**
      * 任务代理
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-delegateTask")
     public String delegateTask(@RequestParam("taskId") String taskId,
-            @RequestParam("userId") String userId) {
+                               @RequestParam("userId") String userId) {
         TaskService taskService = processEngine.getTaskService();
         taskService.delegateTask(taskId, userId);
 
@@ -328,7 +321,7 @@ public class WorkspaceController {
 
     /**
      * TODO 该方法有用到？
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-resolveTask")
@@ -341,7 +334,7 @@ public class WorkspaceController {
 
     /**
      * 查看历史【包含流程跟踪、任务列表（完成和未完成）、流程变量】
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-viewHistory")
@@ -363,9 +356,10 @@ public class WorkspaceController {
     }
 
     // ~ ==================================国内特色流程====================================
+
     /**
      * 回退任务
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-rollback")
@@ -379,7 +373,7 @@ public class WorkspaceController {
 
     /**
      * 取回任务
-     * 
+     *
      * @return
      */
     @RequestMapping("workspace-withdraw")
@@ -419,7 +413,7 @@ public class WorkspaceController {
      */
     @RequestMapping("workspace-doDelegate")
     public String doDelegate(@RequestParam("taskId") String taskId,
-            @RequestParam("attorney") String attorney) {
+                             @RequestParam("attorney") String attorney) {
         DelegateTaskCmd cmd = new DelegateTaskCmd(taskId, attorney);
         processEngine.getManagementService().executeCommand(cmd);
 
@@ -431,7 +425,7 @@ public class WorkspaceController {
      */
     @RequestMapping("workspace-doDelegateHelp")
     public String doDelegateHelp(@RequestParam("taskId") String taskId,
-            @RequestParam("attorney") String attorney) {
+                                 @RequestParam("attorney") String attorney) {
         TaskService taskService = processEngine.getTaskService();
         taskService.delegateTask(taskId, attorney);
 
