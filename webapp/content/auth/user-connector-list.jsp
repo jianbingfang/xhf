@@ -69,6 +69,9 @@ $(function() {
 	    <div class="pull-left">
 		  <button class="btn btn-small a-insert" onclick="location.href='user-connector-batch-list.do'">批量处理</button>
 		</div>
+        <div>
+            <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
+        </div>
 
 		<div class="pull-right">
 		  每页显示
@@ -93,6 +96,12 @@ $(function() {
   <table id="userGrid" class="m-table table-hover table-bordered">
     <thead>
       <tr>
+
+          <th width="10" class="m-table-check"><input
+          type="checkbox" name="checkAll"
+          onchange="toggleSelectedItems(this.checked)"></th>
+
+
         <th class="sorting" name="username"><spring:message code="user.user.list.username" text="账号"/></th>
         <th name="password"><spring:message code="user.user.list.password" text="密码"/></th>
         <th class="sorting" name="status"><spring:message code="user.user.list.status" text="状态"/></th>
@@ -104,6 +113,10 @@ $(function() {
     <tbody>
       <c:forEach items="${page.result}" var="item">
       <tr>
+         <td><input type="checkbox"
+         class="selectedItem a-check" name="selectedItem"
+         value="${item.id}"></td>
+
         <td>${item.username}</td>
         <td>[protected]</td>
         <td>${item.enabled ? '启用' : '禁用'}</td>

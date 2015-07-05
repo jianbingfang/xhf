@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import com.xthena.api.scope.ScopeHolder;
 import com.xthena.api.user.UserConnector;
@@ -17,8 +18,11 @@ import com.xthena.auth.service.AuthService;
 import com.xthena.auth.support.UserStatusDTO;
 
 import com.xthena.core.page.Page;
+import com.xthena.core.spring.MessageHelper;
 import com.xthena.core.util.ServletUtils;
 
+import com.xthena.hr.domain.HrRyZj;
+import com.xthena.user.persistence.manager.UserAttrManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +33,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("auth")
@@ -39,7 +44,7 @@ public class UserConnectorController {
     private UserStatusConverter userStatusConverter;
     private UserConnector userConnector;
     private AuthService authService;
-
+    private MessageHelper messageHelper;
     @RequestMapping("user-connector-list")
     public String list(@ModelAttribute Page page,
             @RequestParam Map<String, Object> parameterMap, Model model) {
@@ -117,6 +122,16 @@ public class UserConnectorController {
 
         return "redirect:/auth/user-role-input.do?id=" + id;
     }
+
+
+    @RequestMapping("user-connector-remove")
+    public String remove(@ModelAttribute UserStatus userStatus,@RequestParam("selectedItem") List<Long> selectedItem,
+                         RedirectAttributes redirectAttributes) {
+        List<UserStatus> userStatulst = userStatusManager.findByIds(selectedItem);
+        userStatusManager.removeAll(userStatulst);
+        return "redirect:/auth/user-connector-list.do";
+    }
+
 
     // ~ ======================================================================
     @Resource
