@@ -347,7 +347,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${bpmProcesses}" var="item">
+                    <%--<c:forEach items="${bpmProcesses}" var="item">
                         <tr>
                             <td>${item.name}</td>
                             <td>
@@ -355,7 +355,7 @@
                                    class="btn btn-small btn-success">发起</a>
                             </td>
                         </tr>
-                    </c:forEach>
+                    </c:forEach>--%>
                     </tbody>
                 </table>
             </div>

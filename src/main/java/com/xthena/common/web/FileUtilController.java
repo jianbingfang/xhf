@@ -2,6 +2,7 @@ package com.xthena.common.web;
 
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.ConfUtil;
+import com.xthena.util.FileUtil;
 import com.xthena.util.JsonResponseUtil;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.stereotype.Controller;
@@ -50,12 +51,20 @@ public class FileUtilController {
             srcFileName = uploadFileName;
             fileType = "";
         }
-        String fileName = String.valueOf(System.currentTimeMillis());
-        Random rand = new Random();
-        int r = rand.nextInt(100);
-        fileName = fileName + "_" + String.format("%03d", r);
+
+        String fileName;
+        if(FileUtil.isVideo(uploadFileName)) {
+            fileName = "default_jl_video";
+        } else {
+            fileName = String.valueOf(System.currentTimeMillis());
+            Random rand = new Random();
+            int r = rand.nextInt(100);
+            fileName = fileName + "_" + String.format("%03d", r);
+        }
+
         String simpleNewFilename = fileName + "." + fileType;
-        File file = new File(filePath +"/"+simpleNewFilename);
+
+        File file = new File(filePath + File.separator + simpleNewFilename);
 
         attachment.transferTo(file);
 
@@ -124,41 +133,10 @@ public class FileUtilController {
     }
 
     public boolean needCompress(File mf) throws IOException {
-        return (isImage(mf) && mf.length() > 1048576);
+        return (FileUtil.isImage(mf) && mf.length() > 1048576);
     }
 
-    public boolean isImage(File imageFile) {
-        if (!imageFile.exists()) {
-            return false;
-        }
-        Image img = null;
-        try {
-            img = ImageIO.read(imageFile);
-            if (img == null || img.getWidth(null) <= 0 || img.getHeight(null) <= 0) {
-                return false;
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        } finally {
-            img = null;
-        }
-    }
 
-    public boolean isImage(InputStream imageFile) {
-        Image img = null;
-        try {
-            img = ImageIO.read(imageFile);
-            if (img == null || img.getWidth(null) <= 0 || img.getHeight(null) <= 0) {
-                return false;
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        } finally {
-            img = null;
-        }
-    }
 }
 
 
