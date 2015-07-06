@@ -101,8 +101,6 @@ public class HrRyZjController {
         model.addAttribute("page", page);
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
-//        return "hr/hrRyZj-info-list";
-
         return result;
     }
 
