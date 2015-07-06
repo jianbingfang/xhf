@@ -50,43 +50,15 @@
 	});
 
 
-	function getcheckeditem(){
-		var inputs = document.getElementsByTagName("input");//获取所有的input标签对象
-		var checkboxArray = [];//初始化空数组，用来存放checkbox对象。
-
-		for(var i=0;i<inputs.length;i++){
-			var obj = inputs[i];
-			if(obj.type=='checkbox' ){
-				if (inputs[i].checked)
-				{
-					//这个地方是获取你选定了的的checkbox的Value
-					var valuetext=inputs[i].value;
-					checkboxArray.push(valuetext);
-				}
-			}
-		}
-		return checkboxArray.join('@');
-	};
-
-	function removeflow(){
-		var checkboxs=getcheckeditem();
-
-		removeitem(checkboxs);
-	}
-
-	function removeitem(checkboxs) {
+	function removeitem(selecteditem) {
 		$.ajax({
 			url :  "${scopePrefix}/hr/hrRyZj-info-remove.do",
 			type : 'POST',
-			traditional :true,
-			dataType:'json',
 			data : {
-				'selecteditems' : checkboxs
+				SelectedId : selecteditem
 			},
 			async : false,
 			success : function(data) {
-
-				window.location.href="hrRyZj-treelist.do";
 
 			}
 		});
@@ -124,9 +96,10 @@
 						}
 
 						html += "<tr id='child"+item.fid+"' ondblclick='openZj("+item.fid+")' >"
-							+'<td><input type="checkbox" id="childselected" class="selectedItem a-check" name="selectedItems"  value="'+ item.fid +'"></td>'
-						 + "<td>" + item.fname + "</td>"
-						+ "<td>"
+							+'<td><input type="checkbox" id="childselected" class="selectedItem a-check" name="selectedItem" ' +
+						'value="${item.fid}"></td>'
+							+ '</td>'
+						 + "<td>" + item.fname + "</td>" + "<td>"
 								+ item.fzhengjianno + "</td>" + "<td>"
 								+ item.fzcno + "</td>" + "<td>" + item.fzhuanye
 								+ "</td>" + "<td>" + item.fyxqks + "</td>"
@@ -183,7 +156,7 @@
 				</header>
 				<div id="hrRyZj-infoSearch" class="content content-inner">
 					<form name="hrRyZj-infoForm" method="post"
-						action="hrRyZj-info-list.do" class="form-inline">
+						action="hrRyZj-treelist.do" class="form-inline">
 						<label for="hrRyZj-info_name"><spring:message
 								code='hrRyZj-info.hrRyZj-info.list.search.name' text='人员姓名' />:</label>
 						<!--  <input type="text" style="width: 120px" id="hrRyZj-info_name"
@@ -300,9 +273,9 @@
 						<button class="btn btn-small a-insert"
 							onclick="location.href='hrRyZj-info-input.do'">新建</button>
 					</region:region-permission>
-					 <region:region-permission permission="hrRyZj-info:delete">
-						<button class="btn btn-small a-remove" onclick="removeflow()">删除</button>
-					</region:region-permission>
+					 <%--<region:region-permission permission="hrRyZj-info:delete">--%>
+						<%--<button class="btn btn-small a-remove" onclick="removeitem()">删除</button>--%>
+					<%--</region:region-permission>--%>
 					<%--<button class="btn btn-small a-export"--%>
 						<%--onclick="table.exportExcel()">导出</button>--%>
 				</div>
@@ -355,15 +328,15 @@
 														<%--<td><input type="checkbox"--%>
 															<%--class="selectedItem a-check" name="selectedItem"--%>
 															<%--value="${item.fid}"></td>--%>
-														<td>${ryMap[item.userid].fname}</td>
 														<td>${item.fname}</td>
-														<td>${item.fzhengjianno}</td>
-														<td>${item.fzcno}</td>
-														<td>${item.fzhuanye}</td>
-														<td>${item.fyxqks}</td>
-														<td>${item.fyxjs}</td>
-														<td>${item.fwz}</td>
-														<td>${item.fstatus}</td>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td></td>
 													</tr>
 												</c:forEach>
 											</tbody>
