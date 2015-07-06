@@ -111,7 +111,7 @@ public class HrRyZjController {
 
         //	StringBuffer hql1 = new StringBuffer("select ry from CommRy ry,HrRyZj ys  where ry.fid=ys.userid");
         // 根据人员姓名查询
-        StringBuffer hql = new StringBuffer("select ys from CommRy ry,HrRyZj ys  where ry.fid=ys.userid");//
+        StringBuffer hql = new StringBuffer("select DISTINCT ry from CommRy ry,HrRyZj ys  where ry.fid=ys.userid");//
         if (parameterMap.get("filter_LIKES_name") != null && !parameterMap.get("filter_LIKES_name").equals("")) {
             hql.append(" and ry.fname like '%" + parameterMap.get("filter_LIKES_name") + "%' ");
         }

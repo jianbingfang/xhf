@@ -362,15 +362,15 @@
                                                            class="selectedItem a-check" name="selectedItem"
                                                            id="child" hidden="hidden"
                                                            value="${item.fid}"></td>
-                                                <td>${ryMap[item.userid].fname}</td>
                                                 <td>${item.fname}</td>
-                                                <td>${item.fzhengjianno}</td>
-                                                <td>${item.fzcno}</td>
-                                                <td>${item.fzhuanye}</td>
-                                                <td>${item.fyxqks}</td>
-                                                <td>${item.fyxjs}</td>
-                                                <td>${item.fwz}</td>
-                                                <td>${item.fstatus}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
