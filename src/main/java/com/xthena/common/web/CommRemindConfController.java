@@ -127,6 +127,30 @@ public class CommRemindConfController {
             beanMapper.copy(commRemindconf, dest);
         } else {
             dest = commRemindconf;
+            String sql, expireSql, remindUrl;
+            switch (dest.getFname()) {
+                case "审车时间":
+                case "车辆续保提醒":
+                case "车辆维保提醒":
+                    sql = "select fid from t_xz_car a where fwbdate<? and not exists(select 1 from t_comm_remind_data b where a.fid=b.fdataid and b.fstatus='有效' and b.fconfid=?)";
+                    expireSql = "delete from t_comm_remind where EXISTS (select 1 from t_xz_car xc where t_comm_remind.fdataid=xc.fid and xc.fbxdate>=t_comm_remind.fexpiretime and t_comm_remind.fconfid=?)";
+                    remindUrl = "../xz/xzCar-info-input.do?id=#";
+                    break;
+                case "监理进度提醒":
+                    sql = "select fid from t_jl_jindugenzong a where fenddate<? and not exists(select 1 from t_comm_remind_data b where a.fid=b.fdataid and b.fstatus='有效' and b.fconfid=?)";
+                    expireSql = "delete from t_comm_remind where EXISTS (select 1 from t_jl_jindugenzong xc where t_comm_remind.fdataid=xc.fid and xc.fenddate>=t_comm_remind.fexpiretime and t_comm_remind.fconfid=?)";
+                    remindUrl = "../jl/jljindugenzong-info-input.do?id=#&type=2";
+                    break;
+                default:
+                    sql = "";
+                    expireSql = "";
+                    remindUrl = "";
+                    break;
+            }
+
+            dest.setFsql(sql);
+            dest.setFexpiresql(expireSql);
+            dest.setFremindurl(remindUrl);
         }
 
         commRemindconfManager.save(dest);

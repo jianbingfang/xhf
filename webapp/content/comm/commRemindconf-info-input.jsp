@@ -385,42 +385,41 @@
                     </div>
 
 
-                    <div class="control-group">
-                        <div class="span5">
-                            <label class="control-label" for="commRemindconf-info_ftable"><spring:message
-                                    code="commRemindconf-info.commRemindconf-info.input.ftable" text="提醒链接"/></label>
-
-                            <div class="controls">
-                                <textarea id="commRemindconf-info_fremindurl" name="fremindurl" class="form-control"
-                                          rows="6" style="width: 560px" class="text  ">${model.fremindurl}</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-
                     <%--<div class="control-group">--%>
-                        <%--<div class="span5">--%>
-                            <%--<label class="control-label" for="commRemindconf-info_ftable"><spring:message--%>
-                                    <%--code="commRemindconf-info.commRemindconf-info.input.ftable" text="提醒sql"/></label>--%>
+                    <%--<div class="span5">--%>
+                    <%--<label class="control-label" for="commRemindconf-info_ftable"><spring:message--%>
+                    <%--code="commRemindconf-info.commRemindconf-info.input.ftable" text="提醒链接"/></label>--%>
 
-                            <%--<div class="controls">--%>
-                                <%--<textarea id="commRemindconf-info_fsql" name="fsql" class="form-control" rows="6"--%>
-                                          <%--style="width: 560px" class="text  ">${model.fsql}</textarea>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
+                    <%--<div class="controls">--%>
+                    <%--<textarea id="commRemindconf-info_fremindurl" name="fremindurl" class="form-control"--%>
+                    <%--rows="6" style="width: 560px" class="text  ">${model.fremindurl}</textarea>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
                     <%--</div>--%>
 
                     <%--<div class="control-group">--%>
-                        <%--<div class="span5">--%>
-                            <%--<label class="control-label" for="commRemindconf-info_fexpiresql"><spring:message--%>
-                                    <%--code="commRemindconf-info.commRemindconf-info.input.fexpiresql"--%>
-                                    <%--text="失效sql"/></label>--%>
+                    <%--<div class="span5">--%>
+                    <%--<label class="control-label" for="commRemindconf-info_ftable"><spring:message--%>
+                    <%--code="commRemindconf-info.commRemindconf-info.input.ftable" text="提醒sql"/></label>--%>
 
-                            <%--<div class="controls">--%>
-                                <%--<textarea id="commRemindconf-info_fexpiresql" name="fexpiresql" class="form-control"--%>
-                                          <%--rows="6" style="width: 560px" class="text  ">${model.fexpiresql}</textarea>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
+                    <%--<div class="controls">--%>
+                    <%--<textarea id="commRemindconf-info_fsql" name="fsql" class="form-control" rows="6"--%>
+                    <%--style="width: 560px" class="text  ">${model.fsql}</textarea>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+
+                    <%--<div class="control-group">--%>
+                    <%--<div class="span5">--%>
+                    <%--<label class="control-label" for="commRemindconf-info_fexpiresql"><spring:message--%>
+                    <%--code="commRemindconf-info.commRemindconf-info.input.fexpiresql"--%>
+                    <%--text="失效sql"/></label>--%>
+
+                    <%--<div class="controls">--%>
+                    <%--<textarea id="commRemindconf-info_fexpiresql" name="fexpiresql" class="form-control"--%>
+                    <%--rows="6" style="width: 560px" class="text  ">${model.fexpiresql}</textarea>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
                     <%--</div>--%>
 
                     <div class="control-group">

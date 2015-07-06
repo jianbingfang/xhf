@@ -58,21 +58,7 @@ public class RemindTask implements Runnable {
         }
 
 
-//        String sql = commRemindConf.getFsql();
-        String sql;
-        switch (commRemindConf.getFname()) {
-            case "审车时间":
-            case "车辆续保提醒":
-            case "车辆维保提醒":
-                sql = "select fid from t_xz_car a where fwbdate<? and not exists(select 1 from t_comm_remind_data b where a.fid=b.fdataid and b.fstatus='有效' and b.fconfid=?)";
-                break;
-            case "监理进度提醒":
-                sql = "select fid from t_jl_jindugenzong a where fenddate<? and not exists(select 1 from t_comm_remind_data b where a.fid=b.fdataid and b.fstatus='有效' and b.fconfid=?)";
-                break;
-            default:
-                sql = "";
-                break;
-        }
+        String sql = commRemindConf.getFsql();
 
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
@@ -187,20 +173,7 @@ public class RemindTask implements Runnable {
 
 
             //扫描数据是否已经处理
-            // sql = commRemindConf.getFexpiresql();
-            switch (commRemindConf.getFname()) {
-                case "审车时间":
-                case "车辆续保提醒":
-                case "车辆维保提醒":
-                    sql = "delete from t_comm_remind where EXISTS (select 1 from t_xz_car xc where t_comm_remind.fdataid=xc.fid and xc.fbxdate>=t_comm_remind.fexpiretime and t_comm_remind.fconfid=?)";
-                    break;
-                case "监理进度提醒":
-                    sql = "delete from t_comm_remind where EXISTS (select 1 from t_jl_jindugenzong xc where t_comm_remind.fdataid=xc.fid and xc.fenddate>=t_comm_remind.fexpiretime and t_comm_remind.fconfid=?)";
-                    break;
-                default:
-                    sql = "";
-                    break;
-            }
+            sql = commRemindConf.getFexpiresql();
 
             PreparedStatement ps5 = conn.prepareStatement(sql);
             ps5.setLong(1, commRemindConf.getFid());
