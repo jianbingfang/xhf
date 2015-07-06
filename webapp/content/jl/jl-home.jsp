@@ -223,14 +223,14 @@
                 <article class="m-widget">
                     <header class="header">
                         <h4 class="title">项目实况</h4>
-                        <%--<input type="button" class="btn btn-primary btn-xs" value="上传" onclick="showUpload()"
-                               style="float: right;margin: -2px 0 0 0; padding: 1px 5px;font-size: 10px;">--%>
+                        <input type="button" class="btn btn-primary btn-xs" value="上传" onclick="showUpload()"
+                               style="float: right;margin: -2px 0 0 0; padding: 1px 5px;font-size: 10px;">
                     </header>
                     <div id="video-area">
-                        <video width="100%" height="100%" controls>
+                        <video width="100%" height="100%" controls autoplay>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.mp4" type="video/mp4">--%>
 
-                            <source src="/xhf/s/upload/default_jl_video.mp4" type="video/mp4">
+                            <source src="<%=application.getContextPath()%>/s/upload/default_jl_video.mp4" type="video/mp4">
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.ogg" type="video/ogg">--%>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.webm" type="video/webm">--%>
                             <%--<object data="http://www.w3cschool.cc/try/demo_source/movie.mp4" width="100%" height="100%">--%>
