@@ -96,15 +96,13 @@
         function selectZj(ry) {
             if (ry.id.indexOf("a") > 0) {
                 var a = ry.nextSibling;
-                if (a.id) {
-                    while (a.id.indexOf("child") >= 0) {
-                        if (a.hidden == null || a.hidden == "")
-                            a.hidden = "hidden";
-                        else {
-                            a.hidden = "";
-                        }
-                        a = a.nextSibling;
+                while (a.id && a.id.indexOf("child") >= 0) {
+                    if (a.hidden == null || a.hidden == "")
+                        a.hidden = "hidden";
+                    else {
+                        a.hidden = "";
                     }
+                    a = a.nextSibling;
                 }
             } else {
                 $.ajax({
