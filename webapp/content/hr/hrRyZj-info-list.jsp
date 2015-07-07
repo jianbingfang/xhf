@@ -28,7 +28,7 @@
             orderBy: '${page.orderBy == null ? "" : page.orderBy}',
             asc: ${page.asc},
             params: {
-                'filter_LIKES_fname': '${param.filter_LIKES_fname}',
+                'filter_LIKES_name': '${param.filter_LIKES_name}',
                 'filter_LIKES_fzhengjianno': '${param.filter_LIKES_fzhengjianno}',
                 'filter_LIKES_fzhuanye': '${param.filter_LIKES_fzhuanye}',
                 /* 		'filter_LIKES_fname' : '${param.filter_LIKES_fname}', */
@@ -187,89 +187,89 @@
             </header>
             <div id="hrRyZj-infoSearch" class="content content-inner">
                 <form name="hrRyZj-infoForm" method="post"
-                      action="hrRyZj-info-list.do" class="form-inline">
+                      action="hrRyZj-treelist.do" class="form-inline">
                     <label for="hrRyZj-info_name"><spring:message
                             code='hrRyZj-info.hrRyZj-info.list.search.name' text='人员姓名'/>:</label>
                     <!--  <input type="text" style="width: 120px" id="hrRyZj-info_name"
 							name="filter_LIKES_name" value="${param.filter_LIKES_name}">-->
                     <input id="hrRyZj-info_name"
-                           name="filter_LIKES_fname" type="text"
-                           value="${param.filter_LIKES_fname}"
+                           name="filter_LIKES_name" type="text"
+                           value="${param.filter_LIKES_name}"
                            style="width: 120px;">
                     <label for="hrRyZj-info_name"><spring:message
-                            code='hrRyZj-info.hrRyZj-info.list.search.name' text='编号'/>:</label> <input
-                        type="text" style="width: 120px" id="hrRyZj-info_name"
-                        name="filter_LIKES_fzhengjianno"
-                        value="${param.filter_LIKES_fzhengjianno}"> <label
-                        for="hrRyZj-info_name"><spring:message
-                        code='hrRyZj-info.hrRyZj-info.list.search.name' text='专业'/>:</label> <input
-                        type="text" style="width: 120px" id="hrRyZj-info_fzhuanye"
-                        name="filter_LIKES_fzhuanye"
-                        value="${param.filter_LIKES_fzhuanye}"> <label
-                        for="hrRyZj-info_name"><spring:message
-                        code='hrRyZj-info.hrRyZj-info.list.search.name' text='证书名称'/>:</label>
-                    <select class="form-control" id="hrRyZj-info_name"
-                            name="filter_LIKES_fname" value="${param.filter_LIKES_fname}"
-                            class=" " style="width: 120px">
-                        <c:forEach items="${zjInfos}" var="item">
-                            <option value="${item.fname}" selected>${item.fname}</option>
-                        </c:forEach>
-
-                        <%--<option></option>--%>
-                        <%--<option value="身份证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='身份证'}"> selected="selected"  </c:if>>身份证</option>--%>
-                        <%--<option value="毕业证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='毕业证'}"> selected="selected"  </c:if>>毕业证</option>--%>
-                        <%--<option value="监理工程师注册证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='监理工程师注册证'}"> selected="selected"  </c:if>>监理工程师注册证</option>--%>
-                        <%--<option value="监理工程师资格证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='监理工程师资格证'}"> selected="selected" </c:if>>监理工程师资格证</option>--%>
-                        <%--<option value="一级建造师注册证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='一级建造师注册证'}"> selected="selected"  </c:if>>一级建造师注册证</option>--%>
-                        <%--<option value="一级建造师资格证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='一级建造师资格证'}"> selected="selected"  </c:if>>一级建造师资格证</option>--%>
-                        <%--<option value="一级建造师继续教育证"--%>
-                        <%--<c:if test="${param.fname=='一级建造师继续教育证'}"> selected="selected"  </c:if>>一级建造师继续教育证</option>--%>
-                        <%--<option value="二级建造师注册证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='二级建造师注册证'}"> selected="selected"  </c:if>>二级建造师注册证</option>--%>
-                        <%--<option value="二级建造师资格证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='二级建造师资格证'}"> selected="selected"  </c:if>>二级建造师资格证</option>--%>
-                        <%--<option value="造价师注册证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='造价师注册证'}"> selected="selected" </c:if>>造价师注册证</option>--%>
-                        <%--<option value="造价师资格证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='造价师资格证'}"> selected="selected"  </c:if>>造价师资格证</option>--%>
-                        <%--<option value="造价师继续教育证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='造价师继续教育证'}"> selected="selected"  </c:if>>造价师继续教育证</option>--%>
-                        <%--<option value="交通部监理工程师资格证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='交通部监理工程师资格证'}"> selected="selected"  </c:if>>交通部监理工程师资格证</option>--%>
-                        <%--<option value="交通部监理工程师注册证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='交通部监理工程师注册证'}"> selected="selected"  </c:if>>交通部监理工程师注册证</option>--%>
-                        <%--<option value="专业监理工程师证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='专业监理工程师证'}"> selected="selected" </c:if>>专业监理工程师证</option>--%>
-                        <%--<option value="高级工程师职称证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='高级工程师职称证'}"> selected="selected"  </c:if>>高级工程师职称证</option>--%>
-                        <%--<option value="中级工程师职称证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='中级工程师职称证'}"> selected="selected"  </c:if>>中级工程师职称证</option>--%>
-                        <%--<option value="初级工程师职称证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='初级工程师职称证'}"> selected="selected"  </c:if>>初级工程师职称证</option>--%>
-                        <%--<option value="监理员证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='监理员证'}"> selected="selected"  </c:if>>监理员证</option>--%>
-                        <%--<option value="资料员证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='资料员证'}"> selected="selected" </c:if>>资料员证</option>--%>
-                        <%--<option value="见证员证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='见证员证'}"> selected="selected"  </c:if>>见证员证</option>--%>
-                        <%--<option value="安全员证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='安全员证'}"> selected="selected"  </c:if>>安全员证</option>--%>
-                        <%--<option value="造价员证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='造价员证'}"> selected="selected"  </c:if>>造价员证</option>--%>
-                        <%--<option value="试验员证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='试验员证'}"> selected="selected"  </c:if>>试验员证</option>--%>
-                        <%--<option value="建筑节能培训证"--%>
-                        <%--<c:if test="${param.filter_LIKES_fname=='建筑节能培训证'}"> selected="selected" </c:if>>建筑节能培训证</option>--%>
-                    </select>
-
-
+                            code='hrRyZj-info.hrRyZj-info.list.search.name' text='编号'/>:</label>
+                    <input type="text" style="width: 120px" id="hrRyZj-info_name"
+                           name="filter_LIKES_fzhengjianno"
+                           value="${param.filter_LIKES_fzhengjianno}"/>
                     <label for="hrRyZj-info_name"><spring:message
+                            code='hrRyZj-info.hrRyZj-info.list.search.name' text='专业'/>:</label>
+                    <input type="text" style="width: 120px" id="hrRyZj-info_fzhuanye"
+                           name="filter_LIKES_fzhuanye"
+                           value="${param.filter_LIKES_fzhuanye}"/>
+                    <%--<label for="hrRyZj-info_name"><spring:message--%>
+                    <%--code='hrRyZj-info.hrRyZj-info.list.search.name' text='证书名称'/>:</label>--%>
+                    <%--<select class="form-control" id="hrRyZj-info_name"--%>
+                    <%--name="filter_LIKES_fname" value="${param.filter_LIKES_fname}"--%>
+                    <%--class=" " style="width: 120px">--%>
+                    <%--<c:forEach items="${zjInfos}" var="item">--%>
+                    <%--<option value="${item.fname}" selected>${item.fname}</option>--%>
+                    <%--</c:forEach>--%>
+
+                    <%--<option></option>--%>
+                    <%--<option value="身份证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='身份证'}"> selected="selected"  </c:if>>身份证</option>--%>
+                    <%--<option value="毕业证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='毕业证'}"> selected="selected"  </c:if>>毕业证</option>--%>
+                    <%--<option value="监理工程师注册证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='监理工程师注册证'}"> selected="selected"  </c:if>>监理工程师注册证</option>--%>
+                    <%--<option value="监理工程师资格证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='监理工程师资格证'}"> selected="selected" </c:if>>监理工程师资格证</option>--%>
+                    <%--<option value="一级建造师注册证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='一级建造师注册证'}"> selected="selected"  </c:if>>一级建造师注册证</option>--%>
+                    <%--<option value="一级建造师资格证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='一级建造师资格证'}"> selected="selected"  </c:if>>一级建造师资格证</option>--%>
+                    <%--<option value="一级建造师继续教育证"--%>
+                    <%--<c:if test="${param.fname=='一级建造师继续教育证'}"> selected="selected"  </c:if>>一级建造师继续教育证</option>--%>
+                    <%--<option value="二级建造师注册证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='二级建造师注册证'}"> selected="selected"  </c:if>>二级建造师注册证</option>--%>
+                    <%--<option value="二级建造师资格证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='二级建造师资格证'}"> selected="selected"  </c:if>>二级建造师资格证</option>--%>
+                    <%--<option value="造价师注册证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='造价师注册证'}"> selected="selected" </c:if>>造价师注册证</option>--%>
+                    <%--<option value="造价师资格证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='造价师资格证'}"> selected="selected"  </c:if>>造价师资格证</option>--%>
+                    <%--<option value="造价师继续教育证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='造价师继续教育证'}"> selected="selected"  </c:if>>造价师继续教育证</option>--%>
+                    <%--<option value="交通部监理工程师资格证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='交通部监理工程师资格证'}"> selected="selected"  </c:if>>交通部监理工程师资格证</option>--%>
+                    <%--<option value="交通部监理工程师注册证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='交通部监理工程师注册证'}"> selected="selected"  </c:if>>交通部监理工程师注册证</option>--%>
+                    <%--<option value="专业监理工程师证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='专业监理工程师证'}"> selected="selected" </c:if>>专业监理工程师证</option>--%>
+                    <%--<option value="高级工程师职称证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='高级工程师职称证'}"> selected="selected"  </c:if>>高级工程师职称证</option>--%>
+                    <%--<option value="中级工程师职称证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='中级工程师职称证'}"> selected="selected"  </c:if>>中级工程师职称证</option>--%>
+                    <%--<option value="初级工程师职称证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='初级工程师职称证'}"> selected="selected"  </c:if>>初级工程师职称证</option>--%>
+                    <%--<option value="监理员证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='监理员证'}"> selected="selected"  </c:if>>监理员证</option>--%>
+                    <%--<option value="资料员证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='资料员证'}"> selected="selected" </c:if>>资料员证</option>--%>
+                    <%--<option value="见证员证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='见证员证'}"> selected="selected"  </c:if>>见证员证</option>--%>
+                    <%--<option value="安全员证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='安全员证'}"> selected="selected"  </c:if>>安全员证</option>--%>
+                    <%--<option value="造价员证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='造价员证'}"> selected="selected"  </c:if>>造价员证</option>--%>
+                    <%--<option value="试验员证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='试验员证'}"> selected="selected"  </c:if>>试验员证</option>--%>
+                    <%--<option value="建筑节能培训证"--%>
+                    <%--<c:if test="${param.filter_LIKES_fname=='建筑节能培训证'}"> selected="selected" </c:if>>建筑节能培训证</option>--%>
+                    <%--</select>--%>
+
+
+                    <%--<label for="hrRyZj-info_name"><spring:message
                             code='hrRyZj-info.hrRyZj-info.list.search.name' text='到期时间'/>:</label>
 
                     <div class="input-append datepicker date"
@@ -294,7 +294,7 @@
                     </div>
                     <button class="btn btn-small a-search"
                             onclick="document.hrRyZj-infoForm.submit()">查询
-                    </button>
+                    </button>--%>
                     &nbsp;
                 </form>
             </div>

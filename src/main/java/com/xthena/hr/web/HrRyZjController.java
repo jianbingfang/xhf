@@ -72,10 +72,10 @@ public class HrRyZjController {
         }
 
         if (parameterMap.get("filter_GTD_fyxjs") != null && !parameterMap.get("filter_GTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs> '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LTD_fyxjs") != null && !parameterMap.get("filter_LTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs<'" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs<='" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LIKES_fname") != null && !parameterMap.get("filter_LIKES_fname").equals("")) {
             String inviocecode = parameterMap.get("filter_LIKES_fname").toString();
@@ -117,10 +117,10 @@ public class HrRyZjController {
         }
 
         if (parameterMap.get("filter_GTD_fyxjs") != null && !parameterMap.get("filter_GTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs> '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LTD_fyxjs") != null && !parameterMap.get("filter_LTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs<'" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs<='" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LIKES_fname") != null && !parameterMap.get("filter_LIKES_fname").equals("")) {
             String inviocecode = parameterMap.get("filter_LIKES_fname").toString();
@@ -144,10 +144,10 @@ public class HrRyZjController {
         }
 
         if (parameterMap.get("filter_GTD_fyxjs") != null && !parameterMap.get("filter_GTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs> '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LTD_fyxjs") != null && !parameterMap.get("filter_LTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs<'" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs<='" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LIKES_fname") != null && !parameterMap.get("filter_LIKES_fname").equals("")) {
             String inviocecode = parameterMap.get("filter_LIKES_fname").toString();
