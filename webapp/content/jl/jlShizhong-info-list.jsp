@@ -27,7 +27,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_fitem': '${param.filter_LIKES_name}',
+        'filter_LIKES_fitem': '${param.filter_LIKES_fitem}',
         'fszleix':'${fszleix}',
         'divStyle':'${divStyle}'
     },
@@ -255,9 +255,11 @@ function getFiles() {
 		  </div>
 		</header>
         <div id="jlShizhong-infoSearch" class="content content-inner">
-		  <form name="jlShizhong-infoForm" method="post" action="jlShizhong-info-list.do" class="form-inline">
+		  <form name="jlShizhong-infoForm" method="post" action="jlShizhong-info-list.do?&fszleix=<%= request.getParameter("fszleix")%>&style=${divStyle}" class="form-inline">
 		    <label for="jlShizhong-info_name"><spring:message code='jlShizhong-info.jlShizhong-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="jlShizhong-info_name" name="filter_LIKES_fitem" value="${param.filter_LIKES_name}">
+		    <input type="text" id="jlShizhong-info_name" name="filter_LIKES_fitem"
+				   value="${param.filter_LIKES_fitem}"+<%=request.getParameter("fszleix")%>>
+				   <%--value="${param.filter_LIKES_fitem}"+"${request.getParameter("fszleix")} >--%>
 			<button class="btn btn-small a-search" onclick="document.jlShizhong-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 		</div>
@@ -332,9 +334,9 @@ function getFiles() {
 							<tr>
 								<th width="10" class="m-table-check"><input type="checkbox"
 									name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-								<th class="sorting" id="fitem">名称</th>
-								<th class="sorting" id="fitemval">日期</th>
-								<th class="sorting" id="fuploaddate">上传时间</th>
+								<th class="sorting" name="fitem">名称</th>
+								<th class="sorting" name="fitemval">日期</th>
+								<th class="sorting" name="fuploaddate">上传时间</th>
 								<th width="80">&nbsp;</th>
 							</tr>
 						</thead>
@@ -690,10 +692,10 @@ function getFiles() {
 							<tr>
 								<th width="10" class="m-table-check"><input type="checkbox"
 									name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-								<th class="sorting" id="fitem">名称</th>
-								<th class="sorting" id="fitemval">有无</th>
-								<th class="sorting" id="fastus">审核状态</th>
-								<th class="sorting" id="fmemo">备注</th>
+								<th class="sorting" name="fitem">名称</th>
+								<th class="sorting" name="fitemval">有无</th>
+								<th class="sorting" name="fastus">审核状态</th>
+								<th class="sorting" name="fmemo">备注</th>
 								<th width="80">&nbsp;</th>
 							</tr>
 						</thead>
@@ -836,10 +838,10 @@ function getFiles() {
 		  <button class="btn btn-small">1</button>
 		  <button class="btn btn-small">&gt;</button>
 		</div>
-	    <div class="m-clear"></div> 
+	    <div class="m-clear"></div>
 
 <!--         <div id="chartdiv" style="width: 100%; height: 400px;"></div> -->
-     </article>       
+     </article>
      <div class="m-spacer"></div>
 	  <!-- end of main -->
 	</div>

@@ -56,16 +56,25 @@ public class JlShizhongController {
     
 
     @RequestMapping("jlShizhong-info-list")
-    public String list(@ModelAttribute Page page,@RequestParam(value = "fszleix", required = false) String fszleix,HttpServletRequest request,
-            @RequestParam Map<String, Object> parameterMap, Model model) {
-    	parameterMap.put("filter_EQS_fszleix", fszleix);
+    public String list(@ModelAttribute Page page,@RequestParam(value = "fszleix", required = false) String fszleix,
+                       HttpServletRequest request,@RequestParam(value = "fitem", required = false) String fitem,
+                       @RequestParam(value="divStyle",required = false) String divStyle,
+            @RequestParam Map<String, Object> parameterMap,  Model model) {
+
+
+        parameterMap.put("filter_EQS_fszleix", fszleix);
+
+        //parameterMap.put("filter_LIKES_fitem", fitem);
     	parameterMap.put("filter_EQL_fxmid", jlDeptManager.getXmId(request));
+
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = jlShizhongManager.pagedQuery(page, propertyFilters);
-       
-        model.addAttribute("page", page);
 
+        page = jlShizhongManager.pagedQuery(page, propertyFilters);
+
+        model.addAttribute("page", page);
+        model.addAttribute("fszleix", fszleix);
+        model.addAttribute("divStyle",parameterMap.get("style"));
         return "jl/jlShizhong-info-list";
     }
 
@@ -101,7 +110,6 @@ public class JlShizhongController {
        }else{
     	   JsonResponseUtil.write(response, "error");
        }
-       
     }
 
     
