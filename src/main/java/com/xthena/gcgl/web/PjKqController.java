@@ -19,6 +19,7 @@ import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 
 import com.xthena.gcgl.domain.PjKq;
+import com.xthena.gcgl.domain.PjXm;
 import com.xthena.gcgl.manager.PjKqManager;
 import com.xthena.jl.domain.JlKqFujian;
 import com.xthena.jl.manager.JlKqFujianManager;
@@ -53,7 +54,11 @@ public class PjKqController {
     	model.addAttribute("kqid", id);
     	PjKq pjKq=pjKqManager.get(id);
     	List<JlKqFujian> jlKqFujians=jlKqFujianManager.findBy("fkqid", id);
-    	model.addAttribute("fxmName", PjXmMapUtil.getXmMap().get(pjKq.getFxmid()).getFxmname());
+
+        PjXm p = PjXmMapUtil.getXmMap().get(pjKq.getFxmid());
+        if(p != null){
+            model.addAttribute("fxmName", p.getFxmname());
+        }
     	model.addAttribute("jlfujians",jlKqFujians);
     	model.addAttribute("kq", pjKq);
     	model.addAttribute("page", page);
