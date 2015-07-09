@@ -78,7 +78,6 @@ public class XzZjDxlistController {
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
 		page = xzZjDxlistManager.pagedQuery(page, propertyFilters);
-
 		model.addAttribute("page", page);
 
 		return "xz/xzZjDxlist-info-list";
@@ -144,7 +143,6 @@ public class XzZjDxlistController {
 			XzZjDxlist xzZjDxlist = xzZjDxlistManager.get(id);
 			model.addAttribute("model", xzZjDxlist);
 		}
-
 		return "xz/xzZjDxlist-info-input";
 	}
 
@@ -163,12 +161,9 @@ public class XzZjDxlistController {
 
 			dest = xzZjDxlist;
 		}
-
 		xzZjDxlistManager.save(dest);
-
 		messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
 				"保存成功");
-
 		return "redirect:/xz/xzZjDxlist-info-list.do";
 	}
 

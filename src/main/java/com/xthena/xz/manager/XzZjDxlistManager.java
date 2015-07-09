@@ -214,6 +214,8 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQS_ftype", Zj.XZZJ_CODE);
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
+		dest = this.change(dest, zj);
+
 		this.save(dest);
 		return "seccess";
 	}
@@ -231,6 +233,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQS_ftype", Zj.HRRYZJ_CODE);
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
+		dest = this.change(dest, zj);
 		this.save(dest);
 		return "seccess";
 	}

@@ -50,7 +50,8 @@ public class JlHrLzController {
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = hrLzManager.pagedQuery(page, propertyFilters);
+        page = hrLzManager.pagedQuery(page,
+                propertyFilters);
         
     
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());

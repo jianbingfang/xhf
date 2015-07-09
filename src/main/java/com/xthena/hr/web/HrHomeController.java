@@ -302,7 +302,7 @@ public class HrHomeController {
                 "(select zj.userid, zj.fname " +
                 "from t_hr_ry_zj zj " +
                 "group by zj.userid, zj.fname) t " +
-                "where t.fname = '造价师注册证' " +
+                "where t.fname = '注册造价工程师证' " +
                 "union " +
                 "select count(*) from  " +
                 "(select zj.userid, zj.fname " +

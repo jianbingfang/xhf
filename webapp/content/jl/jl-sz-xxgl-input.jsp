@@ -66,20 +66,28 @@ function tabHide(){
 					>档案盒脊背</a></li>
 				<li role="presentation" class=""><a href="#tab3"
 					divStyle="uploadWithdate" sz-type="TEMP_JL_KGL">开工令</a></li>
+
 				<li role="presentation" class=""><a href="#tab4"
 					>台账</a></li>
+
 				<li role="presentation" class=""><a href="#tab5"
 					divStyle="uploadMonth" sz-type="TEMP_JL_JLYB">监理月报</a></li>
+
 				<li role="presentation" class=""><a href="#tab6"
 					divStyle="uploadWithdate" sz-type="TEMP_JL_JLRZ">监理日志</a></li>
+
 				<li role="presentation" class=""><a href="#tab7"
 					divStyle="uploadWithdate" sz-type="TEMP_JL_GZLXD">工作联系单</a></li>
+
 				<li role="presentation" class=""><a href="#tab8"
 					divStyle="uploadWithdate" sz-type="TEMP_JL_JLTZD">监理通知单</a></li>
+
 				<li role="presentation" class=""><a href="#tab9"
 					divStyle="uploadWithdate" sz-type="TEMP_JL_LHJY">例会纪要</a></li>
+
 				<li role="presentation" class=""><a href="#tab10"
 					divStyle="uploadWithdate" sz-type="TEMP_JL_PGBG">评估报告</a></li>
+
 				<li role="presentation" class=""><a href="#tab11"
 					divStyle="uploadWithdate" sz-type="TEMP_JL_JDXZJ">阶段性总结</a></li>
 				<li role="presentation" class=""><a href="#tab12"
@@ -93,7 +101,8 @@ function tabHide(){
 			  	 	<iframe src="xgdwContact-info-list.do"  height="600px" width="100%"  style="border: 0px;"></iframe>
 				</div>
 			  	<div class="tab-pane" id="tab2">
-			  		<iframe src="jl-danganhejibei-info-list.do?type=2" height="600px" width="100%"  style="border: 0px;"></iframe>
+			  		<iframe src="jl-danganhejibei-info-list.do?type=2" height="600px" width="100%"  style="border: 0px;">
+					</iframe>
 			  	</div>  
 			  	<div class="tab-pane" id="tab3">
 			  		<iframe   height="600px" width="100%"  style="border: 0px;"></iframe>
