@@ -167,7 +167,7 @@
           <div id="collapse-ry" class="accordion-body collapse ${currentMenu == 'jl-ry' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
             <li><a href="${scopePrefix}/jl/jl-pjRy-info-list.do"><i class="icon-align-justify"></i>人员台帐</a></li>
-            <%--<li><a href="${scopePrefix}/jl/jl-pjKq-info-list.do"><i class="icon-info-sign"></i>人员考勤</a></li>--%>
+            <li><a href="${scopePrefix}/jl/jl-pjKq-info-list.do"><i class="icon-info-sign"></i>人员考勤</a></li>
             <li><a href="${scopePrefix}/jl/jl-pjYdkh-info-list.do"><i class="icon-heart"></i>人员考核</a></li>
           <%--<li><a href="${scopePrefix}/jl/jlRysq-info-list.do"><i class="icon-pencil"></i>申请增加人员</a></li>--%>
            <%--<li><a href="${scopePrefix}/jl/jl-pjRyRecord-info-list.do"><i class="icon-share-alt"></i>人员调配记录</a></li>--%>
