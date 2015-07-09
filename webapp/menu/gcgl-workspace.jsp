@@ -96,7 +96,7 @@
           <div id="collapse-xmry" class="accordion-body collapse ${currentMenu == 'gcgl-xmry' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
 			  <li><a href="${scopePrefix}/gcgl/pjRy-info-list.do" ><i class="icon-folder-close"></i>人员台账</a></li>
-			  <%--<li><a href="${scopePrefix}/gcgl/pjKq-info-list.do"><i class="icon-inbox"></i>人员考勤</a></li>--%>
+			  <li><a href="${scopePrefix}/gcgl/pjKq-info-list.do"><i class="icon-inbox"></i>人员考勤</a></li>
 			  <li><a href="${scopePrefix}/gcgl/pjYdkh-info-list.do"><i class="icon-calendar"></i>人员月度考核</a></li>
 			  <%--<li><a href="${scopePrefix}/gcgl/pjRyRecord-info-list.do"><i class="icon-list"></i>人员调配记录</a></li>--%>
             </ul>
