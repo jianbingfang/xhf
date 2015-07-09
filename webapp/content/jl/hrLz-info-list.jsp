@@ -142,7 +142,7 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	  <td>${item.fmemo1}</td>
+      	  <td>${ryMap[item.fry].fname}</td>
       	  <td>${item.fstartdate}</td>
       	  <td>${item.freason}</td>
       	  <td>${item.fczbg}</td>

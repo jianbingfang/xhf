@@ -347,6 +347,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td>请假流程</td>
+                        <td>
+                            <a href="${scopePrefix}/workflow/Qingjia-form-input.do"
+                            class="btn btn-small btn-success">发起</a>
+                        </td>
+                    </tr>
+
                     <%--<c:forEach items="${bpmProcesses}" var="item">
                         <tr>
                             <td>${item.name}</td>
