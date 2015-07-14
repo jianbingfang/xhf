@@ -26,7 +26,10 @@ $(function() {
     
     $('.monthpicker').datepicker({
 		language: 'zh_CN',
-		format: 'yyyymm'
+		format: 'yyyymm',
+		autoclose: true,
+		startView: 1,
+		minViewMode: 1
 	});
 })
 

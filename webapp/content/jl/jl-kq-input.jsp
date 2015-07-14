@@ -412,8 +412,8 @@ function saveFmemo(){
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-        	<th class="sorting" name="fuploaddate">上传时间</th>
-        	<th class="sorting" name="fkqname">考勤表名称</th>
+        	<th class="" name="fuploaddate">上传时间</th>
+        	<th class="" name="fkqname">考勤表名称</th>
         <th width="80">&nbsp;</th>
       </tr>
     </thead>
