@@ -230,7 +230,8 @@
                         <video width="100%" height="100%" controls autoplay>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.mp4" type="video/mp4">--%>
 
-                            <source src="<%=application.getContextPath()%>/s/upload/default_jl_video.mp4" type="video/mp4">
+                            <source src="<%=application.getContextPath()%>/s/upload/default_jl_video_<%=session.getAttribute("current_xm_id")%>.mp4"
+                                    type="video/mp4">
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.ogg" type="video/ogg">--%>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.webm" type="video/webm">--%>
                             <%--<object data="http://www.w3cschool.cc/try/demo_source/movie.mp4" width="100%" height="100%">--%>
