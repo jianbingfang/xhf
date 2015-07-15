@@ -4,6 +4,8 @@ function drawChartFbqk(year) {
 
     $.post('sckf-fbqk-data.do', {year: year}, function (data) {
 
+        console.log(data);
+
         $('#loading-fbqk').hide();
 
         $('#chart-fbqk').highcharts({
@@ -16,7 +18,7 @@ function drawChartFbqk(year) {
                 noData: '无数据'
             },
             title: {
-                text: '废标比例'
+                text: '投标情况'
             },
             credits: {
                 enabled: false
