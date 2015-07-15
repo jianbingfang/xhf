@@ -109,7 +109,7 @@ public class PjJlfRecordController {
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
 
-        return "redirect:/gcgl/jl-ny-jlf-input.do.do";
+        return "redirect:/gcgl/jl-ny-jlf-input.do";
     }
 
     @RequestMapping("jlfRecord-info-remove")
