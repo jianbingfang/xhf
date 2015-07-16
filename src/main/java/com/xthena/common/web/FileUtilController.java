@@ -69,6 +69,10 @@ public class FileUtilController {
 
         File file = new File(filePath + File.separator + simpleNewFilename);
 
+        if(file.exists()) {
+            file.delete();
+        }
+
         attachment.transferTo(file);
 
         if (needCompress(file)) {

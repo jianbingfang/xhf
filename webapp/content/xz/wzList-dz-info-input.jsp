@@ -31,11 +31,9 @@
 </script>
 </head>
 <body>
-	<%@include file="/header.jsp"%>
 	<div class="row-fluid">
-		<%@include file="/menu/xz-workspace.jsp"%>
 		<!-- start of main -->
-		<section id="m-main" class="span10">
+		<section id="m-main" class="span12">
 			<article class="m-widget">
 				<header class="header">
 					<h4 class="title">
