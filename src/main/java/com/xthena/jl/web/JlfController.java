@@ -63,6 +63,7 @@ public class JlfController {
 		return "jl/jlf-info-list";
 	}
 
+
 	@RequestMapping("jl-ny-jlf-input")
 	public String jlfinput(@ModelAttribute Page page,
 			@RequestParam(value = "id", required = false) Long id,
@@ -70,16 +71,9 @@ public class JlfController {
 			HttpServletRequest request, Model model) {
 		PjXm pjXm = pjXmManager.get(jlDeptManager.getXmId(request));
 		if (pjXm != null) {
-			Jlf jlf1 = jlfManager.get(pjXm.getFid());
+			Jlf jlf1 = jlfManager.findUniqueBy("fxmid", pjXm.getFid());
 			model.addAttribute("model", jlf1);
 		}
-	/*	List<PjXmJd> pjXmJds = pjXmJdManager.findBy("fxmid",
-				jlDeptManager.getXmId(request));
-		double jlf = 0;
-		for (PjXmJd pjXmJd : pjXmJds) {
-			jlf += Double.valueOf(pjXmJd.getFjlf());
-		}*/
-
 		parameterMap.put("filter_EQL_fxmid", jlDeptManager.getXmId(request));
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
@@ -89,24 +83,22 @@ public class JlfController {
 		for (JlfRecord jlfRecord : jlfRecords) {
 			jlfSum += Double.valueOf(jlfRecord.getFhtjlf());
 		}
-
 		model.addAttribute("page", page);
-	/*	if (pjXm.getFhtid() != null) {
-			CommHt commHt = commHtManager.get(pjXm.getFhtid());
-			model.addAttribute("commHt", commHt);
-		}*/
 		model.addAttribute("jlfSum", jlfSum);
-	
-
-		return "jl/jlf-info-input";
+		return "jl/jl-ny-jlf-input";
 	}
-
 	@RequestMapping("jlf-info-input")
-	public String input(@RequestParam(value = "id", required = false) Long id,
+	public String input(@ModelAttribute Page page, @ModelAttribute Jlf jlfmodel, @RequestParam(value = "id", required =
+			false)
+	Long id,
 			Model model) {
 		if (id != null) {
 			Jlf jlf = jlfManager.get(id);
 			model.addAttribute("model", jlf);
+		}
+		else
+		{
+			model.addAttribute("model",jlfmodel);
 		}
 
 		return "jl/jlf-info-input";
@@ -115,8 +107,10 @@ public class JlfController {
 	@RequestMapping("jlf-info-save")
 	public String save(@ModelAttribute Jlf jlf,
 			@RequestParam Map<String, Object> parameterMap,
-			RedirectAttributes redirectAttributes) {
+					   HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		Jlf dest = null;
+		PjXm pjXm = pjXmManager.get(jlDeptManager.getXmId(request));
+
 
 		Long id = jlf.getFid();
 
@@ -126,12 +120,16 @@ public class JlfController {
 		} else {
 			dest = jlf;
 		}
-
+		if(pjXm!=null){
+			Long xmid=pjXm.getFid();
+			dest.setFxmid(xmid);
+		}
 		jlfManager.save(dest);
 
 		messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
 				"保存成功");
 
+		//return "redirect:/jl/jlf-info-list.do";
 		return "redirect:/jl/jl-ny-jlf-input.do";
 	}
 
