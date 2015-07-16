@@ -65,12 +65,18 @@ public class PjJlfRecordController {
     
     
     @RequestMapping("jlfRecord-info-list")
-    public String list(@ModelAttribute Page page,
+    public String list(@ModelAttribute Page page, @RequestParam(value = "fxmid", required = false) Long fxmid,
             @RequestParam Map<String, Object> parameterMap, Model model) {
+
+        if(parameterMap.containsKey("fxmid")){
+            parameterMap.put("filter_EQL_fxmid",fxmid);
+        }
+        
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = jlfRecordManager.pagedQuery(page, propertyFilters);
 
+        page = jlfRecordManager.pagedQuery(page, propertyFilters);
+        model.addAttribute("fxmid", fxmid);
         model.addAttribute("page", page);
 
         return "gcgl/jlfRecord-info-list";
@@ -78,24 +84,29 @@ public class PjJlfRecordController {
 
     @RequestMapping("jlfRecord-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,
+                        @RequestParam(value="fxmid", required = false) Long fxmid,
             Model model) {
         if (id != null) {
             JlfRecord jlfRecord = jlfRecordManager.get(id);
+            jlfRecord.setFxmid(fxmid);
             model.addAttribute("model", jlfRecord);
         }
-
+        else{
+            JlfRecord jlfRecord= new JlfRecord();
+            jlfRecord.setFxmid(fxmid);
+            model.addAttribute("model", jlfRecord);
+        }
         return "gcgl/jlfRecord-info-input";
     }
     
 
     @RequestMapping("jlfRecord-info-save")
     public String save(@ModelAttribute JlfRecord jlfRecord,
+                       @RequestParam(value = "fxmid", required = false) String fxmid,
             @RequestParam Map<String, Object> parameterMap,HttpServletRequest request,
             RedirectAttributes redirectAttributes) {
         JlfRecord dest = null;
-
         Long id = jlfRecord.getFid();
-
         if (id != null) {
             dest = jlfRecordManager.get(id);
             beanMapper.copy(jlfRecord, dest);
@@ -103,17 +114,18 @@ public class PjJlfRecordController {
             dest = jlfRecord;
             dest.setFshouqudate(new Date());
         }
-        dest.setFxmid(jlDeptManager.getXmId(request));
+        dest.setFxmid(Long.parseLong(fxmid));
         jlfRecordManager.save(dest);
 
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
 
-        return "redirect:/gcgl/jl-ny-jlf-input.do";
+        return "redirect:/gcgl/jl-ny-jlf-input.do?fxmid="+fxmid;
     }
 
     @RequestMapping("jlfRecord-info-remove")
-    public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
+    public String remove(@RequestParam("selectedItem") List<Long> selectedItem, @RequestParam(value = "fxmid",
+            required = false) Long fxmid,
             RedirectAttributes redirectAttributes) {
         List<JlfRecord> jlfRecords = jlfRecordManager.findByIds(selectedItem);
 
@@ -122,7 +134,7 @@ public class PjJlfRecordController {
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
 
-        return "redirect:/gcgl/jlfRecord-info-list.do";
+        return "redirect:/gcgl/jlfRecord-info-list.do?fxmid="+fxmid;
     }
 
     @RequestMapping("jlfRecord-info-export")

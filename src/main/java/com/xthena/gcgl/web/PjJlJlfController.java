@@ -82,14 +82,17 @@ public class PjJlJlfController {
 //		jlf1.setFxmid(fxmid);
 		model.addAttribute("model", jlf1);
 
-		parameterMap.put("filter_EQL_fxmid", jlDeptManager.getXmId(request));
+		parameterMap.put("filter_EQL_fxmid", fxmid);
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
 		page = jlfRecordManager.pagedQuery(page, propertyFilters);
 		List<JlfRecord> jlfRecords = (List<JlfRecord>) page.getResult();
 		double jlfSum = 0;
 		for (JlfRecord jlfRecord : jlfRecords) {
-			jlfSum += Double.valueOf(jlfRecord.getFhtjlf());
+			String htjlf=jlfRecord.getFhtjlf();
+			if(!(htjlf==null||htjlf.trim().equals(""))) {
+				jlfSum += Double.valueOf(jlfRecord.getFhtjlf());
+			}
 		}
 		model.addAttribute("page", page);
 		model.addAttribute("jlfSum", jlfSum);
@@ -148,9 +151,7 @@ public class PjJlJlfController {
 	}
 
 	@RequestMapping("jlf-info-save")
-	public String save(@ModelAttribute Jlf jlf,
-
-					   @RequestParam Map<String, Object> parameterMap,
+	public String save(@ModelAttribute Jlf jlf, @RequestParam Map<String, Object> parameterMap,
 //					   @RequestParam(value = "fxmid", required = false) Long fxmid,
 					   HttpServletRequest request,RedirectAttributes redirectAttributes) {
 

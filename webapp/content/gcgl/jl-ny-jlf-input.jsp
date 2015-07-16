@@ -96,7 +96,8 @@
 									code="jlf-info.jlf-info.input.jlfsum" text="已收监理费" /></label>
 							<div class="controls">
 								<input id="jlf-info_jlfsum" type="text" name=""
-									   value="${jlfSum}" size="" class="text " maxlength=""> <a href="jlfRecord-info-list.do"><span
+									   value="${jlfSum}" size="" class="text " maxlength=""> <a
+									href="jlfRecord-info-list.do?fxmid=${model.fxmid}"><span
 									class="add-on" style="padding-top: 2px; padding-bottom: 2px;" ><i
 									class="icon-th-list" ></i></span></a>
 							</div>
