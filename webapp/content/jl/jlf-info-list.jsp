@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@include file="/taglibs.jsp"%>
-<%pageContext.setAttribute("currentHeader",  "sckf-home");%>
+<%pageContext.setAttribute("currentHeader",  "lj-home");%>
 <%pageContext.setAttribute("currentMenu", "jlf");%>
 <!doctype html>
 <html lang="zh">
@@ -42,7 +42,7 @@ $(function() {
     <%@include file="/header.jsp"%>
 
     <div class="row-fluid">
-	   <%@include file="/menu/sckf-workspace.jsp"%>
+	   <%@include file="/menu/jl-workspace.jsp"%>
 
 	  <!-- start of main -->
       <section id="m-main" class="span10">
@@ -99,14 +99,15 @@ $(function() {
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-        	<th class="sorting" name="fxmid">项目id</th>
+        	<%--<th class="sorting" name="fxmid">项目id</th>--%>
         	<th class="sorting" name="fhtke">合同款额</th>
         	<th class="sorting" name="fhtgq">合同工期</th>
         	<th class="sorting" name="fzffs">支付方式</th>
-        	<th class="sorting" name="fbqys"></th>
-        	<th class="sorting" name="fmemo">备注</th>
-        	<th class="sorting" name="fmemo1">备注1</th>
-        	<th class="sorting" name="fmemo2">备注2</th>
+        	<th class="sorting" name="fbqys">本期应收监理费
+			</th>
+        	<%--<th class="sorting" name="fmemo">备注</th>--%>
+        	<%--<th class="sorting" name="fmemo1">备注1</th>--%>
+        	<%--<th class="sorting" name="fmemo2">备注2</th>--%>
         <th width="80">&nbsp;</th>
       </tr>
     </thead>
@@ -115,14 +116,14 @@ $(function() {
       <c:forEach items="${page.result}" var="item">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fxmid}</td>
+      	 	 <%--<td>${item.fxmid}</td>--%>
       	 	 <td>${item.fhtke}</td>
       	 	 <td>${item.fhtgq}</td>
       	 	 <td>${item.fzffs}</td>
       	 	 <td>${item.fbqys}</td>
-      	 	 <td>${item.fmemo}</td>
-      	 	 <td>${item.fmemo1}</td>
-      	 	 <td>${item.fmemo2}</td>
+      	 	 <%--<td>${item.fmemo}</td>--%>
+      	 	 <%--<td>${item.fmemo1}</td>--%>
+      	 	 <%--<td>${item.fmemo2}</td>--%>
         <td>
           <a href="jlf-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
         </td>

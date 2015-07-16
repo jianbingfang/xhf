@@ -86,10 +86,10 @@
 						action="Qingjia-form-save.do" class="form-horizontal">
 						<c:if test="${model != null}">
 							<input id="Qingjia-info_id" type="hidden" name="fid"
-								value="${model.fid}">
+						value="${model.fid}">
 						</c:if>
-						
-						<%--<div class="control-group">--%>
+
+					<%--<div class="control-group">--%>
 							<%--<div class="span5">--%>
 								<%--<label class="control-label" for="commHt-info_fxmid"><spring:message--%>
 										<%--code="commHt-info.commHt-info.input.fxmid" text="项目名称" /></label>--%>
@@ -166,9 +166,9 @@
 										code="commHt-info.commHt-info.input.fxmid" text="请假原因" /></label>
 								<div class="controls">
 
-									<textarea id="qingjia_id" name="qingjia_name"
+									<textarea id="qingjia_id" name="fresult"
 											  class="form-control" rows="10" style="width: 560px"
-											  class="text " minlength="" maxlength="">${model.fname}</textarea>
+											  class="text " minlength="" maxlength="">${model.fresult}</textarea>
 
 								</div>
 							</div>

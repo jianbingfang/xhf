@@ -49,15 +49,16 @@
 							<input id="jlf-info_id" type="hidden" name="fid"
 								value="${model.fid}">
 						</c:if>
-						<%-- 	<div class="control-group">
+
+						<div class="control-group">
 							<label class="control-label" for="jlf-info_fxmid"><spring:message
 									code="jlf-info.jlf-info.input.fxmid" text="项目id" /></label>
 							<div class="controls">
 								<input id="jlf-info_fxmid" type="text" name="fxmid"
-									value="${model.fxmid}" size="" class="number   " 
+									value="${model.fxmid}" size="" class="number"
 									maxlength="">
 							</div>
-						</div> --%>
+						</div>
 						<div class="control-group">
 							<div class="span5">
 								<label class="control-label" for="jlf-info_fhtke"><spring:message
