@@ -90,7 +90,7 @@
 						<div class="control-group">
 							<div class="span5">
 								<label class="control-label" for="jlf-info_jlfsum"><spring:message
-										code="jlf-info.jlf-info.input.jlfsum" text="已收监理费" /></label>
+										code="jlf-info.jlf-info.input.jlfsum" text="已收监理费(元)" /></label>
 								<div class="controls">
 									<input id="jlf-info_jlfsum" type="text" name=""
 										value="${jlfSum}" size="" class="text " maxlength=""> <a href="jlfRecord-info-list.do"><span
