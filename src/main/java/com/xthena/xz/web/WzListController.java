@@ -87,14 +87,13 @@ public class WzListController {
     public String dzlist(@ModelAttribute Page page,
                          @RequestParam Map<String, Object> parameterMap, @RequestParam String ftype, Model model) {
         // 低值易耗品
-        Map<String, Object> dzMap = new HashMap<String, Object>();
-        Page dzpage = page;
+        Map<String, Object> dzMap = new HashMap<>();
         dzMap.putAll(parameterMap);
         dzMap.put("filter_LIKES_ftype", ftype);
         List<PropertyFilter> dzpropertyFilters = PropertyFilter
                 .buildFromMap(dzMap);
-        dzpage = wzListManager.pagedQuery(dzpage, dzpropertyFilters);
-        model.addAttribute("pageDZ", dzpage);
+        page = wzListManager.pagedQuery(page, dzpropertyFilters);
+        model.addAttribute("page", page);
 
         model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
