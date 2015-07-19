@@ -32,7 +32,8 @@
             orderBy: '${page.orderBy == null ? "" : page.orderBy}',
             asc: ${page.asc},
             params: {
-                'filter_LIKES_fname': '${param.filter_LIKES_fname}'
+                'filter_LIKES_fname': '${param.filter_LIKES_fname}',
+                'ftype': '${ftype}'
             },
             selectedItemClass: 'selectedItem',
             gridFormId: 'wzList-infoGridForm',
@@ -130,7 +131,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${pageDZ.result}" var="item">
+                        <c:forEach items="${page.result}" var="item">
                             <tr>
                                 <td><input type="checkbox"
                                            class="selectedItem a-check" name="selectedItem"
