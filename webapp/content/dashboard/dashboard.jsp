@@ -7,7 +7,7 @@
 
 <head>
     <%@include file="/common/meta.jsp" %>
-    <title>河南新恒丰建设监理有限公司</title>
+    <title>科扬建设监理有限公司</title>
     <%@include file="/common/s.jsp" %>
 
     <script type="text/javascript">
