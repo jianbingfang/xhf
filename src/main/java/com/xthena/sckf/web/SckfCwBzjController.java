@@ -137,7 +137,7 @@ public class SckfCwBzjController {
 	public String list(@ModelAttribute Page page,@RequestParam(value = "type", required = false) String type,
 			@RequestParam Map<String, Object> parameterMap, Model model) {
 		// 根据项目名称查询
-		StringBuffer hql=new StringBuffer("select bzj from JyXm xm,CwBzj bzj  where xm.fid=bzj.fxmid");
+		StringBuffer hql=new StringBuffer("select bzj from JyXm xm, CwBzj bzj where xm.fid=bzj.fxmid");
 		if(type !=null){
 			hql.append(" and bzj.fbzjtype='"+type+"'");
 		}
@@ -145,7 +145,7 @@ public class SckfCwBzjController {
 		{
 			hql.append(" and xm.fname like '%"+parameterMap.get("filter_LIKES_name") +"%' ");
 		}
-		hql.append(" order by  xm.fname");
+		hql.append(" order by bzj.fcreatedate desc");
 
 		parameterMap.clear();
 		List<PropertyFilter> propertyFilters = PropertyFilter
