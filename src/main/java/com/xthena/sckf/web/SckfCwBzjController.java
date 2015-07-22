@@ -69,7 +69,7 @@ public class SckfCwBzjController {
 			{
 				hql.append(" and xm.fname like '%"+parameterMap.get("filter_LIKES_name") +"%' ");
 			}
-			hql.append(" order by  xm.fname");
+			hql.append(" order by bzj.fcreatedate desc");
 
 			parameterMap.clear();
 			List<PropertyFilter> propertyFilters = PropertyFilter.buildFromMap(parameterMap);
