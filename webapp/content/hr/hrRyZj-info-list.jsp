@@ -15,7 +15,7 @@
     <script type="text/javascript"
             src="${scopePrefix}/s/xthena/rypicker/rypicker.js"></script>
     <title><spring:message code="dev.hrRyZj-info.list.title"
-                           text="证件台账- 员工管理 - 人力资源"/></title>
+                           text="证件台账 - 员工管理 - 人力资源"/></title>
     <%@include file="/common/s.jsp" %>
     <script type="text/javascript">
         var config = {
@@ -291,10 +291,10 @@
 							<span class="add-on"
                                   style="padding-top: 2px; padding-bottom: 2px;"><i
                                     class="icon-calendar"></i></span>
-                    </div>
+                    </div>--%>
                     <button class="btn btn-small a-search"
                             onclick="document.hrRyZj-infoForm.submit()">查询
-                    </button>--%>
+                    </button>
                     &nbsp;
                 </form>
             </div>
