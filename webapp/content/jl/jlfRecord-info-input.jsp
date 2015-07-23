@@ -55,10 +55,10 @@
 								<div class="span5">
 									<label class="control-label" for="jlfRecord-info_fhtjlf"><spring:message
 											code="jlfRecord-info.jlfRecord-info.input.fhtjlf"
-											text="监理费" /></label>
+											text="监理费(元)" /></label>
 									<div class="controls">
-										<input id="jlfRecord-info_fhtjlf" type="text" name="fhtjlf"
-											value="${model.fhtjlf}" size="" class="text " minlength=""
+										<input id="jlfRecord-info_fhtjlf" type="number" name="fhtjlf"
+											value="${model.fhtjlf}" size="" class="number required" minlength=""
 											maxlength="">
 									</div>
 								</div>
