@@ -145,9 +145,18 @@ public class HrShtcController {
             @RequestParam Map<String, Object> parameterMap,
             RedirectAttributes redirectAttributes) {
     	
-    //	hrShtcManager.
-    		
-        hrShtcManager.save(hrShtc);
+        for(HrShtc shtc : hrShtcManager.getAll()) {
+            shtc.setFjnjs(hrShtc.getFjnjs());
+            shtc.setFbryj(hrShtc.getFbryj());
+            shtc.setFgsyj(hrShtc.getFgsyj());
+            shtc.setFjnjsyl(hrShtc.getFjnjsyl());
+            shtc.setFbryjyl(hrShtc.getFbryjyl());
+            shtc.setFgsyjyl(hrShtc.getFgsyjyl());
+            shtc.setFjnjsyw(hrShtc.getFjnjsyw());
+            shtc.setFbryjyw(hrShtc.getFbryjyw());
+            shtc.setFgsyjyw(hrShtc.getFgsyjyw());
+            hrShtcManager.save(shtc);
+        }
 
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
