@@ -115,7 +115,12 @@ public class HrRyZjController {
         if (parameterMap.get("filter_LIKES_name") != null && !parameterMap.get("filter_LIKES_name").equals("")) {
             hql.append(" and ry.fname like '%" + parameterMap.get("filter_LIKES_name") + "%' ");
         }
-
+        if (parameterMap.get("filter_GTD_fyxqks") != null && !parameterMap.get("filter_GTD_fyxqks").equals("")) {
+            hql.append(" and  ys.fyxqks>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxqks")) + "'");
+        }
+        if (parameterMap.get("filter_LTD_fyxqks") != null && !parameterMap.get("filter_LTD_fyxqks").equals("")) {
+            hql.append(" and  ys.fyxqks<='" + String.valueOf(parameterMap.get("filter_LTD_fyxqks")) + "'");
+        }
         if (parameterMap.get("filter_GTD_fyxjs") != null && !parameterMap.get("filter_GTD_fyxjs").equals("")) {
             hql.append(" and  ys.fyxjs>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
         }
@@ -142,7 +147,12 @@ public class HrRyZjController {
         if (parameterMap.get("filter_LIKES_name") != null && !parameterMap.get("filter_LIKES_name").equals("")) {
             hql.append(" and ry.fname like '%" + parameterMap.get("filter_LIKES_name") + "%' ");
         }
-
+        if (parameterMap.get("filter_GTD_fyxqks") != null && !parameterMap.get("filter_GTD_fyxqks").equals("")) {
+            hql.append(" and  ys.fyxqks>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxqks")) + "'");
+        }
+        if (parameterMap.get("filter_LTD_fyxqks") != null && !parameterMap.get("filter_LTD_fyxqks").equals("")) {
+            hql.append(" and  ys.fyxqks<='" + String.valueOf(parameterMap.get("filter_LTD_fyxqks")) + "'");
+        }
         if (parameterMap.get("filter_GTD_fyxjs") != null && !parameterMap.get("filter_GTD_fyxjs").equals("")) {
             hql.append(" and  ys.fyxjs>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
         }

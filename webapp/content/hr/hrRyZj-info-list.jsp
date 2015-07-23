@@ -31,9 +31,11 @@
                 'filter_LIKES_name': '${param.filter_LIKES_name}',
                 'filter_LIKES_fzhengjianno': '${param.filter_LIKES_fzhengjianno}',
                 'filter_LIKES_fzhuanye': '${param.filter_LIKES_fzhuanye}',
-                /* 		'filter_LIKES_fname' : '${param.filter_LIKES_fname}', */
+                'filter_LIKES_fname': '${param.filter_LIKES_fname}',
                 'filter_GTD_fyxjs': '${param.filter_GTD_fyxjs}',
-                'filter_LTD_fyxjs': '${param.filter_LTD_fyxjs}'
+                'filter_LTD_fyxjs': '${param.filter_LTD_fyxjs}',
+                'filter_GTD_fyxqks': '${param.filter_GTD_fyxqks}',
+                'filter_LTD_fyxqks': '${param.filter_LTD_fyxqks}'
             },
             selectedItemClass: 'selectedItem',
             gridFormId: 'hrRyZj-infoGridForm',
@@ -190,8 +192,6 @@
                       action="hrRyZj-treelist.do" class="form-inline">
                     <label for="hrRyZj-info_name"><spring:message
                             code='hrRyZj-info.hrRyZj-info.list.search.name' text='人员姓名'/>:</label>
-                    <!--  <input type="text" style="width: 120px" id="hrRyZj-info_name"
-							name="filter_LIKES_name" value="${param.filter_LIKES_name}">-->
                     <input id="hrRyZj-info_name"
                            name="filter_LIKES_name" type="text"
                            value="${param.filter_LIKES_name}"
@@ -206,92 +206,45 @@
                     <input type="text" style="width: 120px" id="hrRyZj-info_fzhuanye"
                            name="filter_LIKES_fzhuanye"
                            value="${param.filter_LIKES_fzhuanye}"/>
-                    <%--<label for="hrRyZj-info_name"><spring:message--%>
-                    <%--code='hrRyZj-info.hrRyZj-info.list.search.name' text='证书名称'/>:</label>--%>
-                    <%--<select class="form-control" id="hrRyZj-info_name"--%>
-                    <%--name="filter_LIKES_fname" value="${param.filter_LIKES_fname}"--%>
-                    <%--class=" " style="width: 120px">--%>
-                    <%--<c:forEach items="${zjInfos}" var="item">--%>
-                    <%--<option value="${item.fname}" selected>${item.fname}</option>--%>
-                    <%--</c:forEach>--%>
+                    <label for="hrRyZj-info_name"><spring:message
+                            code='hrRyZj-info.hrRyZj-info.list.search.name' text='证书名称'/>:</label>
+                    <input type="text" style="width: 120px" id="hrRyZj-info_name"
+                           name="filter_LIKES_fname" value="${param.filter_LIKES_fname}"
+                           class=" " style="width: 120px"/>
 
-                    <%--<option></option>--%>
-                    <%--<option value="身份证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='身份证'}"> selected="selected"  </c:if>>身份证</option>--%>
-                    <%--<option value="毕业证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='毕业证'}"> selected="selected"  </c:if>>毕业证</option>--%>
-                    <%--<option value="监理工程师注册证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='监理工程师注册证'}"> selected="selected"  </c:if>>监理工程师注册证</option>--%>
-                    <%--<option value="监理工程师资格证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='监理工程师资格证'}"> selected="selected" </c:if>>监理工程师资格证</option>--%>
-                    <%--<option value="一级建造师注册证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='一级建造师注册证'}"> selected="selected"  </c:if>>一级建造师注册证</option>--%>
-                    <%--<option value="一级建造师资格证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='一级建造师资格证'}"> selected="selected"  </c:if>>一级建造师资格证</option>--%>
-                    <%--<option value="一级建造师继续教育证"--%>
-                    <%--<c:if test="${param.fname=='一级建造师继续教育证'}"> selected="selected"  </c:if>>一级建造师继续教育证</option>--%>
-                    <%--<option value="二级建造师注册证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='二级建造师注册证'}"> selected="selected"  </c:if>>二级建造师注册证</option>--%>
-                    <%--<option value="二级建造师资格证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='二级建造师资格证'}"> selected="selected"  </c:if>>二级建造师资格证</option>--%>
-                    <%--<option value="造价师注册证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='造价师注册证'}"> selected="selected" </c:if>>造价师注册证</option>--%>
-                    <%--<option value="造价师资格证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='造价师资格证'}"> selected="selected"  </c:if>>造价师资格证</option>--%>
-                    <%--<option value="造价师继续教育证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='造价师继续教育证'}"> selected="selected"  </c:if>>造价师继续教育证</option>--%>
-                    <%--<option value="交通部监理工程师资格证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='交通部监理工程师资格证'}"> selected="selected"  </c:if>>交通部监理工程师资格证</option>--%>
-                    <%--<option value="交通部监理工程师注册证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='交通部监理工程师注册证'}"> selected="selected"  </c:if>>交通部监理工程师注册证</option>--%>
-                    <%--<option value="专业监理工程师证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='专业监理工程师证'}"> selected="selected" </c:if>>专业监理工程师证</option>--%>
-                    <%--<option value="高级工程师职称证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='高级工程师职称证'}"> selected="selected"  </c:if>>高级工程师职称证</option>--%>
-                    <%--<option value="中级工程师职称证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='中级工程师职称证'}"> selected="selected"  </c:if>>中级工程师职称证</option>--%>
-                    <%--<option value="初级工程师职称证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='初级工程师职称证'}"> selected="selected"  </c:if>>初级工程师职称证</option>--%>
-                    <%--<option value="监理员证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='监理员证'}"> selected="selected"  </c:if>>监理员证</option>--%>
-                    <%--<option value="资料员证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='资料员证'}"> selected="selected" </c:if>>资料员证</option>--%>
-                    <%--<option value="见证员证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='见证员证'}"> selected="selected"  </c:if>>见证员证</option>--%>
-                    <%--<option value="安全员证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='安全员证'}"> selected="selected"  </c:if>>安全员证</option>--%>
-                    <%--<option value="造价员证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='造价员证'}"> selected="selected"  </c:if>>造价员证</option>--%>
-                    <%--<option value="试验员证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='试验员证'}"> selected="selected"  </c:if>>试验员证</option>--%>
-                    <%--<option value="建筑节能培训证"--%>
-                    <%--<c:if test="${param.filter_LIKES_fname=='建筑节能培训证'}"> selected="selected" </c:if>>建筑节能培训证</option>--%>
-                    <%--</select>--%>
+                    <br/><br/>
 
+                    <label for="hrRyZj-info_name"><spring:message
+                            code='hrRyZj-info.hrRyZj-info.list.search.name' text='发证日期'/>:</label>
 
-                    <%--<label for="hrRyZj-info_name"><spring:message
-                            code='hrRyZj-info.hrRyZj-info.list.search.name' text='到期时间'/>:</label>
-
-                    <div class="input-append datepicker date"
+                    <div class="input-append input-prepend"
                          style="padding-left: 0px;">
-                        <input id="hrRyZj-info_fyxjs" style="width: 120px" type="text"
+                        <input id="hrRyZj-info_fyxqks" type="text" class="add-on datepicker date"
+                               name="filter_GTD_fyxqks" value="${param.filter_GTD_fyxqks}"
+                               size="40" class="text "
+                               style="background-color:white;cursor:default; width: 100px;">
+                        <span class="add-on"><i class="icon-resize-horizontal"></i></span>
+                        <input id="hrRyZj-info_fyxqks" type="text" class="add-on datepicker date"
+                               name="filter_LTD_fyxqks" value="${param.filter_LTD_fyxqks}"
+                               size="40" class="text "
+                               style="background-color:white;cursor:default; width: 100px;">
+                    </div>
+
+                    <label for="hrRyZj-info_name"><spring:message
+                            code='hrRyZj-info.hrRyZj-info.list.search.name' text='到期日期'/>:</label>
+
+                    <div class="input-append input-prepend"
+                         style="padding-left: 0px;">
+                        <input id="hrRyZj-info_fyxjs" type="text" class="add-on datepicker date"
                                name="filter_GTD_fyxjs" value="${param.filter_GTD_fyxjs}"
                                size="40" class="text "
-                               style="background-color:white;cursor:default; width: 160px;">
-							<span class="add-on"
-                                  style="padding-top: 2px; padding-bottom: 2px;"><i
-                                    class="icon-calendar"></i></span>
-                    </div>
-                    <div class="input-append datepicker date"
-                         style="padding-left: 0px;">
-                        <input id="hrRyZj-info_fyxjs" style="width: 120px" type="text"
+                               style="background-color:white;cursor:default; width: 100px;">
+                        <span class="add-on"><i class="icon-resize-horizontal"></i></span>
+                        <input id="hrRyZj-info_fyxjs" type="text" class="add-on datepicker date"
                                name="filter_LTD_fyxjs" value="${param.filter_LTD_fyxjs}"
                                size="40" class="text "
-                               style="background-color:white;cursor:default; width: 160px;">
-							<span class="add-on"
-                                  style="padding-top: 2px; padding-bottom: 2px;"><i
-                                    class="icon-calendar"></i></span>
-                    </div>--%>
+                               style="background-color:white;cursor:default; width: 100px;">
+                    </div>
                     <button class="btn btn-small a-search"
                             onclick="document.hrRyZj-infoForm.submit()">查询
                     </button>
@@ -356,7 +309,7 @@
                                         <tbody id="ryzjtid">
                                         <c:forEach items="${page.result}" var="item">
                                             <tr id="${item.fid}" onclick=selectZj(this)
-                                                style="background-color: #EEEEEE" class='a'>
+                                                style="background-color: #EEEEEE;" class='a'>
                                                     <%--<td></td> --%>
                                                 <td><input type="checkbox"
                                                            class="selectedItem a-check" name="selectedItem"
@@ -379,7 +332,7 @@
                             </div>
                         </article>
                         <article>
-                            <div class="m-page-info pull-left">共100条记录 显示1到10条记录</div>
+                            <div class="m-page-info pull-left">无记录</div>
                             <div class="btn-group m-pagination pull-right">
                                 <button class="btn btn-small">&lt;</button>
                                 <button class="btn btn-small">1</button>
