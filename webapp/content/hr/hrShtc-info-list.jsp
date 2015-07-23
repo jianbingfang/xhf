@@ -83,14 +83,14 @@
             </header>
             <div id="hrShtc-infoSearch" class="content content-inner">
 
-                <form name="hrShtc-infoForm" method="post"
+                <form method="post"
                       action="hrShtc-info-list.do" class="form-inline">
                     <label for="hrShtc-info_name"><spring:message
                             code='hrShtc-info.hrShtc-info.list.search.name' text='姓名'/>:</label> <input
                         type="text" id="hrShtc-info_name" name="filter_LIKES_fmemo1"
                         value="${param.filter_LIKES_fmemo1}">
                     <button class="btn btn-small a-search"
-                            onclick="document.hrShtc-infoForm.submit()">查询
+                            type="submit">查询
                     </button>
                     &nbsp;
                 </form>
@@ -108,9 +108,9 @@
                 <region:region-permission permission="hrShtc-info:delete">
                     <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
                 </region:region-permission>
-                <%--<region:region-permission permission="hrShtc-info:update">
-                    <button class="btn btn-small a-update" onclick="updateAll()">批量修改</button>
-                </region:region-permission>--%>
+                <region:region-permission permission="hrShtc-info:update">
+                    <button class="btn btn-small a-update" onclick="updateAll()">全部修改</button>
+                </region:region-permission>
                 <button class="btn btn-small a-export"
                         onclick="table.exportExcel()">导出
                 </button>
@@ -269,7 +269,6 @@
                 </div>
             </form>
             <div class="modal-footer">
-                '
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button id="uploadPickerBtnSelect" onclick="doUpdateAll()"
                         type="button" class="btn btn-primary">保存
