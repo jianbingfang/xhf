@@ -196,11 +196,11 @@
                            name="filter_LIKES_name" type="text"
                            value="${param.filter_LIKES_name}"
                            style="width: 120px;">
-                    <label for="hrRyZj-info_name"><spring:message
+                    <%--<label for="hrRyZj-info_name"><spring:message
                             code='hrRyZj-info.hrRyZj-info.list.search.name' text='编号'/>:</label>
                     <input type="text" style="width: 120px" id="hrRyZj-info_name"
                            name="filter_LIKES_fzhengjianno"
-                           value="${param.filter_LIKES_fzhengjianno}"/>
+                           value="${param.filter_LIKES_fzhengjianno}"/>--%>
                     <label for="hrRyZj-info_name"><spring:message
                             code='hrRyZj-info.hrRyZj-info.list.search.name' text='专业'/>:</label>
                     <input type="text" style="width: 120px" id="hrRyZj-info_fzhuanye"
@@ -208,9 +208,15 @@
                            value="${param.filter_LIKES_fzhuanye}"/>
                     <label for="hrRyZj-info_name"><spring:message
                             code='hrRyZj-info.hrRyZj-info.list.search.name' text='证书名称'/>:</label>
-                    <input type="text" style="width: 120px" id="hrRyZj-info_name"
-                           name="filter_LIKES_fname" value="${param.filter_LIKES_fname}"
-                           class=" " style="width: 120px"/>
+                    <select class="form-control" id="hrRyZj-info_name"
+                            name="filter_LIKES_fname" class="">
+
+                        <option value="">不限</option>
+                        <c:forEach items="${zjInfos}" var="item">
+                            <option value="${item.fname}" ${item.fname==param.filter_LIKES_fname? 'selected' : ''}>${item.fname}</option>
+                        </c:forEach>
+
+                    </select>
 
                     <br/><br/>
 
