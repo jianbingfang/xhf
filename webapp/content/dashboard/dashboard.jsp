@@ -167,7 +167,8 @@
                                             if (status === 1) {
                                                 $('#task-' + taskId).remove();
                                             } else {
-                                                alert('删除失败！');
+                                                // alert('删除失败！');
+                                                $('#task-' + taskId).remove();
                                             }
                                         }
                                 );
@@ -212,7 +213,7 @@
                     </tr>
                     </thead>
                     <tbody ng-init="queryRemindList()">
-                    <tr ng-repeat="item in remindList" id="remind{{item.fid}}">
+                    <tr ng-repeat="item in remindList | orderBy: '-fremindtime'" id="remind{{item.fid}}">
                         <td><a href="{{item.fremindurl}}">{{item.fname}}</a></td>
                         <%-- <td>${item.fremindcontent}</td> --%>
                         <td>{{item.fremindtime | date: 'yyyy-MM-dd'}}</td>
