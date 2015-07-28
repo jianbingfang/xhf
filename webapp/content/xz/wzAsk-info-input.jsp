@@ -75,7 +75,7 @@
 										code="wzAsk-info.wzAsk-info.input.faskxm" text="申请项目" /></label>
 								<div class="controls">
 									<input id="wzAsk-info_faskxm" type="text" name="faskxm"
-										value="${model.faskxm}" size="" class="text   " minlength=""
+										value="${model.faskxm}" size="" class="text" minlength=""
 										maxlength="">
 								</div>
 							</div>
@@ -147,7 +147,7 @@
 										code="wzAsk-info.wzAsk-info.input.fjfqk" text="交费情况" /></label>
 								<div class="controls">
 									<input id="wzAsk-info_fjfqk" type="text" name="fjfqk"
-										value="${model.fjfqk}" size="" class="text required"
+										value="${model.fjfqk}" size="" class="text"
 										minlength="" maxlength="">
 								</div>
 							</div>
