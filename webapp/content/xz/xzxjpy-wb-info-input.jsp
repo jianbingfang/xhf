@@ -92,7 +92,7 @@ $(function() {
 						<div class="span5">
 					    <label class="control-label" for="xzxjpy-info_ffwdw"><spring:message code="xzxjpy-info.xzxjpy-info.input.ffwdw" text="发文单位"/></label>
 						<div class="controls">
-							  	 <input id="xzxjpy-info_ffwdw" type="text" name="ffwdw" value="${model.ffwdw}" size="" class="text required" minlength="" maxlength="">	
+							  	 <input id="xzxjpy-info_ffwdw" type="text" name="ffwdw" value="${model.ffwdw}" size="" class="text" minlength="" maxlength="">
 					    </div>
 					    </div>
 					    </div>

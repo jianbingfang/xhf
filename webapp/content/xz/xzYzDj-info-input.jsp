@@ -110,10 +110,10 @@
 										code="xzYzDj-info.xzYzDj-info.input.fzhubanren" text="主办人" /></label>
 								<div class="controls">
 								<div class="input-append ryPicker">
-									<input id="xzYzDj-info_fzhubanren" type="hidden" name="fzhubanren"
-										value="${model.fzhubanren}"> <input
+									<input id="xzYzDj-info_fzhubanren" type="hidden" name="fzhubanren" class="required"
+										   value="${model.fzhubanren}"> <input
 										id="ryBxRecord-info_fzhubanrenuserName" type="text" value="${ryMap[model.fzhubanren].fname}"
-										disabled class=" required" style="width: 175px;" value="">
+										disabled class="required" style="width: 175px;" value="">
 									<span class="add-on"
 										style="padding-top: 2px; padding-bottom: 2px;"><i
 										class="icon-user"></i></span>
@@ -175,7 +175,7 @@
 						</div>
 						<div class="control-group">
 							<div class="controls">
-								<button type="submit" class="btn a-submit">
+								<button type="button" class="btn a-submit" onclick="submitForm();">
 									<spring:message code='core.input.save' text='保存' />
 								</button>
 								&nbsp;
@@ -186,6 +186,15 @@
 							</div>
 						</div>
 					</form>
+					<script>
+						function submitForm(){
+							if($('#xzYzDj-info_fzhubanren').val()) {
+								$('#xzYzDj-infoForm').submit();
+							} else {
+								alert('主办人不能为空！');
+							}
+						}
+					</script>
 				</div>
 			</article>
 		</section>

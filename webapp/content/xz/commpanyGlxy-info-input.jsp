@@ -53,7 +53,7 @@
 				</header>
 				<div class="content content-inner">
 					<form id="commpany-infoForm" method="post"
-						action="commpany-info-save.do" class="form-horizontal">
+						action="commpanyGlxy-info-save.do" class="form-horizontal">
 						<c:if test="${model != null}">
 							<input id="commpany-info_id" type="hidden" name="fid"
 								value="${model.fid}">
