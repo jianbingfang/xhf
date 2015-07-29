@@ -105,7 +105,8 @@ public class WzListController {
     public String gzlist(@ModelAttribute Page page,
                          @RequestParam Map<String, Object> parameterMap, Model model) {
         // 根据物资名称查询
-        if (parameterMap.get("filter_LIKES_fprojectname") != null) {
+        if (parameterMap.get("filter_LIKES_fprojectname") != null
+                && !parameterMap.get("filter_LIKES_fprojectname").toString().isEmpty()) {
 
             StringBuffer hql = new StringBuffer(
                     "select wz from PjXm xm,WzList wz where xm.fid=wz.fxmid");
