@@ -38,7 +38,7 @@
                             });
                     createjyxmPicker({
                         modalId: 'jyxmPicker',
-                        url: '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do'
+                        url: '${scopePrefix}/sysconf/jyXm-toubiao-simple-list.do'
                     });
                     createryPicker({
                         modalId: 'ryPicker',

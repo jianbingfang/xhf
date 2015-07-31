@@ -89,7 +89,7 @@ $(function() {
 					    	 	<option value="旷工"  <c:if test="${model.ftype}=='旷工'}"> selected="selected"  </c:if>>旷工</option>
 					    	 	<option value="请假"  <c:if test="${model.ftype}=='请假'}"> selected="selected"  </c:if>>请假</option>
 					    	 	<option value="出差"  <c:if test="${model.ftype}=='出差'}"> selected="selected"  </c:if>>出差</option>
-					    	 	<option value="出差"  <c:if test="${model.ftype}=='出差'}"> selected="selected"  </c:if>>全勤</option>
+					    	 	<option value="全勤"  <c:if test="${model.ftype}=='全勤'}"> selected="selected"  </c:if>>全勤</option>
 					 	</select>
 				    </div>
 				  </div>
@@ -110,13 +110,15 @@ $(function() {
 				    </div>
 				  </div>
 			    	<div class="control-group">
-				    <label class="control-label" for="hrKqJiangfa-info_fmoney"><spring:message code="hrKqJiangfa-info.hrKqJiangfa-info.input.fmoney" text="扣款"/></label>
+				    <label class="control-label" for="hrKqJiangfa-info_fmoney"><spring:message
+							code="hrKqJiangfa-info.hrKqJiangfa-info.input.fmoney" text="扣款(元)"/></label>
 					<div class="controls">
 					  	<input id="hrKqJiangfa-info_fmoney" type="text" name="fmoney" value="${model.fmoney}" size="" class="number   " minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">
-				    <label class="control-label" for="hrKqJiangfa-info_fquanqin"><spring:message code="hrKqJiangfa-info.hrKqJiangfa-info.input.fquanqin" text="全勤奖励"/></label>
+				    <label class="control-label" for="hrKqJiangfa-info_fquanqin"><spring:message
+							code="hrKqJiangfa-info.hrKqJiangfa-info.input.fquanqin" text="全勤奖励(元)"/></label>
 					<div class="controls">
 					  	<input id="hrKqJiangfa-info_fquanqin" type="text" name="fquanqin" value="${model.fquanqin}" size="" class="number   " minlength="" maxlength="">
 				    </div>

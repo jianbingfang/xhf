@@ -52,7 +52,7 @@
 		
 		createjyxmPicker({
 			modalId : 'jyxmPicker',
-			url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
+			url : '${scopePrefix}/sysconf/jyXm-toubiao-simple-list.do',
 			redUrl : '${scopePrefix}/sckf/jyXm-info-kaibiao.do'
 		});
 	});

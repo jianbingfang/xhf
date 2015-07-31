@@ -38,8 +38,8 @@
 									errorClass : 'validate-error'
 								});
 				createjyxmPicker({
-					modalId : 'xmPicker',
-					url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do'
+					modalId : 'jyxmPicker',
+					url : '${scopePrefix}/sysconf/jyXm-toubiao-simple-list.do'
 				});
 				createryPicker({
 					modalId : 'ryPicker',

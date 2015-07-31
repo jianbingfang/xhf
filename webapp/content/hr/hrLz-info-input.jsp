@@ -72,7 +72,8 @@ $(function() {
 		<div class="controls">
 			<div class="input-append ryPicker">
 			 <input id="ryBxRecord-info_fryid" type="hidden" name="fry" value="${model.fry}">
-			  <input id="ryBxRecord-info_userName" type="text"  value="${userName}" disabled="disabled" style="width: 175px;" value="">
+			  <input id="ryBxRecord-info_userName" type="text"  value="${userName}" disabled="disabled" style="width:
+			  175px;">
 			  <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i class="icon-user"></i></span>
 		    </div>
 	    </div>
