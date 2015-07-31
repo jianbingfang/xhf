@@ -48,32 +48,32 @@
 		<div class="row-fluid">
 			<!-- start of main -->
 			<section id="m-main" class="span10">
-				<article class="m-widget">
-					<header class="header">
-						<h4 class="title">查询</h4>
-						<div class="ctrl">
-							<a class="btn"><i id="jlfRecord-infoSearchIcon"
-								class="icon-chevron-up"></i></a>
-						</div>
-					</header>
-					<div id="jlfRecord-infoSearch" class="content content-inner">
-						<form name="jlfRecord-infoForm" method="post"
-							action="jlfRecord-info-list.do" class="form-inline">
-							<label for="jlfRecord-info_name"><spring:message
-									code='jlfRecord-info.jlfRecord-info.list.search.name' text='名称' />:</label>
-							<input type="text" id="jlfRecord-info_name"
-								name="filter_LIKES_name" value="${param.filter_LIKES_name}">
-							<button class="btn btn-small a-search"
-								onclick="document.jlfRecord-infoForm.submit()">查询</button>
-							&nbsp;
-						</form>
-					</div>
-				</article>
+				<%--<article class="m-widget">--%>
+					<%--<header class="header">--%>
+						<%--<h4 class="title">查询</h4>--%>
+						<%--<div class="ctrl">--%>
+							<%--<a class="btn"><i id="jlfRecord-infoSearchIcon"--%>
+								<%--class="icon-chevron-up"></i></a>--%>
+						<%--</div>--%>
+					<%--</header>--%>
+					<%--<div id="jlfRecord-infoSearch" class="content content-inner">--%>
+						<%--<form name="jlfRecord-infoForm" method="post"--%>
+							<%--action="jlfRecord-info-list.do" class="form-inline">--%>
+							<%--<label for="jlfRecord-info_name"><spring:message--%>
+									<%--code='jlfRecord-info.jlfRecord-info.list.search.name' text='名称' />:</label>--%>
+							<%--<input type="text" id="jlfRecord-info_name"--%>
+								<%--name="filter_LIKES_name" value="${param.filter_LIKES_name}">--%>
+							<%--<button class="btn btn-small a-search"--%>
+								<%--onclick="document.jlfRecord-infoForm.submit()">查询</button>--%>
+							<%--&nbsp;--%>
+						<%--</form>--%>
+					<%--</div>--%>
+				<%--</article>--%>
 				<article class="m-blank">
 					<div class="pull-left">
 						<region:region-permission permission="jlfRecord-info:create">
 							<button class="btn btn-small a-insert"
-								onclick="location.href='jlfRecord-info-input.do'">新建</button>
+								onclick="location.href='jlfRecord-info-input.do?fxmid=${fxmid}'">新建</button>
 						</region:region-permission>
 						<region:region-permission permission="jlfRecord-info:delete">
 							<button class="btn btn-small a-remove"
@@ -100,7 +100,7 @@
 					</header>
 					<div class="content">
 						<form id="jlfRecord-infoGridForm" name="jlfRecord-infoGridForm"
-							method='post' action="jlfRecord-info-remove.do"
+							method='post' action="jlfRecord-info-remove.do?fxmid=${fxmid}"
 							class="m-form-blank">
 							<table id="jlfRecord-infoGrid" class="m-table table-hover table-bordered">
 								<thead>
@@ -115,7 +115,7 @@
 										<th class="sorting" id="fshifoudaozhang">是否到账</th>
 										<th class="sorting" id="fdaozhangdate">到账时间</th>
 										<th class="sorting" id="fmemo">备注</th>
-										<th width="80">&nbsp;</th>
+										<th width="80">&nbsp操作</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -130,7 +130,7 @@
 											<td>${item.fshifoudaozhang}</td>
 											<td>${item.fdaozhangdate}</td>
 											<td>${item.fmemo}</td>
-											<td><a href="jlfRecord-info-input.do?id=${item.fid}"
+											<td><a href="jlfRecord-info-input.do?id=${item.fid}&fxmid=${fxmid}"
 												class="a-update"><spring:message code="core.list.edit"
 														text="编辑" /></a></td>
 										</tr>

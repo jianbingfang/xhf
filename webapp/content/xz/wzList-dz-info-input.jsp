@@ -31,11 +31,9 @@
 </script>
 </head>
 <body>
-	<%@include file="/header.jsp"%>
 	<div class="row-fluid">
-		<%@include file="/menu/xz-workspace.jsp"%>
 		<!-- start of main -->
-		<section id="m-main" class="span10">
+		<section id="m-main" class="span12">
 			<article class="m-widget">
 				<header class="header">
 					<h4 class="title">
@@ -106,7 +104,7 @@
 										code="wzList-info.wzList-info.input.fnum" text="数量" /></label>
 								<div class="controls">
 									<input id="wzList-info_fnum" type="text" name="fnum"
-										value="${model.fnum}" size="" class="number  required " minlength=""
+										value="${model.fnum}" size="" class="digits  required " minlength=""
 										maxlength="">
 								</div>
 							</div>
@@ -117,7 +115,7 @@
 										code="wzList-info.wzList-info.input.fprice" text="单价" /></label>
 								<div class="controls">
 									<input id="wzList-info_fprice" type="text" name="fprice"
-										value="${model.fprice}" size="" class="text " minlength=""
+										value="${model.fprice}" size="" class="number " minlength=""
 										maxlength="">
 								</div>
 							</div>

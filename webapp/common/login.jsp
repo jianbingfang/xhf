@@ -22,7 +22,7 @@
     <div class="navbar navbar-inverse">
       <div class="navbar-inner" style="float:none;">
         <div class="container" style="float:none; text-align:center; padding:16px 0;">
-          <a href="${scopePrefix}/"  ><img alt="科扬建设监理有限公司"  src="${scopePrefix}/s/xthena/img/kylogo3.png"> </a>
+          <a href="${scopePrefix}/"  ><img alt="河南新恒丰建设监理有限公司"  src="${scopePrefix}/s/xthena/img/logo2.png"> </a>
         </div>
       </div><!-- /navbar-inner -->
     </div>

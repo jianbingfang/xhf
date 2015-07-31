@@ -10,6 +10,7 @@ import com.xthena.ext.export.TableModel;
 import com.xthena.jl.domain.PjXmImg;
 import com.xthena.jl.manager.JlDeptManager;
 import com.xthena.jl.manager.PjXmImgManager;
+import com.xthena.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,20 +64,22 @@ public class PjXmImgController {
     public String save(@ModelAttribute PjXmImg pjXmImg, HttpServletRequest request,
                        @RequestParam Map<String, Object> parameterMap,
                        RedirectAttributes redirectAttributes) {
-        PjXmImg dest = null;
 
-        Long id = pjXmImg.getFid();
+        if (!FileUtil.isVideo(pjXmImg.getFname())) {
+            PjXmImg dest = null;
 
-        if (id != null) {
-            dest = pjXmImgManager.get(id);
-            beanMapper.copy(pjXmImg, dest);
-        } else {
-            dest = pjXmImg;
-            dest.setFxmid(jlDeptManager.getXmId(request));
+            Long id = pjXmImg.getFid();
+
+            if (id != null) {
+                dest = pjXmImgManager.get(id);
+                beanMapper.copy(pjXmImg, dest);
+            } else {
+                dest = pjXmImg;
+                dest.setFxmid(jlDeptManager.getXmId(request));
+            }
+
+            pjXmImgManager.save(dest);
         }
-
-        pjXmImgManager.save(dest);
-
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
 

@@ -1,40 +1,32 @@
-package  com.xthena.gcgl.web;
-
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import javax.servlet.http.HttpServletResponse;
+package com.xthena.gcgl.web;
 
 import com.xthena.api.user.UserConnector;
-
-
 import com.xthena.core.hibernate.PropertyFilter;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
-
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
-
 import com.xthena.gcgl.domain.PjKq;
+import com.xthena.gcgl.domain.PjXm;
 import com.xthena.gcgl.manager.PjKqManager;
 import com.xthena.jl.domain.JlKqFujian;
 import com.xthena.jl.manager.JlKqFujianManager;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.JsonResponseUtil;
 import com.xthena.util.PjXmMapUtil;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("gcgl")
@@ -47,22 +39,29 @@ public class PjKqController {
 
     @Autowired
     private JlKqFujianManager jlKqFujianManager;
-   
+
     @RequestMapping("pjKq-kq-input")
-    public String kqinput(Model model,@RequestParam(value = "id", required = false) Long id,@ModelAttribute Page page) {
-    	model.addAttribute("kqid", id);
-    	PjKq pjKq=pjKqManager.get(id);
-    	List<JlKqFujian> jlKqFujians=jlKqFujianManager.findBy("fkqid", id);
-    	model.addAttribute("fxmName", PjXmMapUtil.getXmMap().get(pjKq.getFxmid()).getFxmname());
-    	model.addAttribute("jlfujians",jlKqFujians);
-    	model.addAttribute("kq", pjKq);
-    	model.addAttribute("page", page);
+    public String kqinput(Model model, @RequestParam(value = "id", required = false) Long id, @ModelAttribute Page page) {
+        model.addAttribute("kqid", id);
+        PjKq pjKq = pjKqManager.get(id);
+        List<JlKqFujian> jlKqFujians = jlKqFujianManager.findBy("fkqid", id);
+
+        PjXm p = null;
+        if (pjKq != null) {
+            p = PjXmMapUtil.getXmMap().get(pjKq.getFxmid());
+        }
+        if (p != null) {
+            model.addAttribute("fxmName", p.getFxmname());
+        }
+        model.addAttribute("jlfujians", jlKqFujians);
+        model.addAttribute("kq", pjKq);
+        model.addAttribute("page", page);
         return "gcgl/pjKq-kq-input";
     }
-    
+
     @RequestMapping("pjKq-info-list")
     public String list(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap, Model model) {
+                       @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = pjKqManager.pagedQuery(page, propertyFilters);
@@ -76,7 +75,7 @@ public class PjKqController {
 
     @RequestMapping("pjKq-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,
-            Model model) {
+                        Model model) {
         if (id != null) {
             PjKq pjKq = pjKqManager.get(id);
             model.addAttribute("model", pjKq);
@@ -87,8 +86,8 @@ public class PjKqController {
 
     @RequestMapping("pjKq-info-save")
     public String save(@ModelAttribute PjKq pjKq,
-            @RequestParam Map<String, Object> parameterMap,
-            RedirectAttributes redirectAttributes) {
+                       @RequestParam Map<String, Object> parameterMap,
+                       RedirectAttributes redirectAttributes) {
         PjKq dest = null;
 
         Long id = pjKq.getFid();
@@ -107,11 +106,11 @@ public class PjKqController {
 
         return "redirect:/gcgl/pjKq-info-list.do";
     }
-    
+
     @RequestMapping("gcgl-kq-save-fstatus-ajax")
     public void saveFstausAjax(@ModelAttribute PjKq pjKq,
-            @RequestParam Map<String, Object> parameterMap,HttpServletResponse response,
-            RedirectAttributes redirectAttributes) {
+                               @RequestParam Map<String, Object> parameterMap, HttpServletResponse response,
+                               RedirectAttributes redirectAttributes) {
         PjKq dest = null;
 
         Long id = pjKq.getFid();
@@ -128,10 +127,10 @@ public class PjKqController {
         JsonResponseUtil.write(response, "ok");
     }
 
-    
+
     @RequestMapping("pjKq-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
-            RedirectAttributes redirectAttributes) {
+                         RedirectAttributes redirectAttributes) {
         List<PjKq> pjKqs = pjKqManager.findByIds(selectedItem);
 
         pjKqManager.removeAll(pjKqs);
@@ -144,8 +143,8 @@ public class PjKqController {
 
     @RequestMapping("pjKq-info-export")
     public void export(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap,
-            HttpServletResponse response) throws Exception {
+                       @RequestParam Map<String, Object> parameterMap,
+                       HttpServletResponse response) throws Exception {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = pjKqManager.pagedQuery(page, propertyFilters);

@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fsybm': '${param.filter_LIKES_fsybm}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'xzYzDj-infoGridForm',
@@ -57,7 +57,7 @@ $(function() {
         <div id="xzYzDj-infoSearch" class="content content-inner">
 
 		  <form name="xzYzDj-infoForm" method="post" action="xzYzDj-info-list.do" class="form-inline">
-		    <label for="xzYzDj-info_name"><spring:message code='xzYzDj-info.xzYzDj-info.list.search.name' text='名称'/>:</label>
+		    <label for="xzYzDj-info_name"><spring:message code='xzYzDj-info.xzYzDj-info.list.search.name' text='使用部门'/>:</label>
 		    <input type="text" id="xzYzDj-info_name" name="filter_LIKES_fsybm" value="${param.filter_LIKES_fsybm}">
 			<button class="btn btn-small a-search" onclick="document.xzYzDj-infoForm.submit()">查询</button>&nbsp;
 		  </form>

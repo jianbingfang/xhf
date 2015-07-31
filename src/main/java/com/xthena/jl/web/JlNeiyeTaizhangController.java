@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import com.xthena.jl.manager.JlDeptManager;
 import org.activiti.engine.impl.interceptor.SessionFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -42,17 +44,22 @@ public class JlNeiyeTaizhangController {
 	private JlFujianManager jlFujianManager;
 	@Autowired
 	private JlShizhongManager jlshizhongManager;
+	@Autowired
+	private JlDeptManager jlDeptManager;
 
 	@RequestMapping("jl-neiyetaizhang-info-list")
-	public String list(@ModelAttribute Page page,
+	public String list(@ModelAttribute Page page, HttpServletRequest request,
 			@RequestParam Map<String, Object> parameterMap, Model model) {
+
+		long fxmid = jlDeptManager.getXmId(request);
+
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
 
 		ArrayList<JlNeiyeTaizhang> tz = new ArrayList<JlNeiyeTaizhang>();
 		// 监理月报
 		List<JlShizhong> jlshizhongs = jlshizhongManager
-				.find("select sz from JlShizhong sz where sz.fszleix='TEMP_JL_JLYB' order by sz.fuploaddate desc");
+				.find("select sz from JlShizhong sz where sz.fszleix='TEMP_JL_JLYB' and sz.fxmid=? order by sz.fuploaddate desc", fxmid);
 		Date newdate =null ;
 		if (jlshizhongs.size() > 0) {
 			newdate= jlshizhongs.get(0).getFuploaddate();
@@ -62,7 +69,7 @@ public class JlNeiyeTaizhangController {
 		tz.add(yb);
 		// 例会纪要
 		List<JlShizhong> jlshizhongs1 = jlshizhongManager
-				.find("select sz from JlShizhong sz where sz.fszleix='TEMP_JL_LHJY' order by sz.fuploaddate desc");
+				.find("select sz from JlShizhong sz where sz.fszleix='TEMP_JL_LHJY' and sz.fxmid=? order by sz.fuploaddate desc", fxmid);
 		Date newdate1 = null;
 		if (jlshizhongs1.size() > 0) {
 			newdate1 = jlshizhongs1.get(0).getFuploaddate();
@@ -73,14 +80,14 @@ public class JlNeiyeTaizhangController {
 		// 专题会议
 		/*
 		 * List<JlShizhong> jlshizhongs2= jlshizhongManager.find(
-		 * "select sz from JlShizhong sz where sz.fszleix='TEMP_JL_TONGZHIDAN' order by sz.fuploaddate desc"
+		 * "select sz from JlShizhong sz where sz.fszleix='TEMP_JL_TONGZHIDAN' and sz.fxmid=? order by sz.fuploaddate desc", fxmid
 		 * ); Date newdate2 = jlshizhongs2.get(0).getFuploaddate();
 		 */
 		JlNeiyeTaizhang zthy = new JlNeiyeTaizhang("专题会议", 0, null, "");
 		tz.add(zthy);
 		// 监理通知单
 		List<JlShizhong> jlshizhongs3 = jlshizhongManager
-				.find("select sz from JlShizhong sz where sz.fszleix='TEMP_JL_TONGZHIDAN' order by sz.fuploaddate desc");
+				.find("select sz from JlShizhong sz where sz.fszleix='TEMP_JL_TONGZHIDAN' and sz.fxmid=? order by sz.fuploaddate desc", fxmid);
 		Date newdate3 = null;
 		if (jlshizhongs3.size() > 0) {
 			newdate3 = jlshizhongs3.get(0).getFuploaddate();
@@ -90,7 +97,7 @@ public class JlNeiyeTaizhangController {
 		tz.add(jltz);
 		// 监理联系单
 		List<JlShizhong> jlshizhongs4 = jlshizhongManager
-				.find("select sz from JlShizhong sz where sz.fszleix='TEMP_JL_JLLXD' order by sz.fuploaddate desc");
+				.find("select sz from JlShizhong sz where sz.fszleix='TEMP_JL_JLLXD' and sz.fxmid=? order by sz.fuploaddate desc", fxmid);
 		Date newdate4 = null;
 		if (jlshizhongs4.size() > 0) {
 			newdate4 = jlshizhongs4.get(0).getFuploaddate();
@@ -101,7 +108,7 @@ public class JlNeiyeTaizhangController {
 		// 安全文明检查
 		/*
 		 * List<JlShizhong> jlshizhongs5= jlshizhongManager.find(
-		 * "select sz from JlShizhong sz where sz.fszleix='TEMP_JL_LHJY' order by sz.fuploaddate desc"
+		 * "select sz from JlShizhong sz where sz.fszleix='TEMP_JL_LHJY' sz.fxmid=? order by sz.fuploaddate desc", fxmid
 		 * ); Date newdate2 = jlshizhongs5.get(0).getFuploaddate();
 		 */
 		JlNeiyeTaizhang aqwm = new JlNeiyeTaizhang("安全文明检查", 0, null, "");
@@ -109,7 +116,7 @@ public class JlNeiyeTaizhangController {
 		// 设计变更
 		/*
 		 * List<JlShizhong> jlshizhongs6= jlshizhongManager.find(
-		 * "select sz from JlShizhong sz where sz.fszleix='TEMP_JL_LHJY' order by sz.fuploaddate desc"
+		 * "select sz from JlShizhong sz where sz.fszleix='TEMP_JL_LHJY' sz.fxmid=? order by sz.fuploaddate desc", fxmid
 		 * ); Date newdate6 = jlshizhongs6.get(0).getFuploaddate();
 		 */
 		JlNeiyeTaizhang sjbg = new JlNeiyeTaizhang("设计变更", 0, null, "");
@@ -117,7 +124,7 @@ public class JlNeiyeTaizhangController {
 		// 工作总结
 		/*
 		 * List<JlShizhong> jlshizhongs7= jlshizhongManager.find(
-		 * "select sz from JlShizhong sz where sz.fszleix='TEMP_JL_LHJY' order by sz.fuploaddate desc"
+		 * "select sz from JlShizhong sz where sz.fszleix='TEMP_JL_LHJY' sz.fxmid=? order by sz.fuploaddate desc", fxmid
 		 * ); Date newdate2 = jlshizhongs7.get(0).getFuploaddate();
 		 */
 		JlNeiyeTaizhang gzzj = new JlNeiyeTaizhang("工作总结", 0, null, "");

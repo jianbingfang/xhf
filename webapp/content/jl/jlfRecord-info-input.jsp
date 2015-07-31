@@ -46,7 +46,7 @@
 					</header>
 					<div class="content content-inner">
 						<form id="jlfRecord-infoForm" method="post"
-							action="jlfRecord-info-save.do" class="form-horizontal">
+							action="jlfRecord-info-save.do?fxmid=${model.fxmid}" class="form-horizontal">
 							<c:if test="${model != null}">
 								<input id="jlfRecord-info_id" type="hidden" name="fid"
 									value="${model.fid}">

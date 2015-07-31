@@ -61,9 +61,7 @@ public class jlGuifantujiController {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = pjGuifantujiManager.pagedQuery(page, propertyFilters);
-
         model.addAttribute("page", page);
-
         return "jl/jl-danganhejibei-info-list";
     }
     

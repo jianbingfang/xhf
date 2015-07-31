@@ -57,8 +57,9 @@ public class HrRyZjController {
     @Autowired
     private HrZhengjianinfoManager hrZhengjianinfoManager;
 
+    @ResponseBody
     @RequestMapping("hrRyZj-info-list")
-    public String list(@ModelAttribute Page page, @RequestParam(value = "ryid", required = false) Long ryid,
+    public Object list(@ModelAttribute Page page, @RequestParam(value = "ryid", required = false) Long ryid,
                        @RequestParam Map<String, Object> parameterMap, Model model, HttpServletResponse response) {
 
 
@@ -71,10 +72,10 @@ public class HrRyZjController {
         }
 
         if (parameterMap.get("filter_GTD_fyxjs") != null && !parameterMap.get("filter_GTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs> '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LTD_fyxjs") != null && !parameterMap.get("filter_LTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs<'" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs<='" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LIKES_fname") != null && !parameterMap.get("filter_LIKES_fname").equals("")) {
             String inviocecode = parameterMap.get("filter_LIKES_fname").toString();
@@ -100,22 +101,7 @@ public class HrRyZjController {
         model.addAttribute("page", page);
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
-        return "hr/hrRyZj-info-list";
-
-		/*response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
-		PrintWriter printWriter = null;
-		try {
-			printWriter = response.getWriter();
-			JsonConfig config = new JsonConfig();  
-            config.registerJsonValueProcessor(Date.class, new DateJsonValueProcessor("yyyy-MM-dd"));
-			printWriter.write(JSONArray.fromObject(result,config).toString());
-			printWriter.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}*/
-
-        // return result;
+        return result;
     }
 
 
@@ -125,16 +111,21 @@ public class HrRyZjController {
 
         //	StringBuffer hql1 = new StringBuffer("select ry from CommRy ry,HrRyZj ys  where ry.fid=ys.userid");
         // 根据人员姓名查询
-        StringBuffer hql = new StringBuffer("select DISTINCT ys from CommRy ry,HrRyZj ys  where ry.fid=ys.userid");//
+        StringBuffer hql = new StringBuffer("select DISTINCT ry from CommRy ry,HrRyZj ys  where ry.fid=ys.userid");//
         if (parameterMap.get("filter_LIKES_name") != null && !parameterMap.get("filter_LIKES_name").equals("")) {
             hql.append(" and ry.fname like '%" + parameterMap.get("filter_LIKES_name") + "%' ");
         }
-
+        if (parameterMap.get("filter_GTD_fyxqks") != null && !parameterMap.get("filter_GTD_fyxqks").equals("")) {
+            hql.append(" and  ys.fyxqks>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxqks")) + "'");
+        }
+        if (parameterMap.get("filter_LTD_fyxqks") != null && !parameterMap.get("filter_LTD_fyxqks").equals("")) {
+            hql.append(" and  ys.fyxqks<='" + String.valueOf(parameterMap.get("filter_LTD_fyxqks")) + "'");
+        }
         if (parameterMap.get("filter_GTD_fyxjs") != null && !parameterMap.get("filter_GTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs> '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LTD_fyxjs") != null && !parameterMap.get("filter_LTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs<'" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs<='" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LIKES_fname") != null && !parameterMap.get("filter_LIKES_fname").equals("")) {
             String inviocecode = parameterMap.get("filter_LIKES_fname").toString();
@@ -156,12 +147,17 @@ public class HrRyZjController {
         if (parameterMap.get("filter_LIKES_name") != null && !parameterMap.get("filter_LIKES_name").equals("")) {
             hql.append(" and ry.fname like '%" + parameterMap.get("filter_LIKES_name") + "%' ");
         }
-
+        if (parameterMap.get("filter_GTD_fyxqks") != null && !parameterMap.get("filter_GTD_fyxqks").equals("")) {
+            hql.append(" and  ys.fyxqks>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxqks")) + "'");
+        }
+        if (parameterMap.get("filter_LTD_fyxqks") != null && !parameterMap.get("filter_LTD_fyxqks").equals("")) {
+            hql.append(" and  ys.fyxqks<='" + String.valueOf(parameterMap.get("filter_LTD_fyxqks")) + "'");
+        }
         if (parameterMap.get("filter_GTD_fyxjs") != null && !parameterMap.get("filter_GTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs> '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs>= '" + String.valueOf(parameterMap.get("filter_GTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LTD_fyxjs") != null && !parameterMap.get("filter_LTD_fyxjs").equals("")) {
-            hql.append(" and  ys.fyxjs<'" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
+            hql.append(" and  ys.fyxjs<='" + String.valueOf(parameterMap.get("filter_LTD_fyxjs")) + "'");
         }
         if (parameterMap.get("filter_LIKES_fname") != null && !parameterMap.get("filter_LIKES_fname").equals("")) {
             String inviocecode = parameterMap.get("filter_LIKES_fname").toString();

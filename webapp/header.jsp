@@ -72,7 +72,7 @@
             <span class="icon-bar"></span>
           </a>
          	 <a href="${scopePrefix}/" class="brand" style="float:none; padding-bottom:10px;"><img
-                     alt="科扬企业信息化管理系统"  src="${scopePrefix}/s/xthena/img/kylogo6.png"> </a>
+                     alt="河南新恒丰建设监理有限公司"  src="${scopePrefix}/s/xthena/img/logo.png"> </a>
           <div class="nav-collapse collapse navbar-responsive-collapse">
             <ul id="heardul" class="nav">
             

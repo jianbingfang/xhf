@@ -1,21 +1,21 @@
 package com.xthena.common.web;
 
+import com.xthena.jl.manager.JlDeptManager;
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.ConfUtil;
+import com.xthena.util.FileUtil;
 import com.xthena.util.JsonResponseUtil;
 import net.coobird.thumbnailator.Thumbnails;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +24,9 @@ import java.util.Random;
 @Controller
 @RequestMapping("comm")
 public class FileUtilController {
+
+    @Autowired
+    private JlDeptManager jlDeptManager;
 
     @RequestMapping("comm-uploadFile")
     public void uploadImage(@RequestParam("files[]") MultipartFile attachment,
@@ -50,12 +53,25 @@ public class FileUtilController {
             srcFileName = uploadFileName;
             fileType = "";
         }
-        String fileName = String.valueOf(System.currentTimeMillis());
-        Random rand = new Random();
-        int r = rand.nextInt(100);
-        fileName = fileName + "_" + String.format("%03d", r);
+
+        String fileName;
+        if (FileUtil.isVideo(uploadFileName)) {
+            long fxmid = jlDeptManager.getXmId(request);
+            fileName = "default_jl_video_" + fxmid;
+        } else {
+            fileName = String.valueOf(System.currentTimeMillis());
+            Random rand = new Random();
+            int r = rand.nextInt(100);
+            fileName = fileName + "_" + String.format("%03d", r);
+        }
+
         String simpleNewFilename = fileName + "." + fileType;
-        File file = new File(filePath +"/"+simpleNewFilename);
+
+        File file = new File(filePath + File.separator + simpleNewFilename);
+
+        if(file.exists()) {
+            file.delete();
+        }
 
         attachment.transferTo(file);
 
@@ -124,41 +140,10 @@ public class FileUtilController {
     }
 
     public boolean needCompress(File mf) throws IOException {
-        return (isImage(mf) && mf.length() > 1048576);
+        return (FileUtil.isImage(mf) && mf.length() > 1048576);
     }
 
-    public boolean isImage(File imageFile) {
-        if (!imageFile.exists()) {
-            return false;
-        }
-        Image img = null;
-        try {
-            img = ImageIO.read(imageFile);
-            if (img == null || img.getWidth(null) <= 0 || img.getHeight(null) <= 0) {
-                return false;
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        } finally {
-            img = null;
-        }
-    }
 
-    public boolean isImage(InputStream imageFile) {
-        Image img = null;
-        try {
-            img = ImageIO.read(imageFile);
-            if (img == null || img.getWidth(null) <= 0 || img.getHeight(null) <= 0) {
-                return false;
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        } finally {
-            img = null;
-        }
-    }
 }
 
 

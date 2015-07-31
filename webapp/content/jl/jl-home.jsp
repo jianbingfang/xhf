@@ -51,6 +51,7 @@
             });
         }
     }
+
 </script>
 <body>
 <%@include file="/header/bpm-workspace.jsp" %>
@@ -83,7 +84,7 @@
                         <button type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
                         </button>
-                        <h4 class="modal-title">添加图片描述</h4>
+                        <h4 class="modal-title">添加描述</h4>
                     </div>
                     <div class="container">
                         <form id="pjXmImg-infoForm" method="post"
@@ -93,7 +94,7 @@
 
                             <div class="control-group">
                                 <label class="control-label" for="pjXmImg-info_fdescribe"><spring:message
-                                        code="pjXmImg-info.pjXmImg-info.input.fdescribe" text="图片描述"/></label>
+                                        code="pjXmImg-info.pjXmImg-info.input.fdescribe" text="描述"/></label>
 
                                 <div class="controls">
 										<textarea id="pjXmImg-info_fdescribe" name="fdescribe"
@@ -221,13 +222,16 @@
             <div class="span6">
                 <article class="m-widget">
                     <header class="header">
-                        <h4 class="title">项目实况 (效果图)</h4>
+                        <h4 class="title">项目实况</h4>
+                        <input type="button" class="btn btn-primary btn-xs" value="上传" onclick="showUpload()"
+                               style="float: right;margin: -2px 0 0 0; padding: 1px 5px;font-size: 10px;">
                     </header>
                     <div id="video-area">
-                        <video width="100%" height="100%" controls>
+                        <video width="100%" height="100%" controls autoplay>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.mp4" type="video/mp4">--%>
 
-                            <source src="/xhf/s/upload/soho.mp4" type="video/mp4">
+                            <source src="<%=application.getContextPath()%>/s/upload/default_jl_video_<%=session.getAttribute("current_xm_id")%>.mp4"
+                                    type="video/mp4">
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.ogg" type="video/ogg">--%>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.webm" type="video/webm">--%>
                             <%--<object data="http://www.w3cschool.cc/try/demo_source/movie.mp4" width="100%" height="100%">--%>
@@ -287,5 +291,6 @@
     </section>
     <!-- end of main -->
 </div>
+
 </body>
 </html>

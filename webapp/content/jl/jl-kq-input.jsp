@@ -128,7 +128,7 @@ function initKqTable(){
 		async:false,
 		success: function(data) {
 			ryMap=data.ryMap;
-			for(var i in data.fkqry){
+			for(var i = 0; i < data.fkqry.length; i++){
 				$('#kqtb').append(
 						'<tr id="'+data.fkqry[i].fid+'" banci="1">'
 						+'<td rowspan="2" style="height:20px; width:60px"><p>'+data.ryMap["ry"+data.fkqry[i].fryid]+'</p></td>'
@@ -412,8 +412,8 @@ function saveFmemo(){
     <thead>
       <tr>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
-        	<th class="sorting" name="fuploaddate">上传时间</th>
-        	<th class="sorting" name="fkqname">考勤表名称</th>
+        	<th class="" name="fuploaddate">上传时间</th>
+        	<th class="" name="fkqname">考勤表名称</th>
         <th width="80">&nbsp;</th>
       </tr>
     </thead>

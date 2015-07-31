@@ -7,6 +7,7 @@ import com.xthena.ext.export.Exportor;
 import com.xthena.hr.manager.HrGwbmManager;
 import com.xthena.sckf.domain.JyXm;
 import com.xthena.sckf.manager.CommHtManager;
+import com.xthena.sckf.manager.JyXmFbManager;
 import com.xthena.sckf.manager.JyXmManager;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.ConstValue;
@@ -45,6 +46,9 @@ public class SckfHomeController {
 
     @Autowired
     private CommHtManager commHtManager;
+
+    @Autowired
+    private JyXmFbManager jyXmFbManager;
 
     @RequestMapping("sckf-home")
     public String home(Model model) {
@@ -208,13 +212,26 @@ public class SckfHomeController {
     @RequestMapping("sckf-fbqk-data")
     public Object getDataFbqk(@RequestParam int year) {
 
-        String hql = "select (case xm.ffbstatus when '是' then '废标' else '好标' end) as nm, count(case xm.ffbstatus when '是' then '废标' else '好标' end) as cnt " +
-                "from JyXm xm " +
-                "where YEAR(xm.fkbdate)='" + year + "'" +
-                "group by case xm.ffbstatus when '是' then '废标' else '好标' end " +
+//        List<List> data = new ArrayList<>();
+
+        String sql = "(select (case xm.fzbstatus when '是' then '中标' else '在投' end) as nm, count(case xm.fzbstatus when '是' then '中标' else '在投' end) as cnt " +
+                "from t_jy_xm xm " +
+                "where YEAR(xm.fkbdate)=" + year + " " +
+                "group by case xm.fzbstatus when '是' then '中标' else '在投' end) " +
+                "union " +
+                "(select '废标', count(*) as cnt from t_jy_fbxm1 fb " +
+                "where YEAR(fb.Kaibiao_data)=" + year + ") " +
                 "order by nm";
 
-        List data = jyXmManager.find(hql);
+        List data = jyXmManager.getSessionFactory().getCurrentSession().createSQLQuery(sql).list();
+
+        /*hql = "select '废标', count(fb) as cnt " +
+                "from JyXmFb fb " +
+                "where YEAR(fb.kaibiaoData)='" + year + "'";
+        List fb = jyXmFbManager.find(hql);
+
+        data.add(zb);
+        data.add(fb);*/
 
         return data;
     }

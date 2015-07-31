@@ -170,7 +170,7 @@
             <li><a href="${scopePrefix}/jl/jl-pjKq-info-list.do"><i class="icon-info-sign"></i>人员考勤</a></li>
             <li><a href="${scopePrefix}/jl/jl-pjYdkh-info-list.do"><i class="icon-heart"></i>人员考核</a></li>
           <%--<li><a href="${scopePrefix}/jl/jlRysq-info-list.do"><i class="icon-pencil"></i>申请增加人员</a></li>--%>
-           <li><a href="${scopePrefix}/jl/jl-pjRyRecord-info-list.do"><i class="icon-share-alt"></i>人员调配记录</a></li>
+           <%--<li><a href="${scopePrefix}/jl/jl-pjRyRecord-info-list.do"><i class="icon-share-alt"></i>人员调配记录</a></li>--%>
            <li><a href="${scopePrefix}/jl/jl-hrLz-info-list.do"><i class="icon-arrow-right"></i>人员离职</a></li>
             </ul>
           </div>

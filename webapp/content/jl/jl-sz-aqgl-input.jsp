@@ -12,10 +12,7 @@
        <script type="text/javascript" src="${scopePrefix}/s/xthena/js/ajaxfileupload.js"></script>
     <link type="text/css" rel="stylesheet" href="${scopePrefix}/s/xthena/uploadpicker/uploadpicker.css">
     <script type="text/javascript">
-    
-    
 var formid="";
-    
 $(function() {
     $("#jlFujian-infoForm").validate({
         submitHandler: function(form) {
@@ -26,7 +23,6 @@ $(function() {
         errorClass: 'validate-error'
     });
     $('#m-main .active a').css('font-size','16px');
-    
     $('#myTab a').click(function (e) {
     	  e.preventDefault();
     	  $(this).tab('show');
@@ -105,7 +101,5 @@ function tabHide(){
 			 </div>
       </section>
 	</div>
-
   </body>
-
 </html>

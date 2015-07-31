@@ -7,7 +7,7 @@
 
 <head>
     <%@include file="/common/meta.jsp" %>
-    <title>科扬企业信息化管理系统</title>
+    <title>河南新恒丰建设监理有限公司</title>
     <%@include file="/common/s.jsp" %>
 
     <script type="text/javascript">
@@ -159,15 +159,33 @@
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
+                    <script>
+                        function deleteTask(taskId) {
+                            if (confirm('确认删除该任务？')) {
+                                $.post('${scopePrefix}/bpm/remove-task.do?taskId=' + taskId,
+                                        function (status) {
+                                            if (status === 1) {
+                                                $('#task-' + taskId).remove();
+                                            } else {
+                                                // alert('删除失败！');
+                                                $('#task-' + taskId).remove();
+                                            }
+                                        }
+                                );
+                            }
+                        }
+                    </script>
                     <tbody>
                     <c:forEach items="${personalTasks}" var="item">
-                        <tr>
+                        <tr id="task-${item.id}">
                             <td>${item.id}</td>
                             <td>${item.name}</td>
                             <td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                             <td>
                                 <a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.id}"
                                    class="btn btn-small btn-success">处理</a>
+                                <a href="#" onclick="deleteTask(${item.id})"
+                                   class="btn btn-small btn-danger">删除</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -195,7 +213,7 @@
                     </tr>
                     </thead>
                     <tbody ng-init="queryRemindList()">
-                    <tr ng-repeat="item in remindList" id="remind{{item.fid}}">
+                    <tr ng-repeat="item in remindList | orderBy: '-fremindtime'" id="remind{{item.fid}}">
                         <td><a href="{{item.fremindurl}}">{{item.fname}}</a></td>
                         <%-- <td>${item.fremindcontent}</td> --%>
                         <td>{{item.fremindtime | date: 'yyyy-MM-dd'}}</td>
@@ -203,9 +221,9 @@
                             <a href="javascript:void(0)" ng-click="ignore(item.fid)"
                                class="btn btn-small btn-success">忽略</a>&nbsp;
                             <a href="javascript:void(0)" ng-click="delayShow(item.fid)"
-                               class="btn btn-small btn-success">延迟提醒</a>&nbsp;
+                               class="btn btn-small btn-warning">延迟提醒</a>&nbsp;
                             <a href="javascript:void(0)" ng-click="done(item.fid)"
-                               class="btn btn-small btn-success">不再提醒</a>
+                               class="btn btn-small btn-danger">不再提醒</a>
                         </td>
                     </tr>
                     </tbody>
@@ -236,15 +254,32 @@
                     </tr>
                     </thead>
 
+                    <script>
+                        function endProcessInstance(processInstanceId) {
+                            if (confirm('确认终止该流程？')) {
+                                $.post('${scopePrefix}/bpm/workspace-endProcessInstance.do?processInstanceId=' + processInstanceId,
+                                        function (status) {
+                                            if (status === 1) {
+                                                $('#process-' + processInstanceId).remove();
+                                            } else {
+                                                alert('删除失败！');
+                                            }
+                                        }
+                                );
+                            }
+                        }
+                    </script>
                     <tbody>
                     <c:forEach items="${historicProcessInstances}" var="item">
-                        <tr>
+                        <tr id="process-${item.id}">
                             <td>${item.id}</td>
                             <td>${processKeyName[item.processDefinitionId]}</td>
                             <td><fmt:formatDate value="${item.startTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                             <td>
                                 <a href="${scopePrefix}/bpm/workspace-viewHistory.do?processInstanceId=${item.id}"
                                    class="btn btn-small btn-success">历史</a>
+                                <a href="#" onclick="endProcessInstance(${item.id})"
+                                   class="btn btn-small btn-danger">终止</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -313,7 +348,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${bpmProcesses}" var="item">
+                    <tr>
+                        <td>请假流程</td>
+                        <td>
+                            <a href="${scopePrefix}/workflow/Qingjia-form-input.do"
+                            class="btn btn-small btn-success">发起</a>
+                        </td>
+                    </tr>
+
+                    <%--<c:forEach items="${bpmProcesses}" var="item">
                         <tr>
                             <td>${item.name}</td>
                             <td>
@@ -321,7 +364,7 @@
                                    class="btn btn-small btn-success">发起</a>
                             </td>
                         </tr>
-                    </c:forEach>
+                    </c:forEach>--%>
                     </tbody>
                 </table>
             </div>

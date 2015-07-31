@@ -35,7 +35,7 @@ function drawChartCzqk(data) {
             color: colors[0],
             drilldown: {
                 name: categories[0],
-                categories: ['注册监理工程师', '注册造价工程师', '注册设计师', '一级建造师'],
+                categories: ['注册监理工程师', '一级建造师', '注册造价工程师', '注册设计师'],
                 data: mdata[0],
                 color: colors[0]
             }
