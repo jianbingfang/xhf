@@ -72,11 +72,12 @@
             </header>
             <div id="wzList-infoSearch" class="content content-inner">
                 <form name="wzList-infoForm" method="post"
-                      action="wzList-info-list.do" class="form-inline">
+                      action="wzList-dh-info-list.do" class="form-inline">
                     <label for="wzList-info_name"><spring:message
                             code='wzList-info.wzList-info.list.search.name' text='名称'/>:</label>
                     <input type="text" id="wzList-info_name"
                            name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">
+                    <input type="text" style="display: none;" name="ftype" value="${ftype}">
                     <button class="btn btn-small a-search"
                             onclick="document.wzList-infoForm.submit()">查询
                     </button>
@@ -136,7 +137,7 @@
                                 <td><input type="checkbox"
                                            class="selectedItem a-check" name="selectedItem"
                                            value="${item.fid}"></td>
-                                <%--<td>${item.ftype}</td>--%>
+                                    <%--<td>${item.ftype}</td>--%>
                                 <td><a
                                         href="wzList-dz-info-input.do?id=${item.fid}"
                                         class="a-update"><spring:message

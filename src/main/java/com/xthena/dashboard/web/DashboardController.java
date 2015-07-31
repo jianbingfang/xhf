@@ -49,10 +49,10 @@ public class DashboardController {
     public String list(Model model) {
         String userId = SpringSecurityUtils.getCurrentUserId();
         List<Task> personalTasks = processEngine.getTaskService()
-                .createTaskQuery().taskAssignee(userId).list();
+                .createTaskQuery().taskAssignee(userId).orderByTaskCreateTime().desc().list();
         List<HistoricProcessInstance> historicProcessInstances = processEngine
                 .getHistoryService().createHistoricProcessInstanceQuery()
-                .startedBy(userId).unfinished().list();
+                .startedBy(userId).orderByProcessInstanceStartTime().desc().unfinished().list();
         List<BpmProcess> bpmProcesses = bpmProcessManager.getAll();
         HashMap<String, String> processKeyName = new HashMap<String, String>();
         for (BpmProcess bpmProcess : bpmProcesses) {
@@ -73,7 +73,8 @@ public class DashboardController {
         String hql = "select commRemind from CommRemind commRemind" +
                 " where commRemind.fremindtime < ?" +
                 " and commRemind.fremindry = ?" +
-                " and (commRemind.fstatus='未提醒' or commRemind.fstatus='已提醒' or commRemind.fstatus='已忽略' or commRemind.fstatus='已延迟')";
+                " and (commRemind.fstatus='未提醒' or commRemind.fstatus='已提醒' or commRemind.fstatus='已忽略' or commRemind.fstatus='已延迟')" +
+                " order by commRemind.fremindtime desc";
         model.addAttribute("remindList", commRemindManager.find(hql, new Date(), Long.valueOf(userId)));
 
         return "dashboard/dashboard";

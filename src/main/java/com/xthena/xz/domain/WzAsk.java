@@ -27,7 +27,7 @@ public class WzAsk implements java.io.Serializable {
 	private String fwplx;
 	private String faskyt;
 	private Date faskdate;
-	private Long faskry;
+	private String faskry;
 	private Long fspr;
 	private String fspyj;
 	private String fjfqk;
@@ -45,7 +45,7 @@ public class WzAsk implements java.io.Serializable {
 
 	/** full constructor */
 	public WzAsk(String faskno, String faskbm, String faskxm, String fwplx,
-			String faskyt, Date faskdate, Long faskry, Long fspr, String fspyj,
+			String faskyt, Date faskdate, String faskry, Long fspr, String fspyj,
 			String fjfqk, String fjnje, String fmemo, String fmemo1,
 			String fmemo2, String fstatus) {
 		this.faskno = faskno;
@@ -132,12 +132,12 @@ public class WzAsk implements java.io.Serializable {
 		this.faskdate = faskdate;
 	}
 
-	@Column(name = "faskry")
-	public Long getFaskry() {
+	@Column(name = "faskry", length = 64)
+	public String getFaskry() {
 		return this.faskry;
 	}
 
-	public void setFaskry(Long faskry) {
+	public void setFaskry(String faskry) {
 		this.faskry = faskry;
 	}
 

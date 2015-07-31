@@ -104,7 +104,7 @@
 										code="wzList-info.wzList-info.input.fnum" text="数量" /></label>
 								<div class="controls">
 									<input id="wzList-info_fnum" type="text" name="fnum"
-										value="${model.fnum}" size="" class="number  required " minlength=""
+										value="${model.fnum}" size="" class="digits  required " minlength=""
 										maxlength="">
 								</div>
 							</div>
@@ -115,7 +115,7 @@
 										code="wzList-info.wzList-info.input.fprice" text="单价" /></label>
 								<div class="controls">
 									<input id="wzList-info_fprice" type="text" name="fprice"
-										value="${model.fprice}" size="" class="text " minlength=""
+										value="${model.fprice}" size="" class="number " minlength=""
 										maxlength="">
 								</div>
 							</div>
