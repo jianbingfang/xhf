@@ -36,6 +36,8 @@ public class DashboardController {
     private BpmProcessManager bpmProcessManager;
     private CmsArticleManager cmsArticleManager;
 
+    @Autowired
+    private JyXmManager jyXmManager;
 
     @Autowired
     private JyXmManager jyXmManager;
@@ -92,6 +94,8 @@ public class DashboardController {
 
         return "comm/comm-news-info";
     }
+
+
 
     @ResponseBody
     @RequestMapping("get-remind-list")

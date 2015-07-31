@@ -66,21 +66,17 @@ public class XzCommHuiyiController {
             @RequestParam Map<String, Object> parameterMap,
             RedirectAttributes redirectAttributes) {
         XzCommHuiyi dest = null;
-
         Long id = xzCommHuiyi.getFid();
-
         if (id != null) {
             dest = xzCommHuiyiManager.get(id);
             beanMapper.copy(xzCommHuiyi, dest);
         } else {
             dest = xzCommHuiyi;
         }
-
         xzCommHuiyiManager.save(dest);
 
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
-
         return "redirect:/xz/xzCommHuiyi-info-list.do";
     }
 

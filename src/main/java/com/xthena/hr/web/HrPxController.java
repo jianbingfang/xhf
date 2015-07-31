@@ -48,7 +48,7 @@ public class HrPxController {
 
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-       page = hrPxManager.pagedQuery(page, propertyFilters);
+        page = hrPxManager.pagedQuery(page, propertyFilters);
        model.addAttribute("page", page);
        model.addAttribute("deptList",orgDepartmentManager.getAll());
 

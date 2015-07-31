@@ -44,7 +44,7 @@ public class JyXm  implements java.io.Serializable {
      private String ffuzeren;
      private Date fbmksdate;
      private Date fbmjzdate;
-     private String fbaomingren;
+     private Long fbaomingren;
      private Date fbeiandate;
      private Long fzgyszbr;
      private Date fzgysdate;
@@ -135,7 +135,7 @@ public class JyXm  implements java.io.Serializable {
     }
     
     /** full constructor */
-    public JyXm(String ftype, String fstate, String fname, String fxmgk, String fprovince, String fcity, String fscale, Double ftze, String fjsdw, String fzbdldw, Long fweituoren, String ffuzeren, Date fbmksdate, Date fbmjzdate, String fbaomingren, Date fbeiandate, Long fzgyszbr, Date fzgysdate, String fzgysstatus, Long fbeianry, String fbeianstatus, String fbeianname, String fbeianurl, String fisdaban, String ftbwjbh, Long fbszzren, Integer fzbfs, Integer ffbfs, Integer fdzbfs, String ftbts, String fispass, Long fzbgoumairen, Date fzbgmdate, String fzbwjbh, Date fkbdate, String fzzyq, Long fbzjje, Date fbzjjnjzdate, Integer fzbds, String fstbd, Integer fzjdc, Integer ffrdc, Double fzbkzj, String fothers, String fzbdanwei, Double fzbmoney, String fwzbsy, Date fzblqdate, Date fgmzbwjdate, Long fpsren, String fzjtel, Long fzj, String fmemo, String fmemo1, String fmemo2, String fmemo3, String fmemo4, String fbmmemo, Long fbmzhubanren, Long fbmzlzbr, String fbmry, Date fbmdate, String fbmzlname, String fbmzlurl, String fzbggurl, String fmemo5, String fzhaobtype, Long fshenpiren, Date fshenpidate, String fshenpimemo, String fshenpiresult, String ftoubiaostatus, String fzbtzslqr, Date fzbtzsdate, String fjieshouren, String fkbaddress, String ftbzjsfdc, String ffuzerentel, String fbzjstatus, String fdzbtype, String ftbwxh, String ftbgzs, String ftbjwzm, String ftbwxhzb, String ftbgzszb, String ftbjwzmzb, String ftbbab, String ffbtj, String ftbtjf, String fzbstatus, String fshuxing, String ffbstatus, String ffbreason) {
+    public JyXm(String ftype, String fstate, String fname, String fxmgk, String fprovince, String fcity, String fscale, Double ftze, String fjsdw, String fzbdldw, Long fweituoren, String ffuzeren, Date fbmksdate, Date fbmjzdate, Long fbaomingren, Date fbeiandate, Long fzgyszbr, Date fzgysdate, String fzgysstatus, Long fbeianry, String fbeianstatus, String fbeianname, String fbeianurl, String fisdaban, String ftbwjbh, Long fbszzren, Integer fzbfs, Integer ffbfs, Integer fdzbfs, String ftbts, String fispass, Long fzbgoumairen, Date fzbgmdate, String fzbwjbh, Date fkbdate, String fzzyq, Long fbzjje, Date fbzjjnjzdate, Integer fzbds, String fstbd, Integer fzjdc, Integer ffrdc, Double fzbkzj, String fothers, String fzbdanwei, Double fzbmoney, String fwzbsy, Date fzblqdate, Date fgmzbwjdate, Long fpsren, String fzjtel, Long fzj, String fmemo, String fmemo1, String fmemo2, String fmemo3, String fmemo4, String fbmmemo, Long fbmzhubanren, Long fbmzlzbr, String fbmry, Date fbmdate, String fbmzlname, String fbmzlurl, String fzbggurl, String fmemo5, String fzhaobtype, Long fshenpiren, Date fshenpidate, String fshenpimemo, String fshenpiresult, String ftoubiaostatus, String fzbtzslqr, Date fzbtzsdate, String fjieshouren, String fkbaddress, String ftbzjsfdc, String ffuzerentel, String fbzjstatus, String fdzbtype, String ftbwxh, String ftbgzs, String ftbjwzm, String ftbwxhzb, String ftbgzszb, String ftbjwzmzb, String ftbbab, String ffbtj, String ftbtjf, String fzbstatus, String fshuxing, String ffbstatus, String ffbreason) {
         this.ftype = ftype;
         this.fstate = fstate;
         this.fname = fname;
@@ -384,11 +384,11 @@ public class JyXm  implements java.io.Serializable {
     
     @Column(name="fbaomingren")
 
-    public String getFbaomingren() {
+    public Long getFbaomingren() {
         return this.fbaomingren;
     }
     
-    public void setFbaomingren(String fbaomingren) {
+    public void setFbaomingren(Long fbaomingren) {
         this.fbaomingren = fbaomingren;
     }
     @Temporal(TemporalType.DATE)

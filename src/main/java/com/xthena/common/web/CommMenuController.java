@@ -10,12 +10,10 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
-import com.xthena.sckf.manager.JyXmManager;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,9 +43,6 @@ public class CommMenuController {
     private UserConnector userConnector;
     private MessageHelper messageHelper;
     
-    @Autowired
-    private JyXmManager jyXmManager;
-
     @RequestMapping("demo-menu-ajax")
     public void demoMenu(@RequestParam(value = "pid", required = false) Long pid,
             @RequestParam Map<String, Object> parameterMap, Model model,HttpServletResponse response){

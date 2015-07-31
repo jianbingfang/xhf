@@ -187,7 +187,6 @@ public class XzZbtzs implements Zj {
 	public String getFmemo1() {
 		return fmemo1;
 	}
-
 	public void setFmemo1(String fmemo1) {
 		this.fmemo1 = fmemo1;
 	}
