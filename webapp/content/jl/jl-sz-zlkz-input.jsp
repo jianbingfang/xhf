@@ -81,7 +81,7 @@ function tabHide(){
 		         <li role="presentation" ><a href="#tab18" divStyle="jgysh" sz-type="TEMP_JL_JGYS">竣工预验收</a></li>
 		         <li role="presentation" ><a href="#tab19" divStyle="singleUpload" sz-type="TEMP_JL_JGYSBG">竣工验收报告</a></li>
 		         <li role="presentation" ><a href="#tab20" divStyle="singleJgyszl" sz-type="TEMP_JL_JGYSZL">竣工验收资料</a></li>
-		         <li role="presentation" ><a href="#tab21" sz-type="TEMP_JL_BXQ">保修期</a></li>
+		         <%--<li role="presentation" ><a href="#tab21" sz-type="TEMP_JL_BXQ">保修期</a></li>--%>
 			</ul>
 			
 			<div class="tab-content">

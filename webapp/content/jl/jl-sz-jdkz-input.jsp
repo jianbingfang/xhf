@@ -63,7 +63,7 @@ function tabHide(){
 	  <!-- start of main -->
       <section id="m-main" class="span10">
 			<ul id="myTab" class="nav nav-tabs" role="tablist">
-			  <li role="presentation"  class="active" ><a href="#tab1" >总进度计划及分析</a></li>
+			  <li role="presentation"  class="active" ><a href="#tab1" >总进度计划</a></li>
 			  <li role="presentation" class=""><a href="#tab2" >月工作计划及分析</a></li>
 			  <li role="presentation" class=""><a href="#tab3" >周工作计划及分析</a></li>
 			  <!-- <li role="presentation" class=""><a href="#tab4"  >进度索赔</a></li> -->
