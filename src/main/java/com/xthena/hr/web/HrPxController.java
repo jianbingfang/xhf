@@ -43,9 +43,12 @@ public class HrPxController {
     @RequestMapping("hrPx-info-list")
     public String list(@ModelAttribute Page page,
             @RequestParam Map<String, Object> parameterMap, Model model) {
+
+        parameterMap.put("filter_EQI_fnwb", "0");
+
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-       page = hrPxManager.pagedQuery(page, propertyFilters);
+        page = hrPxManager.pagedQuery(page, propertyFilters);
        model.addAttribute("page", page);
        model.addAttribute("deptList",orgDepartmentManager.getAll());
 
@@ -83,6 +86,8 @@ public class HrPxController {
             dest = hrPx;
         }
 
+        // 内部培训 设置成 0
+        dest.setFnwb(0);
         hrPxManager.save(dest);
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
@@ -122,6 +127,7 @@ public class HrPxController {
     @RequestMapping("hrPx-wb-info-list")
     public String list2(@ModelAttribute Page page,
             @RequestParam Map<String, Object> parameterMap, Model model) {
+        parameterMap.put("filter_EQI_fnwb", "1");
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = hrPxManager.pagedQuery(page, propertyFilters);
@@ -156,7 +162,8 @@ public class HrPxController {
         } else {
             dest = hrPx;
         }
-
+        // 外部培训 设置成 1
+        dest.setFnwb(1);
         hrPxManager.save(dest);
 
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",

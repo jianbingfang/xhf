@@ -4,7 +4,11 @@ import com.xthena.bpm.persistence.domain.BpmProcess;
 import com.xthena.bpm.persistence.manager.BpmProcessManager;
 import com.xthena.cms.manager.CmsArticleManager;
 import com.xthena.common.manager.CommRemindManager;
+import com.xthena.core.hibernate.PropertyFilter;
+import com.xthena.core.page.Page;
+import com.xthena.sckf.manager.JyXmManager;
 import com.xthena.security.util.SpringSecurityUtils;
+import com.xthena.util.JsonResponseUtil;
 import com.xthena.xz.domain.XzCommNews;
 import com.xthena.xz.manager.XzCommNewsManager;
 import org.activiti.engine.ProcessEngine;
@@ -13,14 +17,17 @@ import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("dashboard")
@@ -29,6 +36,8 @@ public class DashboardController {
     private BpmProcessManager bpmProcessManager;
     private CmsArticleManager cmsArticleManager;
 
+    @Autowired
+    private JyXmManager jyXmManager;
 
     @Autowired
     private CommRemindManager commRemindManager;
@@ -81,6 +90,8 @@ public class DashboardController {
 
         return "comm/comm-news-info";
     }
+
+
 
     @ResponseBody
     @RequestMapping("get-remind-list")

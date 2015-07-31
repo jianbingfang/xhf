@@ -41,6 +41,7 @@ public class XzZbtzs implements Zj {
 	private String ffzwz;
 	private String fjdjg;
 	private String fmemo1;
+	private String fzbfl;
 
 	// Constructors
 
@@ -49,11 +50,12 @@ public class XzZbtzs implements Zj {
 	}
 
 	/** minimal constructor */
-	public XzZbtzs(String fxmname, String ffzdw, Double fzbje, Date ffzrq) {
+	public XzZbtzs(String fxmname, String ffzdw, Double fzbje, Date ffzrq, String fzbfl) {
 		this.fxmname = fxmname;
 		this.ffzdw = ffzdw;
 		this.fzbje = fzbje;
 		this.ffzrq = ffzrq;
+		this.fzbfl=fzbfl;
 	}
 
 	/**
@@ -63,7 +65,7 @@ public class XzZbtzs implements Zj {
 	 */
 	public XzZbtzs(String fcode, String fxmname, String ffzdw, Double fzbje,
 			Date ffzrq, String fmemo, String fzkstate, Long fzongjian,
-			String ffzwz, String fjdjg) {
+			String ffzwz, String fjdjg, String fmemo1, String fzbfl) {
 		this.fxmname = fxmname;
 		this.fcode = fcode;
 		this.ffzdw = ffzdw;
@@ -74,6 +76,8 @@ public class XzZbtzs implements Zj {
 		this.fzongjian = fzongjian;
 		this.ffzwz = ffzwz;
 		this.fjdjg = fjdjg;
+		this.fmemo1 =fmemo1;
+		this.fzbfl=fzbfl;
 	}
 
 	// Property accessors
@@ -179,12 +183,20 @@ public class XzZbtzs implements Zj {
 		this.fjdjg = fjdjg;
 	}
 
+	@Column(name = "fmemo1", length = 100)
 	public String getFmemo1() {
 		return fmemo1;
 	}
-
 	public void setFmemo1(String fmemo1) {
 		this.fmemo1 = fmemo1;
+	}
+
+	@Column(name = "fzbfl", length = 100)
+	public String getFzbfl() {
+		return fzbfl;
+	}
+	public void setFzbfl(String fzbfl) {
+		this.fzbfl = fzbfl;
 	}
 
 }

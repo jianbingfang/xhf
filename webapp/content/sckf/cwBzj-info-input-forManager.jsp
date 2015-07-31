@@ -39,9 +39,9 @@
 									},
 									errorClass : 'validate-error'
 								});
-				createxmPicker({
-					modalId : 'xmPicker',
-					url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do'
+				createjyxmPicker({
+					modalId : 'jyxmPicker',
+					url : '${scopePrefix}/sysconf/jyXm-toubiao-simple-list.do'
 				});
 				createjyxmPicker({
 					modalId : 'ryPicker',

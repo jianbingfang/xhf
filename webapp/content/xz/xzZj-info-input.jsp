@@ -190,8 +190,8 @@
 								<label class="control-label" for="xzZj-info_fnum"><spring:message
 										code="xzZj-info.xzZj-info.input.fnum" text="份数" /></label>
 								<div class="controls">
-									<input id="xzZj-info_fnum" type="text" name="fnum"
-										value="${model.fnum}" size="" class="text   required"
+									<input id="xzZj-info_fnum" type="number" name="fnum"
+										value="${model.fnum}" size="" class="number"
 										minlength="" maxlength="">
 								</div>
 							</div>

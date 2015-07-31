@@ -46,8 +46,8 @@ $(function() {
     table.configPageSize('.m-page-size');
 
     createjyxmPicker({
-		modalId : 'xmPicker',
-		url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
+		modalId : 'jyxmPicker',
+		url : '${scopePrefix}/sysconf/jyXm-toubiao-simple-list.do',
 		redUrl : '${scopePrefix}/sckf/jyXmFb-info-input.do'
 	});
 });

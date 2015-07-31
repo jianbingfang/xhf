@@ -55,7 +55,8 @@ $(function() {
 						<div class="span5">
 					    <label class="control-label" for="hrypRecord-info_fidno"><spring:message code="hrypRecord-info.hrypRecord-info.input.fidno" text="身份证号"/></label>
 						<div class="controls">
-							  	 <input id="hrypRecord-info_fidno" type="text" name="fidno" value="${model.fidno}" size="" class="text " minlength="" maxlength="">	
+							  	 <input id="hrypRecord-info_fidno" type="text" name="fidno" value="${model.fidno}"
+										size="" class="text " minlength="18" maxlength="18">
 					    </div>
 					  </div>
 	  

@@ -121,10 +121,11 @@ $(function() {
         	<th class="sorting" name="fdept">部门</th>
         	<th class="sorting" name="fstatus">状态</th>
         	<th class="sorting" name="fstartdate">开始时间</th>
-        	<th class="sorting" name="fmemo">备注</th>
+
         	<th class="sorting" name="fhours">小时数</th>
         	<th class="sorting" name="fjiabancontent">加班工作内容</th>
         	<th class="sorting" name="fresult">加班完成情况</th>
+		  <th class="sorting" name="fmemo">备注</th>
         <th width="80">操作&nbsp;</th>
       </tr>
     </thead>
@@ -137,10 +138,11 @@ $(function() {
       	 	 <td>${deptMap[item.fdept]}</td>>
       	 	 <td>${item.fstatus}</td>
       	 	 <td>${item.fstartdate}</td>
-      	 	 <td>${item.fmemo}</td>
+
       	 	 <td>${item.fhours}</td>
       	 	 <td>${item.fjiabancontent}</td>
       	 	 <td>${item.fresult}</td>
+		  <td>${item.fmemo}</td>
         <td>
           <a href="hrJiaban-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
         </td>

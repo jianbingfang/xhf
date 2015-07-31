@@ -85,6 +85,7 @@
 						<c:if test="${model != null}">
 							<input id="hrPx-info_id" type="hidden" name="fid"
 								value="${model.fid}">
+							<%--<input id="hrPx-info_fnwb" type="hidden" name="fnwb" value=${model.fnwb=1}>--%>
 						</c:if>
 						<div class="control-group">
 							<div class="span5">
