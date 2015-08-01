@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fxmname': '${param.filter_LIKES_fxmname}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjVisit-infoGridForm',
@@ -59,7 +59,7 @@ $(function() {
 					</div>
 				</div>
 			</div> -->
-	  <%--<article class="m-widget">
+	  <article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
 		  <div class="ctrl">
@@ -69,13 +69,13 @@ $(function() {
         <div id="pjVisit-infoSearch" class="content content-inner">
 
 		  <form name="pjVisit-infoForm" method="post" action="pjVisit-info-list.do" class="form-inline">
-		    <label for="pjVisit-info_name"><spring:message code='pjVisit-info.pjVisit-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjVisit-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="pjVisit-info_name"><spring:message code='pjVisit-info.pjVisit-info.list.search.name' text='项目名称'/>:</label>
+		    <input type="text" id="pjVisit-info_name" name="filter_LIKES_fxmname" value="${param.filter_LIKES_fxmname}">
 			<button class="btn btn-small a-search" onclick="document.pjVisit-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
-	  </article>--%>
+	  </article>
 
 	  <article class="m-blank">
 	    <div class="pull-left">
@@ -125,9 +125,9 @@ $(function() {
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
       	 <td>${item.fid}</td>
-		  <td>${xmMap[item.fxmid].fxmname}</td>
+		  <td>${item.fxmname}</td>
       	 	 <td>${item.fvisitdate}</td>
-      	 	 <td>${ryMap[item.fry].fname}</td>
+      	 	 <td>${item.fname}</td>
       	 	 <td>${item.fhfdate}</td>
         <td>
           <a href="pjVisit-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>

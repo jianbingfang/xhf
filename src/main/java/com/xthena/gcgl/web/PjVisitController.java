@@ -21,6 +21,7 @@ import com.xthena.ext.export.TableModel;
 import com.xthena.gcgl.domain.PjVisit;
 import com.xthena.gcgl.domain.Pjkh;
 import com.xthena.gcgl.manager.PjVisitManager;
+import com.xthena.gcgl.manager.PjVisitVManager;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.PjXmMapUtil;
 
@@ -38,6 +39,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("gcgl")
 public class PjVisitController {
     private PjVisitManager pjVisitManager;
+    private PjVisitVManager pjVisitVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
@@ -53,11 +55,9 @@ public class PjVisitController {
     	
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjVisitManager.pagedQuery(page, propertyFilters);
+        page = pjVisitVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
-      	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
         return "gcgl/pjVisit-info-list";
     }
@@ -142,6 +142,10 @@ public class PjVisitController {
     @Resource
     public void setPjVisitManager(PjVisitManager pjVisitManager) {
         this.pjVisitManager = pjVisitManager;
+    }
+    @Resource
+    public void setPjVisitVManager(PjVisitVManager pjVisitVManager) {
+        this.pjVisitVManager = pjVisitVManager;
     }
 
     @Resource
