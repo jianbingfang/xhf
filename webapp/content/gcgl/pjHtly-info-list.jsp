@@ -20,7 +20,7 @@
             orderBy: '${page.orderBy == null ? "" : page.orderBy}',
             asc: ${page.asc},
             params: {
-                'filter_LIKES_name': '${param.filter_LIKES_name}'
+                'filter_LIKES_fhtname': '${param.filter_LIKES_fhtname}'
             },
             selectedItemClass: 'selectedItem',
             gridFormId: 'pjHtly-infoGridForm',
@@ -47,7 +47,7 @@
     <!-- start of main -->
     <section id="m-main" class="span10">
 
-        <%--<article class="m-widget">
+        <article class="m-widget">
           <header class="header">
             <h4 class="title">查询</h4>
             <div class="ctrl">
@@ -57,13 +57,13 @@
           <div id="pjHtly-infoSearch" class="content content-inner">
 
             <form name="pjHtly-infoForm" method="post" action="pjHtly-info-list.do" class="form-inline">
-              <label for="pjHtly-info_name"><spring:message code='pjHtly-info.pjHtly-info.list.search.name' text='名称'/>:</label>
-              <input type="text" id="pjHtly-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+              <label for="pjHtly-info_name"><spring:message code='pjHtly-info.pjHtly-info.list.search.name' text='项目名称'/>:</label>
+              <input type="text" id="pjHtly-info_fhtname" name="filter_LIKES_fhtname" value="${param.filter_LIKES_fhtname}">
               <button class="btn btn-small a-search" onclick="document.pjHtly-infoForm.submit()">查询</button>&nbsp;
             </form>
 
           </div>
-        </article>--%>
+        </article>
 
         <article class="m-blank">
             <div class="pull-left">
@@ -119,7 +119,7 @@
                                 <td><input type="checkbox" class="selectedItem a-check" name="selectedItem"
                                            value="${item.fid}"></td>
                                 <td>${item.fid}</td>
-                                <td>${htMap[item.fxmid].fhtname}</td>
+                                <td>${item.fhtname}</td>
                                 <td>${item.fhtje}</td>
                                 <td>${item.fsjzsr}</td>
                                 <td>${item.flvyuelv}</td>

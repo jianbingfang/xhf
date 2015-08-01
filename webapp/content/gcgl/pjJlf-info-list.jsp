@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fxmname': '${param.filter_LIKES_fxmname}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjJlf-infoGridForm',
@@ -47,7 +47,7 @@ $(function() {
 	  <!-- start of main -->
       <section id="m-main" class="span10">
 
-	  <%--<article class="m-widget">
+	  <article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
 		  <div class="ctrl">
@@ -57,13 +57,13 @@ $(function() {
         <div id="pjJlf-infoSearch" class="content content-inner">
 
 		  <form name="pjJlf-infoForm" method="post" action="pjJlf-info-list.do" class="form-inline">
-		    <label for="pjJlf-info_name"><spring:message code='pjJlf-info.pjJlf-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjJlf-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="pjJlf-info_name"><spring:message code='pjJlf-info.pjJlf-info.list.search.name' text='项目名称'/>:</label>
+		    <input type="text" id="pjJlf-info_name" name="filter_LIKES_fxmname" value="${param.filter_LIKES_fxmname}">
 			<button class="btn btn-small a-search" onclick="document.pjJlf-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
-	  </article>--%>
+	  </article>
 
 	  <article class="m-blank">
 	    <div class="pull-left">
@@ -113,7 +113,7 @@ $(function() {
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
        		 <td>${item.fid}</td>
-      	 	 <td><a href="jl-ny-jlf-input.do?fxmid=${item.fxmid}" >${xmMap[item.fxmid].fxmname}</a></td>
+      	 	 <td><a href="jl-ny-jlf-input.do?fxmid=${item.fxmid}" >${item.fxmname}</a></td>
       	 	 <td>${item.fhtjk}</td>
       	 	 <td>${item.fbcht}</td>
       	 	 <td>${item.fmemo}</td>
