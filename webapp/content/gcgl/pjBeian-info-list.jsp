@@ -111,7 +111,7 @@ $(function() {
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
       	 	 <td>${item.fid}</td>
       	 	 <td>${item.fxmname}</td>
-      	 	  <%--<td>${ryMap[item.fjingshourenid].fname}</td>--%>
+      	 	  <%--<td>${item.fname}</td>--%>
       	 	 <td>${item.fbeiandate}</td>
       	 	 <td>${item.fmemo}</td>
         <td>
