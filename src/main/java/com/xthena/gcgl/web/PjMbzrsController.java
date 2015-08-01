@@ -19,6 +19,7 @@ import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 
+import com.xthena.gcgl.manager.PjMbzrsVManager;
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.PjXmMapUtil;
@@ -39,6 +40,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("gcgl")
 public class PjMbzrsController {
     private PjMbzrsManager pjMbzrsManager;
+    private PjMbzrsVManager pjMbzrsVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
@@ -49,11 +51,9 @@ public class PjMbzrsController {
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjMbzrsManager.pagedQuery(page, propertyFilters);
+        page = pjMbzrsVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
-    	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
         return "gcgl/pjMbzrs-info-list";
     }
@@ -128,6 +128,11 @@ public class PjMbzrsController {
     @Resource
     public void setPjMbzrsManager(PjMbzrsManager pjMbzrsManager) {
         this.pjMbzrsManager = pjMbzrsManager;
+    }
+
+    @Resource
+    public void setPjMbzrsVManager(PjMbzrsVManager pjMbzrsVManager) {
+        this.pjMbzrsVManager = pjMbzrsVManager;
     }
 
     @Resource
