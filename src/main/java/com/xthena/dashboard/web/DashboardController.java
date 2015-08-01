@@ -40,9 +40,6 @@ public class DashboardController {
     private JyXmManager jyXmManager;
 
     @Autowired
-    private JyXmManager jyXmManager;
-
-    @Autowired
     private CommRemindManager commRemindManager;
 
     @Autowired

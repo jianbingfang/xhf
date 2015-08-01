@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+        'filter_LIKES_fxmname': '${param.filter_LIKES_fxmname}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'pjBeian-infoGridForm',
@@ -44,7 +44,7 @@ $(function() {
 
 	  <!-- start of main -->
 
-	  <%--<article class="m-widget">
+	  <article class="m-widget">
         <header class="header">
 		  <h4 class="title">查询</h4>
 		  <div class="ctrl">
@@ -54,13 +54,13 @@ $(function() {
         <div id="pjBeian-infoSearch" class="content content-inner">
 
 		  <form name="pjBeian-infoForm" method="post" action="pjBeian-info-list.do" class="form-inline">
-		    <label for="pjBeian-info_name"><spring:message code='pjBeian-info.pjBeian-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="pjBeian-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+		    <label for="pjBeian-info_name"><spring:message code='pjBeian-info.pjBeian-info.list.search.name' text='项目名称'/>:</label>
+		    <input type="text" id="pjBeian-info_name" name="filter_LIKES_fxmname" value="${param.filter_LIKES_fxmname}">
 			<button class="btn btn-small a-search" onclick="document.pjBeian-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
 		</div>
-	  </article>--%>
+	  </article>
 
 	  <article class="m-blank">
 	    <div class="pull-left">
@@ -110,7 +110,7 @@ $(function() {
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
       	 	 <td>${item.fid}</td>
-      	 	 <td>${xmMap[item.fxmid].fxmname}</td>
+      	 	 <td>${item.fxmname}</td>
       	 	  <%--<td>${ryMap[item.fjingshourenid].fname}</td>--%>
       	 	 <td>${item.fbeiandate}</td>
       	 	 <td>${item.fmemo}</td>
