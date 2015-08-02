@@ -129,27 +129,29 @@ function initKqTable(){
 		success: function(data) {
 			ryMap=data.ryMap;
 			for(var i = 0; i < data.fkqry.length; i++){
-				$('#kqtb').append(
-						'<tr id="'+data.fkqry[i].fid+'" banci="1">'
-						+'<td rowspan="2" style="height:20px; width:60px"><p>'+data.ryMap["ry"+data.fkqry[i].fryid]+'</p></td>'
-						+'<td style="height:20px; width:36px"><p>上午</p></td>'
-						+ daysHtml
-						+'<td rowspan="2" style="height:20px; width:72px"><p id="result'+data.fkqry[i].fid+'"></p></td>'
-						+'<td rowspan="2" style="height:20px; width:108px" id="fmemo'+data.fkqry[i].fid+'" onclick="updateMemo('+data.fkqry[i].fid+','+data.fkqry[i].fryid+')">'
-						+'<p >&nbsp;</p>'
-						+'</td>'
-						+'</tr>'
-						+'<tr id="'+data.fkqry[i].fid+'" banci="2">'
-						+	'<td style="height:20px; width:36px"><p>下午</p></td>'
-						+ daysHtml
-						+'</tr>'
-				);
-				
-				$('#result'+data.fkqry[i].fid).html(
-						'到岗：'+data.ryResultMap["ry"+data.fkqry[i].fid].r1+'<br>矿工：'+data.ryResultMap["ry"+data.fkqry[i].fid].r2
-						+'<br>公休：'+data.ryResultMap["ry"+data.fkqry[i].fid].r3+'<br>事假：'+data.ryResultMap["ry"+data.fkqry[i].fid].r4);
-				
-				$('#fmemo'+data.fkqry[i].fid).html('<p>'+data.fkqry[i].fmemo+'</p>');
+				if(data.ryMap["ry"+data.fkqry[i].fryid] && data.ryResultMap["ry"+data.fkqry[i].fid]){
+					$('#kqtb').append(
+							'<tr id="'+data.fkqry[i].fid+'" banci="1">'
+							+'<td rowspan="2" style="height:20px; width:60px"><p>'+data.ryMap["ry"+data.fkqry[i].fryid]+'</p></td>'
+							+'<td style="height:20px; width:36px"><p>上午</p></td>'
+							+ daysHtml
+							+'<td rowspan="2" style="height:20px; width:72px"><p id="result'+data.fkqry[i].fid+'"></p></td>'
+							+'<td rowspan="2" style="height:20px; width:108px" id="fmemo'+data.fkqry[i].fid+'" onclick="updateMemo('+data.fkqry[i].fid+','+data.fkqry[i].fryid+')">'
+							+'<p >&nbsp;</p>'
+							+'</td>'
+							+'</tr>'
+							+'<tr id="'+data.fkqry[i].fid+'" banci="2">'
+							+	'<td style="height:20px; width:36px"><p>下午</p></td>'
+							+ daysHtml
+							+'</tr>'
+					);
+
+					$('#result'+data.fkqry[i].fid).html(
+							'到岗：'+data.ryResultMap["ry"+data.fkqry[i].fid].r1+'<br>矿工：'+data.ryResultMap["ry"+data.fkqry[i].fid].r2
+							+'<br>公休：'+data.ryResultMap["ry"+data.fkqry[i].fid].r3+'<br>事假：'+data.ryResultMap["ry"+data.fkqry[i].fid].r4);
+
+					$('#fmemo'+data.fkqry[i].fid).html('<p>'+data.fkqry[i].fmemo+'</p>');
+				}
 			}
 			
 			for(var i in data.kqDetail){
