@@ -23,6 +23,7 @@ import com.xthena.gcgl.domain.PjRy;
 import com.xthena.gcgl.domain.PjRyRecord;
 import com.xthena.gcgl.manager.PjRyManager;
 import com.xthena.gcgl.manager.PjRyRecordManager;
+import com.xthena.gcgl.manager.PjRyRecordVManager;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.PjXmMapUtil;
 
@@ -40,6 +41,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("gcgl")
 public class PjRyRecordController {
     private PjRyRecordManager pjRyRecordManager;
+    private PjRyRecordVManager pjRyRecordVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
@@ -54,11 +56,9 @@ public class PjRyRecordController {
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjRyRecordManager.pagedQuery(page, propertyFilters);
+        page = pjRyRecordVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
-    	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
         return "gcgl/pjRyRecord-info-list";
     }
@@ -135,6 +135,11 @@ public class PjRyRecordController {
     @Resource
     public void setPjRyRecordManager(PjRyRecordManager pjRyRecordManager) {
         this.pjRyRecordManager = pjRyRecordManager;
+    }
+
+    @Resource
+    public void setPjRyRecordVManager(PjRyRecordVManager pjRyRecordVManager) {
+        this.pjRyRecordVManager = pjRyRecordVManager;
     }
 
     @Resource

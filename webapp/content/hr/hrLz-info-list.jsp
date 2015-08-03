@@ -153,9 +153,9 @@ $(function() {
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
         	<th class="sorting" name="fmemo1">申请人</th>
         	<th class="sorting" name="fstartdate">申请时间</th>
-        	<th class="sorting" name="freason">辞职原因</th>
-        	<th class="sorting" name="fczbg">辞职报告</th>
-        	<th class="sorting" name="fjy">对公司建议</th>
+        	<%--<th class="sorting" name="freason">辞职原因</th>--%>
+        	<%--<th class="sorting" name="fczbg">辞职报告</th>--%>
+        	<%--<th class="sorting" name="fjy">对公司建议</th>--%>
         	<th class="sorting" name="fspstatus">离职审批状态</th>
         	<th class="sorting" name="fsbstatus">停保状态</th>
         	<th class="sorting" name="fywstatus">意外险停办状态</th>
@@ -169,9 +169,9 @@ $(function() {
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
       	  <td>${ryMap[item.fry].fname}</td>
       	  <td>${item.fstartdate}</td>
-      	  <td>${item.freason}</td>
-      	  <td>${item.fczbg}</td>
-      	  <td>${item.fjy}</td>
+      	  <%--<td>${item.freason}</td>--%>
+      	  <%--<td>${item.fczbg}</td>--%>
+      	  <%--<td>${item.fjy}</td>--%>
       	  <td><c:if test="${item.fspstatus=='0'}">未审批</c:if><c:if test="${item.fspstatus=='1'}">已审批</c:if></td>
       	  <td><c:if test="${item.fsbstatus=='0'}">未停保</c:if><c:if test="${item.fsbstatus=='1'}">已停保</c:if></td>
       	  <td><c:if test="${item.fywstatus=='0'}">未停险</c:if><c:if test="${item.fywstatus=='1'}">已停险</c:if></td>
