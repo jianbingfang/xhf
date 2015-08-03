@@ -109,10 +109,10 @@ $(function() {
     </thead>
 
     <tbody>
-      <c:forEach items="${page.result}" var="item" varStatus="index">
+	<c:forEach items="${page.result}" var="item" varStatus="status">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-       		 <td>${item.fid}</td>
+		  <td>${status.count}</td>
       	 	 <td><a href="jl-ny-jlf-input.do?fxmid=${item.fxmid}" >${item.fxmname}</a></td>
       	 	 <td>${item.fhtjk}</td>
       	 	 <td>${item.fbcht}</td>

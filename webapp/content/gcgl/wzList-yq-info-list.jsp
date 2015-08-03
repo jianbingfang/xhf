@@ -158,11 +158,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${page.result}" var="item">
+                        <c:forEach items="${page.result}" var="item" varStatus="status">
                             <tr>
                                 <td><input type="checkbox" class="selectedItem a-check"
                                            id="selectedItem" value="${item.fid}"></td>
-                                <td>${item.fid}</td>
+                                <td>${status.count}</td>
                                 <td><a href="wzList-info-input.do?id=${item.fid}"
                                        class="a-update"><spring:message code="core.list.edit"
                                                                         text="${item.fcode}"/></a></td>
