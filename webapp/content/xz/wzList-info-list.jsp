@@ -73,19 +73,19 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="panel-564685">
 							<p>
-								<iframe src="wzList-gz-info-list.do" height="500" width="100%"
+								<iframe src="wzList-gz-info-list.do" height="800" width="100%"
 									style="border: 0px;"></iframe>
 							</p>
 						</div>
 						<div class="tab-pane" id="panel-294002">
 							<p>
-                                <iframe src="wzList-dh-info-list.do?ftype=2" height="500" width="100%"
+								<iframe src="wzList-dh-info-list.do?ftype=2" height="800" width="100%"
                                         style="border: 0px;"></iframe>
 							</p>
 						</div>
 						<div class="tab-pane" id="panel-294003">
                             <p>
-                                <iframe src="wzList-dh-info-list.do?ftype=3" height="500" width="100%"
+								<iframe src="wzList-dh-info-list.do?ftype=3" height="800" width="100%"
                                         style="border: 0px;"></iframe>
                             </p>
 						</div>

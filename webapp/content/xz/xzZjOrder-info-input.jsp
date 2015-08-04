@@ -288,7 +288,7 @@
                                 class="sr-only">关闭</span></button>
                         <h4 class="modal-title">证件选择</h4>
                     </div>
-                    <div class="container" style="width:900px;">
+                    <div class="container" style="width:900px;height: 500px;overflow: scroll;">
                         <div style="margin-bottom:5px;">
                             证件类型:
                             <select id="zjTypeSelect" onchange="changeSearch()" style="margin-bottom:0px;">
@@ -436,9 +436,15 @@
                                 <label class="control-label" for="commRy-info_fname">证书名称:</label> <input
                                     type="text" name="fname"
                                     style="width: 120px;"/>
-                                <label class="control-label" for="commRy-info_ftype">类别:</label> <input
-                                    type="text" name="ftype"
-                                    style="width: 120px;"/>
+                                <label class="control-label" for="commRy-info_ftype">类别:</label>
+                                <select class="form-control" id="xzRyzs-info_fleibie" style="width: 120px;"
+                                        name="ftype">
+                                    <option value="" selected="selected">不限</option>
+                                    <option value="个人荣誉">个人荣誉</option>
+                                    <option value="企业荣誉">企业荣誉</option>
+                                    <option value="工程获奖">工程获奖</option>
+                                    <option value="个人工程类获奖">个人工程类获奖</option>
+                                </select>
                                 <label class="control-label" for="commRy-info_fxm">项目:</label> <input
                                     type="text" name="fxm"
                                     style="width: 120px;"/>
