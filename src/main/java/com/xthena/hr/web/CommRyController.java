@@ -70,7 +70,6 @@ public class CommRyController {
 				.buildFromMap(parameterMap);
 		//按照人员姓名排序
 		page = commRyManager.pagedQuery(page, propertyFilters);
-
 		model.addAttribute("page", page); 
 		return "hr/commRy-info-list";
 	}

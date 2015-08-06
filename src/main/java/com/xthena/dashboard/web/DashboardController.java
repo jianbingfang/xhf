@@ -36,6 +36,8 @@ public class DashboardController {
     private BpmProcessManager bpmProcessManager;
     private CmsArticleManager cmsArticleManager;
 
+
+
     @Autowired
     private JyXmManager jyXmManager;
 
