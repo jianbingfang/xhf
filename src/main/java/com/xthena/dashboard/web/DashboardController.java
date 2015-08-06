@@ -31,6 +31,8 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("dashboard")
+
+
 public class DashboardController {
     private ProcessEngine processEngine;
     private BpmProcessManager bpmProcessManager;
@@ -38,8 +40,7 @@ public class DashboardController {
 
 
 
-    @Autowired
-    private JyXmManager jyXmManager;
+
 
     @Autowired
     private JyXmManager jyXmManager;
