@@ -19,6 +19,7 @@ import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 
+import com.xthena.gcgl.manager.PjJlfVManager;
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.PjXmMapUtil;
 import com.xthena.gcgl.domain.PjJlf;
@@ -38,6 +39,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("gcgl")
 public class PjJlfController {
     private PjJlfManager pjJlfManager;
+    private PjJlfVManager pjJlfVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
@@ -48,7 +50,7 @@ public class PjJlfController {
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjJlfManager.pagedQuery(page, propertyFilters);
+        page = pjJlfVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
         model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
@@ -123,6 +125,10 @@ public class PjJlfController {
     @Resource
     public void setPjJlfManager(PjJlfManager pjJlfManager) {
         this.pjJlfManager = pjJlfManager;
+    }
+    @Resource
+    public void setPjJlfVManager(PjJlfVManager pjJlfVManager) {
+        this.pjJlfVManager = pjJlfVManager;
     }
 
     @Resource

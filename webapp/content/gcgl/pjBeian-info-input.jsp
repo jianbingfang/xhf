@@ -108,7 +108,7 @@
 
                     <div class="controls">
                         <div class="input-append ryPicker">
-                            <input id="pjMreport-info_fryid" type="hidden" name="fryid"
+                            <input id="pjMreport-info_fryid" type="hidden" name="fjingshourenid"
                                    value="${model.fjingshourenid}"> <input
                                 id="ryBxRecord-info_userName" type="text" value="${ryMap[model.fjingshourenid].fname}"
                                 disabled class=" required" style="width: 175px;" value="">

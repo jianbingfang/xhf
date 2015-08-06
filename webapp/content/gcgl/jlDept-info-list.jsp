@@ -131,7 +131,7 @@
                             <tr>
                                 <td><input type="checkbox" class="selectedItem a-check" name="selectedItem"
                                            value="${item.fid}"></td>
-                                <td>${item.fid}</td>
+                                <td>${status.count}</td>
                                 <td>${xmMap[item.fxmid].fxmname}</td>
                                 <td>${item.floginname}</td>
                                 <td>${item.floginpass}</td>

@@ -19,6 +19,7 @@ import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 
+import com.xthena.gcgl.manager.PjDuchaVManager;
 import com.xthena.security.util.SpringSecurityUtils;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.PjXmMapUtil;
@@ -39,6 +40,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("gcgl")
 public class PjDuchaController {
     private PjDuchaManager pjDuchaManager;
+    private PjDuchaVManager pjDuchaVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
@@ -49,12 +51,10 @@ public class PjDuchaController {
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjDuchaManager.pagedQuery(page, propertyFilters);
+        page = pjDuchaVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
-    	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
-    	
+
         return "gcgl/pjDucha-info-list";
     }
 
@@ -128,6 +128,10 @@ public class PjDuchaController {
     @Resource
     public void setPjDuchaManager(PjDuchaManager pjDuchaManager) {
         this.pjDuchaManager = pjDuchaManager;
+    }
+    @Resource
+    public void setPjDuchaVManager(PjDuchaVManager pjDuchaVManager) {
+        this.pjDuchaVManager = pjDuchaVManager;
     }
 
     @Resource

@@ -1,41 +1,32 @@
-package  com.xthena.gcgl.web;
-
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import javax.servlet.http.HttpServletResponse;
+package com.xthena.gcgl.web;
 
 import com.xthena.api.user.UserConnector;
-
-
 import com.xthena.core.hibernate.PropertyFilter;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
-
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
-
 import com.xthena.gcgl.domain.PjYdkh;
 import com.xthena.gcgl.manager.PjYdkhManager;
-import com.xthena.util.CommRyMapUtil;
-import com.xthena.util.PjXmMapUtil;
-
+import com.xthena.gcgl.manager.PjYdkhVManager;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
+
 @Controller
 @RequestMapping("gcgl")
 public class PjYdkhController {
     private PjYdkhManager pjYdkhManager;
+    private PjYdkhVManager pjYdkhVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
@@ -43,21 +34,19 @@ public class PjYdkhController {
 
     @RequestMapping("pjYdkh-info-list")
     public String list(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap, Model model) {
+                       @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjYdkhManager.pagedQuery(page, propertyFilters);
+        page = pjYdkhVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
-        model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
         return "gcgl/pjYdkh-info-list";
     }
 
     @RequestMapping("pjYdkh-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,
-            Model model) {
+                        Model model) {
         if (id != null) {
             PjYdkh pjYdkh = pjYdkhManager.get(id);
             model.addAttribute("model", pjYdkh);
@@ -68,9 +57,10 @@ public class PjYdkhController {
 
     @RequestMapping("pjYdkh-info-save")
     public String save(@ModelAttribute PjYdkh pjYdkh,
-            @RequestParam Map<String, Object> parameterMap,
-            RedirectAttributes redirectAttributes) {
-        PjYdkh dest = null;
+                       @RequestParam Map<String, Object> parameterMap,
+                       RedirectAttributes redirectAttributes) {
+
+        PjYdkh dest;
 
         Long id = pjYdkh.getFid();
 
@@ -91,7 +81,7 @@ public class PjYdkhController {
 
     @RequestMapping("pjYdkh-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
-            RedirectAttributes redirectAttributes) {
+                         RedirectAttributes redirectAttributes) {
         List<PjYdkh> pjYdkhs = pjYdkhManager.findByIds(selectedItem);
 
         pjYdkhManager.removeAll(pjYdkhs);
@@ -104,8 +94,8 @@ public class PjYdkhController {
 
     @RequestMapping("pjYdkh-info-export")
     public void export(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap,
-            HttpServletResponse response) throws Exception {
+                       @RequestParam Map<String, Object> parameterMap,
+                       HttpServletResponse response) throws Exception {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = pjYdkhManager.pagedQuery(page, propertyFilters);
@@ -123,6 +113,11 @@ public class PjYdkhController {
     @Resource
     public void setPjYdkhManager(PjYdkhManager pjYdkhManager) {
         this.pjYdkhManager = pjYdkhManager;
+    }
+
+    @Resource
+    public void setPjYdkhVManager(PjYdkhVManager pjYdkhVManager) {
+        this.pjYdkhVManager = pjYdkhVManager;
     }
 
     @Resource

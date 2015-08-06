@@ -17,6 +17,7 @@ import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 import com.xthena.gcgl.domain.PjHtly;
 import com.xthena.gcgl.manager.PjHtlyManager;
+import com.xthena.gcgl.manager.PjHtlyVManager;
 import com.xthena.util.HtMapUtil;
 import com.xthena.util.PjXmMapUtil;
 
@@ -31,6 +32,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("gcgl")
 public class PjHtlyController {
     private PjHtlyManager pjHtlyManager;
+    private PjHtlyVManager pjHtlyVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
@@ -41,11 +43,10 @@ public class PjHtlyController {
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjHtlyManager.pagedQuery(page, propertyFilters);
+        page = pjHtlyVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("htMap", HtMapUtil.getHtMap());
-        
+
         return "gcgl/pjHtly-info-list";
     }
 
@@ -120,7 +121,10 @@ public class PjHtlyController {
     public void setPjHtlyManager(PjHtlyManager pjHtlyManager) {
         this.pjHtlyManager = pjHtlyManager;
     }
-
+    @Resource
+    public void setPjHtlyVManager(PjHtlyVManager pjHtlyVManager) {
+        this.pjHtlyVManager = pjHtlyVManager;
+    }
     @Resource
     public void setExportor(Exportor exportor) {
         this.exportor = exportor;

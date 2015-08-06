@@ -7,7 +7,7 @@
 
 <head>
     <%@include file="/common/meta.jsp" %>
-    <title>科扬建设监理有限公司</title>
+    <title>新恒丰建设监理有限公司</title>
     <%@include file="/common/s.jsp" %>
 
     <script type="text/javascript">
@@ -149,7 +149,7 @@
                     <a class="btn"><i class="icon-chevron-up"></i></a>
                 </div>
             </header>
-            <div class="content" style="overflow: auto;">
+            <div class="content" style="overflow: scroll;">
                 <table class="m-table table-hover table-bordered">
                     <thead>
                     <tr>
@@ -202,7 +202,7 @@
                     <a class="btn"><i class="icon-chevron-up"></i></a>
                 </div>
             </header>
-            <div class="content" style="overflow: auto;">
+            <div class="content" style="overflow: scroll">
                 <table class="m-table table-hover table-bordered">
                     <thead>
                     <tr>
@@ -296,7 +296,7 @@
                     <a class="btn"><i class="icon-chevron-up"></i></a>
                 </div>
             </header>
-            <div class="content content-inner">
+            <div class="content content-inner" style="overflow-y: scroll">
                 <table style="" width="100%">
                     <c:forEach items="${cmsArticles}" var="item">
                         <tr>

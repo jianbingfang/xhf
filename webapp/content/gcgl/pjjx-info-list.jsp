@@ -106,10 +106,10 @@ $(function() {
     </thead>
 
     <tbody>
-      <c:forEach items="${page.result}" var="item">
+	<c:forEach items="${page.result}" var="item" varStatus="status">
       <tr>
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
-      	 	 <td>${item.fid}</td>
+		  <td>${status.count}</td>
       	 <%-- 	 <td>${ryMap[item.fjingshourenid].fname}</td> --%>
       	 	 <td>${item.fjxqihao}</td>
       	 	 <td>${item.fjxdate}</td>

@@ -1,67 +1,62 @@
-package  com.xthena.gcgl.web;
-
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import javax.servlet.http.HttpServletResponse;
+package com.xthena.gcgl.web;
 
 import com.xthena.api.user.UserConnector;
-
-
 import com.xthena.core.hibernate.PropertyFilter;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
-
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
-
 import com.xthena.gcgl.domain.PjBeian;
+import com.xthena.gcgl.domain.PjXm;
 import com.xthena.gcgl.manager.PjBeianManager;
+import com.xthena.gcgl.manager.PjBeianVManager;
+import com.xthena.gcgl.manager.PjXmManager;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.PjXmMapUtil;
-
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
+
 @Controller
 @RequestMapping("gcgl")
 public class PjBeianController {
     private PjBeianManager pjBeianManager;
+    private PjBeianVManager pjBeianVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
     private MessageHelper messageHelper;
+    private PjXmManager pjXmManager;
 
     @RequestMapping("pjBeian-info-list")
     public String list(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap, Model model) {
+                       @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjBeianManager.pagedQuery(page, propertyFilters);
+        page = pjBeianVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
-    	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
+
         return "gcgl/pjBeian-info-list";
     }
 
     @RequestMapping("pjBeian-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,
-            Model model) {
+                        Model model) {
         if (id != null) {
             PjBeian pjBeian = pjBeianManager.get(id);
             model.addAttribute("model", pjBeian);
             model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
-        	model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
+            model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         }
 
         return "gcgl/pjBeian-info-input";
@@ -69,8 +64,8 @@ public class PjBeianController {
 
     @RequestMapping("pjBeian-info-save")
     public String save(@ModelAttribute PjBeian pjBeian,
-            @RequestParam Map<String, Object> parameterMap,
-            RedirectAttributes redirectAttributes) {
+                       @RequestParam Map<String, Object> parameterMap,
+                       RedirectAttributes redirectAttributes) {
         PjBeian dest = null;
 
         Long id = pjBeian.getFid();
@@ -92,7 +87,7 @@ public class PjBeianController {
 
     @RequestMapping("pjBeian-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
-            RedirectAttributes redirectAttributes) {
+                         RedirectAttributes redirectAttributes) {
         List<PjBeian> pjBeians = pjBeianManager.findByIds(selectedItem);
 
         pjBeianManager.removeAll(pjBeians);
@@ -105,8 +100,8 @@ public class PjBeianController {
 
     @RequestMapping("pjBeian-info-export")
     public void export(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap,
-            HttpServletResponse response) throws Exception {
+                       @RequestParam Map<String, Object> parameterMap,
+                       HttpServletResponse response) throws Exception {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = pjBeianManager.pagedQuery(page, propertyFilters);
@@ -124,6 +119,16 @@ public class PjBeianController {
     @Resource
     public void setPjBeianManager(PjBeianManager pjBeianManager) {
         this.pjBeianManager = pjBeianManager;
+    }
+
+    @Resource
+    public void setPjBeianVManager(PjBeianVManager pjBeianVManager) {
+        this.pjBeianVManager = pjBeianVManager;
+    }
+
+    @Resource
+    public void setPjXmManager(PjXmManager pjXmManager) {
+        this.pjXmManager = pjXmManager;
     }
 
     @Resource
