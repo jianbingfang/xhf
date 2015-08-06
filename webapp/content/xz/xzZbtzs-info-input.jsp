@@ -264,17 +264,18 @@
 
                                 <div class="controls">
                                     <input id="xzZbtzs-info_fzbje" type="number" name="fzbje"
-                                           value="${model.fmemo1}" class="number   "
+									value="${model.fzbje}"  class="number   "
                                            maxlength="">
                                 </div>
                             </div>
+
                             <div class="control-group">
-                                <label class="control-label" for="xzZbtzs-info_fzbfl"><spring:message
+							<label class="control-label" for="xzZbtzs-info_fzbje"><spring:message
                                         code="xzZbtzs-info.xzZbtzs-info.input.fzbje" text="中标费率"/></label>
 
                                 <div class="controls">
                                     <input id="xzZbtzs-info_fzbfl" type="text" name="fzbfl"
-                                           value="${model.fmemo1}" class="text "
+												   value="${model.fzbfl}"  class="text"
                                            maxlength="">
                                 </div>
                             </div>
