@@ -162,7 +162,7 @@
           <div id="collapse-xmda" class="accordion-body collapse ${currentMenu == 'gcgl-xmda' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
 			  <li><a href="${scopePrefix}/gcgl/pjTemplate-info-list.do"><i class="icon-arrow-right"></i>上报资料清单</a></li>
-			  <li><a href="${scopePrefix}/gcgl/pjXm-info-list1.do?fstatus=3"><i class="icon-share-alt"></i>竣工项目台账</a></li>
+                <%--<li><a href="${scopePrefix}/gcgl/pjXm-info-list1.do?fstatus=3"><i class="icon-share-alt"></i>竣工项目台账</a></li>--%>
             </ul>
           </div>
         </div>

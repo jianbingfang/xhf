@@ -157,7 +157,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="control-group">
+                    <%--<div class="control-group">
                         <label class="control-label" for="pjRy-info_ftel"><spring:message
                                 code="pjRy-info.pjRy-info.input.ftel" text="联系方式"/></label>
 
@@ -165,7 +165,7 @@
                             <input id="pjRy-info_ftel" type="text" name="ftel" value="${model.ftel}" size=""
                                    class="text " minlength="" maxlength="">
                         </div>
-                    </div>
+                    </div>--%>
 
                     <div class="control-group">
                         <label class="control-label" for="pjRy-info_fmemo"><spring:message

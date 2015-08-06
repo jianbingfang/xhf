@@ -51,9 +51,9 @@ public class JlJindugenzongController {
     @RequestMapping("jljindugenzong-info-list")
     public String list(@ModelAttribute Page page,HttpServletRequest request,
             @RequestParam Map<String, Object> parameterMap, @RequestParam(value = "type", required = false) String type,Model model) {
-    	if(type.equals("1")){
-    		 return "redirect:/jl/jljindugenzong-info-input.do?type="+1;
-    	}
+        if ("1".equals(type)) {
+            return "redirect:/jl/jljindugenzong-info-input.do?type=1";
+        }
     	parameterMap.put("filter_EQS_ftype", type);
     	parameterMap.put("filter_EQL_fxmid", jlDeptManager.getXmId(request));
         List<PropertyFilter> propertyFilters = PropertyFilter

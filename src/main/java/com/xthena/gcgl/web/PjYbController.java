@@ -1,38 +1,29 @@
-package  com.xthena.gcgl.web;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import javax.servlet.http.HttpServletResponse;
+package com.xthena.gcgl.web;
 
 import com.xthena.api.user.UserConnector;
-
-
 import com.xthena.core.hibernate.PropertyFilter;
 import com.xthena.core.mapper.BeanMapper;
 import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
-
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
-
-import com.xthena.security.util.SpringSecurityUtils;
-import com.xthena.util.CommRyMapUtil;
 import com.xthena.gcgl.domain.PjYb;
 import com.xthena.gcgl.manager.PjYbManager;
-
+import com.xthena.security.util.SpringSecurityUtils;
+import com.xthena.user.persistence.domain.UserBase;
+import com.xthena.user.persistence.manager.UserBaseManager;
+import com.xthena.util.CommRyMapUtil;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("gcgl")
@@ -42,10 +33,11 @@ public class PjYbController {
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
     private MessageHelper messageHelper;
+    private UserBaseManager userBaseManager;
 
     @RequestMapping("pjYb-info-list")
     public String list(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap, Model model) {
+                       @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = pjYbManager.pagedQuery(page, propertyFilters);
@@ -58,7 +50,7 @@ public class PjYbController {
 
     @RequestMapping("pjYb-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id,
-            Model model) {
+                        Model model) {
         if (id != null) {
             PjYb pjYb = pjYbManager.get(id);
             model.addAttribute("model", pjYb);
@@ -69,8 +61,8 @@ public class PjYbController {
 
     @RequestMapping("pjYb-info-save")
     public String save(@ModelAttribute PjYb pjYb,
-            @RequestParam Map<String, Object> parameterMap,
-            RedirectAttributes redirectAttributes) {
+                       @RequestParam Map<String, Object> parameterMap,
+                       RedirectAttributes redirectAttributes) {
         PjYb dest = null;
 
         Long id = pjYb.getFid();
@@ -81,7 +73,12 @@ public class PjYbController {
         } else {
             dest = pjYb;
         }
-        dest.setFuploadry(Long.valueOf(SpringSecurityUtils.getCurrentUserId()));
+
+        UserBase ub = userBaseManager.get(Long.valueOf(SpringSecurityUtils.getCurrentUserId()));
+        if (ub != null) {
+            dest.setFuploadry(ub.getFryid());
+        }
+
         pjYbManager.save(dest);
 
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
@@ -92,7 +89,7 @@ public class PjYbController {
 
     @RequestMapping("pjYb-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
-            RedirectAttributes redirectAttributes) {
+                         RedirectAttributes redirectAttributes) {
         List<PjYb> pjYbs = pjYbManager.findByIds(selectedItem);
 
         pjYbManager.removeAll(pjYbs);
@@ -105,8 +102,8 @@ public class PjYbController {
 
     @RequestMapping("pjYb-info-export")
     public void export(@ModelAttribute Page page,
-            @RequestParam Map<String, Object> parameterMap,
-            HttpServletResponse response) throws Exception {
+                       @RequestParam Map<String, Object> parameterMap,
+                       HttpServletResponse response) throws Exception {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = pjYbManager.pagedQuery(page, propertyFilters);
@@ -124,6 +121,11 @@ public class PjYbController {
     @Resource
     public void setPjYbManager(PjYbManager pjYbManager) {
         this.pjYbManager = pjYbManager;
+    }
+
+    @Resource
+    public void setUserBaseManager(UserBaseManager userBaseManager) {
+        this.userBaseManager = userBaseManager;
     }
 
     @Resource
