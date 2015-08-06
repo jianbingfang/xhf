@@ -9,6 +9,9 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
+import com.xthena.hr.domain.HrLz;
+import com.xthena.hr.manager.HrLzManager;
+import com.xthena.sckf.manager.JyXmManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +50,13 @@ public class CommRyController {
 	private CommRyManager commRyManager;
 	@Autowired
 	private OrgDepartmentManager orgDepartmentManager;
+
+	@Autowired
+	private JyXmManager jyXmManager;
+
+	@Autowired
+	private HrLzManager hrLzManager;
+
 	private Exportor exportor;
 	private BeanMapper beanMapper = new BeanMapper();
 	private UserConnector userConnector;
@@ -131,23 +141,54 @@ public class CommRyController {
 		return "hr/commRy-info-input";
 	}
 
-	
+
+	@RequestMapping("jyXm-toubiao-simple-list")
+	public void listXm2(@ModelAttribute Page page,
+						@RequestParam Map<String, Object> parameterMap, HttpServletResponse response) {
+		//parameterMap.put("filter_EQS_fshenpiresult", "报名");
+		List<PropertyFilter> propertyFilters = PropertyFilter
+				.buildFromMap(parameterMap);
+		page = jyXmManager.pagedQuery(page, propertyFilters);
+		JsonResponseUtil.write(response, page);
+	}
+
 
 	@RequestMapping("commRy-info-save")
 	public String save(@ModelAttribute CommRy commRy,
 			@RequestParam Map<String, Object> parameterMap,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, Model model) {
 		CommRy dest = null;
-
 		Long id = commRy.getFid();
 		if (id != null) {
+
+			String status=commRy.getFgyxz();
 			dest = commRyManager.get(id);
+
+			// 判断离职人员台账中是否已存在改离职人员记录, 大于0则说明改人信息已经在离职台账中，修改其他信息
+			List<HrLz> Lzryids=hrLzManager.findBy("fry", dest.getFid());
+
+			//离职选择为4
+			if(status.equalsIgnoreCase("4")&&Lzryids.size()==0){
+				String fryid= dest.getFid().toString();
+				dest.setFgyxz(commRy.getFgyxz()); // 重新设置雇佣性质
+				commRyManager.save(dest);
+				CommRyMapUtil.refreshRyMap(dest);
+				return "redirect:/hr/hrLz-info-input.do?fryid="+fryid;
+			}
+			else {
+				// 未离职情况 或修改已离职人员的其他信息
+
 			beanMapper.copy(commRy, dest);
+
+
+			}
 		} else {
 			dest = commRy;
 			dest.setFcardno(CodeUtil.getSysYearCode(ConstValue.SYS_CODE_RY, 4,
 					codeGenManager));
 		}
+
+
 		commRyManager.save(dest);
 		CommRyMapUtil.refreshRyMap(dest);
 
