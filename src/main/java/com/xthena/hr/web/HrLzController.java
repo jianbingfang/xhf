@@ -89,12 +89,22 @@ public class HrLzController {
     }
 
     @RequestMapping("hrLz-info-input")
-    public String input(@RequestParam(value = "id", required = false) Long id,
+    public String input(@RequestParam(value = "id", required = false) Long id,  @RequestParam(value = "fryid",
+            required = false) String fryid,
             Model model) {
-        if (id != null) {
-            HrLz hrLz = hrLzManager.get(id);
+        if(fryid!=null&&fryid!=""){
+            Long ryid=Long.parseLong(fryid);
+            HrLz hrLz= new HrLz();
+            hrLz.setFry(ryid);
             model.addAttribute("model", hrLz);
-            model.addAttribute("userName", commRyManager.get(hrLz.getFry()).getFname());
+            model.addAttribute("userName",commRyManager.get(ryid).getFname());
+        }
+        else {
+            if (id != null) {
+                HrLz hrLz = hrLzManager.get(id);
+                model.addAttribute("model", hrLz);
+                model.addAttribute("userName", commRyManager.get(hrLz.getFry()).getFname());
+            }
         }
         return "hr/hrLz-info-input";
     }
