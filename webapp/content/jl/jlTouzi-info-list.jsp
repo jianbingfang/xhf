@@ -129,7 +129,7 @@
                                 <td><fmt:formatDate value="${item.fdate}"
                                                     pattern="yyyy-MM-dd"/></td>
                                 <td>${item.fmemo}</td>
-                                <td><a href="jlTouzi-info-input.do?id=${item.fid}"
+                                <td><a href="jlTouzi-info-input.do?id=${item.fid}&ftype=${param.ftype}"
                                        class="a-update"><spring:message code="core.list.edit"
                                                                         text="编辑"/></a></td>
                             </tr>

@@ -58,9 +58,10 @@
 
 		createjyxmPicker({
 			modalId : 'jyxmPicker',
-			url : '${scopePrefix}/sysconf/jyXm-toubiao-simple-list.do',
-
+			url : '${scopePrefix}/sckf/jyXm-toubiao-simple-list.do',
+			redUrl : '${scopePrefix}/sckf/jyXmYj-info-input.do'
 		});
+
 		createryPicker({
 			modalId : 'ryPicker',
 			url : '${scopePrefix}/hr/commRy-simple-list.do'

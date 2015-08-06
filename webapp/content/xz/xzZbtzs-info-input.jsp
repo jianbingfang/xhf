@@ -37,12 +37,6 @@
 					url : '${scopePrefix}/hr/commRy-simple-list.do'
 				});
 
-				createjyxmPicker({
-					modalId : 'jyxmPicker',
-					url : '${scopePrefix}/sysconf/jyXm-toubiao-simple-list.do',
-					<%--redUrl : '${scopePrefix}/sckf/jyXmYj-info-input.do'--%>
-				});
-
 				$("#confirmBtn").click(function() {
 					saveFile();
 				});
@@ -263,22 +257,10 @@
 									code="xzZbtzs-info.xzZbtzs-info.input.fzbje" text="中标金额（元）" /></label>
 							<div class="controls">
 								<input id="xzZbtzs-info_fzbje" type="number" name="fzbje"
-									value="${model.fzbje}"  class="number   "
+									value="${model.fmemo1}"  class="number   "   
 									maxlength="">
 							</div>
 						</div>
-
-						<div class="control-group">
-							<label class="control-label" for="xzZbtzs-info_fzbje"><spring:message
-								code="xzZbtzs-info.xzZbtzs-info.input.fzbje" text="中标费率" /></label>
-							<div class="controls">
-								<input id="xzZbtzs-info_fzbfl" type="text" name="fzbfl"
-												   value="${model.fzbfl}"  class="text"
-									maxlength="">
-										</div>
-									</div>
-
-
 							<div class="control-group">
 							<label class="control-label" for="xzZbtzs-info_fjdjg"><spring:message
 									code="xzZbtzs-info.xzZbtzs-info.input.fjdjg" text="监督机构" /></label>
