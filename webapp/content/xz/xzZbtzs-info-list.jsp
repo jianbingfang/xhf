@@ -168,7 +168,7 @@
 									<th class="sorting" id="fcode">编号</th>
 									<th class="sorting" id="fxmname" >项目名称</th>
 									<!-- <th class="sorting" id="ffzdw">发证单位</th> -->
-									<th class="sorting" id="fmemo1">中标金额 (元)</th>
+									<th class="sorting" id="fzbje">中标金额 (元)</th>
 
 									<th class="sorting" id="fzbfl">中标费率</th>
 
@@ -190,7 +190,7 @@
 											class="a-update"><spring:message code="core.list.edit"
 													text="${item.fxmname}" /></a></td>
 										<%-- <td>${item.ffzdw}</td> --%>
-										<td>${item.fmemo1}</td>
+										<td>${item.fzbje}</td>
 										<td>${item.fzbfl}</td>
 										<td>${ryMap[item.fzongjian].fname}</td>
 										<td>${item.ffzrq}</td>
