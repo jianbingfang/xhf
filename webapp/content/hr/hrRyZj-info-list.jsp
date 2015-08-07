@@ -155,7 +155,7 @@
         }
 
         function openZj(id) {
-            window.open("hrRyZj-info-input.do?id=" + id);
+            window.location.href = "hrRyZj-info-input.do?id=" + id;
         }
     </script>
 </head>

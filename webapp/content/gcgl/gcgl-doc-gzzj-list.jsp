@@ -85,13 +85,14 @@
                             <th width="10" class="m-table-check"><input type="checkbox" name="checkAll"
                                                                         onchange="toggleSelectedItems(this.checked)">
                             </th>
-                            <th class="sorting" name="ftitle">标题</th>
+                                <th class="" name="ftitle">标题</th>
                             <!--   <th class="sorting" name="fstatus">状态</th> -->
                             <!--      <th class="sorting" name="fstartdate">开始时间</th>
                                  <th class="sorting" name="fenddate">废止时间</th> -->
                             <!--   <th class="sorting" name="fuserid">编制人</th> -->
-                            <th class="sorting" name="name">备注</th>
-                            <th class="sorting" name="name">操作</th>
+                                <th class="" name="name">备注</th>
+                                <th class="" name="name">内容</th>
+                                <th class="" name="name">操作</th>
                         </tr>
                         </thead>
 
@@ -112,6 +113,16 @@
                                      <td>${item.fenddate}</td> --%>
                                     <%-- <td>${item.fcreator}</td> --%>
                                 <td>${item.fmemo}</td>
+                                <td title="${item.fmemo1}">
+                                    <c:choose>
+                                        <c:when test="${fn:length(item.fmemo1) > 40}">
+                                            ${fn:substring(item.fmemo1, 0, 37)}...
+                                        </c:when>
+                                        <c:otherwise>
+                                            ${item.fmemo1}
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
                                 <td>
                                     <a href="gcgl-doc-gzzj-input.do?id=${item.fid}" class="a-update"><spring:message
                                             code="core.list.edit" text="编辑"/></a>

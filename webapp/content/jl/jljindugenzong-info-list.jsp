@@ -20,7 +20,8 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_fname': '${param.filter_LIKES_name}'
+		'filter_LIKES_fname': '${param.filter_LIKES_name}',
+		'filter_EQS_ftype': '${type}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'jljindugenzong-infoGridForm',

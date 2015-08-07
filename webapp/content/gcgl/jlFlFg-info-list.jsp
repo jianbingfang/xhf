@@ -101,7 +101,7 @@ $(function() {
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
         	<th class="sorting" name="ftype">分类</th>
         	<th class="sorting" name="fname">名称</th>
-        	<th class="sorting" name="furl">连接</th>
+		  <th class="sorting" name="furl">链接</th>
         	<th class="sorting" name="forder">显示顺序</th>
         <th width="80">&nbsp;</th>
       </tr>
@@ -113,7 +113,7 @@ $(function() {
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
       	 	 <td>${item.ftype}</td>
       	 	 <td>${item.fname}</td>
-      	 	 <td>${item.furl}</td>
+		  <td><a href="${item.furl}">${item.furl}</a></td>
       	 	 <td>${item.forder}</td>
         <td>
           <a href="gcgl-jlFlFg-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
