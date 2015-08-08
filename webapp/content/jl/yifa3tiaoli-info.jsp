@@ -121,7 +121,10 @@
 
             <div id="${item.key}" class="collapse in">
                 <c:forEach items="${item.value}" var="item1" varStatus="status">
-                    <p>${status.count}.<a href="jlFlFg-info-input.do?id=${item1.fid}">《${item1.fname}》</a></p>
+                    <%--<p>${status.count}.<a href="jlFlFg-info-input.do?id=${item1.fid}">《${item1.fname}》</a></p>--%>
+                    <p>${status.count}.<a href="${item1.furl}">${item1.fname}</a></p>
+
+
                 </c:forEach>
             </div>
         </c:forEach>

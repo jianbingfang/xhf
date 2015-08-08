@@ -67,13 +67,13 @@ $(function() {
 					  	 <textarea id="gcgl-jlFlFg-info_content" type="text" name="content"  class="form-control" rows="6"   style="width: 560px" class="text  required">${model.content}</textarea>	
 				    </div>
 				  </div>
-		<%-- 	    	<div class="control-group">
+			    	<div class="control-group">
 				    <label class="control-label" for="gcgl-jlFlFg-info_furl"><spring:message code="gcgl-jlFlFg-info.gcgl-jlFlFg-info.input.furl" text="连接"/></label>
 					<div class="controls">
 				      	<input id="gcgl-jlFlFg-info_furl"  name="furl"  class="form-control" value="${model.furl}" rows="6"  style="width: 560px" class="text  "  minlength="" maxlength="512">
 				    </div>
 				  </div>
-			    	<div class="control-group">
+	<%--<div class="control-group">
 				    <label class="control-label" for="gcgl-jlFlFg-info_fmemo"><spring:message code="gcgl-jlFlFg-info.gcgl-jlFlFg-info.input.fmemo" text="备注"/></label>
 					<div class="controls">
 				      	<input id="gcgl-jlFlFg-info_fmemo"  name="fmemo"  class="form-control" rows="6"  style="width: 560px" class="text  " value="${model.fmemo}" minlength="" maxlength="512">
