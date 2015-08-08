@@ -231,6 +231,7 @@
                             <th class="sorting" name="fgangwei">岗位</th>
                             <th class="sorting" name="fstartdate">进入项目时间</th>
                             <th class="sorting" name="fenddate">离开项目时间</th>
+                            <th class="sorting" name="fxueli">学历</th>
                             <th class="sorting" name="ftel">联系方式</th>
                             <th class="sorting" name="fstatus">状态</th>
                             <th width="80">&nbsp;</th>
@@ -247,7 +248,14 @@
                                 <td>${item.fgangwei}</td>
                                 <td>${item.fstartdate}</td>
                                 <td>${item.fenddate}</td>
-                                <td>${item.ftel}</td>
+                                <td><c:if test="${ryMap[item.fryid].fxueli=='-1'}"> 小学 </c:if> <c:if
+                                        test="${ryMap[item.fryid].fxueli=='0'}"> 初中</c:if> <c:if
+                                        test="${ryMap[item.fryid].fxueli=='1'}">中专</c:if> <c:if
+                                        test="${ryMap[item.fryid].fxueli=='2'}"> 大专</c:if> <c:if
+                                        test="${ryMap[item.fryid].fxueli=='3'}"> 本科</c:if> <c:if
+                                        test="${ryMap[item.fryid].fxueli=='4'}">研究生</c:if> <c:if
+                                        test="${ryMap[item.fryid].fxueli=='5'}">博士</c:if></td>
+                                <td>${ryMap[item.fryid].ftel}</td>
                                 <td>${item.fstatus}</td>
                                 <td>
                                     <a href="pjRy-info-input.do?id=${item.fid}" class="a-update"><spring:message

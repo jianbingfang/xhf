@@ -74,7 +74,7 @@
                 </div>--%>
                 <div class="control-group">
                     <label class="control-label" for="pjBeian-info_fxmid"><spring:message
-                            code="pjBeian-info.pjBeian-info.input.fxmid" text="项目id"/></label>
+                            code="pjBeian-info.pjBeian-info.input.fxmid" text="项目"/></label>
 
                     <div class="controls">
 

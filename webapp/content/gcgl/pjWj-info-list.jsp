@@ -122,7 +122,7 @@ $(function() {
       	 	<%--  <td>${item.fcontent}</td> --%>
       	 	 <td><a href="${item.ffileurl}">${item.ffilename}</a></td>
       	 	 <%-- <td>${item.ffileurl}</td> --%>
-      	 	 <td>${item.fwebrul}</td>
+		  <td><a href="${item.fwebrul}">${item.fwebrul}</a></td>
       	 <%-- 	 <td>${item.fmemo}</td> --%>
         <td>
           <a href="pjWj-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>

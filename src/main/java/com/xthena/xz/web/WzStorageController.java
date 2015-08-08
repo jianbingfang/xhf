@@ -130,7 +130,7 @@ public class WzStorageController {
                         "出库失败，库存不足。");
                 return "redirect:/xz/wzList-info-list.do";
             }
-            wz.setFprice(dest.getFprice());
+//            wz.setFprice(dest.getFprice());
             wzListManager.save(wz);
         }
         wzStorageManager.save(dest);

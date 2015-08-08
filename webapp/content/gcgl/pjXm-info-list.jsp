@@ -17,8 +17,6 @@
             totalCount: ${page.totalCount},
             resultSize: ${page.resultSize},
             pageCount: ${page.pageCount},
-            orderBy: '${page.orderBy == null ? "" : page.orderBy}',
-            asc: ${page.asc},
             params: {
                 'filter_LIKES_fxmno': '${param.filter_LIKES_fxmno}',
                 'filter_LIKES_fxmname': '${param.filter_LIKES_fxmname}',
@@ -135,7 +133,7 @@
                             <tr>
                                 <td><input type="checkbox" class="selectedItem a-check" name="selectedItem"
                                            value="${item.fid}"></td>
-                                <td>${item.fid}</td>
+                                <td>${status.count}</td>
                                 <td>${item.fxmname}</td>
                                 <td>${ryMap[item.fxmzongjianid].fname}</td>
                                 <td>${ryMap[item.fxmzongjianid].ftel}</td>

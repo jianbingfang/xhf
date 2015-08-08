@@ -275,7 +275,7 @@
 
                                 <div class="controls">
                                     <input id="xzZbtzs-info_fzbfl" type="text" name="fzbfl"
-												   value="${model.fzbfl}"  class="text"
+                                           value="${model.fzbfl}" class="text "
                                            maxlength="">
                                 </div>
                             </div>

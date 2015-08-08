@@ -56,6 +56,8 @@ public class PjRyRecordController {
             @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
+        page.setOrderBy("fdbdate");
+        page.setOrder("DESC");
         page = pjRyRecordVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);

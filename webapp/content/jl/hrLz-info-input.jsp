@@ -120,19 +120,22 @@ $(function() {
     	<div class="control-group">
 	    <label class="control-label" for="jl-hrLz-info_freason"><spring:message code="jl-hrLz-info.jl-hrLz-info.input.freason" text="辞职原因"/></label>
 		<div class="controls">
-			 <textarea id="jl-hrLz-info_freason"  name="freason"  class="form-control text required" rows="6"  style="width: 560px" minlength="20" maxlength="500">${model.freason}</textarea>
+			<textarea id="jl-hrLz-info_freason" name="freason" class="form-control text required" rows="6"
+					  style="width: 560px" minlength="0" maxlength="500">${model.freason}</textarea>
 	    </div>
 	  </div>
     	<div class="control-group">
 	    <label class="control-label" for="jl-hrLz-info_fczbg"><spring:message code="jl-hrLz-info.jl-hrLz-info.input.fczbg" text="辞职报告"/></label>
 		<div class="controls">
-		   <textarea id="jl-hrLz-info_fczbg"  name="fczbg"  class="form-control text required" rows="6"  style="width: 560px" minlength="20" maxlength="500">${model.fczbg}</textarea>
+			<textarea id="jl-hrLz-info_fczbg" name="fczbg" class="form-control text required" rows="6"
+					  style="width: 560px" minlength="0" maxlength="500">${model.fczbg}</textarea>
 	    </div>
 	  </div>
     	<div class="control-group">
 	    <label class="control-label" for="jl-hrLz-info_fjy"><spring:message code="jl-hrLz-info.jl-hrLz-info.input.fjy" text="对公司建议"/></label>
 		<div class="controls">
-			<textarea id="jl-hrLz-info_fjy"  name="fjy"  class="form-control text required" rows="6"  style="width: 560px" minlength="20" maxlength="500">${model.fjy}</textarea>
+			<textarea id="jl-hrLz-info_fjy" name="fjy" class="form-control text required" rows="6" style="width: 560px"
+					  minlength="0" maxlength="500">${model.fjy}</textarea>
 	    </div>
 	  </div>
     

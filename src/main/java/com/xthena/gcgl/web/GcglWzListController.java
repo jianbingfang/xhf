@@ -201,6 +201,19 @@ public class GcglWzListController {
 		return "redirect:/gcgl/wzList-info-list.do";
 	}
 
+	@RequestMapping("wzList-info-remove-yq")
+	public String removeYq(@RequestParam("selectedItem") List<Long> selectedItem,
+						   RedirectAttributes redirectAttributes) {
+		List<WzList> wzLists = wzListManager.findByIds(selectedItem);
+
+		wzListManager.removeAll(wzLists);
+		WzMapUtil.deleteWzMap(wzLists);
+		messageHelper.addFlashMessage(redirectAttributes,
+				"core.success.delete", "删除成功");
+
+		return "redirect:/gcgl/wzList-yq-info-list.do";
+	}
+
 	@RequestMapping("wzList-info-export")
 	public void export(@ModelAttribute Page page,
 			@RequestParam Map<String, Object> parameterMap,
