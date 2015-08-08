@@ -113,7 +113,7 @@ $(function() {
         <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
       	 	 <td>${item.ftype}</td>
       	 	 <td>${item.fname}</td>
-      	 	 <td>${item.furl}</td>
+		     <td><a href="${item.furl}">${item.furl}</a></td>
       	 	 <td>${item.forder}</td>
         <td>
           <a href="gcgl-jlFlFg-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
