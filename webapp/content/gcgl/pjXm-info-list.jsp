@@ -17,8 +17,6 @@
             totalCount: ${page.totalCount},
             resultSize: ${page.resultSize},
             pageCount: ${page.pageCount},
-            orderBy: '${page.orderBy == null ? "" : page.orderBy}',
-            asc: ${page.asc},
             params: {
                 'filter_LIKES_fxmno': '${param.filter_LIKES_fxmno}',
                 'filter_LIKES_fxmname': '${param.filter_LIKES_fxmname}',
