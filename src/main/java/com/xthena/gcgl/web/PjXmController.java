@@ -110,6 +110,7 @@ public class PjXmController {
             hql.append(" and fxmname like '%" + parameterMap.get("filter_LIKES_fxmname").toString().trim() + "%'");
         }
         parameterMap.remove("filter_LIKES_fxmname");
+        hql.append(" order by fid desc");
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
 
@@ -144,6 +145,7 @@ public class PjXmController {
             hql.append(" and fxmname like '%" + parameterMap.get("filter_LIKES_fxmname").toString().trim() + "%'");
         }
         parameterMap.remove("filter_LIKES_fxmname");
+        hql.append(" order by fid desc");
 
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);

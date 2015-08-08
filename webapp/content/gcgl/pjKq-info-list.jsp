@@ -20,7 +20,8 @@
             orderBy: '${page.orderBy == null ? "" : page.orderBy}',
             asc: ${page.asc},
             params: {
-                'filter_LIKES_fyearmonth': '${param.filter_LIKES_name}'
+                'filter_LIKES_fyearmonth': '${param.filter_LIKES_fyearmonth}',
+                'filter_LIKES_fxmname': '${param.filter_LIKES_fxmname}'
             },
             selectedItemClass: 'selectedItem',
             gridFormId: 'pjKq-infoGridForm',
@@ -69,9 +70,13 @@
 
                 <form name="pjKq-infoForm" method="post" action="pjKq-info-list.do" class="form-inline">
                     <label for="pjKq-info_name"><spring:message code='pjKq-info.pjKq-info.list.search.name'
+                                                                text='项目名称'/>:</label>
+                    <input type="text" name="filter_LIKES_fxmname"
+                           value="${param.filter_LIKES_fxmname}">
+                    <label for="pjKq-info_name"><spring:message code='pjKq-info.pjKq-info.list.search.name'
                                                                 text='年月'/>:</label>
-                    <input type="text" id="pjKq-info_name" name="filter_LIKES_fyearmonth"
-                           value="${param.filter_LIKES_name}">
+                    <input type="text" name="filter_LIKES_fyearmonth"
+                           value="${param.filter_LIKES_fyearmonth}">
                     <button class="btn btn-small a-search" onclick="document.pjKq-infoForm.submit()">查询</button>
                     &nbsp;
                 </form>
@@ -132,10 +137,10 @@
                                 <td><input type="checkbox" class="selectedItem a-check" name="selectedItem"
                                            value="${item.fid}"></td>
                                 <td>${status.count}</td>
-                                <td>${xmMap[item.fxmid].fxmname}</td>
+                                <td>${item.fxmname}</td>
                                 <td>${item.fyearmonth}</td>
                                     <%--  <td>${item.fuploaddate}</td>
-                                     <td>${ryMap[item.fuploadid].fname}</td> --%>
+                                     <td>${item.fryname}</td> --%>
                                     <%-- 	 <td><a href="${item.fkqurl}"  class="a-link">${item.fkqname}</a>< /td>--%>
                                 <td>
                                     <a href="pjKq-kq-input.do?id=${item.fid}" class="a-update"><spring:message

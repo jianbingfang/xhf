@@ -8,8 +8,10 @@ import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 import com.xthena.gcgl.domain.PjKq;
+import com.xthena.gcgl.domain.PjKqV;
 import com.xthena.gcgl.domain.PjXm;
 import com.xthena.gcgl.manager.PjKqManager;
+import com.xthena.gcgl.manager.PjKqVManager;
 import com.xthena.jl.domain.JlKqFujian;
 import com.xthena.jl.manager.JlKqFujianManager;
 import com.xthena.util.CommRyMapUtil;
@@ -32,6 +34,7 @@ import java.util.Map;
 @RequestMapping("gcgl")
 public class PjKqController {
     private PjKqManager pjKqManager;
+    private PjKqVManager pjKqVManager;
     private Exportor exportor;
     private BeanMapper beanMapper = new BeanMapper();
     private UserConnector userConnector;
@@ -64,11 +67,10 @@ public class PjKqController {
                        @RequestParam Map<String, Object> parameterMap, Model model) {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
-        page = pjKqManager.pagedQuery(page, propertyFilters);
+        page.setOrderBy("fxmname");
+        page = pjKqVManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
-        model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
         return "gcgl/pjKq-info-list";
     }
@@ -162,6 +164,11 @@ public class PjKqController {
     @Resource
     public void setPjKqManager(PjKqManager pjKqManager) {
         this.pjKqManager = pjKqManager;
+    }
+
+    @Resource
+    public void setPjKqVManager(PjKqVManager pjKqVManager) {
+        this.pjKqVManager = pjKqVManager;
     }
 
     @Resource
