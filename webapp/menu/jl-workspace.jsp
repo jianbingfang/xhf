@@ -185,9 +185,11 @@
           </div>
           <div id="collapse-wz" class="accordion-body collapse ${currentMenu == 'jl-wz' ? 'in' : ''}">
             <ul class="accordion-inner nav nav-list">
-            <li><a href="${scopePrefix}/jl/jl-pjWz-info-list.do.do?wzKind=1"><i class="icon-certificate"></i>固定资产</a></li>
-            <li><a href="${scopePrefix}/jl/jl-pjWz-info-list.do.do?wzKind=2"><i class="icon-hand-left"></i>低值易耗品</a></li>
-            <li><a href="${scopePrefix}/jl/jl-xzKzList-info-list.do.do"><i class="icon-ok-circle"></i>项目章</a></li>
+                <li><a href="${scopePrefix}/jl/jl-pjWz-info-list.do?wzKind=1"><i class="icon-certificate"></i>固定资产</a>
+                </li>
+                <li><a href="${scopePrefix}/jl/jl-pjWz-info-list.do?wzKind=2"><i class="icon-hand-left"></i>低值易耗品</a>
+                </li>
+                <li><a href="${scopePrefix}/jl/jl-xzKzList-info-list.do"><i class="icon-ok-circle"></i>项目章</a></li>
             </ul>
           </div>
         </div>
