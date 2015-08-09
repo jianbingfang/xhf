@@ -108,8 +108,10 @@ public class JlJindugenzongDetailController {
     	//得到起始值
     	//long startTime=jlJindugenzong.getFstartdate().getTime();
     	Calendar c=Calendar.getInstance();
-    	c.setTime(jlJindugenzong.getFstartdate());
-    	int startYear=c.get(Calendar.YEAR);
+        if (jlJindugenzong.getFstartdate() != null) {
+            c.setTime(jlJindugenzong.getFstartdate());
+        }
+        int startYear=c.get(Calendar.YEAR);
     	int startMonth=c.get(Calendar.MONTH);
     	result.put("startYear", startYear);
     	result.put("startMonth", startMonth);
