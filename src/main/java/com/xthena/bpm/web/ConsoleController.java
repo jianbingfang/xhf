@@ -191,25 +191,24 @@ public class ConsoleController {
     @RequestMapping("console-listProcessInstances")
     public String listProcessInstances(Model model) {
         RuntimeService runtimeService = processEngine.getRuntimeService();
-
         List<ProcessInstance> processInstances = runtimeService
                 .createProcessInstanceQuery().list();
         model.addAttribute("processInstances", processInstances);
-
         return "bpm/console-listProcessInstances";
     }
 
     /**
      * 删除流程实例.
      */
+
     @RequestMapping("console-removeProcessInstance")
     public String removeProcessInstance(
             @RequestParam("processInstanceId") String processInstanceId,
             @RequestParam("deleteReason") String deleteReason) {
         RuntimeService runtimeService = processEngine.getRuntimeService();
         runtimeService.deleteProcessInstance(processInstanceId, deleteReason);
-
-        return "redirect:/bpm/console-listProcessInstances.do";
+         return "redirect:/bpm/console-listProcessInstances.do";
+//        return "redirect:/dashboard/dashboard.do";
     }
 
     /**
@@ -257,7 +256,7 @@ public class ConsoleController {
         int code = 1;
         try {
             TaskService taskService = processEngine.getTaskService();
-            taskService.deleteTask(taskId);
+            taskService.deleteTask(taskId,true);
         } catch (Exception e) {
             e.printStackTrace();
             code = 0;

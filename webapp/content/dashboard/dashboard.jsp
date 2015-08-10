@@ -160,7 +160,7 @@
                     </tr>
                     </thead>
                     <script>
-                        function deleteTask(taskId) {
+                    /*    function deleteTask(taskId) {
                             if (confirm('确认删除该任务？')) {
                                 $.post('${scopePrefix}/bpm/remove-task.do?taskId=' + taskId,
                                         function (status) {
@@ -173,22 +173,67 @@
                                         }
                                 );
                             }
+                        }*/
+
+                        function deleteProcess(processId) {
+                            if (confirm('确认删除该任务？')) {
+                                $.post('${scopePrefix}/bpm/console-removeProcessInstance.do?processInstanceId='+
+                                        processId+'&deleteReason=""',
+                                        function (status) {
+                                            if (status === 1) {
+                                                $('#task-' + processId).remove();
+                                            } else {
+                                                $('#task-' + processId).remove();
+                                            }
+                                        }
+                                );
+                            }
                         }
+
                     </script>
                     <tbody>
-                    <c:forEach items="${personalTasks}" var="item">
-                        <tr id="task-${item.id}">
-                            <td>${item.id}</td>
-                            <td>${item.name}</td>
+                    <%--<c:forEach items="${historicProcessInstances}" var="item">--%>
+                        <%--<tr id="task-${item.id}">--%>
+                            <%--<td>${item.id}</td>--%>
+                            <%--<td>${item.name}</td>--%>
+                            <%--<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>--%>
+                            <%--<td>--%>
+                                <%--<a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.id}"--%>
+                                   <%--class="btn btn-small btn-success">处理</a>--%>
+                                <%--<a href="#" onclick="deleteProcess(${item.id})"--%>
+                                   <%--class="btn btn-small btn-danger">删除</a>--%>
+                            <%--</td>--%>
+                        <%--</tr>--%>
+                    <%--</c:forEach>--%>
+                    <%--<c:forEach items="${personalTasks}"  var="item">--%>
+                        <%--<tr id="task-${item.id}">--%>
+                            <%--<td>${item.id}</td>--%>
+                            <%--<td>${item.name}</td>--%>
+                            <%--<td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>--%>
+                            <%--<td>--%>
+                                <%--<a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.id}"--%>
+                                   <%--class="btn btn-small btn-success">处理</a>--%>
+                                <%--<a href="#" onclick="deleteTask(${item.id})"--%>
+                                   <%--class="btn btn-small btn-danger">删除</a>--%>
+                            <%--</td>--%>
+                        <%--</tr>--%>
+                    <%--</c:forEach>--%>
+
+
+                    <c:forEach items="${TaskProcessIds}"  var="item">
+                        <tr id="task-${item.processInstance}">
+                            <td>${item.taskid}</td>
+                            <td>${item.taskname}</td>
                             <td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                             <td>
-                                <a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.id}"
+                                <a href="${scopePrefix}/form/form-viewTaskForm.do?taskId=${item.taskid}"
                                    class="btn btn-small btn-success">处理</a>
-                                <a href="#" onclick="deleteTask(${item.id})"
+                                <a href="#" onclick="deleteProcess(${item.processInstance})"
                                    class="btn btn-small btn-danger">删除</a>
                             </td>
                         </tr>
                     </c:forEach>
+
                     </tbody>
                 </table>
             </div>
@@ -263,11 +308,30 @@
                                                 $('#process-' + processInstanceId).remove();
                                             } else {
                                                 alert('删除失败！');
+                                                $('#process-' + processInstanceId).remove();
                                             }
                                         }
                                 );
                             }
                         }
+
+
+
+                        function deleteProcess(processId) {
+                            if (confirm('确认删除该任务？')) {
+                                $.post('${scopePrefix}/bpm/console-removeProcessInstance.do?processInstanceId='+
+                                        processId+'&deleteReason=""',
+                                        function (status) {
+                                            if (status === 1) {
+                                                $('#task-' + processId).remove();
+                                            } else {
+                                                $('#task-' + processId).remove();
+                                            }
+                                        }
+                                );
+                            }
+                        }
+
                     </script>
                     <tbody>
                     <c:forEach items="${historicProcessInstances}" var="item">

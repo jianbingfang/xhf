@@ -12,10 +12,7 @@
     <script type="text/javascript" src="${scopePrefix}/s/xthena/js/ajaxfileupload.js"></script>
     <link type="text/css" rel="stylesheet" href="${scopePrefix}/s/xthena/uploadpicker/uploadpicker.css">
     <script type="text/javascript">
-
-
         var formid = "";
-
         $(function () {
 
             $("#jlFujian-infoForm").validate({

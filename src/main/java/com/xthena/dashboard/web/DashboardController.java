@@ -24,10 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+
 
 @Controller
 @RequestMapping("dashboard")
@@ -48,8 +47,21 @@ public class DashboardController {
     @RequestMapping("dashboard")
     public String list(Model model) {
         String userId = SpringSecurityUtils.getCurrentUserId();
+
         List<Task> personalTasks = processEngine.getTaskService()
                 .createTaskQuery().taskAssignee(userId).orderByTaskCreateTime().desc().list();
+        List<TaskProcessClass> Task_processIDs=new ArrayList<>();
+
+        for(Task task:personalTasks){
+            TaskProcessClass item= new TaskProcessClass();
+            item.setTaskid(task.getId());
+            item.setTaskname(task.getName());
+            item.setCreateTime(task.getCreateTime());
+            item.setProcessInstance(task.getProcessInstanceId());
+            Task_processIDs.add(item);
+        }
+
+
         List<HistoricProcessInstance> historicProcessInstances = processEngine
                 .getHistoryService().createHistoricProcessInstanceQuery()
                 .startedBy(userId).orderByProcessInstanceStartTime().desc().unfinished().list();
@@ -65,6 +77,7 @@ public class DashboardController {
         List<XzCommNews> commNews = commNewsManager.find(hqlNews);
 
         model.addAttribute("personalTasks", personalTasks);
+        model.addAttribute("TaskProcessIds",Task_processIDs);
         model.addAttribute("historicProcessInstances", historicProcessInstances);
         model.addAttribute("bpmProcesses", bpmProcesses);
 
