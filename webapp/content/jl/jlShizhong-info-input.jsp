@@ -1,16 +1,9 @@
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@include file="/taglibs.jsp"%>
-<%
-	pageContext.setAttribute("currentHeader", "jl-home");
-%>
-<%
-	pageContext.setAttribute("currentMenu", "jlShizhong");
-%>
 <!doctype html>
 <html lang="zh">
 
 <head>
-<%@include file="/common/meta.jsp"%>
 <title><spring:message
 		code="jlShizhong-info.jlShizhong-info.input.title" text="编辑" /></title>
 <%@include file="/common/s.jsp"%>
@@ -43,8 +36,6 @@
 		
 		loadEditor();
 		
-		window.parent.tabHide();
-	
 		loadStyle();
 	});
 	
