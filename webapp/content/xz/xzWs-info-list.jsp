@@ -131,7 +131,9 @@ $(function() {
       	 	 <td>${item.fmemo1}</td>
       	 	 <td>${item.fmemo2}</td> --%>
         <td>
-          <a href="xzWs-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a>
+          <a href="xzWs-info-input.do?id=${item.fid}&ftype=${item.ftype}" class="a-update"><spring:message
+				  code="core.list.edit"
+																						text="编辑"/></a>
         </td>
       </tr>
       </c:forEach>
