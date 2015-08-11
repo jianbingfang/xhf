@@ -39,9 +39,9 @@ public class JlJindugenzongController {
     @RequestMapping("jljindugenzong-info-list")
     public String list(@ModelAttribute Page page, HttpServletRequest request,
                        @RequestParam Map<String, Object> parameterMap, @RequestParam(value = "type", required = false) String type, Model model) {
-        if ("1".equals(type)) {
-            return "redirect:/jl/jljindugenzong-info-input.do?type=1";
-        }
+//        if ("1".equals(type)||"".equals(type)) {
+//            return "redirect:/jl/jljindugenzong-info-input.do?type=1";
+//        }
         if (type != null) {
             parameterMap.put("filter_EQS_ftype", type);
         }
@@ -51,7 +51,7 @@ public class JlJindugenzongController {
         page = jljindugenzongManager.pagedQuery(page, propertyFilters);
 
         model.addAttribute("page", page);
-        model.addAttribute("type", type);
+        model.addAttribute("ftype", type);
         return "jl/jljindugenzong-info-list";
     }
 
@@ -61,13 +61,20 @@ public class JlJindugenzongController {
         if (id != null) {
             JlJindugenzong jljindugenzong = jljindugenzongManager.get(id);
             model.addAttribute("model", jljindugenzong);
-        } else if (id == null && type.equals("1")) {
-            JlJindugenzong jljindugenzong = jljindugenzongManager.findUniqueBy("fxmid", jlDeptManager.getXmId(request));
-
-            if (jljindugenzong != null) {
-                return "redirect:jljindugenzongDetail-info-input.do?fgzid=" + jljindugenzong.getFid();
-            }
         }
+//        else if (id == null && type.equals("1")) {
+//            JlJindugenzong jljindugenzong = jljindugenzongManager.findUniqueBy("fxmid", jlDeptManager.getXmId(request));
+//
+//            if (jljindugenzong != null) {
+//                return "redirect:jljindugenzongDetail-info-input.do?fgzid=" + jljindugenzong.getFid();
+//            }
+//        }
+
+//        else  {
+//            JlJindugenzong jljindugenzong = jljindugenzongManager.findUniqueBy("fxmid", jlDeptManager.getXmId(request));
+//            model.addAttribute("model", jljindugenzong);
+//
+//        }
         model.addAttribute("ftype", type);
         return "jl/jljindugenzong-info-input";
     }

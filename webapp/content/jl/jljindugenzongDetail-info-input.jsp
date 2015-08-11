@@ -265,7 +265,7 @@
 						</div>
 						<div class="container">
 							<form id="jljindugenzong-infoForm" method="post"
-								action="jljindugenzongDetail-info-save.do"
+								action="jljindugenzongDetail-info-save.do?type=${ftype}"
 								class="form-horizontal">
 								<input id="jljindugenzong-info_id" type="hidden" name="fid"
 									value="${model.fid}"> <input
@@ -423,6 +423,8 @@
 							permission="jljindugenzongDetail-info:create">
 							<button class="btn btn-small a-insert btn-primary"
 								onclick="showEdit()">新建</button>
+							<button class="btn btn-small a-insert btn-primary"
+									onclick="location.href='jljindugenzong-info-list.do?type=${ftype}'">返回上一层</button>
 						</region:region-permission>
 					</div>
 					<div class="m-clear"></div>

@@ -143,6 +143,8 @@ public class PjVisitController {
     public void setPjVisitManager(PjVisitManager pjVisitManager) {
         this.pjVisitManager = pjVisitManager;
     }
+
+
     @Resource
     public void setPjVisitVManager(PjVisitVManager pjVisitVManager) {
         this.pjVisitVManager = pjVisitVManager;

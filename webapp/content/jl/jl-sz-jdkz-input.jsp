@@ -43,6 +43,7 @@ $(function() {
     
 })
 
+
 function tabShow(){
 	$('.nav.nav-tabs').show();
 }

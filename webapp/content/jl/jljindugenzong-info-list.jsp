@@ -21,7 +21,7 @@ var config = {
     asc: ${page.asc},
     params: {
 		'filter_LIKES_fname': '${param.filter_LIKES_name}',
-		'filter_EQS_ftype': '${type}'
+		'filter_EQS_ftype': '${ftype}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'jljindugenzong-infoGridForm',
@@ -57,7 +57,8 @@ $(function() {
 		</header>
         <div id="jljindugenzong-infoSearch" class="content content-inner">
 
-		  <form name="jljindugenzong-infoForm" method="post" action="jljindugenzong-info-list.do?type=${type}" class="form-inline">
+		  <form name="jljindugenzong-infoForm" method="post" action="jljindugenzong-info-list.do?type=${ftype}"
+				class="form-inline">
 		    <label for="jljindugenzong-info_name"><spring:message code='jljindugenzong-info.jljindugenzong-info.list.search.name' text='名称'/>:</label>
 		    <input type="text" id="jljindugenzong-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_name}">
 			<button class="btn btn-small a-search" onclick="document.jljindugenzong-infoForm.submit()">查询</button>&nbsp;
@@ -69,7 +70,8 @@ $(function() {
 	  <article class="m-blank">
 	    <div class="pull-left">
 		  <region:region-permission permission="jljindugenzong-info:create">
-		  <button class="btn btn-small a-insert" onclick="location.href='jljindugenzong-info-input.do?type=${type}'">新建</button>
+		  <button class="btn btn-small a-insert"
+				  onclick="location.href='jljindugenzong-info-input.do?type=${ftype}'">新建</button>
 		  </region:region-permission>
 		  <region:region-permission permission="jljindugenzong-info:delete">
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
@@ -124,10 +126,10 @@ $(function() {
 									<td>${item.fstartdate}</td>
 									<td>${item.fenddate}</td>
 									<%-- <td>${item.fstatus}</td> --%>
-									<td><a href="jljindugenzong-info-input.do?id=${item.fid}&type=${type}"
+									<td><a href="jljindugenzong-info-input.do?id=${item.fid}&type=${ftype}"
 										class="a-update"><spring:message code="core.list.edit"
 												text="编辑" /></a> &nbsp;&nbsp;&nbsp;&nbsp; <a
-										href="jljindugenzongDetail-info-input.do?fgzid=${item.fid}"
+										href="jljindugenzongDetail-info-input.do?fgzid=${item.fid}&type=${ftype}"
 										class="a-update"><spring:message code="core.list.edit"
 												text="跟踪进度" /></a></td>
 								</tr>

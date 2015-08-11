@@ -126,6 +126,7 @@ public class PjJlfController {
     public void setPjJlfManager(PjJlfManager pjJlfManager) {
         this.pjJlfManager = pjJlfManager;
     }
+
     @Resource
     public void setPjJlfVManager(PjJlfVManager pjJlfVManager) {
         this.pjJlfVManager = pjJlfVManager;

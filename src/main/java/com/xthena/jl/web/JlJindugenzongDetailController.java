@@ -66,18 +66,20 @@ public class JlJindugenzongDetailController {
 
     @RequestMapping("jljindugenzongDetail-info-input")
     public String input(@RequestParam(value = "fgzid", required = false) Long fgzid,
+                        @RequestParam(value="type",required=false) String type,
             @RequestParam Map<String, Object> parameterMap,
             Model model) {
        
     	  List<JlJindugenzongDetail> jlJindugenzongDetails= jljindugenzongDetailManager.findBy("fgzid", fgzid);
     	  model.addAttribute("list", jlJindugenzongDetails);
+          model.addAttribute("ftype", type);
     	  
         return "jl/jljindugenzongDetail-info-input";
     }
 
     @RequestMapping("jljindugenzongDetail-info-save")
     public String save(@ModelAttribute JlJindugenzongDetail jljindugenzongDetail,
-            @RequestParam Map<String, Object> parameterMap,
+            @RequestParam Map<String, Object> parameterMap,   @RequestParam(value="type",required=false) String type,
             RedirectAttributes redirectAttributes) {
         JlJindugenzongDetail dest = null;
 
@@ -90,13 +92,13 @@ public class JlJindugenzongDetailController {
             dest = jljindugenzongDetail;
             dest.setFeditdate(new Date());
         }
-
+        dest.setFtype(type);
         jljindugenzongDetailManager.save(dest);
 
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
 
-        return "redirect:/jl/jljindugenzongDetail-info-input.do?fgzid="+dest.getFgzid();
+        return "redirect:/jl/jljindugenzongDetail-info-input.do?fgzid="+dest.getFgzid()+"&type="+dest.getFtype();
     }
     
     

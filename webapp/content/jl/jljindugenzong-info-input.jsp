@@ -36,7 +36,7 @@ $(function() {
 
 		<div class="content content-inner">
 
-<form id="jljindugenzong-infoForm" method="post" action="jljindugenzong-info-save.do" class="form-horizontal">
+<form id="jljindugenzong-infoForm" method="post" action="jljindugenzong-info-save.do?type=${ftype}" class="form-horizontal">
   <c:if test="${model != null}">
 	  <input id="jljindugenzong-info_id" type="hidden" name="fid" value="${model.fid}">
   </c:if>
