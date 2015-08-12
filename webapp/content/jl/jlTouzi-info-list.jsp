@@ -24,7 +24,7 @@
             orderBy: '${page.orderBy == null ? "" : page.orderBy}',
             asc: ${page.asc},
             params: {
-                'ftype': 'param.ftype',
+                'ftype': '${param.ftype}',
                 'filter_LIKES_name': '${param.filter_LIKES_name}'
             },
             selectedItemClass: 'selectedItem',
@@ -98,7 +98,7 @@
             </header>
             <div class="content">
                 <form id="jlTouzi-infoGridForm" name="jlTouzi-infoGridForm"
-                      method='post' action="jlTouzi-info-remove.do" class="m-form-blank">
+                      method='post' action="jlTouzi-info-remove.do?ftype=${param.ftype}" class="m-form-blank">
                     <table id="jlTouzi-infoGrid" class="m-table table-hover table-bordered">
                         <thead>
                         <tr>
@@ -149,7 +149,7 @@
             <div class="m-clear"></div>
         </article>
         <button class="btn btn-primary a-insert"
-                onclick="history.go(-1);">返回
+                onclick="location.href='jlTouzi-info-list2.do'">返回投资控制页
         </button>
         <div class="m-spacer"></div>
     </section>

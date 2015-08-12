@@ -137,7 +137,8 @@ public class JlTouziController {
     }
 
     @RequestMapping("jlTouzi-info-remove")
-    public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
+    public String remove(@RequestParam("selectedItem") List<Long> selectedItem, @RequestParam(value = "ftype", required
+            = false) Integer ftype,
             RedirectAttributes redirectAttributes) {
         List<JlTouzi> jlTouzis = jlTouziManager.findByIds(selectedItem);
 
@@ -146,7 +147,7 @@ public class JlTouziController {
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
 
-        return "redirect:/jl/jlTouzi-info-list.do";
+        return "redirect:/jl/jlTouzi-info-list.do?ftype="+ftype;
     }
 
     @RequestMapping("jlTouzi-info-export")
