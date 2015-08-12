@@ -465,8 +465,9 @@
 							<div class="content">
 								<form id="jljindugenzongDetail-infoGridForm"
 									name="jljindugenzongDetail-infoGridForm" method='post'
-									action="jljindugenzongDetail-info-remove.do"
+									action="jljindugenzongDetail-info-remove.do?type=${ftype}"
 									class="m-form-blank">
+
 									<table id="jljindugenzongDetail-infoGrid"
 										class="m-table table-hover table-bordered">
 										<thead>

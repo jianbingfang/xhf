@@ -117,16 +117,26 @@ public class JlJindugenzongController {
     }
 
     @RequestMapping("jljindugenzong-info-remove")
-    public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
-                         RedirectAttributes redirectAttributes) {
+    public String remove(@RequestParam("selectedItem") List<Long> selectedItem, @RequestParam Map<String, Object> parameterMap,
+                         RedirectAttributes redirectAttributes,Model model,@RequestParam(value = "type", required = false) String type ) {
         List<JlJindugenzong> jljindugenzongs = jljindugenzongManager.findByIds(selectedItem);
+        String ftype="";
+        if(parameterMap.containsKey("filter_EQS_ftype"))
+        {
+            String pagetype=parameterMap.get("filter_EQS_ftype").toString();
+            ftype=pagetype;
+        }
+        else if(type!=null)
+        {
+            ftype=type;
+        }
 
         jljindugenzongManager.removeAll(jljindugenzongs);
 
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
 
-        return "redirect:/jl/jljindugenzong-info-list.do";
+        return "redirect:/jl/jljindugenzong-info-list.do?type="+ftype;
     }
 
     @RequestMapping("jljindugenzong-info-export")
