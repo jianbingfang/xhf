@@ -46,12 +46,25 @@ public class JlJindugenzongController {
             parameterMap.put("filter_EQS_ftype", type);
         }
         parameterMap.put("filter_EQL_fxmid", jlDeptManager.getXmId(request));
+
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = jljindugenzongManager.pagedQuery(page, propertyFilters);
 
+        String ftype=request.getParameter("ftype");
+
+
+        if(parameterMap.containsKey("filter_EQS_ftype"))
+        {
+            String pagetype=parameterMap.get("filter_EQS_ftype").toString();
+            model.addAttribute("ftype", pagetype);
+        }
+        else
+        {
+            model.addAttribute("ftype", type);
+        }
         model.addAttribute("page", page);
-        model.addAttribute("ftype", type);
+
         return "jl/jljindugenzong-info-list";
     }
 

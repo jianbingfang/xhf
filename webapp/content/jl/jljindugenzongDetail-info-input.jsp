@@ -476,7 +476,7 @@
 													onchange="toggleSelectedItems(this.checked)"></th>
 												<th class="sorting" id="fname">名称</th>
 												<th class="sorting" id="feditdate">创建时间</th>
-												<th class="sorting" id="fstatus">进度状态</th>
+												<%--<th class="sorting" id="fstatus">进度状态</th>--%>
 												<th width="80">&nbsp;</th>
 											</tr>
 										</thead>
@@ -488,7 +488,7 @@
 														value="${item.fid}"></td>
 													<td>${item.fname}</td>
 													<td>${item.feditdate}</td>
-													<td>${item.fstatus}</td>
+													<%--<td>${item.fstatus}</td>--%>
 													<td><a href="javascript:void(0)"
 														onclick="showEdit(${item.fid})" class="a-update"><spring:message
 																code="core.list.edit" text="编辑" /></a></td>

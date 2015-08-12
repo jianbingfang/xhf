@@ -19,6 +19,7 @@ var config = {
     pageCount: ${page.pageCount},
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
+
     params: {
 		'filter_LIKES_fname': '${param.filter_LIKES_name}',
 		'filter_EQS_ftype': '${ftype}'
@@ -61,6 +62,8 @@ $(function() {
 				class="form-inline">
 		    <label for="jljindugenzong-info_name"><spring:message code='jljindugenzong-info.jljindugenzong-info.list.search.name' text='名称'/>:</label>
 		    <input type="text" id="jljindugenzong-info_name" name="filter_LIKES_fname" value="${param.filter_LIKES_name}">
+			  <%--<input type="text" name="filter_EQS_ftype" value="${param.filter_EQS_ftype}" hidden="true">--%>
+			  <input  type="hidden" name="filter_EQS_ftype" value="${ftype}">
 			<button class="btn btn-small a-search" onclick="document.jljindugenzong-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -104,6 +107,10 @@ $(function() {
 				<form id="jljindugenzong-infoGridForm" 
 					name="jljindugenzong-infoGridForm" method='post'
 					action="jljindugenzong-info-remove.do" class="m-form-blank">
+					<%----%>
+					<%--<input type="text" name="filter_EQS_ftype" value="${param.filter_EQS_ftype}" hidden="true">--%>
+
+					<input  type="hidden" name="filter_EQS_ftype" value="${ftype}">
 					<table id="jljindugenzong-infoGrid" class="m-table table-hover table-bordered">
 						<thead>
 							<tr>
@@ -142,7 +149,7 @@ $(function() {
 
 		<article>
 	    <div class="m-page-info pull-left">
-		  共100条记录 显示1到10条记录
+
 		</div>
 
 		<div class="btn-group m-pagination pull-right">
