@@ -64,7 +64,7 @@
 										code="wzAsk-info.wzAsk-info.input.faskbm" text="申请部门" /></label>
 								<div class="controls">
 									<input id="wzAsk-info_faskbm" type="text" name="faskbm"
-										value="${model.faskbm}" size="" class="text required"
+										value="${model.faskbm}" size="" class="text "
 										minlength="" maxlength="">
 								</div>
 							</div>
@@ -116,7 +116,7 @@
 										code="wzAsk-info.wzAsk-info.input.faskry" text="申请人" /></label>
 								<div class="controls">
 									<input id="wzAsk-info_faskry" type="text" name="faskry"
-										value="${model.faskry}" size="" class="number   " minlength=""
+										value="${model.faskry}" size="" class="text   " minlength=""
 										maxlength="">
 								</div>
 							</div>

@@ -336,10 +336,13 @@
 										name="fqiandingstatus" value="${model.fqiandingstatus}"
 										class=" " required>
 										<option value=""></option>
+
 										<option value="1"
 											<c:if test="${model.fqiandingstatus==1}"> selected="selected"  </c:if>>合同起草</option>
 										<option value="2"
 											<c:if test="${model.fqiandingstatus==2}"> selected="selected"  </c:if>>合同谈判</option>
+										<option value="5"
+												<c:if test="${model.fqiandingstatus=='5'}"> selected="selected"  </c:if>>返还归档</option>
 									</select>
 								</div>
 							</div>

@@ -74,18 +74,18 @@ public class PjYbController {
             dest = pjYb;
         }
 
-        UserBase ub = userBaseManager.get(Long.valueOf(SpringSecurityUtils.getCurrentUserId()));
-        if (ub != null) {
-            dest.setFuploadry(ub.getFryid());
-        }
-
-        pjYbManager.save(dest);
-
-        messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
-                "保存成功");
-
-        return "redirect:/gcgl/pjYb-info-list.do";
+                                     UserBase ub = userBaseManager.get(Long.valueOf(SpringSecurityUtils.getCurrentUserId()));
+    if (ub != null) {
+        dest.setFuploadry(ub.getFryid());
     }
+
+    pjYbManager.save(dest);
+
+    messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
+            "保存成功");
+
+    return "redirect:/gcgl/pjYb-info-list.do";
+}
 
     @RequestMapping("pjYb-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,

@@ -121,11 +121,41 @@
 								<label class="control-label" for="commHt-info_fqiandingstatus"><spring:message
 										code="commHt-info.commHt-info.input.fqiandingstatus"
 										text="签订状态" /></label>
+
 								<div class="controls">
-									<input id="commHt-info_fqiandingstatus" type="text" disabled
-										name="fqiandingstatus" value="${model.fqiandingstatus}"
-										size="" class="text  " readonly maxlength="">
+									<select class="form-control" id="jyXm-info_fqiandingstatus"
+											name="fqiandingstatus" required disabled
+											>
+										<option value="" ></option>
+										<option value="1"
+												<c:if test="${model.fqiandingstatus=='1'}"> selected="selected"
+												</c:if>>合同起草</option>
+										<option value="2"
+												<c:if test="${model.fqiandingstatus=='2'}"> selected="selected"
+												</c:if>>合同谈判 </option>
+
+										<option value="3"
+												<c:if test="${model.fqiandingstatus=='3'}"> selected="selected"
+												</c:if>>业主签章
+										</option>
+
+										<option value="4"
+												<c:if test="${model.fqiandingstatus=='4'}"> selected="selected"  </c:if>>业主签章</option>
+										<option value="5"
+												<c:if test="${model.fqiandingstatus=='5'}"> selected="selected"  </c:if>>返还归档</option>
+									</select>
+									<%-- 	<input id="commHt-info_fqiandingstatus" type="text"
+                                            name="fqiandingstatus" value="${model.fqiandingstatus}"
+                                            size="" class="text  " readonly maxlength=""> --%>
 								</div>
+								<%----%>
+								<%--<div class="controls">--%>
+									<%--<input id="commHt-info_fqiandingstatus" type="text" disabled--%>
+										<%--name="fqiandingstatus" value="${model.fqiandingstatus}"--%>
+										<%--size="" class="text  " readonly maxlength="">--%>
+								<%--</div>--%>
+								<%----%>
+
 							</div>
 							<div class="span5">
 								<label class="control-label" for="commHt-info_fjiafang"><spring:message

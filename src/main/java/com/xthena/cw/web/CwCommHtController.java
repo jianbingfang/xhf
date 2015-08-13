@@ -220,11 +220,12 @@ public class CwCommHtController {
             beanMapper.copy(commHt, dest);
             
             dest.setFisf("0");
-            if(dest.getFqiandingstatus().equals("5")&&!oldStatus.equals("5")){
-            	 commHtManager.saveAndStartWorkFlow(dest);
-            }else{
-            	 commHtManager.save(dest);
-            }
+//            if(dest.getFqiandingstatus().equals("5")&&!oldStatus.equals("5")){
+//            	 commHtManager.saveAndStartWorkFlow(dest);
+//            }else{
+//            	 commHtManager.save(dest);
+//            }
+            commHtManager.save(dest);
         } else {
             dest = commHt;
             dest.setFisf("0");
@@ -234,7 +235,7 @@ public class CwCommHtController {
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
 
-        return "redirect:/cw/cw-commHt-info-list.do?state=5";
+        return "redirect:/cw/cw-commHt-info-list.do?state="+dest.getFqiandingstatus();
     }
     
     

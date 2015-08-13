@@ -114,6 +114,7 @@
 									<th class="sorting" name="fjnmoney">交纳方式</th>
 									<%--<th class="sorting" name="fjnmoney">金额(元)</th>--%>
 									<th class="sorting" name="fjnbksmoney">金额(元)</th>
+									<th class="sorting" name="fjnwsmoney">未收金额(元)</th>
 									<th class="sorting" name="fjndate">最迟交纳日期</th>
 									<th class="sorting" name="foprator">申请人</th>
 									<!-- <th class="sorting" name="fbackdate">可退还日期</th>
@@ -137,7 +138,10 @@
 										<td>${item.fzh}</td>
 										<td>${item.fkhh}</td>
 										<td>${item.fjnmethod}</td>
+
+
 										<td><fmt:formatNumber type="number" value="${item.fjnbksmoney+item.fjnyingsmoney+item.fjnyismoney}" maxFractionDigits="2" /></td>
+										<td><fmt:formatNumber type="number" value="${item.fjnbksmoney+item.fjnyingsmoney}" maxFractionDigits="2" /></td>
 										<td>${item.fjndate}</td>
 										<td>${ryMap[item.foprator].fname}</td>
 										<%--  <td>${item.fbackdate}</td>
