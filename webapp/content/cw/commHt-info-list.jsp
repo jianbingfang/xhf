@@ -194,9 +194,9 @@
 					</region:region-permission>
 					<!-- 	<a class="btn btn-small a-insert"
 							href="cwXm-info-input.do">新建项目</a> -->
-					<!-- 	<region:region-permission permission="cw-commHt-info:delete">
+					 	<region:region-permission permission="cw-commHt-info:delete">
 						<button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
-					</region:region-permission> -->
+					</region:region-permission>
 					<button class="btn btn-small a-export"
 						onclick="table.exportExcel()">导出</button>
 				</div>

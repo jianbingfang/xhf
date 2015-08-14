@@ -434,8 +434,19 @@
 									</select>
 								</div>
 							</div>
+
 						</div>
-							
+						<div class="control-group">
+						<div class="span5">
+							<label class="control-label" for="commHt-info_fpaytype"><spring:message
+									code="commHt-info.commHt-info.input.fpaytype" text="备注" /></label>
+							<div class="controls">
+									<textarea id="commHt-info_fmemo" name="fmemo" rows="10"
+											  size="" class="text " minlength="" style="width: 360px;"
+											  maxlength="">${model.fmemo}</textarea>
+							</div>
+						</div>
+						</div>
 						<div class="control-group">
 							<div class="controls">
 								<button type="submit" class="btn a-submit"
