@@ -96,24 +96,24 @@
         </article>
 
         <article class="m-blank">
-            <%--<div class="pull-left">
+            <div class="pull-left">
+                <%--
+                  <region:region-permission >
+                          <button class="btn btn-small" onclick="pjRyAdd()">新近人员</button>
+                  </region:region-permission>
 
-              <region:region-permission >
-                      <button class="btn btn-small" onclick="pjRyAdd()">新近人员</button>
-              </region:region-permission>
+                  <region:region-permission >
+                          <button class="btn btn-small" onclick="pjRySub()">人员离职</button>
+                  </region:region-permission>
 
-              <region:region-permission >
-                      <button class="btn btn-small" onclick="pjRySub()">人员离职</button>
-              </region:region-permission>
-
-              <region:region-permission >
-                      <button class="btn btn-small" onclick="pjRyMove()">人员调配</button>
-              </region:region-permission>
-
+                  <region:region-permission >
+                          <button class="btn btn-small" onclick="pjRyMove()">人员调配</button>
+                  </region:region-permission>
+                --%>
                 <region:region-permission permission="pjRyRecord-info:delete">
                     <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
                 </region:region-permission>
-            </div>--%>
+            </div>
 
             <div class="pull-right">
                 每页显示
