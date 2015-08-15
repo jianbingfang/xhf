@@ -82,9 +82,63 @@
                             <input id="pjBeian-info_fxmid" type="hidden" name="fxmid"
                                    value="${model.fxmid}"> <input
                                 id="xmBxRecord-info_xmmc" type="text" value="${xmMap[model.fxmid].fxmname}" disabled
-                                class=" required" style="width: 175px;" value=""> <span
+                                class=" required" style="width: 185px;" value=""> <span
                                 class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
                                 class="icon-th-list"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="pjBeian-info_fbeiantype"><spring:message
+                            code="pjBeian-info.pjBeian-info.input.fbeiantype" text="备案类别"/></label>
+
+                    <div class="controls">
+                        <div class="input" style="padding-left: 0px;">
+                            <input id="pjBeian-info_fbeiantype" type="text" name="fbeiantype"
+                                   value="${model.fbeiantype}" class="text "/>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="pjBeian-info_fjingshouren"><spring:message
+                            code="pjBeian-info.pjBeian-info.input.fjingshouren" text="经手人"/></label>
+
+                    <div class="controls">
+                        <div class="input ryPicker">
+                            <input id="pjMreport-info_fjingshouren" type="text" name="fjingshouren"
+                                   value="${model.fjingshouren}"/>
+                            <%--<input id="pjMreport-info_fryid" type="hidden" name="fjingshourenid"
+                                   value="${model.fjingshourenid}"/>
+                            <input id="ryBxRecord-info_userName" type="text"
+                                   value="${ryMap[model.fjingshourenid].fname}"
+                                   disabled class=" required" style="width: 175px;"/>
+                            <span class="add-on"
+                                  style="padding-top: 2px; padding-bottom: 2px;">
+                                <i class="icon-user"></i>
+                            </span>
+                            --%>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="pjBeian-info_ftel"><spring:message
+                            code="pjBeian-info.pjBeian-info.input.ftel" text="联系方式"/></label>
+
+                    <div class="controls">
+                        <div class="input">
+                            <input id="pjMreport-info_ftel" type="text" name="ftel"
+                                   value="${model.ftel}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="pjBeian-info_fcydw"><spring:message
+                            code="pjBeian-info.pjBeian-info.input.fcydw" text="参与单位"/></label>
+
+                    <div class="controls">
+                        <div class="input">
+                            <input id="pjMreport-info_fcydw" type="text" name="fcydw"
+                                   value="${model.fcydw}"/>
                         </div>
                     </div>
                 </div>
@@ -96,25 +150,9 @@
                         <div class="input-append datepicker date" style="padding-left: 0px;">
                             <input id="pjBeian-info_fbeiandate" type="text" name="fbeiandate"
                                    value="${model.fbeiandate}" size="40" class="text "
-                                   style="background-color:white;cursor:default; width: 175px;">
+                                   style="background-color:white;cursor:default; width: 180px;">
                             <span class="add-on" style="padding-top: 2px; padding-bottom: 2px;"><i
                                     class="icon-calendar"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="pjBeian-info_fjingshouren"><spring:message
-                            code="pjBeian-info.pjBeian-info.input.fjingshouren" text="经手人"/></label>
-
-                    <div class="controls">
-                        <div class="input-append ryPicker">
-                            <input id="pjMreport-info_fryid" type="hidden" name="fjingshourenid"
-                                   value="${model.fjingshourenid}"> <input
-                                id="ryBxRecord-info_userName" type="text" value="${ryMap[model.fjingshourenid].fname}"
-                                disabled class=" required" style="width: 175px;" value="">
-								<span class="add-on"
-                                      style="padding-top: 2px; padding-bottom: 2px;"><i
-                                        class="icon-user"></i></span>
                         </div>
                     </div>
                 </div>

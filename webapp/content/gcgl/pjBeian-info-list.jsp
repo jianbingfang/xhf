@@ -103,8 +103,11 @@
                         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll"
                                                                     onchange="toggleSelectedItems(this.checked)"></th>
                         <th class="sorting" name="fpjcode">序号</th>
-                        <th class="sorting" name="fxmid">项目</th>
+                        <th class="sorting" name="fxmname">项目名称</th>
+                        <th class="sorting" name="fbeiantype">备案类别</th>
                         <th class="sorting" name="fjingshouren">经手人</th>
+                        <th class="sorting" name="ftel">联系方式</th>
+                        <th class="sorting" name="fcydw">参与单位</th>
                         <th class="sorting" name="fbeiandate">备案时间</th>
                         <th class="sorting" name="fmemo">备注</th>
                         <th width="80">&nbsp;</th>
@@ -118,7 +121,10 @@
                                        value="${item.fid}"></td>
                             <td>${status.count}</td>
                             <td>${item.fxmname}</td>
-                            <td>${item.fname}</td>
+                            <td>${item.fbeiantype}</td>
+                            <td>${item.fjingshouren}</td>
+                            <td>${item.ftel}</td>
+                            <td>${item.fcydw}</td>
                             <td>${item.fbeiandate}</td>
                             <td>${item.fmemo}</td>
                             <td>
