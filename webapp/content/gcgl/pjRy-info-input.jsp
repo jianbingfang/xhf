@@ -98,9 +98,10 @@
                         <div class="controls">
                             <div class="input-append ryPicker">
                                 <input id="ryBxRecord-info_fzhuchiren" type="hidden" name="fryid"
-                                       value="${model.fryid}"> <input
-                                    id="ryBxRecord-info_userName" type="text" value="${ryMap[model.fryid].fname}"
-                                    disabled class=" required" style="width: 175px;" value="">
+                                       value="${model.fryid}">
+                                <input
+                                        id="ryBxRecord-info_userName" type="text" value="${ryMap[model.fryid].fname}"
+                                        disabled class=" required" style="width: 175px;">
 									<span class="add-on"
                                           style="padding-top: 2px; padding-bottom: 2px;"><i
                                             class="icon-user"></i></span>

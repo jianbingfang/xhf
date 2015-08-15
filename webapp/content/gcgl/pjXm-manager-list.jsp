@@ -107,7 +107,8 @@ $(function() {
 		  <h4 class="title"><spring:message code="pjXm-info.pjXm-info.list.title" text="列表"/></h4>
 		</header>
         <div class="content">
-<form id="pjXm-infoGridForm" name="pjXm-infoGridForm" method='post'  action="pjXm-manager-remove.do" class="m-form-blank">
+			<form id="pjXm-infoGridForm" name="pjXm-infoGridForm" method="post" class="m-form-blank"
+				  action="pjXm-manager-remove.do?pageNo=${page.pageNo}&pageSize=${page.pageSize}&order=${page.order}">
   <table id="pjXm-infoGrid" class="m-table table-hover table-bordered">
     <thead>
       <tr>

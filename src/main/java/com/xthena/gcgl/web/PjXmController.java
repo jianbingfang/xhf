@@ -195,6 +195,9 @@ public class PjXmController {
 
     @RequestMapping("pjXm-info-input")
     public String input(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "type", required = false) String type,
+                        @RequestParam(required = false, defaultValue = "1") String pageNo,
+                        @RequestParam(required = false, defaultValue = "10") String pageSize,
+                        @RequestParam(required = false, defaultValue = "DESC") String order,
                         Model model) {
         if (id != null) {
             PjXm pjXm = pjXmManager.get(id);
@@ -203,6 +206,9 @@ public class PjXmController {
         model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
         model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         model.addAttribute("htMap", HtMapUtil.getHtMap());
+        model.addAttribute("pageNo", pageNo);
+        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("order", order);
         return "gcgl/pjXm-info-input";
     }
 
@@ -300,6 +306,9 @@ public class PjXmController {
 
     @RequestMapping("pjXm-info-save")
     public String save(@ModelAttribute PjXm pjXm, @RequestParam(value = "type", required = false) String type,
+                       @RequestParam(required = false, defaultValue = "1") String pageNo,
+                       @RequestParam(required = false, defaultValue = "10") String pageSize,
+                       @RequestParam(required = false, defaultValue = "DESC") String order,
                        @RequestParam Map<String, Object> parameterMap,
                        RedirectAttributes redirectAttributes) {
         PjXm dest = null;
@@ -342,12 +351,16 @@ public class PjXmController {
                 break;
         }
 
-        return "redirect:/gcgl/pjXm-info-list.do?fstatus=" + fstatus;
+        return "redirect:/gcgl/pjXm-info-list.do?fstatus=" + fstatus + "&pageNo=" + pageNo + "&pageSize=" + pageSize + "&order=" + order;
     }
 
 
     @RequestMapping("pjXm-info-remove")
     public String remove(@RequestParam("selectedItem") List<Long> selectedItem,
+                         @RequestParam(required = false, defaultValue = "1") String fstatus,
+                         @RequestParam(required = false, defaultValue = "1") String pageNo,
+                         @RequestParam(required = false, defaultValue = "10") String pageSize,
+                         @RequestParam(required = false, defaultValue = "DESC") String order,
                          RedirectAttributes redirectAttributes) {
         List<PjXm> pjXms = pjXmManager.findByIds(selectedItem);
 
@@ -356,12 +369,15 @@ public class PjXmController {
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
 
-        return "redirect:/gcgl/pjXm-info-list.do";
+        return "redirect:/gcgl/pjXm-info-list.do?fstatus=" + fstatus + "&pageNo=" + pageNo + "&pageSize=" + pageSize + "&order=" + order;
     }
 
 
     @RequestMapping("pjXm-manager-remove")
     public String mamagerremove(@RequestParam("selectedItem") List<Long> selectedItem,
+                                @RequestParam(required = false, defaultValue = "1") String pageNo,
+                                @RequestParam(required = false, defaultValue = "10") String pageSize,
+                                @RequestParam(required = false, defaultValue = "ASC") String order,
                                 RedirectAttributes redirectAttributes) {
         List<PjXm> pjXms = pjXmManager.findByIds(selectedItem);
 
@@ -370,7 +386,7 @@ public class PjXmController {
         messageHelper.addFlashMessage(redirectAttributes,
                 "core.success.delete", "删除成功");
 
-        return "redirect:/gcgl/pjXm-manager-list.do";
+        return "redirect:/gcgl/pjXm-manager-list.do?pageNo=" + pageNo + "&pageSize=" + pageSize + "&order=" + order;
     }
 
     @RequestMapping("pjXm-info-export")

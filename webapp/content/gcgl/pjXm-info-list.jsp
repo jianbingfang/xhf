@@ -111,7 +111,8 @@
                 <h4 class="title"><spring:message code="pjXm-info.pjXm-info.list.title" text="列表"/></h4>
             </header>
             <div class="content">
-                <form id="pjXm-infoGridForm" name="pjXm-infoGridForm" method='post' action="pjXm-info-remove.do"
+                <form id="pjXm-infoGridForm" name="pjXm-infoGridForm" method='post'
+                      action="pjXm-info-remove.do?fstatus=${fstatus}&pageNo=${page.pageNo}&pageSize=${page.pageSize}&order=DESC"
                       class="m-form-blank">
                     <table id="pjXm-infoGrid" class="m-table table-hover table-bordered">
                         <thead>
@@ -139,7 +140,8 @@
                                 <td>${ryMap[item.fxmzongjianid].ftel}</td>
                                 <td>${item.fmemo}</td>
                                 <td>
-                                    <a href="pjXm-info-input.do?id=${item.fid}" class="a-update"><spring:message
+                                    <a href="pjXm-info-input.do?pageNo=${page.pageNo}&pageSize=${page.pageSize}&order=DESC&id=${item.fid}"
+                                       class="a-update"><spring:message
                                             code="core.list.edit" text="编辑"/></a>
                                 </td>
                             </tr>

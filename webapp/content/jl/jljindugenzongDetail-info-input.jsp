@@ -203,7 +203,7 @@
 
 	function getDateBySubAsStr(subDay) {
 		var nowDate = getDateBySub(subDay);
-		return nowDate.getFullYear() + "年" + nowDate.getMonth() + "月"
+		return nowDate.getFullYear() + "年" + (nowDate.getMonth() + 1) + "月"
 				+ nowDate.getDate() + "日";
 	}
 
@@ -216,7 +216,7 @@
 		nowDate.setHours(0);
 		nowDate.setMinutes(0);
 		nowDate.setSeconds(0);
-		nowDate.setDate(subDay);
+		nowDate.setDate(subDay + 1);
 		return nowDate;
 	}
 
@@ -290,7 +290,7 @@
 											style="padding-left: 0px;">
 											<input id="jljindugenzong-info_fstartdate" type="text"
 												name="fstartdate" value="${model.fstartdate}" size="40"
-												class="text "
+												class="text required"
 												style="background-color:white;cursor:default; width: 175px;">
 											<span class="add-on"
 												style="padding-top: 2px; padding-bottom: 2px;"><i
@@ -307,7 +307,7 @@
 											style="padding-left: 0px;">
 											<input id="jljindugenzong-info_fenddate" type="text"
 												name="fenddate" value="${model.fenddate}" size="40"
-												class="text "
+												class="text required"
 												style="background-color:white;cursor:default; width: 175px;">
 											<span class="add-on"
 												style="padding-top: 2px; padding-bottom: 2px;"><i
@@ -325,7 +325,7 @@
 											style="padding-left: 0px;">
 											<input id="jljindugenzong-info_frealstart" type="text"
 												name="frealstart" value="${model.frealstart}" size="40"
-												class="text "
+												class="text required"
 												style="background-color:white;cursor:default; width: 175px;">
 											<span class="add-on"
 												style="padding-top: 2px; padding-bottom: 2px;"><i
@@ -342,7 +342,7 @@
 											style="padding-left: 0px;">
 											<input id="jljindugenzong-info_frealend" type="text"
 												name="frealend" value="${model.frealend}" size="40"
-												class="text "
+												class="text required"
 												style="background-color:white;cursor:default; width: 175px;">
 											<span class="add-on"
 												style="padding-top: 2px; padding-bottom: 2px;"><i
