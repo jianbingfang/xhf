@@ -179,7 +179,7 @@
                                     <c:if test="${item.fsystate=='1'}">在使用</c:if>
                                     <c:if test="${item.fsystate=='2'}">已报废</c:if></td>
                                 <td>${item.fxjstate}</td>
-                                <td><a href="wzIo-info-input.do?fwzid=${item.fid}" target="_blank"
+                                <td><a href="wzIo-info-input.do?fwzid=${item.fid}"
                                        class="a-update"><spring:message code="core.list.edit"
                                                                         text="调拨"/></a></td>
                             </tr>
