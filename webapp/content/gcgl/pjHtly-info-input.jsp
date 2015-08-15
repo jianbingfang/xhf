@@ -78,11 +78,13 @@ $(function() {
 			    	<div class="control-group">
 				    <label class="control-label" for="pjHtly-info_fhtje"><spring:message code="pjHtly-info.pjHtly-info.input.fhtje" text="合同金额"/></label>
 					<div class="controls">
-					  	 <input id="pjHtly-info_fhtje" type="text" name="fhtje" value="${model.fhtje}" size="" class="text " minlength="" maxlength="">	
+					  	 <input id="pjHtly-info_fhtje" type="text" name="fhtje"  disabled value="${fhtje}"
+								size=""
+								class="text " minlength="" maxlength="">
 				    </div>
 				  </div>
 			    	<div class="control-group">
-				    <label class="control-label" for="pjHtly-info_fsjzsr"><spring:message code="pjHtly-info.pjHtly-info.input.fsjzsr" text="实际总收入"/></label>
+				    <label class="control-label" for="pjHtly-info_fsjzsr"><spring:message code="pjHtly-info.pjHtly-info.input.fsjzsr" text="应收监理费"/></label>
 					<div class="controls">
 					  	 <input id="pjHtly-info_fsjzsr" type="text" name="fsjzsr" value="${model.fsjzsr}" size="" class="text " minlength="" maxlength="">	
 				    </div>

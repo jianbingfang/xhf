@@ -105,7 +105,7 @@
                             <th>序号</th>
                             <th class="sorting" name="fxmid">项目</th>
                             <th class="sorting" name="fhtje">合同金额</th>
-                            <th class="sorting" name="fsjzsr">实际总收入</th>
+                            <th class="sorting" name="fsjzsr">应收监理费</th>
                             <th class="sorting" name="flvyuelv">履约率</th>
                             <th class="sorting" name="fpjjd">工程进度</th>
                             <th class="sorting" name="fmemo">备注</th>
@@ -120,7 +120,7 @@
                                            value="${item.fid}"></td>
                                 <td>${status.count}</td>
                                 <td>${item.fhtname}</td>
-                                <td>${item.fhtje}</td>
+                                <td>${item.fhetongjine}</td>
                                 <td>${item.fsjzsr}</td>
                                 <td>${item.flvyuelv}</td>
                                 <td>${item.fpjjd}</td>
