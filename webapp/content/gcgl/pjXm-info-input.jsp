@@ -71,7 +71,8 @@
 					</h4>
 				</header>
 				<div class="content content-inner">
-					<form id="pjXm-infoForm" method="post" action="pjXm-info-save.do"
+					<form id="pjXm-infoForm" method="post"
+						  action="pjXm-info-save.do?pageNo=${pageNo}&pageSize=${pageSize}&order=${order}"
 						class="form-horizontal">
 						<c:if test="${model != null}">
 							<input id="pjXm-info_id" type="hidden" name="fid"
