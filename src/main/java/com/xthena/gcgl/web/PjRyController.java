@@ -79,6 +79,7 @@ public class PjRyController {
         }
 
         model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
+        model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
 
         return "gcgl/pjRy-info-input";
     }
