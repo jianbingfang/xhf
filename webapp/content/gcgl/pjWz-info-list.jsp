@@ -119,9 +119,9 @@
                             <td><input type="checkbox" class="selectedItem a-check" name="selectedItem"
                                        value="${item.fid}"></td>
                             <td>${xmMap[item.fxmid].fxmname}</td>
-                            <td>${wzMap[item.fwzid].fname}</td>
+                            <td>${item.fwzname}</td>
                             <td>${item.fnum}</td>
-                            <td>${wzMap[item.fwzid].fcode}</td>
+                            <td>${item.fwzcode}</td>
                                 <%-- <td>${item.fwztype}</td> --%>
                                 <%-- <td>${item.fisassets}</td> --%>
                             <td>${item.fstartdate}</td>
