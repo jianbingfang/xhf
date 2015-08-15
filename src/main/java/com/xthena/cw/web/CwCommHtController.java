@@ -135,6 +135,7 @@ public class CwCommHtController {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page.setOrderBy("fhetongno");
+
         if(zrnameBoolean){
         	 page = commHtManager.pagedQuery(hql.toString(),page, propertyFilters);
         }else
