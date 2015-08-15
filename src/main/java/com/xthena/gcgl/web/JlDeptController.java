@@ -108,7 +108,6 @@ public class JlDeptController {
 
     @RequestMapping("jlDept-info-save")
     public String save(@ModelAttribute JlDept jlDept,
-                       @RequestParam Map<String, Object> parameterMap,
                        RedirectAttributes redirectAttributes) {
 
         jlDeptManager.saveUser(jlDept);

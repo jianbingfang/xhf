@@ -123,7 +123,7 @@ public class UserBase implements java.io.Serializable {
     }
 
     /** @return null. */
-    @Column(name = "DISPLAY_NAME", length = 50)
+    @Column(name = "DISPLAY_NAME", length = 512)
     public String getDisplayName() {
         return this.displayName;
     }
