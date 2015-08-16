@@ -69,7 +69,7 @@ public class PjWzController {
             PjWz pjWz = pjWzManager.get(id);
             model.addAttribute("model", pjWz);
         }
-
+        model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
         return "gcgl/pjWz-info-input";
     }
 
