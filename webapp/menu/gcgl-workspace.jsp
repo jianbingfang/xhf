@@ -156,7 +156,7 @@
                 <li><a href="${scopePrefix}/gcgl/wzList-yq-info-list.do"><i class="icon-arrow-right"></i>监测仪器台账</a></li>
                 <li><a href="${scopePrefix}/gcgl/wzIo-info-list.do"><i class="icon-share-alt"></i>仪器调拨记录</a></li>
                 <li><a href="${scopePrefix}/gcgl/pjYqcheck-info-list.do"><i class="icon-book"></i>监测仪器年检台账</a></li>
-                <li><a href="${scopePrefix}/gcgl/pjYqcheck-info-input.do"><i class="icon-warning-sign"></i>仪器年检</a></li>
+                <%--<li><a href="${scopePrefix}/gcgl/pjYqcheck-info-input.do"><i class="icon-warning-sign"></i>仪器年检</a></li>--%>
                 <%-- <li><a href="${scopePrefix}/common/jsz.jsp"><i class="icon-user"></i>检测工具对比记录</a></li> --%>
             </ul>
         </div>

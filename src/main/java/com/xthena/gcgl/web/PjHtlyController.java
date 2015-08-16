@@ -16,6 +16,7 @@ import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
 import com.xthena.gcgl.domain.PjHtly;
+import  com.xthena.gcgl.domain.PjHtlyV;
 import com.xthena.gcgl.manager.PjHtlyManager;
 import com.xthena.gcgl.manager.PjHtlyVManager;
 import com.xthena.util.HtMapUtil;
@@ -44,9 +45,7 @@ public class PjHtlyController {
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = pjHtlyVManager.pagedQuery(page, propertyFilters);
-
         model.addAttribute("page", page);
-
         return "gcgl/pjHtly-info-list";
     }
 
@@ -55,11 +54,16 @@ public class PjHtlyController {
             Model model) {
         if (id != null) {
             PjHtly pjHtly = pjHtlyManager.get(id);
+            String fhetongjine="";
             model.addAttribute("model", pjHtly);
-        }
-        
-        model.addAttribute("htMap", HtMapUtil.getHtMap());
 
+            String hql ="select fhetongjine from PjHtlyV vly where "+pjHtly.getFxmid()+" = vly.fxmid";
+            List lst=pjHtlyVManager.find(hql);
+            model.addAttribute("fhtje",lst.get(0));
+
+
+        }
+        model.addAttribute("htMap", HtMapUtil.getHtMap());
         return "gcgl/pjHtly-info-input";
     }
 

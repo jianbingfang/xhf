@@ -27,7 +27,7 @@ public class PjHtlyV implements java.io.Serializable {
     private String fpjjd;
     private String fmemo;
     private String fhtname;
-
+    private String fhetongjine;
     // Constructors
 
     /**
@@ -40,7 +40,8 @@ public class PjHtlyV implements java.io.Serializable {
     /**
      * full constructor
      */
-    public PjHtlyV(Long fxmid, String fhtje, String fsjzsr, String flvyuelv, String fpjjd, String fmemo, String fhtname) {
+    public PjHtlyV(Long fxmid, String fhtje, String fsjzsr, String flvyuelv, String fpjjd, String fmemo, String
+            fhtname, String fhetongjine) {
         this.fxmid = fxmid;
         this.fhtje = fhtje;
         this.fsjzsr = fsjzsr;
@@ -48,6 +49,7 @@ public class PjHtlyV implements java.io.Serializable {
         this.fpjjd = fpjjd;
         this.fmemo = fmemo;
         this.fhtname = fhtname;
+        this.fhetongjine=fhetongjine;
     }
 
 
@@ -133,5 +135,15 @@ public class PjHtlyV implements java.io.Serializable {
 
     public void setFhtname(String fhtname) {
         this.fhtname = fhtname;
+    }
+
+    @Column(name = "fhetongjine", length = 512)
+
+    public String getFhetongjine() {
+        return this.fhetongjine;
+    }
+
+    public void setFhetongjine(String fhetongjine) {
+        this.fhetongjine = fhetongjine;
     }
 }
