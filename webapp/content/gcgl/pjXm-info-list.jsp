@@ -122,8 +122,9 @@
                             </th>
                             <th class="sorting" id="fxmno">序号</th>
                             <th class="sorting" id="fxmname">项目名称</th>
+                            <th class="sorting" id="fxmno">项目编号</th>
                             <th class="sorting" id="fxmzongjianid">总监/总代</th>
-                            <th class="sorting" id="fxmzongjianid">联系方式</th>
+                            <th class="sorting" id="ftel">联系方式</th>
                             <th class="sorting" id="fmemo">备注</th>
                             <th width="80">&nbsp;</th>
                         </tr>
@@ -136,6 +137,7 @@
                                            value="${item.fid}"></td>
                                 <td>${status.count}</td>
                                 <td>${item.fxmname}</td>
+                                <td>${item.fxmno}</td>
                                 <td>${ryMap[item.fxmzongjianid].fname}</td>
                                 <td>${ryMap[item.fxmzongjianid].ftel}</td>
                                 <td>${item.fmemo}</td>
