@@ -139,7 +139,7 @@
 		valueAxis.axisAlpha = 0;
 		valueAxis.labelFunction = function(value, valueText, valueAxis) {
 			var nowDate = getDateBySub(value);
-			var month = nowDate.getMonth();
+			var month = nowDate.getMonth() + 1;
 			var day = nowDate.getDate();
 			var year = nowDate.getFullYear() % 100;
 			var monthStr = month + "";
