@@ -127,7 +127,8 @@
                             <td>${item.fstartdate}</td>
                             <td>${item.fenddate}</td>
                             <td>
-                                    <%-- <a href="pjWz-info-input.do?id=${item.fid}" class="a-update"><spring:message code="core.list.edit" text="编辑"/></a> --%>
+                                <a href="pjWz-info-input.do?id=${item.fid}" class="a-update"><spring:message
+                                        code="core.list.edit" text="编辑"/></a>
                             </td>
                         </tr>
                     </c:forEach>

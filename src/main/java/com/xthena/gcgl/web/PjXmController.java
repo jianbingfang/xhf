@@ -322,13 +322,6 @@ public class PjXmController {
             dest = pjXm;
         }
 
-        if (dest.getFhtid() != null) {
-            CommHt ht = HtMapUtil.getHtMap().get(dest.getFhtid());
-            if (ht != null) {
-                dest.setFxmno(ht.getFhetongno());
-            }
-        }
-
         pjXmManager.save(dest);
         PjXmMapUtil.refreshRyMap(dest);
 

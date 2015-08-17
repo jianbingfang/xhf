@@ -4,7 +4,7 @@
 	pageContext.setAttribute("currentHeader", "hr-home");
 %>
 <%
-	pageContext.setAttribute("currentMenu", "commRy");
+	pageContext.setAttribute("currentMenu", "hrGwbm");
 %>
 <!doctype html>
 <html lang="zh">
