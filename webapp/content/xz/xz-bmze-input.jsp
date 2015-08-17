@@ -65,7 +65,7 @@
 									 maxlength="50">
 							</div>
 						</div>
-						<%--  <div class="control-group">
+						 <div class="control-group">
 							<label class="control-label" for="plain-info_ftitle"><spring:message
 									code="plain-info.plain-info.input.ftitle" text="状态" /></label>
 							<div class="controls">
@@ -79,7 +79,7 @@
 										<c:if test="${model.fstatus==3}"> selected="selected"  </c:if>>废除</option>
 								</select>
 							</div>
-						</div> --%>
+						</div>
 					<%--	<div class="control-group">
 							<label class="control-label" for="plain-info_fmonth"><spring:message
 									code="plain-info.plain-info.input.ftitle" text="开始时间" /></label>

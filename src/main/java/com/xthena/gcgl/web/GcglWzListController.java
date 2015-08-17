@@ -102,20 +102,20 @@ public class GcglWzListController {
 			hql.append(" and xm.fxmname like '%"
 					+ parameterMap.get("filter_LIKES_fprojectname") + "%' ");
 			parameterMap.put("filter_LIKES_ftype", "4");
-			parameterMap.remove("filter_LIKES_fprojectname");
-			List<PropertyFilter> propertyFilters = PropertyFilter
-					.buildFromMap(parameterMap);
-			page = wzListManager.pagedQuery(hql.toString(), page, propertyFilters);
-		}else {
-			parameterMap.put("filter_LIKES_ftype", "4");
-			parameterMap.remove("filter_LIKES_fprojectname");
-			List<PropertyFilter> propertyFilters = PropertyFilter
-					.buildFromMap(parameterMap);
-			page = wzListManager.pagedQuery(page, propertyFilters);
-		}
+			parameterMap.remove("filter_LIKES_fprojectn		ame");
+		List<PropertyFilter> propertyFilters = PropertyFilter
+				.buildFromMap(parameterMap);
+		page = wzListManager.pagedQuery(hql.toString(), page, propertyFilters);
+	}else {
+		parameterMap.put("filter_LIKES_ftype", "4");
+		parameterMap.remove("filter_LIKES_fprojectname");
+		List<PropertyFilter> propertyFilters = PropertyFilter
+				.buildFromMap(parameterMap);
+		page = wzListManager.pagedQuery(page, propertyFilters);
+	}
 
 
-		model.addAttribute("page", page);
+	model.addAttribute("page", page);
 
 		model.addAttribute("xmMap", PjXmMapUtil.getXmMap());
 		model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
