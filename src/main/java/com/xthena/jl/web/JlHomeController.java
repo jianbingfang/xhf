@@ -117,8 +117,8 @@ public class JlHomeController {
         for (PjRy pjRy : pjRies) {
             if (pjRy.getFryid() != null) {
                 CommRy ry = commRyManager.get(pjRy.getFryid());
-                if (ry != null && ry.getFname() != null && ry.getFname().isEmpty()) {
-                    if ("总监".equals(pjRy.getFgangwei())) {
+                if (ry != null && ry.getFname() != null && !ry.getFname().isEmpty()) {
+                    if (pjRy.getFgangwei() != null && pjRy.getFgangwei().contains("总监")) {
                         zjList.add(ry.getFname());
                     } else {
                         qtList.add(ry.getFname());
