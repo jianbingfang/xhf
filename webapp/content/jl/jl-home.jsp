@@ -227,7 +227,7 @@
                                style="float: right;margin: -2px 0 0 0; padding: 1px 5px;font-size: 10px;">
                     </header>
                     <div id="video-area">
-                        <video width="100%" height="100%" controls autoplay>
+                        <video width="100%" height="410px" controls autoplay>
                             <%--<source src="http://www.w3cschool.cc/try/demo_source/movie.mp4" type="video/mp4">--%>
 
                             <source src="<%=application.getContextPath()%>/s/upload/default_jl_video_<%=session.getAttribute("current_xm_id")%>.mp4"

@@ -80,6 +80,7 @@ public class PjXmController {
                 .buildFromMap(parameterMap);
         page = pjXmManager.pagedQuery(hql.toString(), page, propertyFilters);
         model.addAttribute("page", page);
+        model.addAttribute("ryMap", CommRyMapUtil.getRyMap());
         return "gcgl/pjXm-manager-list";
     }
 

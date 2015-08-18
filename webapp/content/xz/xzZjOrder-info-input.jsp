@@ -252,7 +252,7 @@
                     }
                 },
                 error: function () {
-                    alert("保存失败！");
+                    alert("请先选择证件！");
                 }
             });
         }

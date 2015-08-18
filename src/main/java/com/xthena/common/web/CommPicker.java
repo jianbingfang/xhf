@@ -26,11 +26,9 @@ public class CommPicker {
     @Autowired
     private  JyXmManager jyXmManager;
 
-    // 项目picker
     @RequestMapping("jyXm-toubiao-simple-list")
     public void listXm2(@ModelAttribute Page page,
                         @RequestParam Map<String, Object> parameterMap, HttpServletResponse response) {
-        //parameterMap.put("filter_EQS_fshenpiresult", "报名");
         List<PropertyFilter> propertyFilters = PropertyFilter
                 .buildFromMap(parameterMap);
         page = jyXmManager.pagedQuery(page, propertyFilters);

@@ -87,9 +87,9 @@
                            name="filter_LIKES_fname" value="${param.filter_LIKES_fname}">
                     <label for="wzList-info_fprojectname"><spring:message
                             code='wzList-info.wzList-info.list.search.fprojectname'
-                            text='项目名称'/>:</label> <input type="text"
-                                                          id="wzList-info_fprojectname" name="filter_LIKES_fprojectname"
-                                                          value="${param.filter_LIKES_fprojectname}">
+                            text='项目名称'/>:</label>
+                    <input type="text" id="wzList-info_fprojectname"
+                           name="filter_LIKES_fprojectname" value="${param.filter_LIKES_fprojectname}">
                     <label for="wzList-info_flyr"><spring:message
                             code='wzList-info.wzList-info.list.search.flyr' text='领用人'/>:</label>
                     <input type="text" id="wzList-info_flyr"

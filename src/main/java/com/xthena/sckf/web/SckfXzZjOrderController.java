@@ -337,20 +337,20 @@ public class SckfXzZjOrderController {
             }
 
             if (parameterMap.get("ftouzistart") != null && !String.valueOf(parameterMap.get("ftouzistart")).trim().equals("") && !String.valueOf(parameterMap.get("ftouzistart")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.ftotalMoney > " + String.valueOf(parameterMap.get("ftouzistart"));
+                hql += " and commht.ftotalMoney >= " + String.valueOf(parameterMap.get("ftouzistart"));
             }
 
             if (parameterMap.get("ftouziend") != null && !String.valueOf(parameterMap.get("ftouziend")).trim().equals("") && !String.valueOf(parameterMap.get("ftouziend")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.ftotalMoney < " + String.valueOf(parameterMap.get("ftouziend"));
+                hql += " and commht.ftotalMoney <= " + String.valueOf(parameterMap.get("ftouziend"));
             }
 
 
             if (parameterMap.get("fjianlifeistart") != null && !String.valueOf(parameterMap.get("fjianlifeistart")).trim().equals("") && !String.valueOf(parameterMap.get("fjianlifeistart")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fjianlifei > " + String.valueOf(parameterMap.get("fjianlifeistart"));
+                hql += " and commht.fjianlifei >= " + String.valueOf(parameterMap.get("fjianlifeistart"));
             }
 
             if (parameterMap.get("fjianlifeiend") != null && !String.valueOf(parameterMap.get("fjianlifeiend")).trim().equals("") && !String.valueOf(parameterMap.get("fjianlifeiend")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fjianlifei < " + String.valueOf(parameterMap.get("fjianlifeiend"));
+                hql += " and commht.fjianlifei <= " + String.valueOf(parameterMap.get("fjianlifeiend"));
             }
 
 
@@ -359,19 +359,19 @@ public class SckfXzZjOrderController {
             }
 
             if (parameterMap.get("fkaigongstart") != null && !String.valueOf(parameterMap.get("fkaigongstart")).trim().equals("") && !String.valueOf(parameterMap.get("fkaigongstart")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fstartdate > '" + String.valueOf(parameterMap.get("fkaigongstart")) + "'";
+                hql += " and commht.fstartdate >= '" + String.valueOf(parameterMap.get("fkaigongstart")) + "'";
             }
 
             if (parameterMap.get("fkaigongend") != null && !String.valueOf(parameterMap.get("fkaigongend")).trim().equals("") && !String.valueOf(parameterMap.get("fkaigongend")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fstartdate < '" + String.valueOf(parameterMap.get("fkaigongend")) + "'";
+                hql += " and commht.fstartdate <= '" + String.valueOf(parameterMap.get("fkaigongend")) + "'";
             }
 
             if (parameterMap.get("fjungongstart") != null && !String.valueOf(parameterMap.get("fjungongstart")).trim().equals("") && !String.valueOf(parameterMap.get("fjungongstart")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fenddate > '" + String.valueOf(parameterMap.get("fjungongstart")) + "'";
+                hql += " and commht.fenddate >= '" + String.valueOf(parameterMap.get("fjungongstart")) + "'";
             }
 
             if (parameterMap.get("fjungongend") != null && !String.valueOf(parameterMap.get("fjungongend")).trim().equals("") && !String.valueOf(parameterMap.get("fjungongend")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fenddate < '" + String.valueOf(parameterMap.get("fjungongend")) + "'";
+                hql += " and commht.fenddate <= '" + String.valueOf(parameterMap.get("fjungongend")) + "'";
             }
 
             if (parameterMap.get("fprojecttype") != null && !String.valueOf(parameterMap.get("fprojecttype")).trim().equals("") && !String.valueOf(parameterMap.get("fprojecttype")).equalsIgnoreCase(("undefined"))) {
