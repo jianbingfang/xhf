@@ -93,16 +93,19 @@ public class GcglWzListController {
 	@RequestMapping("wzList-yq-info-list")
 	public String gzlist(@ModelAttribute Page page,
 			@RequestParam Map<String, Object> parameterMap, Model model) {
-		// 根据物资名称查询
-		if (parameterMap.get("filter_LIKES_fprojectname") != null) {
-		
+
+
+		// 根据项目名称查询
+		if (parameterMap.get("filter_LIKES_fprojectname") != null && parameterMap.get("filter_LIKES_fprojectname") !=
+		 "") {
+
 		StringBuffer hql = new StringBuffer(
-				"select wz from PjXm xm,WzList wz where xm.fid=wz.fxmid");            
-		
+				"select wz from PjXm xm,WzList wz where xm.fid=wz.fxmid");
+
 			hql.append(" and xm.fxmname like '%"
 					+ parameterMap.get("filter_LIKES_fprojectname") + "%' ");
 			parameterMap.put("filter_LIKES_ftype", "4");
-			parameterMap.remove("filter_LIKES_fprojectn		ame");
+			parameterMap.remove("filter_LIKES_fprojectname");
 		List<PropertyFilter> propertyFilters = PropertyFilter
 				.buildFromMap(parameterMap);
 		page = wzListManager.pagedQuery(hql.toString(), page, propertyFilters);
