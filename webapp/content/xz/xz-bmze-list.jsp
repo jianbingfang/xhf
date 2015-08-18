@@ -83,7 +83,7 @@ $(function() {
        <%--  <th class="sorting" name="fcode"><spring:message code="cw-plain-info.cw-plain-info.list.name" text="序号"/></th> --%>
         <th width="10" class="m-table-check"><input type="checkbox" name="checkAll" onchange="toggleSelectedItems(this.checked)"></th>
         <th class="sorting" name="ftitle">制度名称</th>
-      <!--   <th class="sorting" name="fstatus">状态</th> -->
+      <th class="sorting" name="fstatus">状态</th>
    <!--      <th class="sorting" name="fstartdate">开始时间</th>
         <th class="sorting" name="fenddate">废止时间</th> -->
       <!--   <th class="sorting" name="fuserid">编制人</th> -->
@@ -99,7 +99,7 @@ $(function() {
          <td><input type="checkbox" class="selectedItem a-check" name="selectedItem" value="${item.fid}"></td>
         <%-- <td>${items.index}</td> --%>
         <td><a style="color:#005580;" href="../comm/comm-doc-input.do?id=${item.fid}" target="_blank" >${item.ftitle}</a></td>
-          <td><c:if test="${item.fstatus==1}"><font color="#0066CC">试行</font></c:if>
+        <td><c:if test="${item.fstatus==1}"><font color="#0066CC">试行</font></c:if>
 	        <c:if test="${item.fstatus==2}">实行</c:if>
 	        <c:if test="${item.fstatus==3}"><font color="#FF3333">废除</font></c:if>
         </td>

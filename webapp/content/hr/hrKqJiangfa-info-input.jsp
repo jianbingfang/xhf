@@ -84,12 +84,13 @@ $(function() {
 				    <label class="control-label" for="hrKqJiangfa-info_ftype"><spring:message code="hrKqJiangfa-info.hrKqJiangfa-info.input.ftype" text="类型"/></label>
 					<div class="controls">
 				      	 <select class="form-control" id="hrKqJiangfa-info_ftype" name="ftype" value="${model.ftype}" class=" " >
-					    	 	<option value="迟到"  <c:if test="${model.ftype}=='迟到'}"> selected="selected"  </c:if>>迟到</option>
-					    	 	<option value="早退"  <c:if test="${model.ftype}=='早退'}"> selected="selected"  </c:if>>早退</option>
-					    	 	<option value="旷工"  <c:if test="${model.ftype}=='旷工'}"> selected="selected"  </c:if>>旷工</option>
-					    	 	<option value="请假"  <c:if test="${model.ftype}=='请假'}"> selected="selected"  </c:if>>请假</option>
-					    	 	<option value="出差"  <c:if test="${model.ftype}=='出差'}"> selected="selected"  </c:if>>出差</option>
-					    	 	<option value="全勤"  <c:if test="${model.ftype}=='全勤'}"> selected="selected"  </c:if>>全勤</option>
+					    	 	<option value="迟到"  <c:if test="${model.ftype=='迟到'}"> selected="selected"
+								</c:if>>迟到</option>
+					    	 	<option value="早退"  <c:if test="${model.ftype=='早退'}"> selected="selected"  </c:if>>早退</option>
+					    	 	<option value="旷工"  <c:if test="${model.ftype=='旷工'}"> selected="selected"  </c:if>>旷工</option>
+					    	 	<option value="请假"  <c:if test="${model.ftype=='请假'}"> selected="selected"  </c:if>>请假</option>
+					    	 	<option value="出差"  <c:if test="${model.ftype=='出差'}"> selected="selected"  </c:if>>出差</option>
+					    	 	<option value="全勤"  <c:if test="${model.ftype=='全勤'}"> selected="selected"  </c:if>>全勤</option>
 					 	</select>
 				    </div>
 				  </div>
