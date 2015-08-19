@@ -222,12 +222,6 @@ public class CwCommHtController {
 //            }
             commHtManager.save(dest);
 
-            // 删除旧的XzZjDxlist数据
-            List<XzZjDxlist> list = xzZjDxlistManager.findBy("fzjid", id);
-            if (list != null) {
-                xzZjDxlistManager.removeAll(list);
-            }
-
         } else {
             dest = commHt;
             dest.setFisf("0");
@@ -235,9 +229,7 @@ public class CwCommHtController {
         }
 
         // 生成XzZjDxlist数据
-        XzZjDxlist dx = new XzZjDxlist();
-        xzZjDxlistManager.change(dx, dest);
-        xzZjDxlistManager.save(dx);
+        xzZjDxlistManager.mysave(dest);
 
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");

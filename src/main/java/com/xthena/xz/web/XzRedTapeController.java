@@ -76,7 +76,7 @@ public class XzRedTapeController {
             dest = xzRedTape;
         }
         dest.setFtype(1);
-        xzRedTapeManager.save(dest);
+        xzRedTapeManager.mysave(dest);
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
 

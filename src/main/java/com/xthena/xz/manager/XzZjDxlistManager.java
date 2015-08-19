@@ -215,7 +215,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
 		dest = this.change(dest, zj);
-
+		this.removeOldDataByFzjid(dest.getFzjid());
 		this.save(dest);
 		return "seccess";
 	}
@@ -234,6 +234,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
 		dest = this.change(dest, zj);
+		this.removeOldDataByFzjid(dest.getFzjid());
 		this.save(dest);
 		return "seccess";
 	}
@@ -252,6 +253,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
 		dest = this.change(dest, zj);
+		this.removeOldDataByFzjid(dest.getFzjid());
 		this.save(dest);
 		return "seccess";
 	}
@@ -270,6 +272,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
 		dest = this.change(dest, zj);
+		this.removeOldDataByFzjid(dest.getFzjid());
 		this.save(dest);
 		return "seccess";
 	}
@@ -288,6 +291,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
 		dest = this.change(dest, zj);
+		this.removeOldDataByFzjid(dest.getFzjid());
 		this.save(dest);
 		return "seccess";
 	}
@@ -306,6 +310,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
 		dest = this.change(dest, zj);
+		this.removeOldDataByFzjid(dest.getFzjid());
 		this.save(dest);
 		return "seccess";
 	}
@@ -324,6 +329,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		parameterMap.put("filter_EQL_fzjid", zj.getFid());
 		XzZjDxlist dest = findAndClear(parameterMap);
 		dest = this.change(dest, zj);
+		this.removeOldDataByFzjid(dest.getFzjid());
 		this.save(dest);
 		return "seccess";
 	}
@@ -343,6 +349,7 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 			parameterMap.put("filter_EQL_fzjid", zj.getFid());
 			XzZjDxlist dest = findAndClear(parameterMap);
 			dest = this.change(dest, zj);
+			this.removeOldDataByFzjid(dest.getFzjid());
 			this.save(dest);
 			return "seccess";
 		}
@@ -384,4 +391,15 @@ public class XzZjDxlistManager extends HibernateEntityDao<XzZjDxlist> {
 		return dest;
 	}
 
+	/**
+	 * 删除之前的重复数据
+	 *
+	 * @param id
+	 */
+	private void removeOldDataByFzjid(Long id) {
+		List<XzZjDxlist> list = this.findBy("fzjid", id);
+		if (list != null) {
+			this.removeAll(list);
+		}
+	}
 }
