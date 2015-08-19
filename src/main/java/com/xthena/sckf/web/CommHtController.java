@@ -115,7 +115,7 @@ public class CommHtController {
 			dest = commHt;
 		}
 		dest.setFisf("0");
-		commHtManager.save(dest);
+		commHtManager.mysave(dest);
 		HtMapUtil.refreshHtMap(dest);
 		messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
 				"保存成功");
