@@ -1512,7 +1512,7 @@ label{ font-size:12px;}
 										<div class="controls">
 											<textarea id="jyXm-info_fothers" name="fothers"
 												class="form-control" rows="4" style="width: 560px" class="text  " minlength=""
-												maxlength="500">${model.fothers}</textarea>
+												maxlength="">${model.fothers}</textarea>
 										</div>
 									</div>
 								</div>
