@@ -123,6 +123,7 @@ public class JyXm  implements java.io.Serializable {
      private String fshuxing;
      private String ffbstatus;
      private String ffbreason;
+
     // Constructors
 
     /** default constructor */
@@ -672,7 +673,7 @@ public class JyXm  implements java.io.Serializable {
         this.fzbkzj = fzbkzj;
     }
     
-    @Column(name="fothers", length=2000)
+    @Column(name="fothers", length=10000)
 
     public String getFothers() {
         return this.fothers;
