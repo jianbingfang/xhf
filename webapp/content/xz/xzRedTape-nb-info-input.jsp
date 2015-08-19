@@ -279,7 +279,7 @@
 									<div class="controls">
 										<textarea id="xzRedTape-nb-info_fmemo" name="fmemo"
 											class="form-control" rows="6" class="text  "
-											maxlength="4,000">${model.fmemo}</textarea>
+											maxlength="">${model.fmemo}</textarea>
 									</div>
 								</div>
 								<div class="control-group">

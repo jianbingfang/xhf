@@ -311,7 +311,7 @@
 									<div class="controls">
 										<textarea id="xzRedTape-wb-info_fmemo" name="fmemo"
 											class="form-control" rows="3" class="text  "
-											maxlength="4,000">${model.fmemo}</textarea>
+											maxlength="">${model.fmemo}</textarea>
 									</div>
 								</div>
 								<div class="control-group">
