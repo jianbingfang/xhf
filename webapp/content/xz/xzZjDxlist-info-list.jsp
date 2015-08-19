@@ -20,7 +20,7 @@ var config = {
     orderBy: '${page.orderBy == null ? "" : page.orderBy}',
     asc: ${page.asc},
     params: {
-        'filter_LIKES_name': '${param.filter_LIKES_name}'
+		'filter_LIKES_fname': '${param.filter_LIKES_fname}'
     },
 	selectedItemClass: 'selectedItem',
 	gridFormId: 'xzZjDxlist-infoGridForm',
@@ -58,7 +58,8 @@ $(function() {
 
 		  <form name="xzZjDxlist-infoForm" method="post" action="xzZjDxlist-info-list.do" class="form-inline">
 		    <label for="xzZjDxlist-info_name"><spring:message code='xzZjDxlist-info.xzZjDxlist-info.list.search.name' text='名称'/>:</label>
-		    <input type="text" id="xzZjDxlist-info_name" name="filter_LIKES_name" value="${param.filter_LIKES_name}">
+			  <input type="text" id="xzZjDxlist-info_fname" name="filter_LIKES_fname"
+					 value="${param.filter_LIKES_fname}">
 			<button class="btn btn-small a-search" onclick="document.xzZjDxlist-infoForm.submit()">查询</button>&nbsp;
 		  </form>
 
@@ -74,8 +75,8 @@ $(function() {
 		  <button class="btn btn-small a-remove" onclick="table.removeAll()">删除</button>
 		  </region:region-permission>
 		  <button class="btn btn-small a-export" onclick="table.exportExcel()">导出</button>
-		  <button> <a href="xzZjDxlist-info-pull.do">导入</a></button>
-		  <button> <a href="xzZjDxlist-info-clear.do">清空</a></button>
+			<button class="hidden"><a href="xzZjDxlist-info-pull.do">导入</a></button>
+			<button class="hidden"><a href="xzZjDxlist-info-clear.do">清空</a></button>
 		</div>
 
 		<div class="pull-right">

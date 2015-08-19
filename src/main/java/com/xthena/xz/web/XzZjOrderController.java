@@ -1,28 +1,5 @@
 package com.xthena.xz.web;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
-import org.hibernate.Query;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.xthena.api.user.UserConnector;
 import com.xthena.core.hibernate.PropertyFilter;
 import com.xthena.core.mapper.BeanMapper;
@@ -30,30 +7,28 @@ import com.xthena.core.page.Page;
 import com.xthena.core.spring.MessageHelper;
 import com.xthena.ext.export.Exportor;
 import com.xthena.ext.export.TableModel;
-import com.xthena.hr.domain.CommRy;
-import com.xthena.hr.domain.HrRyZj;
 import com.xthena.hr.manager.HrRyZjManager;
-import com.xthena.sckf.domain.CommHt;
 import com.xthena.sckf.manager.CommHtManager;
 import com.xthena.util.CommRyMapUtil;
 import com.xthena.util.JsonResponseUtil;
 import com.xthena.util.JyXmMapUtil;
-import com.xthena.xz.domain.XzJgysbg;
-import com.xthena.xz.domain.XzRyzs;
-import com.xthena.xz.domain.XzZbtzs;
-import com.xthena.xz.domain.XzZj;
 import com.xthena.xz.domain.XzZjDxlist;
 import com.xthena.xz.domain.XzZjOrder;
 import com.xthena.xz.domain.XzZjOrderGroup;
 import com.xthena.xz.domain.XzZjOrderList;
-import com.xthena.xz.manager.XzJgysbgManager;
-import com.xthena.xz.manager.XzRyzsManager;
-import com.xthena.xz.manager.XzZbtzsManager;
-import com.xthena.xz.manager.XzZjDxlistManager;
-import com.xthena.xz.manager.XzZjManager;
-import com.xthena.xz.manager.XzZjOrderListManager;
-import com.xthena.xz.manager.XzZjOrderManager;
-import com.xthena.xz.manager.Zj;
+import com.xthena.xz.manager.*;
+import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("xz")
@@ -218,10 +193,10 @@ public class XzZjOrderController {
             if (parameterMap.get("fname") != null && !String.valueOf(parameterMap.get("fname")).trim().equals("") && !String.valueOf(parameterMap.get("fname")).equalsIgnoreCase(("undefined"))) {
                 hql += " and (xzRyzs.ftype like '%" + String.valueOf(parameterMap.get("fname")) + "%' or xzRyzs.fhjname like '%" + String.valueOf(parameterMap.get("fname")) + "%')";
             }
-	      	  
+
 	      	  
 	      	  /*if(parameterMap.get("ftype")!=null&&!String.valueOf(parameterMap.get("ftype")).trim().equals("")&&!String.valueOf(parameterMap.get("ftype")).equalsIgnoreCase(("undefined"))){
-	      		  hql+=" and (xzRyzs.ftype like '%"+String.valueOf(parameterMap.get("fname"))+"%' )";
+                    hql+=" and (xzRyzs.ftype like '%"+String.valueOf(parameterMap.get("fname"))+"%' )";
 	      	  }
 	      	  */
 
@@ -253,20 +228,20 @@ public class XzZjOrderController {
             }
 
             if (parameterMap.get("ftouzistart") != null && !String.valueOf(parameterMap.get("ftouzistart")).trim().equals("") && !String.valueOf(parameterMap.get("ftouzistart")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.ftotalMoney > " + String.valueOf(parameterMap.get("ftouzistart"));
+                hql += " and commht.ftotalMoney >= " + String.valueOf(parameterMap.get("ftouzistart"));
             }
 
             if (parameterMap.get("ftouziend") != null && !String.valueOf(parameterMap.get("ftouziend")).trim().equals("") && !String.valueOf(parameterMap.get("ftouziend")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.ftotalMoney < " + String.valueOf(parameterMap.get("ftouziend"));
+                hql += " and commht.ftotalMoney <= " + String.valueOf(parameterMap.get("ftouziend"));
             }
 
 
             if (parameterMap.get("fjianlifeistart") != null && !String.valueOf(parameterMap.get("fjianlifeistart")).trim().equals("") && !String.valueOf(parameterMap.get("fjianlifeistart")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fjianlifei > " + String.valueOf(parameterMap.get("fjianlifeistart"));
+                hql += " and commht.fjianlifei >= " + String.valueOf(parameterMap.get("fjianlifeistart"));
             }
 
             if (parameterMap.get("fjianlifeiend") != null && !String.valueOf(parameterMap.get("fjianlifeiend")).trim().equals("") && !String.valueOf(parameterMap.get("fjianlifeiend")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fjianlifei < " + String.valueOf(parameterMap.get("fjianlifeiend"));
+                hql += " and commht.fjianlifei <= " + String.valueOf(parameterMap.get("fjianlifeiend"));
             }
 
 
@@ -275,19 +250,19 @@ public class XzZjOrderController {
             }
 
             if (parameterMap.get("fkaigongstart") != null && !String.valueOf(parameterMap.get("fkaigongstart")).trim().equals("") && !String.valueOf(parameterMap.get("fkaigongstart")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fstartdate > '" + String.valueOf(parameterMap.get("fkaigongstart")) + "'";
+                hql += " and commht.fstartdate >= '" + String.valueOf(parameterMap.get("fkaigongstart")) + "'";
             }
 
             if (parameterMap.get("fkaigongend") != null && !String.valueOf(parameterMap.get("fkaigongend")).trim().equals("") && !String.valueOf(parameterMap.get("fkaigongend")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fstartdate < '" + String.valueOf(parameterMap.get("fkaigongend")) + "'";
+                hql += " and commht.fstartdate <= '" + String.valueOf(parameterMap.get("fkaigongend")) + "'";
             }
 
             if (parameterMap.get("fjungongstart") != null && !String.valueOf(parameterMap.get("fjungongstart")).trim().equals("") && !String.valueOf(parameterMap.get("fjungongstart")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fenddate > '" + String.valueOf(parameterMap.get("fjungongstart")) + "'";
+                hql += " and commht.fenddate >= '" + String.valueOf(parameterMap.get("fjungongstart")) + "'";
             }
 
             if (parameterMap.get("fjungongend") != null && !String.valueOf(parameterMap.get("fjungongend")).trim().equals("") && !String.valueOf(parameterMap.get("fjungongend")).equalsIgnoreCase(("undefined"))) {
-                hql += " and commht.fenddate < '" + String.valueOf(parameterMap.get("fjungongend")) + "'";
+                hql += " and commht.fenddate <= '" + String.valueOf(parameterMap.get("fjungongend")) + "'";
             }
 
             if (parameterMap.get("fprojecttype") != null && !String.valueOf(parameterMap.get("fprojecttype")).trim().equals("") && !String.valueOf(parameterMap.get("fprojecttype")).equalsIgnoreCase(("undefined"))) {

@@ -169,9 +169,8 @@ public class XzZjDxlistController {
 
 	@RequestMapping("xzZjDxlist-info-pull")
 	public String pull(@ModelAttribute XzZjDxlist xzZjDxlist,
-			@RequestParam Map<String, Object> parameterMap,
 			RedirectAttributes redirectAttributes) {
-		List<XzZjDxlist> xzzjDxlist = new ArrayList<XzZjDxlist>();
+		List<XzZjDxlist> xzzjDxlist = new ArrayList<>();
 
 		// 公司证件
 		List<XzZj> xzzj = xzzjManager.getAll();
