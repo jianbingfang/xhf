@@ -301,7 +301,7 @@
 									<div class="controls">
 										<textarea id="xzRedTape-wb-info_ftapename" name="ftapename"
 											class="form-control" rows="6" class="text  required"
-											maxlength="4,000">${model.ftapename}</textarea>
+											maxlength="">${model.ftapename}</textarea>
 									</div>
 								</div>
 								<div class="control-group">
