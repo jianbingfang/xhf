@@ -385,7 +385,7 @@
                                 <div class="input-append ryPicker">
                                     <input id="commHt-info_fzhubanren" type="hidden"
                                            name="fzongjian" value="${model.fzongjian}"> <input
-                                        id="ryBxRecord-info_fzongjian" type="text" class=" required"
+                                        id="ryBxRecord-info_fzongjian" type="text" class=" "
                                         value="${ryMap[model.fzongjian].fname}" readonly="readonly">
 										<span class="add-on"
                                               style="padding-top: 2px; padding-bottom: 2px;"><i
