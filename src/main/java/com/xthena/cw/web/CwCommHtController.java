@@ -228,8 +228,8 @@ public class CwCommHtController {
             commHtManager.save(dest);
         }
 
-        // 生成XzZjDxlist数据
-        xzZjDxlistManager.mysave(dest);
+//        // 生成XzZjDxlist数据
+//        xzZjDxlistManager.mysave(dest);
 
         messageHelper.addFlashMessage(redirectAttributes, "core.success.save",
                 "保存成功");
