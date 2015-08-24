@@ -425,18 +425,18 @@ public class SckfXzZjOrderController {
             }
         }
 
-        Query query = xzZjManager.createQuery(hql);
-        query.setFirstResult((pageNo - 1) * pageSize);
-        query.setMaxResults(pageSize);
-        resultList = query.list();
+            Query query = xzZjManager.createQuery(hql);
+            query.setFirstResult((pageNo - 1) * pageSize);
+            query.setMaxResults(pageSize);
+            resultList = query.list();
 
-        for (Object objList : resultList) {
-            Object[] objs = (Object[]) objList;
-            XzZjDxlist xzZjDxlist = (XzZjDxlist) objs[0];
+            for (Object objList : resultList) {
+                Object[] objs = (Object[]) objList;
+                XzZjDxlist xzZjDxlist = (XzZjDxlist) objs[0];
 
-            HashMap<String, Object> responseMap = new HashMap<String, Object>();
-            responseMap.put("fid", xzZjDxlist.getFid());
-            responseMap.put("ftype", type);
+                HashMap<String, Object> responseMap = new HashMap<String, Object>();
+                responseMap.put("fid", xzZjDxlist.getFid());
+                responseMap.put("ftype", type);
             responseMap.put("fzjinfo", xzZjDxlist.getFname());
             responseMap.put("fstatus", xzZjDxlist.getFstate());
             responseMap.put("lastupdate", xzZjDxlist.getFupdatetime());
