@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * OrgDepartment entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name="org_department"
+@Table(name="ORG_DEPARTMENT"
     ,catalog="xhf"
 )
 
