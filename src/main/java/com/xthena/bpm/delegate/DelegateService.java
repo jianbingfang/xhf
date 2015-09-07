@@ -20,9 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class DelegateService {
     private static Logger logger = LoggerFactory
             .getLogger(DelegateService.class);
-    public static final String SQL_GET_DELEGATE_INFO = "select * from bpm_delegate_info"
+    public static final String SQL_GET_DELEGATE_INFO = "select * from BPM_DELEGATE_INFO"
             + " where status=1 and assignee=? order by id desc";
-    public static final String SQL_SET_DELEGATE_INFO = "insert into bpm_delegate_history"
+    public static final String SQL_SET_DELEGATE_INFO = "insert into BPM_DELEGATE_HISTORY"
             + "(assignee,attorney,delegate_time,task_id,status) values(?,?,now(),?,1)";
     private JdbcTemplate jdbcTemplate;
 
@@ -77,12 +77,13 @@ public class DelegateService {
     }
 
     public void removeRecord(Long id) {
-        jdbcTemplate.update("delete from bpm_delegate_info where id=?", id);
+        jdbcTemplate.update("delete from BPM_DELEGATE_INFO where id=?", id);
     }
 
     public void addDelegateInfo(String assignee, String attorney,
             Date startTime, Date endTime, String processDefinitionId) {
-        String sql = "insert into bpm_delegate_info(assignee,attorney,start_time,end_time,process_definition_id,status) values(?,?,?,?,?,?)";
+        String sql = "insert into BPM_DELEGATE_INFO(assignee,attorney,start_time,end_time,process_definition_id," +
+                "status) values(?,?,?,?,?,?)";
         jdbcTemplate.update(sql, assignee, attorney, startTime, endTime,
                 processDefinitionId, 1);
     }

@@ -50,9 +50,9 @@ $(function() {
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="job_level">职等</label>
+    <label class="control-label" for="JOB_LEVEL">职等</label>
 	<div class="controls">
-	  <select id="job_level" name="jobGradeId">
+	  <select id="JOB_LEVEL" name="jobGradeId">
 	  <c:forEach items="${jobGrades}" var="item">
 	    <option value="${item.id}">${item.name}</option>
 	  </c:forEach>

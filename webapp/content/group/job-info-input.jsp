@@ -54,9 +54,9 @@ $(function() {
     </div>
   </div>
   <div class="control-group hidden">
-    <label class="control-label" for="job_level">职级</label>
+    <label class="control-label" for="JOB_LEVEL">职级</label>
 	<div class="controls">
-	  <select id="job_level" name="jobLevelId">
+	  <select id="JOB_LEVEL" name="jobLevelId">
 	  <c:forEach items="${jobLevels}" var="item">
 	    <option value="${item.id}">${item.name}</option>
 	  </c:forEach>
@@ -64,9 +64,9 @@ $(function() {
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="job_type">职称分类</label>
+    <label class="control-label" for="JOB_TYPE">职称分类</label>
 	<div class="controls">
-	  <select id="job_type" name="jobTypeId">
+	  <select id="JOB_TYPE" name="jobTypeId">
 	  <c:forEach items="${jobTypes}" var="item">
 	    <option value="${item.id}">${item.name}</option>
 	  </c:forEach>

@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * UserRole entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name="auth_user_role"
+@Table(name="AUTH_USER_ROLE"
     ,catalog="xhf"
 )
 

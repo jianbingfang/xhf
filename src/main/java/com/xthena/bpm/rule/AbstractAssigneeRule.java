@@ -79,7 +79,7 @@ public abstract class AbstractAssigneeRule implements AssigneeRule {
     public String getDepartmentEntityId(String userEntityId) {
         // 不要理岗位，只查组织机构（公司，部门，小组）
         String sql = "select ps.parent_entity_id as id"
-                + " from party_struct ps,party_entity parent,party_entity child,party_type parent_type,party_type child_type"
+                + " from PARTY_STRUCT ps,PARTY_ENTITY parent,PARTY_ENTITY child,PARTY_TYPE parent_type,PARTY_TYPE child_type"
                 + " where parent.id=ps.parent_entity_id and child.id=ps.child_entity_id"
                 + " and parent_type.id=parent.type_id and parent_type.type=0"
                 + " and child_type.id=child.type_id and child_type.type=1"
@@ -107,7 +107,7 @@ public abstract class AbstractAssigneeRule implements AssigneeRule {
     public String getManagerEntityId(String departmentEntityId) {
         try {
             return this.getJdbcTemplate().queryForObject(
-                    "select child_entity_id from party_struct "
+                    "select child_entity_id from PARTY_STRUCT "
                             + "where admin=1 and parent_entity_id=?",
                     String.class, departmentEntityId);
         } catch (EmptyResultDataAccessException ex) {
@@ -123,7 +123,7 @@ public abstract class AbstractAssigneeRule implements AssigneeRule {
     public String getHigherDepartmentEntityId(String departmentEntityId) {
         try {
             return this.getJdbcTemplate().queryForObject(
-                    "select parent_entity_id from party_struct "
+                    "select parent_entity_id from PARTY_STRUCT "
                             + "where child_entity_id=?", String.class,
                     departmentEntityId);
         } catch (EmptyResultDataAccessException ex) {
@@ -140,7 +140,7 @@ public abstract class AbstractAssigneeRule implements AssigneeRule {
     public String getUserId(String userEntityId) {
         try {
             String userId = this.getJdbcTemplate().queryForObject(
-                    "select ref from party_entity where id=?", String.class,
+                    "select ref from PARTY_ENTITY where id=?", String.class,
                     userEntityId);
 
             return userId;
@@ -158,7 +158,7 @@ public abstract class AbstractAssigneeRule implements AssigneeRule {
      */
     public String getUserEntityId(String userId) {
         String partyEntityId = this.getJdbcTemplate().queryForObject(
-                "select pe.id from party_entity pe,party_type pt"
+                "select pe.id from PARTY_ENTITY pe,PARTY_TYPE pt"
                         + " where pe.type_id=pt.id and pt.type=1 and pe.ref=?",
                 String.class, userId);
         logger.debug("userId : {}", userId);

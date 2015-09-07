@@ -22,8 +22,8 @@ public class DatabaseOrgConnector implements OrgConnector {
 
     @Override
 	public int getJobLevelByUserId(String userId) {
-        String sql = "select jl.name from job_level jl,job_info ji,job_user ju"
-                + " where ju.user_ref=? and ju.job_info_id=ji.id and ji.level_id=jl.id";
+        String sql = "select jl.name from JOB_LEVEL jl,JOB_INFO ji,JOB_USER ju"
+                + " where ju.user_ref=? and ju.JOB_INFO_id=ji.id and ji.level_id=jl.id";
 
         try {
             return jdbcTemplate.queryForObject(sql, Integer.class, userId);
@@ -58,10 +58,10 @@ public class DatabaseOrgConnector implements OrgConnector {
 
     public List<String> getPositionUserEntityIds(String departmentId,
             String positionName) {
-        String sql = "select ps.child_entity_id from party_struct ps,party_entity user,party_type pt,"
-                + " job_user ju,job_info ji,job_title jt"
+        String sql = "select ps.child_entity_id from PARTY_STRUCT ps,PARTY_ENTITY user,PARTY_TYPE pt,"
+                + " JOB_USER ju,JOB_INFO ji,job_title jt"
                 + " where ps.parent_entity_id=? and ps.child_entity_id=user.id and user.type_id=pt.id"
-                + " and pt.type=1 and user.ref=ju.user_ref and ju.job_info_id=ji.id and ji.title_id=jt.id and jt.name=?";
+                + " and pt.type=1 and user.ref=ju.user_ref and ju.JOB_INFO_id=ji.id and ji.title_id=jt.id and jt.name=?";
         List<String> userIds = jdbcTemplate.queryForList(sql, String.class,
                 departmentId, positionName);
         logger.info("departmentId : {}, positionName : {}", departmentId,
@@ -88,7 +88,7 @@ public class DatabaseOrgConnector implements OrgConnector {
     public String getDepartmentEntityId(String userEntityId) {
         // 不要理岗位，只查组织机构（公司，部门，小组）
         String sql = "select ps.parent_entity_id as id"
-                + " from party_struct ps,party_entity parent,party_entity child,party_type parent_type,party_type child_type"
+                + " from PARTY_STRUCT ps,PARTY_ENTITY parent,PARTY_ENTITY child,PARTY_TYPE parent_type,PARTY_TYPE child_type"
                 + " where parent.id=ps.parent_entity_id and child.id=ps.child_entity_id"
                 + " and parent_type.id=parent.type_id and parent_type.type=0"
                 + " and child_type.id=child.type_id and child_type.type=1"
@@ -116,7 +116,7 @@ public class DatabaseOrgConnector implements OrgConnector {
     public String getHigherDepartmentEntityId(String departmentEntityId) {
         try {
             return jdbcTemplate.queryForObject(
-                    "select parent_entity_id from party_struct "
+                    "select parent_entity_id from PARTY_STRUCT "
                             + "where child_entity_id=?", String.class,
                     departmentEntityId);
         } catch (EmptyResultDataAccessException ex) {
@@ -133,7 +133,7 @@ public class DatabaseOrgConnector implements OrgConnector {
     public String getUserId(String userEntityId) {
         try {
             String userId = jdbcTemplate.queryForObject(
-                    "select ref from party_entity where id=?", String.class,
+                    "select ref from PARTY_ENTITY where id=?", String.class,
                     userEntityId);
 
             return userId;
@@ -151,7 +151,7 @@ public class DatabaseOrgConnector implements OrgConnector {
      */
     public String getUserEntityId(String userId) {
         String partyEntityId = jdbcTemplate.queryForObject(
-                "select pe.id from party_entity pe,party_type pt"
+                "select pe.id from PARTY_ENTITY pe,PARTY_TYPE pt"
                         + " where pe.type_id=pt.id and pt.type=1 and pe.ref=?",
                 String.class, userId);
         logger.debug("userId : {}", userId);

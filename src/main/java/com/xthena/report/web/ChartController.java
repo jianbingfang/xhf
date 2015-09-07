@@ -20,7 +20,7 @@ public class ChartController {
     @RequestMapping("chart-mostActiveProcess")
     public String mostActiveProcess(Model model) {
         String sql = "select pd.name_ as name,count(pd.name_) as c"
-                + " from act_hi_procinst pi,act_re_procdef pd where pi.proc_def_id_ =pd.id_ group by pd.name_";
+                + " from ACT_HI_PROCINST pi,ACT_RE_PROCDEF pd where pi.proc_def_id_ =pd.id_ group by pd.name_";
         List list = jdbcTemplate.queryForList(sql);
         model.addAttribute("list", list);
 

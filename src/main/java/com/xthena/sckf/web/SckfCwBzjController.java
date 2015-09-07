@@ -195,7 +195,12 @@ public class SckfCwBzjController {
 			//同时发起流程
 			dest.setFoprator(userBaseManager.findUniqueBy("ref", SpringSecurityUtils.getCurrentUserId()).getFryid());
 			dest.setFcreatedate(new Date());
-			cwBzjManager.newBzj(dest);
+			try {
+				cwBzjManager.newBzj(dest);
+			}
+			catch (Exception e){
+				e.getMessage();
+			}
 		}
 
 		messageHelper.addFlashMessage(redirectAttributes, "core.success.save",

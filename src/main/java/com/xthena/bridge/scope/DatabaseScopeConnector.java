@@ -23,19 +23,19 @@ public class DatabaseScopeConnector implements ScopeConnector {
 
     // ~
     private String sqlFindById = "select id as id,code as code,name as name,ref as ref,"
-            + " shared as shared,user_repo_ref as userRepoRef,type as type"
+            + " shared as shared,USER_REPO_ref as userRepoRef,type as type"
             + " from SCOPE_INFO where id=?";
     private String sqlFindByCode = "select id as id,code as code,name as name,ref as ref,"
-            + " shared as shared,user_repo_ref as userRepoRef,type as type"
+            + " shared as shared,USER_REPO_ref as userRepoRef,type as type"
             + " from SCOPE_INFO where code=?";
     private String sqlFindByRef = "select id as id,code as code,name as name,ref as ref,"
-            + " shared as shared,user_repo_ref as userRepoRef,type as type"
+            + " shared as shared,USER_REPO_ref as userRepoRef,type as type"
             + " from SCOPE_INFO where ref=?";
     private String sqlFindAll = "select id as id,code as code,name as name,ref as ref,"
-            + " shared as shared,user_repo_ref as userRepoRef,type as type"
+            + " shared as shared,USER_REPO_ref as userRepoRef,type as type"
             + " from SCOPE_INFO";
     private String sqlFindSharedScopes = "select id as id,code as code,name as name,ref as ref,"
-            + " shared as shared,user_repo_ref as userRepoRef,type as type"
+            + " shared as shared,USER_REPO_ref as userRepoRef,type as type"
             + " from SCOPE_INFO where shared=1";
 
     @Override

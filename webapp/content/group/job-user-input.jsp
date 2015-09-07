@@ -50,9 +50,9 @@ $(function() {
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="job_level">职位</label>
+    <label class="control-label" for="JOB_LEVEL">职位</label>
 	<div class="controls">
-	  <select id="job_level" name="jobId">
+	  <select id="JOB_LEVEL" name="jobId">
 	  <c:forEach items="${jobInfos}" var="item">
 	    <option value="${item.id}" ${item.id==model.jobInfo.id ? 'selected' : ''}>${item.jobTitle.name}</option>
 	  </c:forEach>

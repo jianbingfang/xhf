@@ -147,7 +147,7 @@ var tokenizePHP = (function() {
       "gregoriantojd", "jdtojulian", "juliantojd", "jdtojewish", "jewishtojd",
       "jdtofrench", "frenchtojd", "jddayofweek", "jdmonthname", "easter_date",
       "easter_days", "unixtojd", "jdtounix", "cal_to_jd", "cal_from_jd",
-      "cal_days_in_month", "cal_info", "variant_set", "variant_add", "variant_cat",
+      "cal_days_in_month", "CAL_INFO", "variant_set", "variant_add", "variant_cat",
       "variant_sub", "variant_mul", "variant_and", "variant_div", "variant_eqv",
       "variant_idiv", "variant_imp", "variant_mod", "variant_or", "variant_pow",
       "variant_xor", "variant_abs", "variant_fix", "variant_int", "variant_neg",

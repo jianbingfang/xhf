@@ -34,10 +34,10 @@ public class PositionAssigneeRule extends AbstractAssigneeRule {
 
    /* public List<String> getPositionUserEntityIds(String departmentId,
             String positionName) {
-        String sql = "select ps.child_entity_id from party_struct ps,party_entity user,party_type pt,"
-                + " job_user ju,job_info ji,job_title jt"
+        String sql = "select ps.child_entity_id from PARTY_STRUCT ps,PARTY_ENTITY user,PARTY_TYPE pt,"
+                + " JOB_USER ju,JOB_INFO ji,job_title jt"
                 + " where ps.parent_entity_id=? and ps.child_entity_id=user.id and user.type_id=pt.id"
-                + " and pt.type=1 and user.ref=ju.user_ref and ju.job_info_id=ji.id and ji.title_id=jt.id and jt.name=?";
+                + " and pt.type=1 and user.ref=ju.user_ref and ju.JOB_INFO_id=ji.id and ji.title_id=jt.id and jt.name=?";
         List<String> userIds = this.getJdbcTemplate().queryForList(sql,
                 String.class, departmentId, positionName);
         logger.info("departmentId : {}, positionName : {}", departmentId,
@@ -60,10 +60,10 @@ public class PositionAssigneeRule extends AbstractAssigneeRule {
     //杨超修改于2015年1月13日，去掉对部门的指定，只根据岗位名称来寻找负责人
     public List<String> getPositionUserEntityIds(String departmentId,
             String positionName) {
-        String sql = "select ps.child_entity_id from party_struct ps,party_entity user,party_type pt,"
-                + " job_user ju,job_info ji,job_title jt"
+        String sql = "select ps.child_entity_id from PARTY_STRUCT ps,PARTY_ENTITY user,PARTY_TYPE pt,"
+                + " JOB_USER ju,JOB_INFO ji,job_title jt"
                 + " where ps.child_entity_id=user.id and user.type_id=pt.id"
-                + " and pt.type=1 and user.ref=ju.user_ref and ju.job_info_id=ji.id and ji.title_id=jt.id and jt.name=?";
+                + " and pt.type=1 and user.ref=ju.user_ref and ju.JOB_INFO_id=ji.id and ji.title_id=jt.id and jt.name=?";
         List<String> userIds = this.getJdbcTemplate().queryForList(sql,
                 String.class,  positionName);
         logger.info("departmentId : {}, positionName : {}", departmentId,

@@ -38,26 +38,32 @@ public class CwBzjManager extends HibernateEntityDao<CwBzj> {
 
         IdentityService identityService = processEngine.getIdentityService();
         identityService.setAuthenticatedUserId(SpringSecurityUtils
-                .getCurrentUserId());
+				.getCurrentUserId());
         
         Map<String, Object> processParameters = new HashMap<String, Object>();
         cwBzj.setFmemo4("已申请");
-        save(cwBzj);
-        
-        ProcessInstance processInstance = processEngine.getRuntimeService()
-				.startProcessInstanceById(processDefinitionId, cwBzj.getFid().toString(),
-						processParameters);
-		cwBzj.setFtaskid(processInstance.getProcessInstanceId());
 		save(cwBzj);
-    	
-	}
-	
+		ProcessInstance processInstance=null;
+		try {
+			processInstance = processEngine.getRuntimeService()
+					.startProcessInstanceById(processDefinitionId, cwBzj.getFid().toString(),
+							processParameters);
+		}
+		catch (Exception e){
+			e.getMessage();
+		}
+		cwBzj.setFtaskid(processInstance.getProcessInstanceId());
+//		cwBzj.setFtaskid("123");
+		save(cwBzj);
 
-	
+}
+
+
+
 	@Transactional
 	 public void dealBzj(CwBzj cwBzj,String taskId){
 		BeanMapper beanMapper=new BeanMapper();
-		CwBzj dest  = get(cwBzj.getFid());
+		CwBzj dest = get(cwBzj.getFid());
 		beanMapper.copy(cwBzj, dest);
 		Map<String, Object> processParameters = new HashMap<String, Object>();
 		processParameters.put("fshenpistatus", dest.getFstatus());

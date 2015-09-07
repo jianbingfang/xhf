@@ -20,9 +20,9 @@ public class DatabaseUserRepoConnector implements UserRepoConnector {
     private static Logger logger = LoggerFactory
             .getLogger(DatabaseUserRepoConnector.class);
     private JdbcTemplate jdbcTemplate;
-    private String sqlFindById = "select id,code,name from user_repo where id=?";
-    private String sqlFindByCode = "select id,code,name from user_repo where code=?";
-    private String sqlFindAll = "select id,code,name from user_repo";
+    private String sqlFindById = "select id,code,name from USER_REPO where id=?";
+    private String sqlFindByCode = "select id,code,name from USER_REPO where code=?";
+    private String sqlFindAll = "select id,code,name from USER_REPO";
 
     @Override
 	public UserRepoDTO findById(String id) {

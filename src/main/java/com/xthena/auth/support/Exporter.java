@@ -20,7 +20,7 @@ public class Exporter {
         buff.append("permType:\n");
 
         for (Map<String, Object> map : jdbcTemplate.queryForList(
-                "select name,type from auth_perm_type where scope_id=?",
+                "select name,type from AUTH_PERM_type where scope_id=?",
                 ScopeHolder.getScopeId())) {
             buff.append(map.get("name")).append(",").append(map.get("type"))
                     .append("\n");
@@ -30,7 +30,7 @@ public class Exporter {
         buff.append("perm:\n");
 
         for (Map<String, Object> map : jdbcTemplate.queryForList(
-                "select ap.code as code,apt.name as type from auth_perm ap,auth_perm_type apt"
+                "select ap.code as code,apt.name as type from AUTH_PERM ap,AUTH_PERM_type apt"
                         + " where ap.perm_type_id=apt.id and ap.scope_id=?",
                 ScopeHolder.getScopeId())) {
             buff.append(map.get("code")).append(",").append(map.get("type"))
@@ -43,7 +43,7 @@ public class Exporter {
 
         for (Map<String, Object> map : jdbcTemplate
                 .queryForList(
-                        "select aa.value as resc,ap.code as perm from auth_access aa,auth_perm ap "
+                        "select aa.value as resc,ap.code as perm from AUTH_ACCESS aa,AUTH_PERM ap "
                                 + "where aa.perm_id=ap.id and aa.type='METHOD' and aa.scope_id=?",
                         ScopeHolder.getScopeId())) {
             buff.append(map.get("resc")).append(",").append(map.get("perm"))
@@ -55,7 +55,7 @@ public class Exporter {
 
         for (Map<String, Object> map : jdbcTemplate
                 .queryForList(
-                        "select aa.value as resc,ap.code as perm from auth_access aa,auth_perm ap "
+                        "select aa.value as resc,ap.code as perm from AUTH_ACCESS aa,AUTH_PERM ap "
                                 + "where aa.perm_id=ap.id and aa.type='URL' and aa.scope_id=?",
                         ScopeHolder.getScopeId())) {
             buff.append(map.get("resc")).append(",").append(map.get("perm"))
@@ -68,7 +68,7 @@ public class Exporter {
         for (Map<String, Object> map : jdbcTemplate
                 .queryForList(
                         "select ar.name as name,ap.code as perm,sc.ref as scope "
-                                + "from auth_role ar,auth_role_def ard,auth_perm_role_def aprd,auth_perm ap,scope_info sc "
+                                + "from AUTH_ROLE ar,AUTH_ROLE_DEF ard,AUTH_PERM_ROLE_DEF aprd,AUTH_PERM ap,SCOPE_INFO sc "
                                 + "where ar.role_def_id=ard.id and ard.id=aprd.role_def_id and aprd.perm_id=ap.id "
                                 + "and ar.scope_id=? and sc.id=ard.scope_id",
                         ScopeHolder.getScopeId())) {
@@ -82,7 +82,7 @@ public class Exporter {
         for (Map<String, Object> map : jdbcTemplate
                 .queryForList(
                         "select aus.username as username,aus.reference as ref,ar.name as role"
-                                + " from auth_role ar,auth_user_status aus,auth_user_role aur "
+                                + " from AUTH_ROLE ar,AUTH_USER_STATUS aus,AUTH_USER_ROLE aur "
                                 + "where ar.id=aur.role_id and aur.user_status_id=aus.id and aus.scope_id=?",
                         ScopeHolder.getScopeId())) {
             buff.append(map.get("username")).append(",").append(map.get("ref"))

@@ -22,7 +22,7 @@ public class CustomGroupEntityManager extends GroupEntityManager {
     public List<Group> findGroupsByUser(String userId) {
         logger.debug("findGroupsByUser : {}", userId);
 
-        String sql = "select parent.name as name from party_entity parent, party_struct ps, party_entity child"
+        String sql = "select parent.name as name from PARTY_ENTITY parent, PARTY_STRUCT ps, PARTY_ENTITY child"
                 + " where parent.id=ps.parent_entity_id and child.id=ps.child_entity_id and child.name=?";
         List<Map<String, Object>> list = jdbcTemplate.queryForList(sql, userId);
         List<Group> groups = new ArrayList<Group>();

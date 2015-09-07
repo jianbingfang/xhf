@@ -23,7 +23,7 @@ public class AddressListController {
             @RequestParam(value = "username", required = false) String username,
             Model model) {
         String sql = "select ub.username as username,ub.display_name as displayName,ub.email as email,ub.mobile as mobile"
-                + " from user_base ub" + " where ub.username like ?";
+                + " from USER_BASE ub" + " where ub.username like ?";
         List list = jdbcTemplate.queryForList(sql, "%" + username + "%");
         model.addAttribute("list", list);
 

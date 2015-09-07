@@ -69,14 +69,15 @@ public class RemindTask implements Runnable {
             while (rs.next()) {
                 List<Long> ryList = new ArrayList<Long>();
                 if (commRemindConf.getFremindtytype().equals("全体")) {
-                    sql = "select id from user_base";
+                    sql = "select id from USER_BASE";
                     PreparedStatement ps1 = conn.prepareStatement(sql);
                     ResultSet rs1 = ps1.executeQuery();
                     while (rs1.next()) {
                         ryList.add(rs1.getLong("id"));
                     }
                 } else if (commRemindConf.getFremindtytype().equals("角色")) {
-                    sql = "select DISTINCT a.ref from auth_user_status a,auth_user_role b where a.id=b.user_status_id and b.role_id=? ";
+                    sql = "select DISTINCT a.ref from AUTH_USER_STATUS a,AUTH_USER_ROLE b where a.id=b.user_status_id " +
+                            "and b.role_id=? ";
                     PreparedStatement ps1 = conn.prepareStatement(sql);
                     ps1.setLong(1, commRemindConf.getFremindry());
                     ResultSet rs1 = ps1.executeQuery();
@@ -84,7 +85,7 @@ public class RemindTask implements Runnable {
                         ryList.add(rs1.getLong("ref"));
                     }
                 } else if (commRemindConf.getFremindtytype().equals("部门")) {
-                    sql = "select DISTINCT d.id from org_department a,t_hr_gwbm b,t_common_ry c,user_base d where a.fid=b.fbmid and b.fid=c.fjobid " +
+                    sql = "select DISTINCT d.id from ORG_DEPARTMENT a,t_hr_gwbm b,t_common_ry c,USER_BASE d where a.fid=b.fbmid and b.fid=c.fjobid " +
                             " and c.fid=d.fryid and a.fid=? ";
                     PreparedStatement ps1 = conn.prepareStatement(sql);
                     ps1.setLong(1, commRemindConf.getFremindry());
@@ -96,7 +97,7 @@ public class RemindTask implements Runnable {
 
                 } else if (commRemindConf.getFremindtytype().equals("岗位")) {
 
-                    sql = "select DISTINCT d.id from t_hr_gwbm b,t_common_ry c,user_base d where  b.fid=c.fjobid and c.fid=d.fryid and b.fid=? ";
+                    sql = "select DISTINCT d.id from t_hr_gwbm b,t_common_ry c,USER_BASE d where  b.fid=c.fjobid and c.fid=d.fryid and b.fid=? ";
                     PreparedStatement ps1 = conn.prepareStatement(sql);
                     ps1.setLong(1, commRemindConf.getFremindry());
 
@@ -106,7 +107,7 @@ public class RemindTask implements Runnable {
                     }
 
                 } else if (commRemindConf.getFremindtytype().equals("人员")) {
-                    sql = "select DISTINCT d.id from t_common_ry c,user_base d where c.fid=d.fryid and c.fid=? ";
+                    sql = "select DISTINCT d.id from t_common_ry c,USER_BASE d where c.fid=d.fryid and c.fid=? ";
                     PreparedStatement ps1 = conn.prepareStatement(sql);
                     ps1.setLong(1, commRemindConf.getFremindry());
 

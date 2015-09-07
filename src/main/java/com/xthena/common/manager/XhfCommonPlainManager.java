@@ -11,7 +11,7 @@ import org.activiti.engine.delegate.DelegateTask;
 import org.activiti.engine.delegate.TaskListener;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.activiti.engine.ActivitiException;
 import com.xthena.api.user.UserConnector;
 import com.xthena.bpm.persistence.domain.BpmProcess;
 import com.xthena.bpm.persistence.manager.BpmProcessManager;
@@ -57,24 +57,80 @@ public class XhfCommonPlainManager extends HibernateEntityDao<XhfCommonPlain> im
     //保存工作计划 发起流程
     @Transactional
     public void savePlain(XhfCommonPlain xhfCommonPlain){
-    	   
- 	    BpmProcess bpmProcess = bpmProcessManager.findUniqueBy("name", "计划申报");
+
+		// 用来设置启动流程的人员ID，引擎会自动把用户ID保存到activiti:initiator中
+
+
+		BpmProcess bpmProcess = bpmProcessManager.findUniqueBy("name", "计划申报");
         String processDefinitionId = bpmProcess.getBpmConfBase()
                 .getProcessDefinitionId();
+        String processDefinitionKey=bpmProcess.getBpmConfBase().getProcessDefinitionKey();
 
         IdentityService identityService = processEngine.getIdentityService();
-        identityService.setAuthenticatedUserId(SpringSecurityUtils
-                .getCurrentUserId());
-        
+		String userid=SpringSecurityUtils.getCurrentUserId();
+
+		try {
+			identityService.setAuthenticatedUserId(userid);
+		}
+		catch (Exception e){
+			String a=e.getMessage();
+		}
+
+
         Map<String, Object> processParameters = new HashMap<String, Object>();
         xhfCommonPlain.setFuserid(Long.valueOf(SpringSecurityUtils.getCurrentUserId()));
         xhfCommonPlain.setFstatus("未审阅");
         save(xhfCommonPlain);
-        
-        ProcessInstance processInstance = processEngine.getRuntimeService()
-                .startProcessInstanceById(processDefinitionId, xhfCommonPlain.getFid().toString(),
-                        processParameters);
-    	xhfCommonPlain.setFtaskid(processInstance.getProcessInstanceId());
+
+		try {
+			ProcessInstance processInstance = processEngine.getRuntimeService()
+					.startProcessInstanceById(processDefinitionId, xhfCommonPlain.getFid().toString(),
+							processParameters);
+
+			System.out.println("流程实例Id:"+processInstance.getId());
+
+			System.out.println("流程定义Id:"+processInstance.getProcessDefinitionId());
+
+			//判断当前是否位于start节点
+
+
+			System.out.println("流程定义BusinessKey"+processInstance.getBusinessKey());
+
+			//判断当前是否位于state节点
+
+			System.out.println("是否位于state节点:"+processInstance.getTenantId());
+
+			//判断流程是否结束
+
+			System.out.println("判断流程是否结束:"+processInstance.isEnded());
+
+			System.out.println("------------------------>使流程继续向下执行");
+
+			//使流程继续向下执行
+
+			//ProcessInstance instanceState=executionService.signalExecutionById(processInstance.getId());
+
+
+
+
+			xhfCommonPlain.setFtaskid(processInstance.getProcessInstanceId());
+		}
+		catch(Exception e)
+		{
+			String msg=e.getMessage();
+			System.out.print(msg);
+		}
+
+
+//		try {
+//			ProcessInstance processInstance1 = processEngine.getRuntimeService().startProcessInstanceByKey
+//					(processDefinitionKey, xhfCommonPlain.getFid().toString(), processParameters);
+//			xhfCommonPlain.setFtaskid(processInstance1.getProcessDefinitionId());
+//		}
+//		catch (ActivitiException e)
+//		{
+//			String msg=e.getMessage();
+//		}
     	save(xhfCommonPlain);
     	
     }
